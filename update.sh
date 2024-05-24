@@ -6,9 +6,11 @@ git pull
 
 # 
 cd datasheet_en
-https://www.wch-ic.com/downloads/CH32V002DS0_PDF.html
+# https://www.wch-ic.com/downloads/CH32V002DS0_PDF.html
 wget --continue https://www.wch-ic.com/downloads/file/397.html -O CH32V002DS0.PDF
-https://www.wch-ic.com/downloads/CH32V006DS0_PDF.html
+# https://www.wch-ic.com/downloads/CH32V004DS0_PDF.html
+wget --continue https://www.wch-ic.com/downloads/file/398.html -O CH32V004DS0.PDF
+# https://www.wch-ic.com/downloads/CH32V006DS0_PDF.html
 wget --continue https://www.wch-ic.com/downloads/file/396.html -O CH32V006DS0.PDF
 cd ..
 
