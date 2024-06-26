@@ -24,8 +24,6 @@ wget --continue https://www.wch.cn/downloads/file/473.html -O CH32V002DS0.PDF
 wget --continue https://www.wch.cn/downloads/file/474.html -O CH32V004DS0.PDF
 # https://www.wch.cn/downloads/CH32V006DS0_PDF.html
 wget --continue https://www.wch.cn/downloads/file/475.html -O CH32V006DS0.PDF
-# https://www.wch.cn/downloads/CH32V002DS0_PDF.html
-wget --continue https://www.wch.cn/downloads/file/473.html -O CH32V002DS0.PDF
 # https://www.wch.cn/downloads/CH32V00XRM_PDF.html
 wget --continue https://www.wch.cn/downloads/file/472.html -O CH32V00XRM.PDF
 cd ..
