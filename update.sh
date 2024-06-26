@@ -12,6 +12,8 @@ wget --continue https://www.wch-ic.com/downloads/file/397.html -O CH32V002DS0.PD
 wget --continue https://www.wch-ic.com/downloads/file/398.html -O CH32V004DS0.PDF
 # https://www.wch-ic.com/downloads/CH32V006DS0_PDF.html
 wget --continue https://www.wch-ic.com/downloads/file/396.html -O CH32V006DS0.PDF
+# https://www.wch-ic.com/downloads/CH32V00XRM_PDF.html
+wget --continue https://www.wch-ic.com/downloads/file/399.html -O CH32V00XRM.PDF
 cd ..
 
 # 
