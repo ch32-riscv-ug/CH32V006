@@ -7,29 +7,29 @@ git pull
 # 
 cd datasheet_en
 # https://www.wch-ic.com/downloads/CH32V002DS0_PDF.html
-wget --continue https://www.wch-ic.com/downloads/file/397.html -O CH32V002DS0.PDF
+curl -z CH32V002DS0.PDF -o CH32V002DS0.PDF https://www.wch-ic.com/downloads/file/397.html
 # https://www.wch-ic.com/downloads/CH32V004DS0_PDF.html
-wget --continue https://www.wch-ic.com/downloads/file/398.html -O CH32V004DS0.PDF
+curl -z CH32V004DS0.PDF -o CH32V004DS0.PDF https://www.wch-ic.com/downloads/file/398.html
 # https://www.wch-ic.com/downloads/CH32V006DS0_PDF.html
-wget --continue https://www.wch-ic.com/downloads/file/396.html -O CH32V006DS0.PDF
+curl -z CH32V006DS0.PDF -o CH32V006DS0.PDF https://www.wch-ic.com/downloads/file/396.html
 # https://www.wch-ic.com/downloads/CH32V00XRM_PDF.html
-wget --continue https://www.wch-ic.com/downloads/file/399.html -O CH32V00XRM.PDF
+curl -z CH32V00XRM.PDF -o CH32V00XRM.PDF https://www.wch-ic.com/downloads/file/399.html
 cd ..
 
 # 
 cd datasheet_zh
 # https://www.wch.cn/downloads/CH32V002DS0_PDF.html
-wget --continue https://www.wch.cn/downloads/file/473.html -O CH32V002DS0.PDF
+curl -z CH32V002DS0.PDF -o CH32V002DS0.PDF https://www.wch.cn/downloads/file/473.html
 # https://www.wch.cn/downloads/CH32V004DS0_PDF.html
-wget --continue https://www.wch.cn/downloads/file/474.html -O CH32V004DS0.PDF
+curl -z CH32V004DS0.PDF -o CH32V004DS0.PDF https://www.wch.cn/downloads/file/474.html
 # https://www.wch.cn/downloads/CH32V006DS0_PDF.html
-wget --continue https://www.wch.cn/downloads/file/475.html -O CH32V006DS0.PDF
+curl -z CH32V006DS0.PDF -o CH32V006DS0.PDF https://www.wch.cn/downloads/file/475.html
 # https://www.wch.cn/downloads/CH32V00XRM_PDF.html
-wget --continue https://www.wch.cn/downloads/file/472.html -O CH32V00XRM.PDF
+curl -z CH32V00XRM.PDF -o CH32V00XRM.PDF https://www.wch.cn/downloads/file/472.html
 cd ..
 
 # https://www.wch.cn/downloads/CH32V006EVT_ZIP.html
-wget --continue https://www.wch.cn/downloads/file/477.html -O CH32V006EVT.ZIP
+curl -z CH32V006EVT.ZIP -o CH32V006EVT.ZIP https://www.wch.cn/downloads/file/477.html
 rm -rfv EVT
 unzip -O GB2312 *.ZIP
 
