@@ -2,7 +2,7 @@
 ;* File Name          : startup_ch32v00X.s
 ;* Author             : WCH
 ;* Version            : V1.0.0
-;* Date               : 2024/01/01
+;* Date               : 2024/11/08
 ;* Description        : ch32v002-ch32v004-ch32v005-ch32v006-ch32v007-ch32m007 vector table for eclipse toolchain.
 ;*                       (BOOT flash as user flash)
 ;*********************************************************************************
