@@ -14,6 +14,8 @@ curl -z CH32V004DS0.PDF -o CH32V004DS0.PDF https://www.wch-ic.com/downloads/file
 curl -z CH32V006DS0.PDF -o CH32V006DS0.PDF https://www.wch-ic.com/downloads/file/396.html
 # https://www.wch-ic.com/downloads/CH32V00XRM_PDF.html
 curl -z CH32V00XRM.PDF -o CH32V00XRM.PDF https://www.wch-ic.com/downloads/file/399.html
+# https://www.wch-ic.com/downloads/CH32V006DS0_PDF.html
+curl -z CH32V007DS0.PDF -o CH32V007DS0.PDF https://www.wch-ic.com/downloads/file/405.html
 cd ..
 
 # 
@@ -26,6 +28,8 @@ curl -z CH32V004DS0.PDF -o CH32V004DS0.PDF https://www.wch.cn/downloads/file/474
 curl -z CH32V006DS0.PDF -o CH32V006DS0.PDF https://www.wch.cn/downloads/file/475.html
 # https://www.wch.cn/downloads/CH32V00XRM_PDF.html
 curl -z CH32V00XRM.PDF -o CH32V00XRM.PDF https://www.wch.cn/downloads/file/472.html
+# https://www.wch-ic.com/downloads/CH32V006DS0_PDF.html
+curl -z CH32V007DS0.PDF -o CH32V007DS0.PDF https://www.wch-ic.com/downloads/file/476.html
 cd ..
 
 # https://www.wch.cn/downloads/CH32V006EVT_ZIP.html
