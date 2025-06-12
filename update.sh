@@ -7,15 +7,15 @@ git pull
 # 
 cd datasheet_en
 # https://www.wch-ic.com/downloads/CH32V002DS0_PDF.html
-curl -z CH32V002DS0.PDF -o CH32V002DS0.PDF https://www.wch-ic.com/downloads/file/397.html
+curl -z CH32V002DS0.PDF -o CH32V002DS0.PDF https://www.wch-ic.com/download/file?id=397
 # https://www.wch-ic.com/downloads/CH32V004DS0_PDF.html
-curl -z CH32V004DS0.PDF -o CH32V004DS0.PDF https://www.wch-ic.com/downloads/file/398.html
+curl -z CH32V004DS0.PDF -o CH32V004DS0.PDF https://www.wch-ic.com/download/file?id=398
 # https://www.wch-ic.com/downloads/CH32V006DS0_PDF.html
-curl -z CH32V006DS0.PDF -o CH32V006DS0.PDF https://www.wch-ic.com/downloads/file/396.html
+curl -z CH32V006DS0.PDF -o CH32V006DS0.PDF https://www.wch-ic.com/download/file?id=396
 # https://www.wch-ic.com/downloads/CH32V00XRM_PDF.html
-curl -z CH32V00XRM.PDF -o CH32V00XRM.PDF https://www.wch-ic.com/downloads/file/399.html
+curl -z CH32V00XRM.PDF -o CH32V00XRM.PDF https://www.wch-ic.com/download/file?id=399
 # https://www.wch-ic.com/downloads/CH32V006DS0_PDF.html
-curl -z CH32V007DS0.PDF -o CH32V007DS0.PDF https://www.wch-ic.com/downloads/file/405.html
+curl -z CH32V007DS0.PDF -o CH32V007DS0.PDF https://www.wch-ic.com/download/file?id=405
 cd ..
 
 # 
