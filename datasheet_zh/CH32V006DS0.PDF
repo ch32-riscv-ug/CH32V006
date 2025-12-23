@@ -14,7 +14,7 @@
     <script>
       window._CONFIG = {};
       // // 中文
-      window._CONFIG['domianURL'] = 'https://api1.wch.cn'  //http://192.168.111.189:8020/  https://www.wch.cn
+      window._CONFIG['domianURL'] = 'https://api1.wch.cn'  //http://192.168.111.189:8020/  https://api1.wch.cn
       window._CONFIG['pageTitle'] = ' - 南京沁恒微电子股份有限公司'//详情页标题
 
       // 英文
@@ -22,7 +22,7 @@
       // window._CONFIG['pageTitle'] = ' - Nanjing Qinheng Microelectronics Co., Ltd.'//详情页标题
       
     </script>
-  <link href="https://cdn.wch.cn/js/0.3916ebe3.chunk.js" rel="prefetch"><link href="https://cdn.wch.cn/js/1.230ec529.chunk.js" rel="prefetch"><link href="https://cdn.wch.cn/js/10.afe8e5d8.chunk.js" rel="prefetch"><link href="https://cdn.wch.cn/js/11.c9a7d67d.chunk.js" rel="prefetch"><link href="https://cdn.wch.cn/js/12.63afa0d4.chunk.js" rel="prefetch"><link href="https://cdn.wch.cn/js/13.09c06812.chunk.js" rel="prefetch"><link href="https://cdn.wch.cn/js/14.e1081513.chunk.js" rel="prefetch"><link href="https://cdn.wch.cn/js/15.63fe7aa4.chunk.js" rel="prefetch"><link href="https://cdn.wch.cn/js/16.8ade4290.chunk.js" rel="prefetch"><link href="https://cdn.wch.cn/js/17.049782ca.chunk.js" rel="prefetch"><link href="https://cdn.wch.cn/js/18.405c97e1.chunk.js" rel="prefetch"><link href="https://cdn.wch.cn/js/19.78ab0ae6.chunk.js" rel="prefetch"><link href="https://cdn.wch.cn/js/2.1fd1dd9b.chunk.js" rel="prefetch"><link href="https://cdn.wch.cn/js/20.0a6265f3.chunk.js" rel="prefetch"><link href="https://cdn.wch.cn/js/21.e7e54538.chunk.js" rel="prefetch"><link href="https://cdn.wch.cn/js/22.80bf3b2c.chunk.js" rel="prefetch"><link href="https://cdn.wch.cn/js/23.4be22429.chunk.js" rel="prefetch"><link href="https://cdn.wch.cn/js/3.f83d15a3.chunk.js" rel="prefetch"><link href="https://cdn.wch.cn/js/4.3d7db87f.chunk.js" rel="prefetch"><link href="https://cdn.wch.cn/js/5.500f8441.chunk.js" rel="prefetch"><link href="https://cdn.wch.cn/js/6.f387b5a6.chunk.js" rel="prefetch"><link href="https://cdn.wch.cn/js/7.23aaad28.chunk.js" rel="prefetch"><link href="https://cdn.wch.cn/js/8.ab1ec533.chunk.js" rel="prefetch"><link href="https://cdn.wch.cn/js/9.bad12226.chunk.js" rel="prefetch"><link href="https://cdn.wch.cn/js/app.ebccc82b.js" rel="preload" as="script"><link href="https://cdn.wch.cn/js/chunk-vendors.a37d181b.chunk.js" rel="preload" as="script"></head>
+  <link href="https://cdn.wch.cn/js/0.3916ebe3.chunk.js" rel="prefetch"><link href="https://cdn.wch.cn/js/1.230ec529.chunk.js" rel="prefetch"><link href="https://cdn.wch.cn/js/10.afe8e5d8.chunk.js" rel="prefetch"><link href="https://cdn.wch.cn/js/11.c9a7d67d.chunk.js" rel="prefetch"><link href="https://cdn.wch.cn/js/12.63afa0d4.chunk.js" rel="prefetch"><link href="https://cdn.wch.cn/js/13.09c06812.chunk.js" rel="prefetch"><link href="https://cdn.wch.cn/js/14.e1081513.chunk.js" rel="prefetch"><link href="https://cdn.wch.cn/js/15.63fe7aa4.chunk.js" rel="prefetch"><link href="https://cdn.wch.cn/js/16.8ade4290.chunk.js" rel="prefetch"><link href="https://cdn.wch.cn/js/17.049782ca.chunk.js" rel="prefetch"><link href="https://cdn.wch.cn/js/18.405c97e1.chunk.js" rel="prefetch"><link href="https://cdn.wch.cn/js/19.78ab0ae6.chunk.js" rel="prefetch"><link href="https://cdn.wch.cn/js/2.1fd1dd9b.chunk.js" rel="prefetch"><link href="https://cdn.wch.cn/js/20.0a6265f3.chunk.js" rel="prefetch"><link href="https://cdn.wch.cn/js/21.e7e54538.chunk.js" rel="prefetch"><link href="https://cdn.wch.cn/js/22.80bf3b2c.chunk.js" rel="prefetch"><link href="https://cdn.wch.cn/js/23.4be22429.chunk.js" rel="prefetch"><link href="https://cdn.wch.cn/js/3.f83d15a3.chunk.js" rel="prefetch"><link href="https://cdn.wch.cn/js/4.3d7db87f.chunk.js" rel="prefetch"><link href="https://cdn.wch.cn/js/5.500f8441.chunk.js" rel="prefetch"><link href="https://cdn.wch.cn/js/6.f387b5a6.chunk.js" rel="prefetch"><link href="https://cdn.wch.cn/js/7.23aaad28.chunk.js" rel="prefetch"><link href="https://cdn.wch.cn/js/8.cea82ad7.chunk.js" rel="prefetch"><link href="https://cdn.wch.cn/js/9.bad12226.chunk.js" rel="prefetch"><link href="https://cdn.wch.cn/js/app.e19deb5e.js" rel="preload" as="script"><link href="https://cdn.wch.cn/js/chunk-vendors.a37d181b.chunk.js" rel="preload" as="script"></head>
   <!--英文版本 Google tag (gtag.js) -->
 <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-LEHMD5GL2E"></script>
 <script>
@@ -42,16 +42,21 @@
     </noscript>
     <div id="app"></div>
     <!-- built files will be auto injected -->
-  <script type="text/javascript" src="https://cdn.wch.cn/js/chunk-vendors.a37d181b.chunk.js"></script><script type="text/javascript" src="https://cdn.wch.cn/js/app.ebccc82b.js"></script></body>
+  <script type="text/javascript" src="https://cdn.wch.cn/js/chunk-vendors.a37d181b.chunk.js"></script><script type="text/javascript" src="https://cdn.wch.cn/js/app.e19deb5e.js"></script></body>
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?476de64673ee88369381e07016f7581b";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script> 
   <script>
     var ie = IEVersion();
     console.log('ie====',ie)
     if (ie ) {//原：8
       alert("为了您的浏览体验，建议您使用最新版本的谷歌浏览器。")
-      // var r=alert("您当前浏览器版本过低，为了您的浏览体验，请升级浏览器或使用最新版本的谷歌浏览器。")
-      // if(r){
-      //   return
-      // }
     }
     function IEVersion() {
       var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串
@@ -60,38 +65,9 @@
       // var isIE11 = userAgent.indexOf('Trident') > -1 && userAgent.indexOf("rv:11.0") > -1;
       if (isIE) {
         return true
-      //   var reIE = new RegExp("MSIE (\\d+\\.\\d+);");
-      //   reIE.test(userAgent);
-      //   var fIEVersion = parseFloat(RegExp["$1"]);
-      //   console.log(fIEVersion)
-      //   if (fIEVersion == 7) {
-      //     return 7;
-      //   } else if (fIEVersion == 8) {
-      //     return 8;
-      //   } else if (fIEVersion == 9) {
-      //     return 9;
-      //   } else if (fIEVersion == 10) {
-      //     return 10;
-      //   } else {
-      //     return 6;//IE版本<=7
-      //   }
-      // } else if (isEdge) {
-      //   return 'edge';//edge
-      // } else if (isIE11) {
-      //   return 11; //IE11
-      // } else {
-      //   return 15;//不是ie浏览器
-      // }
     }else{
       return false
     }
-  
-    // screenResolution()
-    // function screenResolution(){
-    //   // console.log('分辨率宽度：',window.screen.width)
-    //   if(window.screen.width < 1360){
-    //     alert('您当前设备屏幕分辨率过低，为了您的浏览体验，请更换分辨率更高的设备。')
-    //   }
     }
   </script>
 </html>
