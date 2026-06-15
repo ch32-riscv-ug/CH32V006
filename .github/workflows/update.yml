@@ -1,0 +1,43 @@
+name: update
+
+on:
+  schedule:
+    # Daily at 03:00 UTC (12:00 JST)
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+
+# Write permission is required to commit/push updated files.
+permissions:
+  contents: write
+
+# Do not run overlapping updates.
+concurrency:
+  group: update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # update.sh only downloads and extracts. It exits non-zero on a failed
+      # download (e.g. a changed URL), failing the job without overwriting
+      # good files.
+      - name: Download datasheets / EVT
+        run: |
+          chmod +x ./update.sh
+          ./update.sh
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ -n "$(git status --porcelain)" ]; then
+            git add -A
+            git commit -m "update (automated)"
+            git push
+          else
+            echo "No changes to commit."
+          fi
