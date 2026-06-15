@@ -2,8 +2,8 @@ name: update
 
 on:
   schedule:
-    # Daily at 03:00 UTC (12:00 JST)
-    - cron: '0 3 * * *'
+    # Daily at 19:17 UTC (04:17 JST) — staggered to spare the weak WCH server
+    - cron: '17 19 * * *'
   workflow_dispatch:
 
 # Write permission is required to commit/push updated files.

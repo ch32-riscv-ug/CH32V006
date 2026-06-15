@@ -13,49 +13,69 @@ set -euo pipefail
 
 cd "$(dirname "$0")"
 
+# Retry/timeout tuning (override via env, e.g. for tests).
+: "${FETCH_RETRIES:=5}"
+: "${FETCH_RETRY_DELAY:=10}"
+
 # fetch <url> <output>
-#   --fail        : treat HTTP errors (e.g. 404) as failures
-#   temp + verify : download to a temp file, check content, then replace the target
-#   reject        : empty responses and non-PDF/ZIP content (e.g. a 404 HTML page)
-#   on failure    : return 1; `set -e` aborts the script so the job fails
+#   Download to a temp file, validate it, then atomically replace the target.
+#   - HTTP 404/403/410 -> URL changed: fail immediately (no overwrite).
+#   - empty / truncated / stalled / connection error -> transient: retry.
+#   Validation: non-empty, PDF starts with %PDF, ZIP passes `unzip -t`.
+#   If it never succeeds, return 1 and `set -e` fails the job, leaving the
+#   existing good file untouched.
 fetch() {
   local url="$1" out="$2"
   local tmp="${out}.download.$$"
-  local code
-  echo "Fetching ${out} <- ${url}"
-  if ! code=$(curl -fsSL --retry 3 --retry-delay 5 -z "$out" -o "$tmp" -w '%{http_code}' "$url"); then
-    echo "ERROR: download failed (curl) for ${url} (http=${code:-?})" >&2
+  local attempt=0 code
+  while [ "$attempt" -lt "$FETCH_RETRIES" ]; do
+    attempt=$((attempt + 1))
+    echo "Fetching ${out} <- ${url} (attempt ${attempt}/${FETCH_RETRIES})"
+    code=$(curl -sSL \
+                --connect-timeout 30 --max-time 900 \
+                --speed-time 30 --speed-limit 1024 \
+                -o "$tmp" -w '%{http_code}' "$url") || code="000"
+    if [ "$code" = "200" ] && _valid "$tmp" "$out"; then
+      mv -f "$tmp" "$out"
+      echo "  saved ${out} ($(wc -c < "$out") bytes)"
+      return 0
+    fi
     rm -f "$tmp"
-    return 1
-  fi
-  if [ "$code" = "304" ]; then
-    echo "  not modified, keeping existing ${out}"
-    rm -f "$tmp"
-    return 0
-  fi
+    case "$code" in
+      404|403|410)
+        echo "ERROR: ${url} returned HTTP ${code} (URL changed?)" >&2
+        return 1
+        ;;
+    esac
+    echo "  attempt ${attempt} failed (http=${code}); retrying in ${FETCH_RETRY_DELAY}s..." >&2
+    sleep "$FETCH_RETRY_DELAY"
+  done
+  echo "ERROR: download failed for ${url} after ${FETCH_RETRIES} attempts" >&2
+  return 1
+}
+
+# _valid <tmpfile> <outname>: true if the download looks complete and correct.
+_valid() {
+  local tmp="$1" out="$2"
   if [ ! -s "$tmp" ]; then
-    echo "ERROR: empty response from ${url}" >&2
-    rm -f "$tmp"
+    echo "  -> empty response" >&2
     return 1
   fi
   case "${out,,}" in
     *.pdf)
       if [ "$(head -c 4 "$tmp")" != "%PDF" ]; then
-        echo "ERROR: response from ${url} is not a PDF (URL changed?)" >&2
-        rm -f "$tmp"
+        echo "  -> not a PDF" >&2
         return 1
       fi
       ;;
     *.zip)
-      if [ "$(head -c 2 "$tmp")" != "PK" ]; then
-        echo "ERROR: response from ${url} is not a ZIP (URL changed?)" >&2
-        rm -f "$tmp"
+      if ! unzip -tqq "$tmp" >/dev/null 2>&1; then
+        echo "  -> not a valid/complete ZIP" >&2
         return 1
       fi
       ;;
   esac
-  mv -f "$tmp" "$out"
-  echo "  saved ${out} ($(wc -c < "$out") bytes)"
+  return 0
 }
 
 cd datasheet_en
