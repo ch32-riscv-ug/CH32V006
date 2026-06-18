@@ -11,6 +11,7 @@ on:
 # Write permission is required to commit/push updated files.
 permissions:
   contents: write
+  actions: write    # required by keepalive-workflow (API mode)
 
 # Do not run overlapping updates.
 concurrency:
@@ -43,3 +44,8 @@ jobs:
             git commit -m "update (automated)"
             git push
           fi
+
+      # Keep the daily schedule from being auto-disabled after 60 days of
+      # inactivity. API mode: no commits, uses GITHUB_TOKEN (actions: write).
+      - name: Keepalive (prevent 60-day schedule auto-disable)
+        uses: gautamkrishnar/keepalive-workflow@v2

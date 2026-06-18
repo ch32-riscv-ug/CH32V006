@@ -5,9 +5,14 @@
 # Run by GitHub Actions (.github/workflows/update.yml); the workflow does git commit/push.
 # GitHub Actions から実行される。git の commit/push はワークフローが行う。
 #
-# On download failure, exit non-zero instead of overwriting a good file with an
-# empty or HTML (404) response, so the Actions job fails.
-# ダウンロード失敗時は空ファイルや HTML(404) で上書きせず非ゼロ終了し、ジョブを失敗させる。
+# Failure policy / 失敗時の方針:
+#   - any HTTP error status (4xx incl. 404, and 5xx) -> fail the job (alert).
+#     HTTP エラー応答(404 等の 4xx・5xx サーバエラー)はジョブを失敗させて通知する。
+#   - transport-level glitches only (HTTP/2 PROTOCOL_ERROR, timeout, reset,
+#     empty / truncated transfer) -> retry, then skip; next daily run retries.
+#     伝送レベルの一時障害(CDN のストリーム切断/タイムアウト等)だけスキップし翌日再試行。
+#   Updates land only every few months, so skipping a day is harmless.
+#   更新は数ヶ月単位なので1日スキップしても問題ない。
 
 set -euo pipefail
 
@@ -17,41 +22,57 @@ cd "$(dirname "$0")"
 : "${FETCH_RETRIES:=5}"
 : "${FETCH_RETRY_DELAY:=10}"
 
+HARD_FAILS=()     # HTTP error status (4xx/5xx) -> fail the job
+SOFT_FAILS=()     # transport-level glitches -> skip, retry next run
+LAST_FETCH_OK=0   # set by fetch(): 1 if the last call updated the file
+
 # fetch <url> <output>
 #   Download to a temp file, validate it, then atomically replace the target.
-#   - HTTP 404/403/410 -> URL changed: fail immediately (no overwrite).
-#   - empty / truncated / stalled / connection error -> transient: retry.
-#   Validation: non-empty, PDF starts with %PDF, ZIP passes `unzip -t`.
-#   If it never succeeds, return 1 and `set -e` fails the job, leaving the
-#   existing good file untouched.
+#   Forces HTTP/1.1 to avoid the intermittent HTTP/2 PROTOCOL_ERROR from the CDN.
+#   Never aborts the script: outcomes go to HARD_FAILS / SOFT_FAILS, judged by
+#   finish() at the end. Sets LAST_FETCH_OK so the caller can decide whether to
+#   re-extract a ZIP.
+#
+#   curl errors (transport-level) collapse to code "000" via the `|| code=...`.
+#     200 + valid                 -> success
+#     200 + empty/truncated       -> transient (retry, then soft skip)
+#     "000" (curl transport error)-> transient (retry, then soft skip)
+#     any other HTTP status (4xx/5xx) -> genuine error (hard fail, no retry)
 fetch() {
   local url="$1" out="$2"
   local tmp="${out}.download.$$"
   local attempt=0 code
+  LAST_FETCH_OK=0
   while [ "$attempt" -lt "$FETCH_RETRIES" ]; do
     attempt=$((attempt + 1))
     echo "Fetching ${out} <- ${url} (attempt ${attempt}/${FETCH_RETRIES})"
-    code=$(curl -sSL \
+    code=$(curl -sSL --http1.1 \
                 --connect-timeout 30 --max-time 900 \
                 --speed-time 30 --speed-limit 1024 \
                 -o "$tmp" -w '%{http_code}' "$url") || code="000"
-    if [ "$code" = "200" ] && _valid "$tmp" "$out"; then
-      mv -f "$tmp" "$out"
-      echo "  saved ${out} ($(wc -c < "$out") bytes)"
+    if [ "$code" = "200" ]; then
+      if _valid "$tmp" "$out"; then
+        mv -f "$tmp" "$out"
+        echo "  saved ${out} ($(wc -c < "$out") bytes)"
+        LAST_FETCH_OK=1
+        return 0
+      fi
+      rm -f "$tmp"
+      echo "  attempt ${attempt}: HTTP 200 but incomplete/invalid (transient); retrying in ${FETCH_RETRY_DELAY}s..." >&2
+    elif [ "$code" = "000" ]; then
+      rm -f "$tmp"
+      echo "  attempt ${attempt}: transport error (curl, e.g. HTTP/2/timeout/reset); retrying in ${FETCH_RETRY_DELAY}s..." >&2
+    else
+      rm -f "$tmp"
+      echo "  -> HTTP ${code}: genuine error (URL changed or server error)" >&2
+      HARD_FAILS+=("${out}  HTTP ${code}  ${url}")
       return 0
     fi
-    rm -f "$tmp"
-    case "$code" in
-      404|403|410)
-        echo "ERROR: ${url} returned HTTP ${code} (URL changed?)" >&2
-        return 1
-        ;;
-    esac
-    echo "  attempt ${attempt} failed (http=${code}); retrying in ${FETCH_RETRY_DELAY}s..." >&2
     sleep "$FETCH_RETRY_DELAY"
   done
-  echo "ERROR: download failed for ${url} after ${FETCH_RETRIES} attempts" >&2
-  return 1
+  echo "  -> giving up for now after ${FETCH_RETRIES} transient failures" >&2
+  SOFT_FAILS+=("${out}  ${url}")
+  return 0
 }
 
 # _valid <tmpfile> <outname>: true if the download looks complete and correct.
@@ -76,6 +97,27 @@ _valid() {
       ;;
   esac
   return 0
+}
+
+# unzip_evt <zipfile>: replace ./EVT with the contents of a freshly fetched zip.
+unzip_evt() {
+  rm -rfv EVT
+  unzip -O GB2312 "$1"
+}
+
+# finish: report results and set the job exit status.
+#   - any genuine HTTP error (4xx/5xx) -> exit 1 (fail the job, alert).
+#   - transient-only                   -> exit 0 (retry next run).
+finish() {
+  if [ "${#SOFT_FAILS[@]}" -gt 0 ]; then
+    echo "::warning::skipped ${#SOFT_FAILS[@]} download(s) due to transient errors; will retry next run"
+    printf '  - %s\n' "${SOFT_FAILS[@]}"
+  fi
+  if [ "${#HARD_FAILS[@]}" -gt 0 ]; then
+    echo "::error::${#HARD_FAILS[@]} download(s) failed with a genuine error (URL changed / server error)" >&2
+    printf '  - %s\n' "${HARD_FAILS[@]}" >&2
+    exit 1
+  fi
 }
 
 cd datasheet_en
@@ -106,5 +148,6 @@ cd ..
 
 # https://www.wch.cn/downloads/CH32V006EVT_ZIP.html
 fetch "https://file.wch.cn/download/file?id=477" CH32V006EVT.ZIP
-rm -rfv EVT
-unzip -O GB2312 *.ZIP
+if [ "$LAST_FETCH_OK" = 1 ]; then unzip_evt CH32V006EVT.ZIP; fi
+
+finish
