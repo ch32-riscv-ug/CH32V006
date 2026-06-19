@@ -11,7 +11,6 @@ on:
 # Write permission is required to commit/push updated files.
 permissions:
   contents: write
-  actions: write    # required by keepalive-workflow (API mode)
 
 # Do not run overlapping updates.
 concurrency:
@@ -46,6 +45,18 @@ jobs:
           fi
 
       # Keep the daily schedule from being auto-disabled after 60 days of
-      # inactivity. API mode: no commits, uses GITHUB_TOKEN (actions: write).
-      - name: Keepalive (prevent 60-day schedule auto-disable)
-        uses: gautamkrishnar/keepalive-workflow@v2
+      # repository inactivity: if the latest commit is older than 50 days, push
+      # one empty commit. Built-in GITHUB_TOKEN only (contents: write); no PAT,
+      # no third-party action.
+      - name: Keepalive (avoid 60-day schedule auto-disable)
+        run: |
+          age_days=$(( ( $(date +%s) - $(git log -1 --format=%ct) ) / 86400 ))
+          echo "Last commit age: ${age_days} day(s)"
+          if [ "$age_days" -ge 50 ]; then
+            git config user.name  "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit --allow-empty -m "keepalive: prevent scheduled workflow auto-disable"
+            git push
+          else
+            echo "Recent activity exists; no keepalive commit needed."
+          fi
