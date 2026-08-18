@@ -175,4 +175,20 @@ while read -r lang id name; do
   esac
 done <<< "$PLAN"
 
+# The README is generated from the normalised tables in ch32-device-data and
+# fetched like the catalogue, so mirrors carry no generator and need no
+# cross-repository token. Not fatal: a repository without a generated README
+# keeps its existing one, and a transient failure retries tomorrow.
+# READMEはch32-device-dataのtablesから生成されたものを取得して置き換える。
+# 生成が無いrepositoryや一時障害は警告のみで、既存READMEを保持する。
+README_URL="${README_URL:-https://raw.githubusercontent.com/ch32-riscv-ug/ch32-device-data/main/generated/readme/${REPOSITORY}.md}"
+readme_code=$(curl -sSL --http1.1 --connect-timeout 30 --max-time 120   -o README.md.download -w '%{http_code}' "$README_URL") || readme_code="000"
+if [ "$readme_code" = "200" ] && head -1 README.md.download | grep -q "^# "; then
+  mv -f README.md.download README.md
+  echo "README.md updated from the generated tables"
+else
+  rm -f README.md.download
+  echo "::warning::README not updated (HTTP ${readme_code}); keeping the existing one"
+fi
+
 finish
