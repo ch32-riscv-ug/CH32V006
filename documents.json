@@ -489,8 +489,8 @@
       "sources": {
         "en": {
           "file_id": 398,
-          "version": "1.8",
-          "scope": "CH32V004"
+          "version": "1.9",
+          "scope": "CH32V004F6P1, CH32V004F6U1"
         },
         "zh": {
           "file_id": 474,
@@ -648,7 +648,7 @@
       "name": "CH32V205DS0.PDF",
       "kind": "datasheet",
       "repositories": [
-        "CH32V20x"
+        "CH32V205"
       ],
       "status": "assigned",
       "sources": {
@@ -668,7 +668,7 @@
       "name": "CH32V205EVT.ZIP",
       "kind": "evt",
       "repositories": [
-        "CH32V20x"
+        "CH32V205"
       ],
       "status": "assigned",
       "sources": {
@@ -683,7 +683,7 @@
       "name": "CH32V205RM.PDF",
       "kind": "reference-manual",
       "repositories": [
-        "CH32V20x"
+        "CH32V205"
       ],
       "status": "assigned",
       "sources": {
@@ -986,10 +986,12 @@
     },
     {
       "name": "PACKAGE.PDF",
-      "kind": "other",
-      "repositories": [],
-      "status": "excluded",
-      "reason": "CH32の技術データではない（販促・法規・BLEアプリ等）",
+      "kind": "package-drawing",
+      "repositories": [
+        "WCH-common"
+      ],
+      "status": "assigned",
+      "reason": "封装（package）寸法図面。body size・pin pitchの照合根拠にもなる",
       "sources": {
         "en": {
           "file_id": 34,
@@ -1026,7 +1028,7 @@
       "name": "QingKeV2_Processor_Manual.PDF",
       "kind": "core-manual",
       "repositories": [
-        "ch32-device-data"
+        "WCH-common"
       ],
       "status": "assigned",
       "reason": "RV32EC/V2系コア仕様",
@@ -1047,7 +1049,7 @@
       "name": "QingKeV3_Processor_Manual.PDF",
       "kind": "core-manual",
       "repositories": [
-        "ch32-device-data"
+        "WCH-common"
       ],
       "status": "assigned",
       "reason": "V3系コア仕様",
@@ -1068,7 +1070,7 @@
       "name": "QingKeV4_Processor_Manual.PDF",
       "kind": "core-manual",
       "repositories": [
-        "ch32-device-data"
+        "WCH-common"
       ],
       "status": "assigned",
       "reason": "V4系コア仕様",
@@ -1089,7 +1091,7 @@
       "name": "QingKeV5_Processor_Manual.PDF",
       "kind": "core-manual",
       "repositories": [
-        "ch32-device-data"
+        "WCH-common"
       ],
       "status": "assigned",
       "reason": "V5系コア仕様",
@@ -1176,7 +1178,7 @@
       "name": "WCH-LinkUserManual.PDF",
       "kind": "other",
       "repositories": [
-        "ch32-device-data"
+        "WCH-common"
       ],
       "status": "assigned",
       "reason": "書き込み・デバッグアダプタ",
