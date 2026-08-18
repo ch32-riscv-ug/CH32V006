@@ -1,0 +1,1353 @@
+{
+  "schema_version": "0.1-draft",
+  "description": "取得すべき文書の一覧。mirrorリポジトリはここを読んでダウンロードする。",
+  "primary_language": "zh",
+  "language_note": "中国語版が原典で英語版はその翻訳。版数が食い違う場合は中国語版が新しい。",
+  "scope_note": "対象はRISC-VコアのCH32系。Cortex-M3のCH32F系は除外。WCHのBLE系(CH572/573/583/585/587/592/595/596)はRISC-Vだが現時点では未対象。",
+  "download_url": {
+    "en": "https://www.wch-ic.com/download/file?id={file_id}",
+    "zh": "https://file.wch.cn/download/file?id={file_id}"
+  },
+  "documents": [
+    {
+      "name": "BLEDebug.ZIP",
+      "kind": "other",
+      "repositories": [],
+      "status": "excluded",
+      "reason": "CH32の技術データではない（販促・法規・BLEアプリ等）",
+      "sources": {
+        "zh": {
+          "file_id": 528,
+          "version": "1.2",
+          "scope": "CH585，CH584，CH592，CH591，CH9142，CH9143，CH9141，CH9140，CH32V208，CH32F208，CH573，CH571"
+        }
+      }
+    },
+    {
+      "name": "BLEToNet_Android.ZIP",
+      "kind": "other",
+      "repositories": [],
+      "status": "excluded",
+      "reason": "CH32の技術データではない（販促・法規・BLEアプリ等）",
+      "sources": {
+        "zh": {
+          "file_id": 534,
+          "version": "1.1",
+          "scope": "CH32F208, CH32V208, CH571, CH572, CH573, CH577, CH578, CH579, CH582, CH583, CH584, CH585, CH591, CH592"
+        }
+      }
+    },
+    {
+      "name": "BLE_OTA_Android.ZIP",
+      "kind": "other",
+      "repositories": [],
+      "status": "excluded",
+      "reason": "CH32の技術データではない（販促・法規・BLEアプリ等）",
+      "sources": {
+        "zh": {
+          "file_id": 402,
+          "version": "1.2",
+          "scope": "CH573/CH579/CH583/CH32V208/CH32F208"
+        }
+      }
+    },
+    {
+      "name": "BLE_OTA_iOS.ZIP",
+      "kind": "other",
+      "repositories": [],
+      "status": "excluded",
+      "reason": "CH32の技術データではない（販促・法規・BLEアプリ等）",
+      "sources": {
+        "zh": {
+          "file_id": 404,
+          "version": "1.1",
+          "scope": "CH573/CH579/CH583/CH32V208/CH32F208"
+        }
+      }
+    },
+    {
+      "name": "CH32F103DS0.PDF",
+      "kind": "datasheet",
+      "repositories": [],
+      "status": "excluded",
+      "reason": "Cortex-M3系。対象をRISC-Vに限るため除外",
+      "sources": {
+        "en": {
+          "file_id": 337,
+          "version": "1.3",
+          "scope": "CH32F103R8T6,R6T6,C8U6,C8T6,C6T6"
+        },
+        "zh": {
+          "file_id": 298,
+          "version": "1.3",
+          "scope": "CH32F103C6T6, CH32F103C8T6, CH32F103C8U6, CH32F103R8T6"
+        }
+      }
+    },
+    {
+      "name": "CH32F103DS1.PDF",
+      "kind": "datasheet",
+      "repositories": [],
+      "status": "excluded",
+      "reason": "Cortex-M3系。対象をRISC-Vに限るため除外",
+      "sources": {
+        "zh": {
+          "file_id": 304,
+          "version": "1.0",
+          "scope": "CH32F103C6T6, CH32F103C8T6, CH32F103C8U6, CH32F103R8T6"
+        }
+      }
+    },
+    {
+      "name": "CH32F103EVT.ZIP",
+      "kind": "evt",
+      "repositories": [],
+      "status": "excluded",
+      "reason": "Cortex-M3系。対象をRISC-Vに限るため除外",
+      "sources": {
+        "zh": {
+          "file_id": 299,
+          "version": "2.5",
+          "scope": "CH32F103C6T6, CH32F103C8T6, CH32F103C8U6, CH32F103R8T6"
+        }
+      }
+    },
+    {
+      "name": "CH32F203DS0.PDF",
+      "kind": "datasheet",
+      "repositories": [],
+      "status": "excluded",
+      "reason": "Cortex-M3系。対象をRISC-Vに限るため除外",
+      "sources": {
+        "en": {
+          "file_id": 361,
+          "version": "2.5",
+          "scope": "CH32F203CxT6,CH32F203C8U6,CH32F203K8T6"
+        },
+        "zh": {
+          "file_id": 354,
+          "version": "2.5",
+          "scope": "CH32F203C6T6, CH32F203C8T6, CH32F203C8U6, CH32F203K8T6"
+        }
+      }
+    },
+    {
+      "name": "CH32F207DS0.PDF",
+      "kind": "datasheet",
+      "repositories": [],
+      "status": "excluded",
+      "reason": "Cortex-M3系。対象をRISC-Vに限るため除外",
+      "sources": {
+        "en": {
+          "file_id": 362,
+          "version": "2.5",
+          "scope": "CH32F207VCT6,CH32F205RBT6,CH32F203VCT6,CH32F203RC/BT6, CH32F203CBT6"
+        },
+        "zh": {
+          "file_id": 419,
+          "version": "2.5",
+          "scope": "CH32F203CBT6, CH32F203RBT6, CH32F203RCT6, CH32F203VCT6, CH32F205RBT6, CH32F207VCT6"
+        }
+      }
+    },
+    {
+      "name": "CH32F208DS0.PDF",
+      "kind": "datasheet",
+      "repositories": [],
+      "status": "excluded",
+      "reason": "Cortex-M3系。対象をRISC-Vに限るため除外",
+      "sources": {
+        "en": {
+          "file_id": 360,
+          "version": "2.6",
+          "scope": "CH32F208WBU6,CH32F208RBT6"
+        },
+        "zh": {
+          "file_id": 420,
+          "version": "2.6",
+          "scope": "CH32F208WBU6、CH32F208RBT6"
+        }
+      }
+    },
+    {
+      "name": "CH32F20xDS0.PDF",
+      "kind": "datasheet",
+      "repositories": [],
+      "status": "excluded",
+      "reason": "Cortex-M3系。対象をRISC-Vに限るため除外",
+      "sources": {
+        "en": {
+          "file_id": 323,
+          "version": "2.3",
+          "scope": "CH32F203C6T6,C8U6,C8T6,RCT6,VCT6, CH32F205RBT6,CH32F207VCT6,CH32F208RBT6,WBU6"
+        }
+      }
+    },
+    {
+      "name": "CH32F20xEVT.ZIP",
+      "kind": "evt",
+      "repositories": [],
+      "status": "excluded",
+      "reason": "Cortex-M3系。対象をRISC-Vに限るため除外",
+      "sources": {
+        "zh": {
+          "file_id": 364,
+          "version": "2.6",
+          "scope": "CH32F203C6T6, CH32F203C8U6, CH32F203C8T6, CH32F203RCT6, CH32F203VCT6, CH32F205RBT6, CH32F207VCT6, CH32F208RBT6, CH32F208WBU6"
+        }
+      }
+    },
+    {
+      "name": "CH32FV2x_V3xRM.PDF",
+      "kind": "reference-manual",
+      "repositories": [
+        "CH32V20x",
+        "CH32V307"
+      ],
+      "status": "assigned",
+      "reason": "V203/V208とV303/V305/V307の双方を覆う共通RM。両リポジトリに必要",
+      "sources": {
+        "en": {
+          "file_id": 324,
+          "version": "2.5",
+          "scope": "CH32V203C6T6,K8T6,C8U6,C8T6,CH32V303CBT6,RBT6, RCT6,VCT6, CH32V305RBT6,CH32V307RCT6,VCT6,CH32V208CBU6,RBT6,WBU6 CH32F203C6T6,C8T6,C8U6,CBT6,RCT6,VCT6,CH32F205RBT6,CH32F207VCT6,CH32F208RBT6,WBU6"
+        },
+        "zh": {
+          "file_id": 371,
+          "version": "2.5",
+          "scope": "CH32V203, CH32V208, CH32F203, CH32F205, CH32F207, CH32F208, CH32V303 CH32V305, CH32V307, CH32V203F6P6, CH32V203F8P6, CH32V203G6U6, CH32V203G8R6, CH32V203C6T6, CH32V203K8T6, CH32V203C8T6, CH32V203C8U6, CH32V203RBT6，CH32V208GBU6, CH32V208CBU6, CH32V208RBT6 CH32V208WBU6, CH32F203C6T6, CH32F203K8T6, CH32F203C8T6, CH32F203C8U6, CH32F203CBT6, CH32F203RCT6, CH32F203VCT6, CH32F205RBT6, CH32F207VCT6, CH32F208RBT6 CH32F208WBU6, CH32V303CBT6,  CH32V303RBT6, CH32V303RCT6, CH32V303VCT6, CH32V305FBP6, CH32V305RBT6, CH32V307RCT6, CH32V307WCU6, CH32V307VCT6"
+        }
+      }
+    },
+    {
+      "name": "CH32H417DS0.PDF",
+      "kind": "datasheet",
+      "repositories": [
+        "CH32H417"
+      ],
+      "status": "assigned",
+      "sources": {
+        "en": {
+          "file_id": 423,
+          "version": "1.8",
+          "scope": "CH32H417,CH32H416, CH32H415"
+        },
+        "zh": {
+          "file_id": 529,
+          "version": "1.8",
+          "scope": "CH32H417QEU6, CH32H417MEU6, CH32H417WEU6, CH32H416RDU6, CH32H415REU6"
+        }
+      }
+    },
+    {
+      "name": "CH32H417EVT.ZIP",
+      "kind": "evt",
+      "repositories": [
+        "CH32H417"
+      ],
+      "status": "assigned",
+      "sources": {
+        "en": {
+          "file_id": 433,
+          "version": "1.3",
+          "scope": ""
+        },
+        "zh": {
+          "file_id": 530,
+          "version": "1.5",
+          "scope": "CH32H417QEU6, CH32H417MEU6, CH32H417WEU6, CH32H416RDU6, CH32H415REU6"
+        }
+      }
+    },
+    {
+      "name": "CH32H417RM.PDF",
+      "kind": "reference-manual",
+      "repositories": [
+        "CH32H417"
+      ],
+      "status": "assigned",
+      "sources": {
+        "en": {
+          "file_id": 435,
+          "version": "1.7",
+          "scope": "CH32H417,CH32H416,CH32H415"
+        },
+        "zh": {
+          "file_id": 532,
+          "version": "1.7",
+          "scope": "CH32H417QEU6, CH32H417MEU6, CH32H417WEU6, CH32H416RDU6, CH32H415REU6"
+        }
+      }
+    },
+    {
+      "name": "CH32L103DS0.PDF",
+      "kind": "datasheet",
+      "repositories": [
+        "CH32L103"
+      ],
+      "status": "assigned",
+      "sources": {
+        "en": {
+          "file_id": 386,
+          "version": "2.1",
+          "scope": "CH32L103"
+        },
+        "zh": {
+          "file_id": 452,
+          "version": "2.1",
+          "scope": "CH32L103C8T6, CH32L103K8U6, CH32L103K8U7, CH32L103G8R6, CH32L103F8U6, CH32L103F8P6, CH32M103G8R6"
+        }
+      }
+    },
+    {
+      "name": "CH32L103EVT.ZIP",
+      "kind": "evt",
+      "repositories": [
+        "CH32L103"
+      ],
+      "status": "assigned",
+      "sources": {
+        "zh": {
+          "file_id": 455,
+          "version": "1.9",
+          "scope": "CH32L103C8T6, CH32L103F8P6, CH32L103F8U6, CH32L103G8R6, CH32L103K8U6, CH32L103K8U7, CH32M103G8R6"
+        }
+      }
+    },
+    {
+      "name": "CH32L103RM.PDF",
+      "kind": "reference-manual",
+      "repositories": [
+        "CH32L103"
+      ],
+      "status": "assigned",
+      "sources": {
+        "en": {
+          "file_id": 387,
+          "version": "2.2",
+          "scope": "CH32L103"
+        },
+        "zh": {
+          "file_id": 453,
+          "version": "2.2",
+          "scope": "CH32L103C8T6, CH32L103F8P6, CH32L103F8U6, CH32L103G8R6, CH32L103K8U6, CH32L103K8U7, CH32M103G8R6"
+        }
+      }
+    },
+    {
+      "name": "CH32M030DS0.PDF",
+      "kind": "datasheet",
+      "repositories": [
+        "CH32M030"
+      ],
+      "status": "assigned",
+      "sources": {
+        "en": {
+          "file_id": 408,
+          "version": "1.2",
+          "scope": "CH32M030C8U3, CH32M030C8T7, CH32M030C8U7, CH32M030K8U7"
+        },
+        "zh": {
+          "file_id": 506,
+          "version": "1.3",
+          "scope": "CH32M030C8T7, CH32M030C8U3, CH32M030C8U7, CH32M030G8R7, CH32M030K8U7"
+        }
+      }
+    },
+    {
+      "name": "CH32M030DS2.PDF",
+      "kind": "datasheet",
+      "repositories": [
+        "CH32M030"
+      ],
+      "status": "assigned",
+      "sources": {
+        "zh": {
+          "file_id": 543,
+          "version": "1.2",
+          "scope": "CH32M030K9U7, CH32M030C9U7"
+        }
+      }
+    },
+    {
+      "name": "CH32M030EVT.ZIP",
+      "kind": "evt",
+      "repositories": [
+        "CH32M030"
+      ],
+      "status": "assigned",
+      "sources": {
+        "zh": {
+          "file_id": 505,
+          "version": "1.5",
+          "scope": "CH32M030C8T7, CH32M030C8U3, CH32M030C8U7, CH32M030G8R7, CH32M030K8U7, CH32M030C9U7, CH32M030K9U7"
+        }
+      }
+    },
+    {
+      "name": "CH32M030RM.PDF",
+      "kind": "reference-manual",
+      "repositories": [
+        "CH32M030"
+      ],
+      "status": "assigned",
+      "sources": {
+        "en": {
+          "file_id": 420,
+          "version": "1.2",
+          "scope": "CH32M030"
+        },
+        "zh": {
+          "file_id": 507,
+          "version": "1.2",
+          "scope": "CH32M030"
+        }
+      }
+    },
+    {
+      "name": "CH32V002DS0.PDF",
+      "kind": "datasheet",
+      "repositories": [
+        "CH32V006"
+      ],
+      "status": "assigned",
+      "sources": {
+        "en": {
+          "file_id": 397,
+          "version": "1.7",
+          "scope": "CH32V002"
+        },
+        "zh": {
+          "file_id": 473,
+          "version": "1.7",
+          "scope": "CH32V002F4P6, CH32V002F4U6, CH32V002A4M6, CH32V002D4U6, CH32V002J4M6"
+        }
+      }
+    },
+    {
+      "name": "CH32V003DS0.PDF",
+      "kind": "datasheet",
+      "repositories": [
+        "CH32V003"
+      ],
+      "status": "assigned",
+      "sources": {
+        "en": {
+          "file_id": 359,
+          "version": "1.8",
+          "scope": "CH32V003"
+        },
+        "zh": {
+          "file_id": 408,
+          "version": "1.8",
+          "scope": "CH32V003A4M6, CH32V003F4P6, CH32V003F4U6, CH32V003J4M6"
+        }
+      }
+    },
+    {
+      "name": "CH32V003EVT.ZIP",
+      "kind": "evt",
+      "repositories": [
+        "CH32V003"
+      ],
+      "status": "assigned",
+      "sources": {
+        "zh": {
+          "file_id": 409,
+          "version": "2.1",
+          "scope": "CH32V003"
+        }
+      }
+    },
+    {
+      "name": "CH32V003RM.PDF",
+      "kind": "reference-manual",
+      "repositories": [
+        "CH32V003"
+      ],
+      "status": "assigned",
+      "sources": {
+        "en": {
+          "file_id": 358,
+          "version": "1.9",
+          "scope": "CH32V003"
+        },
+        "zh": {
+          "file_id": 411,
+          "version": "1.9",
+          "scope": "CH32V003A4M6, CH32V003F4P6, CH32V003F4U6, CH32V003J4M6"
+        }
+      }
+    },
+    {
+      "name": "CH32V004DS0.PDF",
+      "kind": "datasheet",
+      "repositories": [
+        "CH32V006"
+      ],
+      "status": "assigned",
+      "sources": {
+        "en": {
+          "file_id": 398,
+          "version": "1.8",
+          "scope": "CH32V004"
+        },
+        "zh": {
+          "file_id": 474,
+          "version": "1.9",
+          "scope": "CH32V004F6P1, CH32V004F6U1"
+        }
+      }
+    },
+    {
+      "name": "CH32V006DS0.PDF",
+      "kind": "datasheet",
+      "repositories": [
+        "CH32V006"
+      ],
+      "status": "assigned",
+      "sources": {
+        "en": {
+          "file_id": 396,
+          "version": "2.0",
+          "scope": "CH32V006, CH32V005"
+        },
+        "zh": {
+          "file_id": 475,
+          "version": "2.0",
+          "scope": "CH32V006K8U7, CH32V006E8R6, CH32V006E8R7, CH32V006F8U7, CH32V006F4U6, CH32V006F8P7, CH32V006D8U7, CH32V005E6R6, CH32V005F6U6, CH32V005F6P6, CH32V005D6U6"
+        }
+      }
+    },
+    {
+      "name": "CH32V006DS2.PDF",
+      "kind": "datasheet",
+      "repositories": [
+        "CH32V006"
+      ],
+      "status": "assigned",
+      "sources": {
+        "zh": {
+          "file_id": 540,
+          "version": "1.1",
+          "scope": "CH32M006A8U7"
+        }
+      }
+    },
+    {
+      "name": "CH32V006EVT.ZIP",
+      "kind": "evt",
+      "repositories": [
+        "CH32V006"
+      ],
+      "status": "assigned",
+      "sources": {
+        "zh": {
+          "file_id": 477,
+          "version": "1.4",
+          "scope": "CH32V002、CH32V004、CH32V005、CH32V006、CH32V007、CH32M007"
+        }
+      }
+    },
+    {
+      "name": "CH32V007DS0.PDF",
+      "kind": "datasheet",
+      "repositories": [
+        "CH32V006"
+      ],
+      "status": "assigned",
+      "sources": {
+        "en": {
+          "file_id": 405,
+          "version": "1.8",
+          "scope": "CH32V007, CH32M007"
+        },
+        "zh": {
+          "file_id": 476,
+          "version": "1.8",
+          "scope": "CH32M007E8R6, CH32M007E8U7, CH32M007G8R6, CH32M007K8U7, CH32V007E8R6, CH32V007E8R7, CH32V007K8U6, CH32V007K8U7"
+        }
+      }
+    },
+    {
+      "name": "CH32V00XRM.PDF",
+      "kind": "reference-manual",
+      "repositories": [
+        "CH32V006"
+      ],
+      "status": "assigned",
+      "sources": {
+        "en": {
+          "file_id": 399,
+          "version": "1.5",
+          "scope": "CH32V002, CH32V004, CH32V005, CH32V006, CH32V007, CH32M007"
+        },
+        "zh": {
+          "file_id": 472,
+          "version": "1.5",
+          "scope": "CH32V002F4P6, CH32V002F4U6, CH32V002A4M6, CH32V002D4U6, CH32V002J4M6, CH32V004F6P1, CH32V004F6U1, CH32M007E8R6, CH32M007E8U7, CH32M007G8R6, CH32M007K8U7, CH32V007E8R6, CH32V007E8R7, CH32V007K8U6, CH32V007K8U7"
+        }
+      }
+    },
+    {
+      "name": "CH32V103DS0.PDF",
+      "kind": "datasheet",
+      "repositories": [
+        "CH32V103"
+      ],
+      "status": "assigned",
+      "sources": {
+        "en": {
+          "file_id": 312,
+          "version": "1.2",
+          "scope": "CH32V103R8T6,C8U6,C8T6,C6T6"
+        },
+        "zh": {
+          "file_id": 311,
+          "version": "1.2",
+          "scope": " CH32V103C6T6, CH32V103C8T6, CH32V103C8U6, CH32V103R8T6"
+        }
+      }
+    },
+    {
+      "name": "CH32V103EVT.ZIP",
+      "kind": "evt",
+      "repositories": [
+        "CH32V103"
+      ],
+      "status": "assigned",
+      "sources": {
+        "zh": {
+          "file_id": 326,
+          "version": "2.7",
+          "scope": " CH32V103C6T6, CH32V103C8T6, CH32V103C8U6, CH32V103R8T6"
+        }
+      }
+    },
+    {
+      "name": "CH32V203DS0.PDF",
+      "kind": "datasheet",
+      "repositories": [
+        "CH32V20x"
+      ],
+      "status": "assigned",
+      "sources": {
+        "en": {
+          "file_id": 354,
+          "version": "3.0",
+          "scope": "CH32V203F6P6、CH32V203F8P6、CH32V203F8U6、CH32V203G6U6、CH32V203G8R6、CH32V203K6T6、CH32V203K8T6、CH32V203C6T6、CH32V203C8T6、CH32V203C8U6、CH32V203RBT6"
+        },
+        "zh": {
+          "file_id": 414,
+          "version": "3.0",
+          "scope": "CH32V203C6T6, CH32V203C6U6, CH32V203C8T6, CH32V203C8U6, CH32V203F6P6, CH32V203F8P6, CH32V203F8U6, CH32V203G6U6, CH32V203G8R6, CH32V203K8T6, CH32V203K8U7, CH32V203RBT6"
+        }
+      }
+    },
+    {
+      "name": "CH32V205DS0.PDF",
+      "kind": "datasheet",
+      "repositories": [
+        "CH32V20x"
+      ],
+      "status": "assigned",
+      "sources": {
+        "en": {
+          "file_id": 431,
+          "version": "1.3",
+          "scope": "CH32V205"
+        },
+        "zh": {
+          "file_id": 531,
+          "version": "1.3",
+          "scope": "CH32V205CCT6, CH32V205RCT6, CH32V205VCT6, CH32V203CCT6"
+        }
+      }
+    },
+    {
+      "name": "CH32V205EVT.ZIP",
+      "kind": "evt",
+      "repositories": [
+        "CH32V20x"
+      ],
+      "status": "assigned",
+      "sources": {
+        "zh": {
+          "file_id": 538,
+          "version": "1.1",
+          "scope": "CH32V205CCT6, CH32V205RCT6, CH32V205VCT6, CH32V203CCT6"
+        }
+      }
+    },
+    {
+      "name": "CH32V205RM.PDF",
+      "kind": "reference-manual",
+      "repositories": [
+        "CH32V20x"
+      ],
+      "status": "assigned",
+      "sources": {
+        "en": {
+          "file_id": 440,
+          "version": "1.2",
+          "scope": ""
+        },
+        "zh": {
+          "file_id": 537,
+          "version": "1.2",
+          "scope": "CH32V203CCT6, CH32V205CCT6, CH32V205RCT6, CH32V205VCT6"
+        }
+      }
+    },
+    {
+      "name": "CH32V208DS0.PDF",
+      "kind": "datasheet",
+      "repositories": [
+        "CH32V20x"
+      ],
+      "status": "assigned",
+      "sources": {
+        "en": {
+          "file_id": 355,
+          "version": "2.7",
+          "scope": "CH32V208GBU6、CH32V208CBU6、CH32V208RBT6、CH32V208WBU6"
+        },
+        "zh": {
+          "file_id": 415,
+          "version": "2.7",
+          "scope": "CH32V208GBU6, CH32V208CBU6, CH32V208RBT6, CH32V208WBU6"
+        }
+      }
+    },
+    {
+      "name": "CH32V20xEVT.ZIP",
+      "kind": "evt",
+      "repositories": [
+        "CH32V20x"
+      ],
+      "status": "assigned",
+      "sources": {
+        "zh": {
+          "file_id": 385,
+          "version": "2.4",
+          "scope": "CH32V203C6T6, CH32V203C6U6, CH32V203C8T6, CH32V203C8U6, CH32V203F6P6, CH32V203F8P6, CH32V203F8U6, CH32V203G6U6, CH32V203G8R6, CH32V203K8T6, CH32V203K8U7, CH32V203RBT6，CH32V208GBU6, CH32V208CBU6, CH32V208RBT6 CH32V208WBU6"
+        }
+      }
+    },
+    {
+      "name": "CH32V20x_30xDS0.PDF",
+      "kind": "datasheet",
+      "repositories": [
+        "CH32V307"
+      ],
+      "status": "assigned",
+      "sources": {
+        "en": {
+          "file_id": 325,
+          "version": "3.5",
+          "scope": "CH32V303CBT6、CH32V303RBT6、CH32V303RCT6、CH32V303VCT6、CH32V305FBP6、CH32V305GBU6、CH32V305CCT6、CH32V305RBT6、CH32V307RCT6、CH32V307WCU6、CH32V307VCT6、CH32V317WCU6、CH32V317VCT6"
+        },
+        "zh": {
+          "file_id": 355,
+          "version": "3.5",
+          "scope": "CH32V303CBT6、CH32V303RBT6、CH32V303RCT6、CH32V303VCT6、CH32V305FBP6、CH32V305GBU6、CH32V305CCT6、CH32V305RBT6、CH32V307RCT6、CH32V307WCU6、CH32V307VCT6、CH32V317WCU6、CH32V317VCT6"
+        }
+      },
+      "reason": "scopeはV303/V305/V307/V317のみ。V20xの製品を覆わないためV307へ一本化"
+    },
+    {
+      "name": "CH32V307DS0.PDF",
+      "kind": "datasheet",
+      "repositories": [],
+      "status": "duplicate",
+      "duplicate_of": "CH32V20X_30XDS0.PDF",
+      "reason": "同一文書の別名配布。実体はduplicate_of側で取得済み",
+      "sources": {
+        "en": {
+          "file_id": 356,
+          "version": "3.9",
+          "scope": "CH32V303CBT6, CH32V303RBT6, CH32V303RCT6, CH32V303VCT6, CH32V305FBP6, CH32V305GBU6, CH32V305CCT6, CH32V305RBT6, CH32V307RCT6, CH32V307WCU6, CH32V307VCT6, CH32V317WCU6, CH32V317VCT6"
+        },
+        "zh": {
+          "file_id": 416,
+          "version": "3.9",
+          "scope": "CH32V303CBT6, CH32V303RBT6, CH32V303RCT6, CH32V303VCT6, CH32V305FBP6, CH32V305GBU6, CH32V305CCT6, CH32V305RBT6, CH32V307RCT6, CH32V307WCU6, CH32V307VCT6, CH32V317WCU6, CH32V317VCT6"
+        }
+      }
+    },
+    {
+      "name": "CH32V307EVT.ZIP",
+      "kind": "evt",
+      "repositories": [
+        "CH32V307"
+      ],
+      "status": "assigned",
+      "sources": {
+        "zh": {
+          "file_id": 356,
+          "version": "3.1",
+          "scope": "CH32V303CBT6, CH32V303RBT6, CH32V303RCT6, CH32V303VCT6, CH32V305FBP6, CH32V305GBU6, CH32V305CCT6, CH32V305RBT6, CH32V307RCT6, CH32V307WCU6, CH32V307VCT6, CH32V317WCU6, CH32V317VCT6"
+        }
+      }
+    },
+    {
+      "name": "CH32V407DS0.PDF",
+      "kind": "datasheet",
+      "repositories": [
+        "CH32V407"
+      ],
+      "status": "assigned",
+      "sources": {
+        "en": {
+          "file_id": 442,
+          "version": "1.2",
+          "scope": "CH32V407VET6，CH32V407WEU6，CH32V407RET6，CH32V467VET6，CH32V467WEU6，CH32V467RET6"
+        },
+        "zh": {
+          "file_id": 558,
+          "version": "1.2",
+          "scope": "CH32V407VET6，CH32V407WEU6，CH32V407RET6，CH32V467VET6，CH32V467WEU6，CH32V467RET6"
+        }
+      }
+    },
+    {
+      "name": "CH32V407EVT.ZIP",
+      "kind": "evt",
+      "repositories": [
+        "CH32V407"
+      ],
+      "status": "assigned",
+      "sources": {
+        "zh": {
+          "file_id": 560,
+          "version": "1.3",
+          "scope": "CH32V407，CH32V467"
+        }
+      }
+    },
+    {
+      "name": "CH32V407RM.PDF",
+      "kind": "reference-manual",
+      "repositories": [
+        "CH32V407"
+      ],
+      "status": "assigned",
+      "sources": {
+        "zh": {
+          "file_id": 561,
+          "version": "1.1",
+          "scope": "CH32V407，CH32V467"
+        }
+      }
+    },
+    {
+      "name": "CH32X035DS0.PDF",
+      "kind": "datasheet",
+      "repositories": [
+        "CH32X035"
+      ],
+      "status": "assigned",
+      "sources": {
+        "en": {
+          "file_id": 381,
+          "version": "2.2",
+          "scope": "CH32X035"
+        },
+        "zh": {
+          "file_id": 443,
+          "version": "2.2",
+          "scope": "CH32X035, CH32X035R8T6, CH32X035C8T6, CH32X035G8U6, CH32X035G8R6, CH32X035F8U6, CH32X035F7P6, CH32X035D8U6, CH32X033F8P6"
+        }
+      }
+    },
+    {
+      "name": "CH32X035EVT.ZIP",
+      "kind": "evt",
+      "repositories": [
+        "CH32X035"
+      ],
+      "status": "assigned",
+      "sources": {
+        "zh": {
+          "file_id": 444,
+          "version": "2.1",
+          "scope": "CH32X035"
+        }
+      }
+    },
+    {
+      "name": "CH32X035RM.PDF",
+      "kind": "reference-manual",
+      "repositories": [
+        "CH32X035"
+      ],
+      "status": "assigned",
+      "sources": {
+        "en": {
+          "file_id": 382,
+          "version": "1.9",
+          "scope": "CH32X035"
+        },
+        "zh": {
+          "file_id": 445,
+          "version": "1.9",
+          "scope": "CH32X035"
+        }
+      }
+    },
+    {
+      "name": "CH32X315DS0.PDF",
+      "kind": "datasheet",
+      "repositories": [
+        "CH32X315"
+      ],
+      "status": "assigned",
+      "sources": {
+        "en": {
+          "file_id": 444,
+          "version": "1.1",
+          "scope": "CH32X315MCU6,CH32X315WCU6,CH32X315CCU6,CH32X305RCT6"
+        },
+        "zh": {
+          "file_id": 565,
+          "version": "1.1",
+          "scope": "CH32X305RCT6, CH32X315CCU6, CH32X315MCU6, CH32X315WCU6"
+        }
+      }
+    },
+    {
+      "name": "CH32X315EVT.ZIP",
+      "kind": "evt",
+      "repositories": [
+        "CH32X315"
+      ],
+      "status": "assigned",
+      "sources": {
+        "zh": {
+          "file_id": 570,
+          "version": "1.0",
+          "scope": "CH32X305RCT6, CH32X315CCU6, CH32X315MCU6, CH32X315WCU6"
+        }
+      }
+    },
+    {
+      "name": "CH32X315RM.PDF",
+      "kind": "reference-manual",
+      "repositories": [
+        "CH32X315"
+      ],
+      "status": "assigned",
+      "sources": {
+        "en": {
+          "file_id": 448,
+          "version": "1.1",
+          "scope": "CH32X315MCU6, CH32X315WCU6, CH32X315CCU6, CH32X305RCT6"
+        },
+        "zh": {
+          "file_id": 566,
+          "version": "1.1",
+          "scope": "CH32X315MCU6,CH32X315WCU6,CH32X315CCU6,CH32X305RCT6"
+        }
+      }
+    },
+    {
+      "name": "CH32xRM.PDF",
+      "kind": "reference-manual",
+      "repositories": [
+        "CH32V103"
+      ],
+      "status": "assigned",
+      "sources": {
+        "en": {
+          "file_id": 306,
+          "version": "2.0",
+          "scope": "CH32F103x,CH32V103x"
+        },
+        "zh": {
+          "file_id": 328,
+          "version": "2.0",
+          "scope": "CH32F103x,CH32V103x"
+        }
+      }
+    },
+    {
+      "name": "COMTransmit.ZIP",
+      "kind": "other",
+      "repositories": [],
+      "status": "excluded",
+      "reason": "CH32の技術データではない（販促・法規・BLEアプリ等）",
+      "sources": {
+        "zh": {
+          "file_id": 292,
+          "version": "1.6",
+          "scope": "所有串口接口(CH340, CH341, CH342, CH343, CH344, CH347, CH348, CH9101, CH9102, CH9103, CH9104, CH9143, CH9340, CH9344, CH9111, CH9114, CH351, CH352, CH353, CH355, CH356, CH357, CH358, CH359, CH382, CH384)，MCU(CH32V00x, CH32V10x, CH32V20x, CH32V30x, CH32X03x, CH32L10x, CH32V31x, CH32F10x, CH32F20x, CH56x, CH57x, CH58x, CH641x, CH643x)、模块调试"
+        }
+      }
+    },
+    {
+      "name": "PACKAGE.PDF",
+      "kind": "other",
+      "repositories": [],
+      "status": "excluded",
+      "reason": "CH32の技術データではない（販促・法規・BLEアプリ等）",
+      "sources": {
+        "en": {
+          "file_id": 34,
+          "version": "4.0",
+          "scope": null
+        },
+        "zh": {
+          "file_id": 34,
+          "version": "4.0",
+          "scope": null
+        }
+      }
+    },
+    {
+      "name": "PRODUCT_GUIDE.PDF",
+      "kind": "other",
+      "repositories": [],
+      "status": "excluded",
+      "reason": "CH32の技術データではない（販促・法規・BLEアプリ等）",
+      "sources": {
+        "en": {
+          "file_id": 204,
+          "version": "5.1",
+          "scope": null
+        },
+        "zh": {
+          "file_id": 204,
+          "version": "6.1",
+          "scope": null
+        }
+      }
+    },
+    {
+      "name": "QingKeV2_Processor_Manual.PDF",
+      "kind": "core-manual",
+      "repositories": [
+        "ch32-device-data"
+      ],
+      "status": "assigned",
+      "reason": "RV32EC/V2系コア仕様",
+      "sources": {
+        "en": {
+          "file_id": 369,
+          "version": "1.3",
+          "scope": "CH32V003J4M6，CH32V003A4M6，CH32V003F4U6，CH32V003F4P6"
+        },
+        "zh": {
+          "file_id": 425,
+          "version": "1.3",
+          "scope": "CH32V003J4M6，CH32V003A4M6，CH32V003F4U6，CH32V003F4P6"
+        }
+      }
+    },
+    {
+      "name": "QingKeV3_Processor_Manual.PDF",
+      "kind": "core-manual",
+      "repositories": [
+        "ch32-device-data"
+      ],
+      "status": "assigned",
+      "reason": "V3系コア仕様",
+      "sources": {
+        "en": {
+          "file_id": 368,
+          "version": "1.5",
+          "scope": "CH32V103C6T6，CH32V103C8U6, CH32V103C8T6, CH32V103R8T6，CH585, CH584, CH569, CH565, CH573, CH571"
+        },
+        "zh": {
+          "file_id": 426,
+          "version": "1.5",
+          "scope": "CH32V103C6T6，CH32V103C8U6，CH32V103C8T6，CH32V103R8T6"
+        }
+      }
+    },
+    {
+      "name": "QingKeV4_Processor_Manual.PDF",
+      "kind": "core-manual",
+      "repositories": [
+        "ch32-device-data"
+      ],
+      "status": "assigned",
+      "reason": "V4系コア仕様",
+      "sources": {
+        "en": {
+          "file_id": 367,
+          "version": "1.5",
+          "scope": "CH32V203F6P6，CH32V203F8P6，CH32V203G6U6，CH32V203G8R6，CH32V203K6T6，CH32V203C6T6，CH32V203K8T6，CH32V203C8T6，CH32V203C8U6，CH32V203RBT6， CH32V303CBT6，CH32V303RBT6，CH32V303RCT6，CH32V303VCT6 CH32V305RBT6，CH32V307RCT6，CH32V307VCT6， CH32V208CBU6，CH32V208RBT6，CH32V208WBU6"
+        },
+        "zh": {
+          "file_id": 390,
+          "version": "1.5",
+          "scope": "CH32V203F6P6，CH32V203F8P6，CH32V203G6U6，CH32V203G8R6，CH32V203K6T6，CH32V203C6T6，CH32V203K8T6，CH32V203C8T6，CH32V203C8U6，CH32V203RBT6， CH32V303CBT6，CH32V303RBT6，CH32V303RCT6，CH32V303VCT6 CH32V305RBT6，CH32V307RCT6，CH32V307VCT6， CH32V208CBU6，CH32V208RBT6，CH32V208WBU6"
+        }
+      }
+    },
+    {
+      "name": "QingKeV5_Processor_Manual.PDF",
+      "kind": "core-manual",
+      "repositories": [
+        "ch32-device-data"
+      ],
+      "status": "assigned",
+      "reason": "V5系コア仕様",
+      "sources": {
+        "en": {
+          "file_id": 425,
+          "version": "1.0",
+          "scope": "CH32H417QEU6,CH32H417MEU6,CH32H417WEU6,CH32H416RDU6,CH32H415REU6"
+        },
+        "zh": {
+          "file_id": 539,
+          "version": "1.0",
+          "scope": "CH32H417QEU6,CH32H417MEU6,CH32H417WEU6,CH32H416RDU6,CH32H415REU6 "
+        }
+      }
+    },
+    {
+      "name": "REACH.PDF",
+      "kind": "other",
+      "repositories": [],
+      "status": "excluded",
+      "reason": "CH32の技術データではない（販促・法規・BLEアプリ等）",
+      "sources": {
+        "en": {
+          "file_id": 445,
+          "version": "2026",
+          "scope": "CH122, CH13x, CH16x, CH18x, CH21x, CH22x, CH23x, CH24x, CH25x, CH26x, CH27x, CH28x, CH31x, CH32x, CH33x, CH34x, CH35x, CH36x, CH37x, CH38x, CH39x, CH41x, CH42x, CH43x, CH44x, CH45x, CH46x, CH47x, CH48x, CH51x, CH52x, CH53x, CH54x, CH55x, CH56x, CH57x, CH58x, CH59x, CH62x, CH63x, CH64x, CH65x, CH66x, CH20xx, CH3232, CH857x, CH91xx, CH92xx, CH93xx, CH94xx, CH95xx, CH96xx, CH98xx, DH315, DH382, DH602, DM7407, CH32Fxxx, CH32Hxxx, CH32Vxxx, CH32Lxxx, CH32Mxxx, CH32Xxxx Series."
+        },
+        "zh": {
+          "file_id": 439,
+          "version": "2026",
+          "scope": "CH122, CH13x, CH16x, CH18x, CH21x, CH22x, CH23x, CH24x, CH25x, CH26x, CH27x, CH28x, CH31x, CH32x, CH33x, CH34x, CH35x, CH36x, CH37x, CH38x, CH39x, CH41x, CH42x, CH43x, CH44x, CH45x, CH46x, CH47x, CH48x, CH51x, CH52x, CH53x, CH54x, CH55x, CH56x, CH57x, CH58x, CH59x, CH62x, CH63x, CH64x, CH65x, CH66x, CH20xx, CH3232, CH857x, CH91xx, CH92xx, CH93xx, CH94xx, CH95xx, CH96xx, CH98xx, DH315, DH382, DH602, DM7407, CH32Fxxx, CH32Hxxx, CH32Vxxx, CH32Lxxx, CH32Mxxx, CH32Xxxx Series."
+        }
+      }
+    },
+    {
+      "name": "ROHS.PDF",
+      "kind": "other",
+      "repositories": [],
+      "status": "excluded",
+      "reason": "CH32の技術データではない（販促・法規・BLEアプリ等）",
+      "sources": {
+        "en": {
+          "file_id": 446,
+          "version": "2026",
+          "scope": "CH122, CH13x, CH16x, CH18x, CH21x, CH22x, CH23x, CH24x, CH25x, CH26x, CH27x, CH28x, CH31x, CH32x, CH33x, CH34x, CH35x, CH36x, CH37x, CH38x, CH39x, CH41x, CH42x, CH43x, CH44x, CH45x, CH46x, CH47x, CH48x, CH51x, CH52x, CH53x, CH54x, CH55x, CH56x, CH57x, CH58x, CH59x, CH62x, CH63x, CH64x, CH65x, CH66x, CH20xx, CH3232, CH857x, CH91xx, CH92xx, CH93xx, CH94xx, CH95xx, CH96xx, CH98xx, DH315, DH382, DH602, DM7407, CH32Fxxx, CH32Hxxx, CH32Vxxx, CH32Lxxx, CH32Mxxx, CH32Xxxx Series."
+        },
+        "zh": {
+          "file_id": 440,
+          "version": "2026",
+          "scope": "CH122, CH13x, CH16x, CH18x, CH21x, CH22x, CH23x, CH24x, CH25x, CH26x, CH27x, CH28x, CH31x, CH32x, CH33x, CH34x, CH35x, CH36x, CH37x, CH38x, CH39x, CH41x, CH42x, CH43x, CH44x, CH45x, CH46x, CH47x, CH48x, CH51x, CH52x, CH53x, CH54x, CH55x, CH56x, CH57x, CH58x, CH59x, CH62x, CH63x, CH64x, CH65x, CH66x, CH20xx, CH3232, CH857x, CH91xx, CH92xx, CH93xx, CH94xx, CH95xx, CH96xx, CH98xx, DH315, DH382, DH602, DM7407, CH32Fxxx, CH32Hxxx, CH32Vxxx, CH32Lxxx, CH32Mxxx, CH32Xxxx Series."
+        }
+      }
+    },
+    {
+      "name": "SCHPCB.ZIP",
+      "kind": "other",
+      "repositories": [],
+      "status": "excluded",
+      "reason": "CH32の技術データではない（販促・法規・BLEアプリ等）",
+      "sources": {
+        "zh": {
+          "file_id": 339,
+          "version": "8.2",
+          "scope": "CH全系产品"
+        }
+      }
+    },
+    {
+      "name": "TcpIpDebug.ZIP",
+      "kind": "other",
+      "repositories": [],
+      "status": "excluded",
+      "reason": "CH32の技術データではない（販促・法規・BLEアプリ等）",
+      "sources": {
+        "zh": {
+          "file_id": 512,
+          "version": "1.3",
+          "scope": "CH32H417/5，CH32V305，CH564，CH32V208，CH9121、CH9120 "
+        }
+      }
+    },
+    {
+      "name": "WCH-LinkUserManual.PDF",
+      "kind": "other",
+      "repositories": [
+        "ch32-device-data"
+      ],
+      "status": "assigned",
+      "reason": "書き込み・デバッグアダプタ",
+      "sources": {
+        "en": {
+          "file_id": 372,
+          "version": "2.7",
+          "scope": "CH32F10X，CH32F20X，CH32V00X，CH32V10X，CH32V20X，CH32V30X，CH56X，CH57X，CH58X，CH59X，CH643，CH32X035"
+        },
+        "zh": {
+          "file_id": 417,
+          "version": "2.8",
+          "scope": "CH32F10X，CH32F20X，CH32V00X，CH32V10X，CH32V20X，CH32V30X，CH56X，CH57X，CH58X，CH59X，CH643，CH32X035"
+        }
+      }
+    },
+    {
+      "name": "WCH-LinkUtility.ZIP",
+      "kind": "other",
+      "repositories": [],
+      "status": "excluded",
+      "reason": "CH32の技術データではない（販促・法規・BLEアプリ等）",
+      "sources": {
+        "zh": {
+          "file_id": 418,
+          "version": "3.0",
+          "scope": "CH32F10X，CH32F20X，CH32V00X，CH32V10X，CH32V20X，CH32V30X，CH56X，CH57X，CH58X，CH59X，CH643，CH32X035"
+        }
+      }
+    },
+    {
+      "name": "WCHBleLib_MultiOS.ZIP",
+      "kind": "other",
+      "repositories": [],
+      "status": "excluded",
+      "reason": "CH32の技術データではない（販促・法規・BLEアプリ等）",
+      "sources": {
+        "zh": {
+          "file_id": 349,
+          "version": "1.5",
+          "scope": "CH32F208, CH32V208, CH571, CH572, CH573, CH577, CH578, CH579, CH582, CH583, CH584, CH585, CH591, CH592, CH9143, CH9141, CH9140"
+        }
+      }
+    },
+    {
+      "name": "WCHIoCHubLib_MultiOS.ZIP",
+      "kind": "other",
+      "repositories": [],
+      "status": "excluded",
+      "reason": "CH32の技術データではない（販促・法規・BLEアプリ等）",
+      "sources": {
+        "zh": {
+          "file_id": 436,
+          "version": "1.2",
+          "scope": "CH32V307, CH32V317, CH32V208"
+        }
+      }
+    },
+    {
+      "name": "WCHISPTool_CMD.ZIP",
+      "kind": "other",
+      "repositories": [],
+      "status": "excluded",
+      "reason": "CH32の技術データではない（販促・法規・BLEアプリ等）",
+      "sources": {
+        "en": {
+          "file_id": 365,
+          "version": "3.6",
+          "scope": "CH54x,CH55x,CH56x,CH643x,CH57x,CH58x,CH59x,CH32F10x,CH32F20x,CH32V00x,CH32V10x,CH32V20x,CH32V30x,CH32X03x,CH32L10x"
+        },
+        "zh": {
+          "file_id": 424,
+          "version": "4.0",
+          "scope": "CH54x, CH55x, CH56x, CH641x, CH643x, CH645x, CH564x, CH57x, CH58x, CH59x, CH32F10x, CH32F20x, CH32V00x, CH32V10x, CH32V20x, CH32V30x, CH32X03x, CH32L10x, CH32V317x, CH32M10x, CH32H41x, CH32V4x7, CH32X3x5, CH664x"
+        }
+      }
+    },
+    {
+      "name": "WCHISPTool_Setup.exe",
+      "kind": "other",
+      "repositories": [],
+      "status": "excluded",
+      "reason": "CH32の技術データではない（販促・法規・BLEアプリ等）",
+      "sources": {
+        "en": {
+          "file_id": 196,
+          "version": "3.6",
+          "scope": "CH54x,CH55x,CH56x,CH641x,CH643x,CH57x,CH58x,CH59x,CH32F10x,CH32F20x,CH32V00x,CH32V10x,CH32V20x,CH32V30x,CH32X03x,CH32L10x"
+        },
+        "zh": {
+          "file_id": 196,
+          "version": "4.0",
+          "scope": "CH54x, CH55x, CH56x, CH641x, CH643x, CH645x, CH564x, CH57x, CH58x, CH59x, CH32F10x, CH32F20x, CH32V00x, CH32V10x, CH32V20x, CH32V30x, CH32X03x, CH32L10x, CH32V317x, CH32M10x, CH32H41x, CH32V4x7, CH32X3x5, CH664x"
+        }
+      }
+    },
+    {
+      "name": "WCHToolKit.ZIP",
+      "kind": "other",
+      "repositories": [],
+      "status": "excluded",
+      "reason": "CH32の技術データではない（販促・法規・BLEアプリ等）",
+      "sources": {
+        "zh": {
+          "file_id": 579,
+          "version": "1.1",
+          "scope": "所有串口接口(CH340, CH341, CH342, CH343, CH344, CH347, CH348, CH9101, CH9102, CH9103, CH9104, CH9143, CH9340, CH9344, CH9111, CH9114, CH351, CH352, CH353, CH355, CH356, CH357, CH358, CH359, CH382, CH384)，MCU(CH32V00x, CH32V10x, CH32V20x, CH32V30x, CH32X03x, CH32L10x, CH32V31x, CH32F10x, CH32F20x, CH56x, CH57x, CH58x, CH641x, CH643x),所有USB接口(CH331, CH334, CH335, CH337, CH338, CH339, CH340,  CH341, CH342, CH343, CH344, CH345, CH346,  CH347, CH348, CH377, CH397, CH634, CH9101, CH9102, CH9103, CH9104, CH9111, CH9114, CH9143, CH9328, CH9329, CH934x, CH9350, CH9360), MCU( CH54x, CH55x, CH32V3xx, CH32V20x, CH32V10x, CH32L10x, CH32F10x, CH32F20x),CH914x,CH9121, CH9120, CH336, CH396, CH398,,CH9151,CH9152,CH9153,CH37X"
+        }
+      }
+    },
+    {
+      "name": "WCHUSBList.ZIP",
+      "kind": "other",
+      "repositories": [],
+      "status": "excluded",
+      "reason": "CH32の技術データではない（販促・法規・BLEアプリ等）",
+      "sources": {
+        "zh": {
+          "file_id": 513,
+          "version": "1.3",
+          "scope": "CH34x系列, CH910x系列, CH911x系列, CH93xx系列, CH934x系列的USB芯片，及CH32Vx系列, CH32Fx系列, CH32Lx系列, CH54x系列, CH55x系列, CH56x系列, CH64x系列MCU。"
+        }
+      }
+    },
+    {
+      "name": "WCH_InSystemProgramTool_V330.exe",
+      "kind": "other",
+      "repositories": [],
+      "status": "excluded",
+      "reason": "CH32の技術データではない（販促・法規・BLEアプリ等）",
+      "sources": {
+        "zh": {
+          "file_id": 423,
+          "version": "3.3",
+          "scope": null
+        }
+      }
+    },
+    {
+      "name": "WCH_Mesh_Android.ZIP",
+      "kind": "other",
+      "repositories": [],
+      "status": "excluded",
+      "reason": "CH32の技術データではない（販促・法規・BLEアプリ等）",
+      "sources": {
+        "zh": {
+          "file_id": 403,
+          "version": "1.2",
+          "scope": "CH583/CH32V208/CH32F208"
+        }
+      }
+    },
+    {
+      "name": "WCH_TouchApplicationGuide.PDF",
+      "kind": "other",
+      "repositories": [],
+      "status": "excluded",
+      "reason": "CH32の技術データではない（販促・法規・BLEアプリ等）",
+      "sources": {
+        "en": {
+          "file_id": 419,
+          "version": "1.0",
+          "scope": "CH32L103, CH32V006, CH32V007, CH32V203, CH32V303, CH32V305, CH32V307, CH582, CH583, CH584, CH585, CH592"
+        },
+        "zh": {
+          "file_id": 521,
+          "version": "1.0",
+          "scope": "CH32L103，CH32V006，CH32V007，CH32V203，CH32V303，CH32V305，CH32V307，CH582，CH583，CH584，CH585，CH592"
+        }
+      }
+    }
+  ],
+  "repository_note": "repositories が ch32-device-data の文書は、family横断のためこのリポジトリで出典管理する（PDFの複製はしない）。"
+}
