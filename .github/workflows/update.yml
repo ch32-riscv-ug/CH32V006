@@ -1,11 +1,15 @@
 name: update
+# Daily mirror refresh. update.sh reads the catalogue in
+# ch32-riscv-ug/ch32-device-data to learn which documents belong to this mirror,
+# so this workflow is identical in every mirror and needs no per-repo edits.
+# 取得対象は ch32-device-data のカタログが決めるため、この workflow は全mirror共通。
 
 on:
   schedule:
-    # Daily 15:37 UTC (23:37 CST China / 00:37 JST) - China late-night.
+    # Daily 15:07 UTC (23:07 CST China / 00:07 JST) - China late-night.
     # GitHub may delay runs by hours; scheduled early so it stays before
     # China's heavy morning hours.
-    - cron: '37 15 * * *'
+    - cron: '07 15 * * *'
   workflow_dispatch:
 
 # Write permission is required to commit/push updated files.
