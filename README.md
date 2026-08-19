@@ -4,14 +4,14 @@
 
 ## Series
 
-| Series | Core | ISA | Flash | SRAM | Packages | Products | Official |
-|---|---|---|---|---|---|---|---|
-| **CH32M007** | QingKe V2C | RV32EmC | 62K | 8K | QFN26C3,QFN32,QSOP24,QSOP28 | 4 | [en](https://www.wch-ic.com/products/CH32M007.html) / [zh](https://www.wch.cn/products/CH32M007.html) |
-| **CH32V002** | QingKe V2C | RV32EmC | 16K | 4K | QFN12,QFN20,SOP16,SOP8,TSSOP20 | 5 | [en](https://www.wch-ic.com/products/CH32V002.html) / [zh](https://www.wch.cn/products/CH32V002.html) |
-| **CH32V004** | QingKe V2C | RV32EmC | 32K | 6K | QFN20L,TSSOP20 | 2 | [en](https://www.wch-ic.com/products/CH32V004.html) / [zh](https://www.wch.cn/products/CH32V004.html) |
-| **CH32V005** | QingKe V2C | RV32EmC | 32K | 6K | QFN12,QFN20,QSOP24,TSSOP20 | 4 | [en](https://www.wch-ic.com/products/CH32V005.html) / [zh](https://www.wch.cn/products/CH32V005.html) |
-| **CH32V006** | QingKe V2C | RV32EmC | - | - | QFN12,QFN20,QFN32,QSOP24,TSSOP20 | 7 | [en](https://www.wch-ic.com/products/CH32V006.html) / [zh](https://www.wch.cn/products/CH32V006.html) |
-| **CH32V007** | QingKe V2C | RV32EmC | 62K | 8K | QFN32,QSOP24 | 4 | [en](https://www.wch-ic.com/products/CH32V007.html) / [zh](https://www.wch.cn/products/CH32V007.html) |
+| Series | Core | ISA | Flash | SRAM | Max clock | VDD | Packages | Products | Official |
+|---|---|---|---|---|---|---|---|---|---|
+| **CH32M007** | QingKe V2C | RV32EmC | 62K | 8K | 48 MHz | 2.0-5.5V | QFN26C3,QFN32,QSOP24,QSOP28 | 4 | [en](https://www.wch-ic.com/products/CH32M007.html) / [zh](https://www.wch.cn/products/CH32M007.html) |
+| **CH32V002** | QingKe V2C | RV32EmC | 16K | 4K | 48 MHz | 2.0-5.5V | QFN12,QFN20,SOP16,SOP8,TSSOP20 | 5 | [en](https://www.wch-ic.com/products/CH32V002.html) / [zh](https://www.wch.cn/products/CH32V002.html) |
+| **CH32V004** | QingKe V2C | RV32EmC | 32K | 6K | 48 MHz | 2.7-5.5V | QFN20L,TSSOP20 | 2 | [en](https://www.wch-ic.com/products/CH32V004.html) / [zh](https://www.wch.cn/products/CH32V004.html) |
+| **CH32V005** | QingKe V2C | RV32EmC | 32K | 6K | 48 MHz | 2.0-5.5V | QFN12,QFN20,QSOP24,TSSOP20 | 4 | [en](https://www.wch-ic.com/products/CH32V005.html) / [zh](https://www.wch.cn/products/CH32V005.html) |
+| **CH32V006** | QingKe V2C | RV32EmC | - | - | 48 MHz | 2.0-5.5V | QFN12,QFN20,QFN32,QSOP24,TSSOP20 | 7 | [en](https://www.wch-ic.com/products/CH32V006.html) / [zh](https://www.wch.cn/products/CH32V006.html) |
+| **CH32V007** | QingKe V2C | RV32EmC | 62K | 8K | 48 MHz | 2.0-5.5V | QFN32,QSOP24 | 4 | [en](https://www.wch-ic.com/products/CH32V007.html) / [zh](https://www.wch.cn/products/CH32V007.html) |
 
 ## Debug / serial defaults
 
@@ -29,7 +29,7 @@
 | Document | Kind | English | 中文 |
 |---|---|---|---|
 | CH32V002DS0.PDF | datasheet | [page](https://www.wch-ic.com/downloads/CH32V002DS0_PDF.html) [mirror](https://ch32-riscv-ug.github.io/CH32V006/datasheet_en/CH32V002DS0.PDF) v1.7 | [page](https://www.wch.cn/downloads/CH32V002DS0_PDF.html) [mirror](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V002DS0.PDF) v1.7 |
-| CH32V004DS0.PDF | datasheet | [page](https://www.wch-ic.com/downloads/CH32V004DS0_PDF.html) [mirror](https://ch32-riscv-ug.github.io/CH32V006/datasheet_en/CH32V004DS0.PDF) v1.8 | [page](https://www.wch.cn/downloads/CH32V004DS0_PDF.html) [mirror](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V004DS0.PDF) v1.9 |
+| CH32V004DS0.PDF | datasheet | [page](https://www.wch-ic.com/downloads/CH32V004DS0_PDF.html) [mirror](https://ch32-riscv-ug.github.io/CH32V006/datasheet_en/CH32V004DS0.PDF) v1.9 | [page](https://www.wch.cn/downloads/CH32V004DS0_PDF.html) [mirror](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V004DS0.PDF) v1.9 |
 | CH32V006DS0.PDF | datasheet | [page](https://www.wch-ic.com/downloads/CH32V006DS0_PDF.html) [mirror](https://ch32-riscv-ug.github.io/CH32V006/datasheet_en/CH32V006DS0.PDF) v2.0 | [page](https://www.wch.cn/downloads/CH32V006DS0_PDF.html) [mirror](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V006DS0.PDF) v2.0 |
 | CH32V006DS2.PDF | datasheet | - | [page](https://www.wch.cn/downloads/CH32V006DS2_PDF.html) [mirror](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V006DS2.PDF) v1.1 |
 | CH32V007DS0.PDF | datasheet | [page](https://www.wch-ic.com/downloads/CH32V007DS0_PDF.html) [mirror](https://ch32-riscv-ug.github.io/CH32V006/datasheet_en/CH32V007DS0.PDF) v1.8 | [page](https://www.wch.cn/downloads/CH32V007DS0_PDF.html) [mirror](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V007DS0.PDF) v1.8 |
