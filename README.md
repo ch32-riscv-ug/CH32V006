@@ -4,7 +4,7 @@
 
 ## Series
 
-| Series | Core | ISA | Flash | SRAM | Max clock | VDD | Packages | Products | Official |
+| Series | Core | ISA | Flash | SRAM | Clock | VDD | Packages | Products | Official |
 |---|---|---|---|---|---|---|---|---|---|
 | **CH32M007** | QingKe V2C | RV32EmC | 62K | 8K | 48 MHz | 2.0-5.5V | QFN26C3,QFN32,QSOP24,QSOP28 | 4 | [en](https://www.wch-ic.com/products/CH32M007.html) / [zh](https://www.wch.cn/products/CH32M007.html) |
 | **CH32V002** | QingKe V2C | RV32EmC | 16K | 4K | 48 MHz | 2.0-5.5V | QFN12,QFN20,SOP16,SOP8,TSSOP20 | 5 | [en](https://www.wch-ic.com/products/CH32V002.html) / [zh](https://www.wch.cn/products/CH32V002.html) |
@@ -35,6 +35,26 @@
 | CH32V007DS0.PDF | datasheet | [page](https://www.wch-ic.com/downloads/CH32V007DS0_PDF.html) [mirror](https://ch32-riscv-ug.github.io/CH32V006/datasheet_en/CH32V007DS0.PDF) v1.8 | [page](https://www.wch.cn/downloads/CH32V007DS0_PDF.html) [mirror](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V007DS0.PDF) v1.8 |
 | CH32V00XRM.PDF | reference-manual | [page](https://www.wch-ic.com/downloads/CH32V00XRM_PDF.html) [mirror](https://ch32-riscv-ug.github.io/CH32V006/datasheet_en/CH32V00XRM.PDF) v1.5 | [page](https://www.wch.cn/downloads/CH32V00XRM_PDF.html) [mirror](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V00XRM.PDF) v1.5 |
 | CH32V006EVT.ZIP | evt | - | [page](https://www.wch.cn/downloads/CH32V006EVT_ZIP.html) [mirror](https://github.com/ch32-riscv-ug/CH32V006/tree/main/EVT) v1.4 |
+
+## Pinouts
+
+Pinout drawings are in the datasheet (chapter *Pinouts*):
+
+| Package | Products | Datasheet | Outline |
+|---|---|---|---|
+| QSOP24 | CH32M007E8R6 | [en](https://ch32-riscv-ug.github.io/CH32V006/datasheet_en/CH32V007DS0.PDF) / [zh](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V007DS0.PDF) | [drawing](https://raw.githubusercontent.com/ch32-riscv-ug/WCH-common/main/image/package_QSOP24.png) |
+| QFN26C3 | CH32M007E8U7 | [en](https://ch32-riscv-ug.github.io/CH32V006/datasheet_en/CH32V007DS0.PDF) / [zh](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V007DS0.PDF) | [drawing](https://raw.githubusercontent.com/ch32-riscv-ug/WCH-common/main/image/package_QFN26C3.png) |
+| QSOP28 | CH32M007G8R6 | [en](https://ch32-riscv-ug.github.io/CH32V006/datasheet_en/CH32V007DS0.PDF) / [zh](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V007DS0.PDF) | [drawing](https://raw.githubusercontent.com/ch32-riscv-ug/WCH-common/main/image/package_QSOP28.png) |
+| QFN32 | CH32M007K8U7 | [en](https://ch32-riscv-ug.github.io/CH32V006/datasheet_en/CH32V007DS0.PDF) / [zh](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V007DS0.PDF) | [drawing](https://raw.githubusercontent.com/ch32-riscv-ug/WCH-common/main/image/package_QFN32.png) |
+| SOP16 | CH32V002A4M6 | [en](https://ch32-riscv-ug.github.io/CH32V006/datasheet_en/CH32V002DS0.PDF) / [zh](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V002DS0.PDF) | [drawing](https://raw.githubusercontent.com/ch32-riscv-ug/WCH-common/main/image/package_SOP16.png) |
+| QFN12 | CH32V002D4U6, CH32V005D6U6, CH32V006D8U7 | [en](https://ch32-riscv-ug.github.io/CH32V006/datasheet_en/CH32V002DS0.PDF) / [zh](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V002DS0.PDF) | [drawing](https://raw.githubusercontent.com/ch32-riscv-ug/WCH-common/main/image/package_QFN12.png) |
+| TSSOP20 | CH32V002F4P6, CH32V004F6P1, CH32V005F6P6, CH32V006F8P7 | [en](https://ch32-riscv-ug.github.io/CH32V006/datasheet_en/CH32V002DS0.PDF) / [zh](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V002DS0.PDF) | [drawing](https://raw.githubusercontent.com/ch32-riscv-ug/WCH-common/main/image/package_TSSOP20.png) |
+| QFN20 | CH32V002F4U6 | [en](https://ch32-riscv-ug.github.io/CH32V006/datasheet_en/CH32V002DS0.PDF) / [zh](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V002DS0.PDF) | [drawing](https://raw.githubusercontent.com/ch32-riscv-ug/WCH-common/main/image/package_QFN20.png) |
+| SOP8 | CH32V002J4M6 | [en](https://ch32-riscv-ug.github.io/CH32V006/datasheet_en/CH32V002DS0.PDF) / [zh](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V002DS0.PDF) | [drawing](https://raw.githubusercontent.com/ch32-riscv-ug/WCH-common/main/image/package_SOP8.png) |
+| QFN20L | CH32V004F6U1 | [en](https://ch32-riscv-ug.github.io/CH32V006/datasheet_en/CH32V004DS0.PDF) / [zh](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V004DS0.PDF) | [drawing](https://raw.githubusercontent.com/ch32-riscv-ug/WCH-common/main/image/package_QFN20L.png) |
+| QSOP24 | CH32V005E6R6, CH32V006E8R6, CH32V006E8R7, CH32V007E8R6, CH32V007E8R7 | [en](https://ch32-riscv-ug.github.io/CH32V006/datasheet_en/CH32V006DS0.PDF) / [zh](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V006DS0.PDF) | [drawing](https://raw.githubusercontent.com/ch32-riscv-ug/WCH-common/main/image/package_QSOP24.png) |
+| QFN20 | CH32V005F6U6, CH32V006F4U6, CH32V006F8U7 | [en](https://ch32-riscv-ug.github.io/CH32V006/datasheet_en/CH32V006DS0.PDF) / [zh](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V006DS0.PDF) | [drawing](https://raw.githubusercontent.com/ch32-riscv-ug/WCH-common/main/image/package_QFN20.png) |
+| QFN32 | CH32V006K8U7, CH32V007K8U6, CH32V007K8U7 | [en](https://ch32-riscv-ug.github.io/CH32V006/datasheet_en/CH32V006DS0.PDF) / [zh](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V006DS0.PDF) | [drawing](https://raw.githubusercontent.com/ch32-riscv-ug/WCH-common/main/image/package_QFN32.png) |
 
 ## Product comparison
 
@@ -544,62 +564,68 @@ Pin functions (filterable): [ALL](https://ch32-riscv-ug.github.io/ch32-device-da
 
 | Series | Field | Register | Bits | Values | Reset |
 |---|---|---|---|---|---|
-| CH32M007 | I2C1_REMAP | PCFR1 | 3;4;5 | 0;1;2;3;4;5;6;7 | 0 |
-| CH32M007 | SPI1_REMAP | PCFR1 | 0;1;2 | 0;1;2;3;4;5;6 | 0 |
-| CH32M007 | TIM1_REMAP | PCFR1 | 10;11;12;13 | 0;1;2;3;4;5;6;7;8;9 | 0 |
-| CH32M007 | TIM2_REMAP | PCFR1 | 14;15;16 | 0;1;2;3;4;5;6;7 | 0 |
-| CH32M007 | USART1_REMAP | PCFR1 | 6;7;8;9 | 0;1;2;3;4;5;6;7;8;9 | 0 |
-| CH32M007 | USART2_REMAP | PCFR1 | 20;21;22 | 0;1;2;3;4;5;6 | 0 |
-| CH32V002 | I2C1_REMAP | PCFR1 | 3;4;5 | 0;1;2;3;4;5;6;7 | 0 |
-| CH32V002 | SPI1_REMAP | PCFR1 | 0;1;2 | 0;1;2;3;4;5;6 | 0 |
-| CH32V002 | TIM1_REMAP | PCFR1 | 10;11;12;13 | 0;1;2;3;4;5;6;7;8;9 | 0 |
-| CH32V002 | TIM2_REMAP | PCFR1 | 14;15;16 | 0;1;2;3;4;5;6;7 | 0 |
-| CH32V002 | USART1_REMAP | PCFR1 | 6;7;8;9 | 0;1;2;3;4;5;6;7;8;9 | 0 |
-| CH32V004 | I2C1_REMAP | PCFR1 | 3;4;5 | 0;1;2;3;4;5;6;7 | 0 |
-| CH32V004 | SPI1_REMAP | PCFR1 | 0;1;2 | 0;1;2;3;4;5;6 | 0 |
-| CH32V004 | TIM1_REMAP | PCFR1 | 10;11;12;13 | 0;1;2;3;4;5;6;7;8;9 | 0 |
-| CH32V004 | TIM2_REMAP | PCFR1 | 14;15;16 | 0;1;2;3;4;5;6;7 | 0 |
-| CH32V004 | USART1_REMAP | PCFR1 | 6;7;8;9 | 0;1;2;3;4;5;6;7;8;9 | 0 |
-| CH32V005 | I2C1_REMAP | PCFR1 | 3;4;5 | 0;1;2;3;4;5;6;7 | 0 |
-| CH32V005 | SPI1_REMAP | PCFR1 | 0;1;2 | 0;1;2;3;4;5;6 | 0 |
-| CH32V005 | TIM1_REMAP | PCFR1 | 10;11;12;13 | 0;1;2;3;4;5;6;7;8;9 | 0 |
-| CH32V005 | TIM2_REMAP | PCFR1 | 14;15;16 | 0;1;2;3;4;5;6;7 | 0 |
-| CH32V005 | USART1_REMAP | PCFR1 | 6;7;8;9 | 0;1;2;3;4;5;6;7;8;9 | 0 |
-| CH32V005 | USART2_REMAP | PCFR1 | 20;21;22 | 0;1;2;3;4;5;6 | 0 |
-| CH32V006 | I2C1_REMAP | PCFR1 | 3;4;5 | 0;1;2;3;4;5;6;7 | 0 |
-| CH32V006 | SPI1_REMAP | PCFR1 | 0;1;2 | 0;1;2;3;4;5;6 | 0 |
-| CH32V006 | TIM1_REMAP | PCFR1 | 10;11;12;13 | 0;1;2;3;4;5;6;7;8;9 | 0 |
-| CH32V006 | TIM2_REMAP | PCFR1 | 14;15;16 | 0;1;2;3;4;5;6;7 | 0 |
-| CH32V006 | USART1_REMAP | PCFR1 | 6;7;8;9 | 0;1;2;3;4;5;6;7;8;9 | 0 |
-| CH32V006 | USART2_REMAP | PCFR1 | 20;21;22 | 0;1;2;3;4;5;6 | 0 |
-| CH32V007 | I2C1_REMAP | PCFR1 | 3;4;5 | 0;1;2;3;4;5;6;7 | 0 |
-| CH32V007 | SPI1_REMAP | PCFR1 | 0;1;2 | 0;1;2;3;4;5;6 | 0 |
-| CH32V007 | TIM1_REMAP | PCFR1 | 10;11;12;13 | 0;1;2;3;4;5;6;7;8;9 | 0 |
-| CH32V007 | TIM2_REMAP | PCFR1 | 14;15;16 | 0;1;2;3;4;5;6;7 | 0 |
-| CH32V007 | USART1_REMAP | PCFR1 | 6;7;8;9 | 0;1;2;3;4;5;6;7;8;9 | 0 |
-| CH32V007 | USART2_REMAP | PCFR1 | 20;21;22 | 0;1;2;3;4;5;6 | 0 |
+| CH32M007 | I2C1_REMAP | PCFR1 | PCFR1:3;PCFR1:4;PCFR1:5 | 0;1;2;3;4;5;6;7 | 0 |
+| CH32M007 | SPI1_REMAP | PCFR1 | PCFR1:0;PCFR1:1;PCFR1:2 | 0;1;2;3;4;5;6 | 0 |
+| CH32M007 | TIM1_REMAP | PCFR1 | PCFR1:10;PCFR1:11;PCFR1:12;PCFR1:13 | 0;1;2;3;4;5;6;7;8;9 | 0 |
+| CH32M007 | TIM2_REMAP | PCFR1 | PCFR1:14;PCFR1:15;PCFR1:16 | 0;1;2;3;4;5;6;7 | 0 |
+| CH32M007 | USART1_REMAP | PCFR1 | PCFR1:6;PCFR1:7;PCFR1:8;PCFR1:9 | 0;1;2;3;4;5;6;7;8;9 | 0 |
+| CH32M007 | USART2_REMAP | PCFR1 | PCFR1:20;PCFR1:21;PCFR1:22 | 0;1;2;3;4;5;6 | 0 |
+| CH32V002 | I2C1_REMAP | PCFR1 | PCFR1:3;PCFR1:4;PCFR1:5 | 0;1;2;3;4;5;6;7 | 0 |
+| CH32V002 | SPI1_REMAP | PCFR1 | PCFR1:0;PCFR1:1;PCFR1:2 | 0;1;2;3;4;5;6 | 0 |
+| CH32V002 | TIM1_REMAP | PCFR1 | PCFR1:10;PCFR1:11;PCFR1:12;PCFR1:13 | 0;1;2;3;4;5;6;7;8;9 | 0 |
+| CH32V002 | TIM2_REMAP | PCFR1 | PCFR1:14;PCFR1:15;PCFR1:16 | 0;1;2;3;4;5;6;7 | 0 |
+| CH32V002 | USART1_REMAP | PCFR1 | PCFR1:6;PCFR1:7;PCFR1:8;PCFR1:9 | 0;1;2;3;4;5;6;7;8;9 | 0 |
+| CH32V004 | I2C1_REMAP | PCFR1 | PCFR1:3;PCFR1:4;PCFR1:5 | 0;1;2;3;4;5;6;7 | 0 |
+| CH32V004 | SPI1_REMAP | PCFR1 | PCFR1:0;PCFR1:1;PCFR1:2 | 0;1;2;3;4;5;6 | 0 |
+| CH32V004 | TIM1_REMAP | PCFR1 | PCFR1:10;PCFR1:11;PCFR1:12;PCFR1:13 | 0;1;2;3;4;5;6;7;8;9 | 0 |
+| CH32V004 | TIM2_REMAP | PCFR1 | PCFR1:14;PCFR1:15;PCFR1:16 | 0;1;2;3;4;5;6;7 | 0 |
+| CH32V004 | USART1_REMAP | PCFR1 | PCFR1:6;PCFR1:7;PCFR1:8;PCFR1:9 | 0;1;2;3;4;5;6;7;8;9 | 0 |
+| CH32V005 | I2C1_REMAP | PCFR1 | PCFR1:3;PCFR1:4;PCFR1:5 | 0;1;2;3;4;5;6;7 | 0 |
+| CH32V005 | SPI1_REMAP | PCFR1 | PCFR1:0;PCFR1:1;PCFR1:2 | 0;1;2;3;4;5;6 | 0 |
+| CH32V005 | TIM1_REMAP | PCFR1 | PCFR1:10;PCFR1:11;PCFR1:12;PCFR1:13 | 0;1;2;3;4;5;6;7;8;9 | 0 |
+| CH32V005 | TIM2_REMAP | PCFR1 | PCFR1:14;PCFR1:15;PCFR1:16 | 0;1;2;3;4;5;6;7 | 0 |
+| CH32V005 | USART1_REMAP | PCFR1 | PCFR1:6;PCFR1:7;PCFR1:8;PCFR1:9 | 0;1;2;3;4;5;6;7;8;9 | 0 |
+| CH32V005 | USART2_REMAP | PCFR1 | PCFR1:20;PCFR1:21;PCFR1:22 | 0;1;2;3;4;5;6 | 0 |
+| CH32V006 | I2C1_REMAP | PCFR1 | PCFR1:3;PCFR1:4;PCFR1:5 | 0;1;2;3;4;5;6;7 | 0 |
+| CH32V006 | SPI1_REMAP | PCFR1 | PCFR1:0;PCFR1:1;PCFR1:2 | 0;1;2;3;4;5;6 | 0 |
+| CH32V006 | TIM1_REMAP | PCFR1 | PCFR1:10;PCFR1:11;PCFR1:12;PCFR1:13 | 0;1;2;3;4;5;6;7;8;9 | 0 |
+| CH32V006 | TIM2_REMAP | PCFR1 | PCFR1:14;PCFR1:15;PCFR1:16 | 0;1;2;3;4;5;6;7 | 0 |
+| CH32V006 | USART1_REMAP | PCFR1 | PCFR1:6;PCFR1:7;PCFR1:8;PCFR1:9 | 0;1;2;3;4;5;6;7;8;9 | 0 |
+| CH32V006 | USART2_REMAP | PCFR1 | PCFR1:20;PCFR1:21;PCFR1:22 | 0;1;2;3;4;5;6 | 0 |
+| CH32V007 | I2C1_REMAP | PCFR1 | PCFR1:3;PCFR1:4;PCFR1:5 | 0;1;2;3;4;5;6;7 | 0 |
+| CH32V007 | SPI1_REMAP | PCFR1 | PCFR1:0;PCFR1:1;PCFR1:2 | 0;1;2;3;4;5;6 | 0 |
+| CH32V007 | TIM1_REMAP | PCFR1 | PCFR1:10;PCFR1:11;PCFR1:12;PCFR1:13 | 0;1;2;3;4;5;6;7;8;9 | 0 |
+| CH32V007 | TIM2_REMAP | PCFR1 | PCFR1:14;PCFR1:15;PCFR1:16 | 0;1;2;3;4;5;6;7 | 0 |
+| CH32V007 | USART1_REMAP | PCFR1 | PCFR1:6;PCFR1:7;PCFR1:8;PCFR1:9 | 0;1;2;3;4;5;6;7;8;9 | 0 |
+| CH32V007 | USART2_REMAP | PCFR1 | PCFR1:20;PCFR1:21;PCFR1:22 | 0;1;2;3;4;5;6 | 0 |
 
 </details>
 
-## Diagrams
+## Block diagrams
 
-### system CH32V006
-<img src="image/system_CH32V006.png" />
+### CH32M007
+<img src="image/architecture_CH32M007.png" alt="CH32M007 block diagram" />
 
-### architecture CH32M007
-<img src="image/architecture_CH32M007.png" />
+### CH32V002
+<img src="image/architecture_CH32V002.png" alt="CH32V002 block diagram" />
 
-### architecture CH32V002
-<img src="image/architecture_CH32V002.png" />
+### CH32V004
+<img src="image/architecture_CH32V004.png" alt="CH32V004 block diagram" />
 
-### architecture CH32V004
-<img src="image/architecture_CH32V004.png" />
+### CH32V005
+<img src="image/architecture_CH32V005.png" alt="CH32V005 block diagram" />
 
-### architecture CH32V005 006
-<img src="image/architecture_CH32V005_006.png" />
+### CH32V006
+<img src="image/architecture_CH32V006.png" alt="CH32V006 block diagram" />
 
-### architecture CH32V007
-<img src="image/architecture_CH32V007.png" />
+### CH32V007
+<img src="image/architecture_CH32V007.png" alt="CH32V007 block diagram" />
+
+## EVT examples
+
+74 routines in [EVT/EXAM](https://github.com/ch32-riscv-ug/CH32V006/tree/main/EVT/EXAM):
+
+[ADC](https://github.com/ch32-riscv-ug/CH32V006/tree/main/EVT/EXAM/ADC) 8 · [APPLICATION](https://github.com/ch32-riscv-ug/CH32V006/tree/main/EVT/EXAM/APPLICATION) 5 · [DMA](https://github.com/ch32-riscv-ug/CH32V006/tree/main/EVT/EXAM/DMA) 2 · [EXTI](https://github.com/ch32-riscv-ug/CH32V006/tree/main/EVT/EXAM/EXTI) 1 · [FLASH](https://github.com/ch32-riscv-ug/CH32V006/tree/main/EVT/EXAM/FLASH) 2 · [GPIO](https://github.com/ch32-riscv-ug/CH32V006/tree/main/EVT/EXAM/GPIO) 1 · [I2C](https://github.com/ch32-riscv-ug/CH32V006/tree/main/EVT/EXAM/I2C) 6 · [IAP](https://github.com/ch32-riscv-ug/CH32V006/tree/main/EVT/EXAM/IAP) 1 · [INT](https://github.com/ch32-riscv-ug/CH32V006/tree/main/EVT/EXAM/INT) 2 · [IWDG](https://github.com/ch32-riscv-ug/CH32V006/tree/main/EVT/EXAM/IWDG) 1 · [OPA](https://github.com/ch32-riscv-ug/CH32V006/tree/main/EVT/EXAM/OPA) 6 · [PWR](https://github.com/ch32-riscv-ug/CH32V006/tree/main/EVT/EXAM/PWR) 2 · [RCC](https://github.com/ch32-riscv-ug/CH32V006/tree/main/EVT/EXAM/RCC) 2 · [SDI_Printf](https://github.com/ch32-riscv-ug/CH32V006/tree/main/EVT/EXAM/SDI_Printf) 1 · [SPI](https://github.com/ch32-riscv-ug/CH32V006/tree/main/EVT/EXAM/SPI) 5 · [SYSTICK](https://github.com/ch32-riscv-ug/CH32V006/tree/main/EVT/EXAM/SYSTICK) 1 · [TIM](https://github.com/ch32-riscv-ug/CH32V006/tree/main/EVT/EXAM/TIM) 13 · [TOUCHKEY](https://github.com/ch32-riscv-ug/CH32V006/tree/main/EVT/EXAM/TOUCHKEY) 5 · [USART](https://github.com/ch32-riscv-ug/CH32V006/tree/main/EVT/EXAM/USART) 9 · [WWDG](https://github.com/ch32-riscv-ug/CH32V006/tree/main/EVT/EXAM/WWDG) 1
 
 ---
 Data: [ch32-device-data](https://github.com/ch32-riscv-ug/ch32-device-data) (tables/ -- each value carries its evidence and confidence there).
