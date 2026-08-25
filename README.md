@@ -8,6 +8,8 @@ Programming and debug: **1-wire SDI** (WCH-Link, `Serial Debug Interface`).
 
 ### Debug / serial defaults
 
+Where these land **without writing a remap register**. SWD is live at reset; the UART pads are not -- the pin must still be put into alternate-function mode. See `route` in tables/README.ja.md.
+
 | Series | SWDIO | SWCLK | UART TX | UART RX |
 |---|---|---|---|---|
 | CH32M007 | PD1 | PB3 | PD5 (USART1) | PD6 (USART1); PB3 (USART2) |
@@ -155,11 +157,10 @@ Pinout drawings are in the datasheet (chapter *Pinouts*):
 | SOP16 | CH32V002A4M6 | [en](https://ch32-riscv-ug.github.io/CH32V006/datasheet_en/CH32V002DS0.PDF) / [zh](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V002DS0.PDF) | [drawing](https://raw.githubusercontent.com/ch32-riscv-ug/WCH-common/main/image/package_SOP16.png) |
 | QFN12 | CH32V002D4U6, CH32V005D6U6, CH32V006D8U7 | [en](https://ch32-riscv-ug.github.io/CH32V006/datasheet_en/CH32V002DS0.PDF) / [zh](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V002DS0.PDF) | [drawing](https://raw.githubusercontent.com/ch32-riscv-ug/WCH-common/main/image/package_QFN12.png) |
 | TSSOP20 | CH32V002F4P6, CH32V004F6P1, CH32V005F6P6, CH32V006F8P7 | [en](https://ch32-riscv-ug.github.io/CH32V006/datasheet_en/CH32V002DS0.PDF) / [zh](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V002DS0.PDF) | [drawing](https://raw.githubusercontent.com/ch32-riscv-ug/WCH-common/main/image/package_TSSOP20.png) |
-| QFN20 | CH32V002F4U6 | [en](https://ch32-riscv-ug.github.io/CH32V006/datasheet_en/CH32V002DS0.PDF) / [zh](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V002DS0.PDF) | [drawing](https://raw.githubusercontent.com/ch32-riscv-ug/WCH-common/main/image/package_QFN20.png) |
+| QFN20 | CH32V002F4U6, CH32V005F6U6, CH32V006F4U6, CH32V006F8U7 | [en](https://ch32-riscv-ug.github.io/CH32V006/datasheet_en/CH32V002DS0.PDF) / [zh](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V002DS0.PDF) | [drawing](https://raw.githubusercontent.com/ch32-riscv-ug/WCH-common/main/image/package_QFN20.png) |
 | SOP8 | CH32V002J4M6 | [en](https://ch32-riscv-ug.github.io/CH32V006/datasheet_en/CH32V002DS0.PDF) / [zh](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V002DS0.PDF) | [drawing](https://raw.githubusercontent.com/ch32-riscv-ug/WCH-common/main/image/package_SOP8.png) |
 | QFN20L | CH32V004F6U1 | [en](https://ch32-riscv-ug.github.io/CH32V006/datasheet_en/CH32V004DS0.PDF) / [zh](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V004DS0.PDF) | [drawing](https://raw.githubusercontent.com/ch32-riscv-ug/WCH-common/main/image/package_QFN20L.png) |
 | QSOP24 | CH32V005E6R6, CH32V006E8R6, CH32V006E8R7, CH32V007E8R6, CH32V007E8R7 | [en](https://ch32-riscv-ug.github.io/CH32V006/datasheet_en/CH32V006DS0.PDF) / [zh](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V006DS0.PDF) | [drawing](https://raw.githubusercontent.com/ch32-riscv-ug/WCH-common/main/image/package_QSOP24.png) |
-| QFN20 | CH32V005F6U6, CH32V006F4U6, CH32V006F8U7 | [en](https://ch32-riscv-ug.github.io/CH32V006/datasheet_en/CH32V006DS0.PDF) / [zh](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V006DS0.PDF) | [drawing](https://raw.githubusercontent.com/ch32-riscv-ug/WCH-common/main/image/package_QFN20.png) |
 | QFN32 | CH32V006K8U7, CH32V007K8U6, CH32V007K8U7 | [en](https://ch32-riscv-ug.github.io/CH32V006/datasheet_en/CH32V006DS0.PDF) / [zh](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V006DS0.PDF) | [drawing](https://raw.githubusercontent.com/ch32-riscv-ug/WCH-common/main/image/package_QFN32.png) |
 
 ## Pin definitions
@@ -180,14 +181,19 @@ Pin functions (filterable): [ALL](https://ch32-riscv-ug.github.io/ch32-device-da
 | PC4 | I/O/A | 22 | 1 | 26 | 29 |  |
 | PC5 | I/O/A | 23 | 2 | 27 | 27 |  |
 | PC7 | I/O | - | - | - | 28 |  |
-| PD1 | I/O/A | 1 | 5 | - | 22 | SWDIO |
+| PD1 | I/O/A | 1 | 5 | 23 | 22 | SWDIO |
 | PD2 | I/O/A | 2 | 4 | 2 | 30 |  |
 | PD3 | I/O/A | 3 | 6 | 3 | 31 |  |
 | PD4 | I/O/A | 4 | 7 | 4 | 32 |  |
 | PD5 | I/O/A | 5 | 8 | 5 | 1 | UART TX (USART1) |
 | PD6 | I/O/A | 6 | 9 | 6 | 2 | UART RX (USART1) |
 | PD7 | I/O/A | 7 | 10 | 1 | 3 |  |
-| HO3 | O | 17 | 20 | 21 | 20 |  |
+| HO1 (PA3) | O | 13 | 16 | 15 | 14 |  |
+| HO2 (PB0) | O | 15 | 18 | 18 | 17 |  |
+| HO3 (PB1) | O | 17 | 20 | 21 | 20 |  |
+| LO1 (PA0) | O | 14 | 17 | 10 | 9 |  |
+| LO2 (PA2) | O | 16 | 19 | 11 | 10 |  |
+| LO3 (PD0) | O | 18 | 21 | 12 | 11 |  |
 | VB1 | P | - | - | 14 | 13 |  |
 | VB2 | P | - | - | 17 | 16 |  |
 | VB3 | P | - | - | 20 | 19 |  |
@@ -284,6 +290,7 @@ Pin functions (filterable): [ALL](https://ch32-riscv-ug.github.io/ch32-device-da
 |---|---|---|---|---|
 | PA1 | I/O/A | 5 | 2 |  |
 | PA2 | I/O/A | 6 | 3 |  |
+| PA4 | I/O | 4 | 1 |  |
 | PC0 | I/O | 10 | 7 |  |
 | PC1 | I/O | 11 | 8 |  |
 | PC2 | I/O | 12 | 9 |  |
@@ -338,7 +345,7 @@ Pin functions (filterable): [ALL](https://ch32-riscv-ug.github.io/ch32-device-da
 | PA1 | I/O/A | 1 | 17 | 5 | 2 |  |
 | PA2 | I/O/A | 2 | 19 | 6 | 3 |  |
 | PA3 | I/O | - | 21 | - | - |  |
-| PA4 | I/O/A | - | 15 | - | - |  |
+| PA4 | I/O/A | 12 | 15 | 4 | 1 |  |
 | PA5 | I/O/A | - | 16 | - | - |  |
 | PA6 | I/O | - | 17 | - | - |  |
 | PB0 | I/O | - | 22 | - | - |  |
@@ -361,7 +368,7 @@ Pin functions (filterable): [ALL](https://ch32-riscv-ug.github.io/ch32-device-da
 | PD6 | I/O/A | - | 13 | 3 | 20 |  |
 | PD7 | I/O/A | 12 | 14 | 4 | 1 |  |
 | VDD | P | 4 | 6 | 9 | 6 |  |
-| VSS | P | EP | 5 | 7 | EP |  |
+| VSS | P | EP | 5 | 7 | 4/EP |  |
 
 <details><summary><b>CH32V005 alternate functions</b></summary>
 
@@ -406,7 +413,7 @@ Pin functions (filterable): [ALL](https://ch32-riscv-ug.github.io/ch32-device-da
 | PA1 | I/O/A | 1 | 17 | 17 | 2 | 5 | 2 | 6 |  |
 | PA2 | I/O/A | 2 | 19 | 19 | 3 | 6 | 3 | 7 |  |
 | PA3 | I/O | - | 21 | 21 | - | - | - | 9 |  |
-| PA4 | I/O/A | - | 15 | 15 | - | - | - | 32 |  |
+| PA4 | I/O/A | 12 | 15 | 15 | - | 4 | 1 | 32 |  |
 | PA5 | I/O/A | - | 16 | 16 | - | - | - | 2 |  |
 | PA6 | I/O | - | 17 | 17 | - | - | - | 3 |  |
 | PA7 | I/O | - | - | - | - | - | - | 4 |  |
@@ -434,7 +441,7 @@ Pin functions (filterable): [ALL](https://ch32-riscv-ug.github.io/ch32-device-da
 | PD6 | I/O/A | - | 13 | 13 | 20 | 3 | 20 | 28 |  |
 | PD7 | I/O/A | 12 | 14 | 14 | 1 | 4 | 1 | 31 |  |
 | VDD | P | 4 | 6 | 6 | 6 | 9 | 6 | 17 |  |
-| VSS | P | EP | 5 | 5 | EP | 7 | EP | EP |  |
+| VSS | P | EP | 5 | 5 | 4/EP | 7 | 4/EP | EP |  |
 
 <details><summary><b>CH32V006 alternate functions</b></summary>
 
@@ -559,7 +566,7 @@ Pin functions (filterable): [ALL](https://ch32-riscv-ug.github.io/ch32-device-da
 | CH32M007 | ADC_ETRGINJ_REMAP | PCFR1 | PCFR1:18 | 0;1 | 0 |
 | CH32M007 | ADC_ETRGREG_REMAP | PCFR1 | PCFR1:19 | 0;1 | 0 |
 | CH32M007 | I2C1_REMAP | PCFR1 | PCFR1:3;PCFR1:4;PCFR1:5 | 0;1;2;3;4;5;6;7 | 0 |
-| CH32M007 | SPI1_REMAP | PCFR1 | PCFR1:0;PCFR1:1;PCFR1:2 | 0;1;2;3;4;5;6 | 0 |
+| CH32M007 | SPI1_REMAP | PCFR1 | PCFR1:0;PCFR1:1;PCFR1:2 | 0;1;2;3;4;5;6;7 | 0 |
 | CH32M007 | TIM1_REMAP | PCFR1 | PCFR1:10;PCFR1:11;PCFR1:12;PCFR1:13 | 0;1;2;3;4;5;6;7;8;9 | 0 |
 | CH32M007 | TIM2_REMAP | PCFR1 | PCFR1:14;PCFR1:15;PCFR1:16 | 0;1;2;3;4;5;6;7 | 0 |
 | CH32M007 | USART1_REMAP | PCFR1 | PCFR1:6;PCFR1:7;PCFR1:8;PCFR1:9 | 0;1;2;3;4;5;6;7;8;9 | 0 |
@@ -567,21 +574,21 @@ Pin functions (filterable): [ALL](https://ch32-riscv-ug.github.io/ch32-device-da
 | CH32V002 | ADC_ETRGINJ_REMAP | PCFR1 | PCFR1:18 | 0;1 | 0 |
 | CH32V002 | ADC_ETRGREG_REMAP | PCFR1 | PCFR1:19 | 0;1 | 0 |
 | CH32V002 | I2C1_REMAP | PCFR1 | PCFR1:3;PCFR1:4;PCFR1:5 | 0;1;2;3;4;5;6;7 | 0 |
-| CH32V002 | SPI1_REMAP | PCFR1 | PCFR1:0;PCFR1:1;PCFR1:2 | 0;1;2;3;4;5;6 | 0 |
+| CH32V002 | SPI1_REMAP | PCFR1 | PCFR1:0;PCFR1:1;PCFR1:2 | 0;1;2;3;4;5;6;7 | 0 |
 | CH32V002 | TIM1_REMAP | PCFR1 | PCFR1:10;PCFR1:11;PCFR1:12;PCFR1:13 | 0;1;2;3;4;5;6;7;8;9 | 0 |
 | CH32V002 | TIM2_REMAP | PCFR1 | PCFR1:14;PCFR1:15;PCFR1:16 | 0;1;2;3;4;5;6;7 | 0 |
 | CH32V002 | USART1_REMAP | PCFR1 | PCFR1:6;PCFR1:7;PCFR1:8;PCFR1:9 | 0;1;2;3;4;5;6;7;8;9 | 0 |
 | CH32V004 | ADC_ETRGINJ_REMAP | PCFR1 | PCFR1:18 | 0;1 | 0 |
 | CH32V004 | ADC_ETRGREG_REMAP | PCFR1 | PCFR1:19 | 0;1 | 0 |
 | CH32V004 | I2C1_REMAP | PCFR1 | PCFR1:3;PCFR1:4;PCFR1:5 | 0;1;2;3;4;5;6;7 | 0 |
-| CH32V004 | SPI1_REMAP | PCFR1 | PCFR1:0;PCFR1:1;PCFR1:2 | 0;1;2;3;4;5;6 | 0 |
+| CH32V004 | SPI1_REMAP | PCFR1 | PCFR1:0;PCFR1:1;PCFR1:2 | 0;1;2;3;4;5;6;7 | 0 |
 | CH32V004 | TIM1_REMAP | PCFR1 | PCFR1:10;PCFR1:11;PCFR1:12;PCFR1:13 | 0;1;2;3;4;5;6;7;8;9 | 0 |
 | CH32V004 | TIM2_REMAP | PCFR1 | PCFR1:14;PCFR1:15;PCFR1:16 | 0;1;2;3;4;5;6;7 | 0 |
 | CH32V004 | USART1_REMAP | PCFR1 | PCFR1:6;PCFR1:7;PCFR1:8;PCFR1:9 | 0;1;2;3;4;5;6;7;8;9 | 0 |
 | CH32V005 | ADC_ETRGINJ_REMAP | PCFR1 | PCFR1:18 | 0;1 | 0 |
 | CH32V005 | ADC_ETRGREG_REMAP | PCFR1 | PCFR1:19 | 0;1 | 0 |
 | CH32V005 | I2C1_REMAP | PCFR1 | PCFR1:3;PCFR1:4;PCFR1:5 | 0;1;2;3;4;5;6;7 | 0 |
-| CH32V005 | SPI1_REMAP | PCFR1 | PCFR1:0;PCFR1:1;PCFR1:2 | 0;1;2;3;4;5;6 | 0 |
+| CH32V005 | SPI1_REMAP | PCFR1 | PCFR1:0;PCFR1:1;PCFR1:2 | 0;1;2;3;4;5;6;7 | 0 |
 | CH32V005 | TIM1_REMAP | PCFR1 | PCFR1:10;PCFR1:11;PCFR1:12;PCFR1:13 | 0;1;2;3;4;5;6;7;8;9 | 0 |
 | CH32V005 | TIM2_REMAP | PCFR1 | PCFR1:14;PCFR1:15;PCFR1:16 | 0;1;2;3;4;5;6;7 | 0 |
 | CH32V005 | USART1_REMAP | PCFR1 | PCFR1:6;PCFR1:7;PCFR1:8;PCFR1:9 | 0;1;2;3;4;5;6;7;8;9 | 0 |
@@ -589,7 +596,7 @@ Pin functions (filterable): [ALL](https://ch32-riscv-ug.github.io/ch32-device-da
 | CH32V006 | ADC_ETRGINJ_REMAP | PCFR1 | PCFR1:18 | 0;1 | 0 |
 | CH32V006 | ADC_ETRGREG_REMAP | PCFR1 | PCFR1:19 | 0;1 | 0 |
 | CH32V006 | I2C1_REMAP | PCFR1 | PCFR1:3;PCFR1:4;PCFR1:5 | 0;1;2;3;4;5;6;7 | 0 |
-| CH32V006 | SPI1_REMAP | PCFR1 | PCFR1:0;PCFR1:1;PCFR1:2 | 0;1;2;3;4;5;6 | 0 |
+| CH32V006 | SPI1_REMAP | PCFR1 | PCFR1:0;PCFR1:1;PCFR1:2 | 0;1;2;3;4;5;6;7 | 0 |
 | CH32V006 | TIM1_REMAP | PCFR1 | PCFR1:10;PCFR1:11;PCFR1:12;PCFR1:13 | 0;1;2;3;4;5;6;7;8;9 | 0 |
 | CH32V006 | TIM2_REMAP | PCFR1 | PCFR1:14;PCFR1:15;PCFR1:16 | 0;1;2;3;4;5;6;7 | 0 |
 | CH32V006 | USART1_REMAP | PCFR1 | PCFR1:6;PCFR1:7;PCFR1:8;PCFR1:9 | 0;1;2;3;4;5;6;7;8;9 | 0 |
@@ -597,7 +604,7 @@ Pin functions (filterable): [ALL](https://ch32-riscv-ug.github.io/ch32-device-da
 | CH32V007 | ADC_ETRGINJ_REMAP | PCFR1 | PCFR1:18 | 0;1 | 0 |
 | CH32V007 | ADC_ETRGREG_REMAP | PCFR1 | PCFR1:19 | 0;1 | 0 |
 | CH32V007 | I2C1_REMAP | PCFR1 | PCFR1:3;PCFR1:4;PCFR1:5 | 0;1;2;3;4;5;6;7 | 0 |
-| CH32V007 | SPI1_REMAP | PCFR1 | PCFR1:0;PCFR1:1;PCFR1:2 | 0;1;2;3;4;5;6 | 0 |
+| CH32V007 | SPI1_REMAP | PCFR1 | PCFR1:0;PCFR1:1;PCFR1:2 | 0;1;2;3;4;5;6;7 | 0 |
 | CH32V007 | TIM1_REMAP | PCFR1 | PCFR1:10;PCFR1:11;PCFR1:12;PCFR1:13 | 0;1;2;3;4;5;6;7;8;9 | 0 |
 | CH32V007 | TIM2_REMAP | PCFR1 | PCFR1:14;PCFR1:15;PCFR1:16 | 0;1;2;3;4;5;6;7 | 0 |
 | CH32V007 | USART1_REMAP | PCFR1 | PCFR1:6;PCFR1:7;PCFR1:8;PCFR1:9 | 0;1;2;3;4;5;6;7;8;9 | 0 |
