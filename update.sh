@@ -111,21 +111,72 @@ finish() {
 # Refresh the catalogue, but keep working from the committed copy if the fetch
 # fails: a bad day upstream should not stop the mirror from updating its files.
 # カタログ取得に失敗しても、commit済みの写しで動き続ける。
+#
+# **Only this mirror's own rows are kept.** Upstream lists every document WCH
+# publishes (76 of them); a mirror owns 3 to 7. Committing the whole catalogue
+# meant that changing one document's download id produced an "update (automated)"
+# commit in **every** mirror, including the twelve that own nothing that changed.
+# ch32-device-data records each mirror's HEAD in `catalog/sources.csv` to tell
+# "the input moved" from "the generation was not re-run", so a commit that moves
+# no document takes that signal away. Slicing keeps the offline fallback intact
+# (`plan()` below reads exactly these rows) and makes the committed file change
+# only when this mirror's own documents change.
+#
+# 上流のカタログは全76文書、mirrorの担当は3〜7件。丸ごとcommitしていたので、
+# 無関係な文書のidが変わっただけで13 mirror全部に空身のコミットが立ち、
+# `catalog/sources.csv`の「入力が動いたか」の判定を潰していた。担当ぶんだけ持つ。
+# 取得・JSON検査・切り出しをすべて `documents.json.new` の上でやる。この名前は
+# **どの mirror の .gitignore も既に無視している**ので、一時ファイルを増やさずに済む
+# （増やすと13本の .gitignore を触ることになり、しかも途中で落ちたときに
+# `git add -A` が拾う候補が増える）。
+slice_catalogue() {
+  REPOSITORY="$REPOSITORY" python3 - "$1" <<'SLICEEOF'
+import json, os, sys
+
+path = sys.argv[1]
+try:
+    full = json.load(open(path, encoding="utf-8"))
+except (OSError, ValueError) as exc:
+    print(f"  -> not usable as a catalogue: {exc}", file=sys.stderr)
+    sys.exit(1)
+mine = os.environ["REPOSITORY"]
+kept = [d for d in full.get("documents", []) if mine in (d.get("repositories") or [])]
+if not kept:
+    # An empty slice means the fetch returned a broken catalogue, or this mirror
+    # lost its assignment upstream. Either way, do not overwrite a good copy --
+    # exit non-zero and let the caller fall back to the committed one.
+    # 空になるのは取得が壊れたか担当が外れたとき。良い写しは潰さない。
+    print(f"  -> the catalogue assigns no document to {mine}", file=sys.stderr)
+    sys.exit(1)
+out = {k: v for k, v in full.items() if k != "documents"}
+out["repository"] = mine
+out["catalogue_note"] = (
+    "Only the documents assigned to this mirror. The full catalogue is "
+    "manifests/documents.json in ch32-riscv-ug/ch32-device-data."
+)
+out["documents"] = kept
+with open(path, "w", encoding="utf-8") as f:
+    json.dump(out, f, ensure_ascii=False, indent=2)
+    f.write("\n")
+print(f"  {len(kept)} document(s) assigned to {mine}")
+SLICEEOF
+}
+
 echo "Catalogue: ${CATALOGUE_URL}"
 if curl -sSL --http1.1 --connect-timeout 30 --max-time 120 \
         -o "${CATALOGUE_CACHE}.new" "$CATALOGUE_URL" \
-   && python3 -c "import json,sys; json.load(open(sys.argv[1]))" "${CATALOGUE_CACHE}.new"; then
+   && slice_catalogue "${CATALOGUE_CACHE}.new"; then
   mv -f "${CATALOGUE_CACHE}.new" "$CATALOGUE_CACHE"
-  echo "  updated ${CATALOGUE_CACHE}"
+  echo "  updated ${CATALOGUE_CACHE} for ${REPOSITORY}"
 else
-  rm -f "${CATALOGUE_CACHE}.new"
-  if [ -f "$CATALOGUE_CACHE" ]; then
-    echo "::warning::could not refresh the catalogue; using the committed copy"
-  else
+  echo "::warning::could not refresh the catalogue; using the committed copy"
+  if [ ! -f "$CATALOGUE_CACHE" ]; then
     echo "::error::no catalogue available (fetch failed and no committed copy)" >&2
+    rm -f "${CATALOGUE_CACHE}.new"
     exit 1
   fi
 fi
+rm -f "${CATALOGUE_CACHE}.new"
 
 mkdir -p datasheet_en datasheet_zh
 
