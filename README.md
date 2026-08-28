@@ -23,13 +23,15 @@ Where these land **without writing a remap register**. SWD is live at reset; the
 
 ## Series
 
+Flash and SRAM list every value the series has; more than one means it varies by part number, and the per-part values are in the comparison table below.
+
 | Series | Core | ISA | Flash | SRAM | Clock | VDD | Packages | Products | Official |
 |---|---|---|---|---|---|---|---|---|---|
 | **CH32M007** | QingKe V2C | RV32EmC | 62K | 8K | 48 MHz | 2.0-5.5V | QFN26C3,QFN32,QSOP24,QSOP28 | 4 | [en](https://www.wch-ic.com/products/CH32M007.html) / [zh](https://www.wch.cn/products/CH32M007.html) |
 | **CH32V002** | QingKe V2C | RV32EmC | 16K | 4K | 48 MHz | 2.0-5.5V | QFN12,QFN20,SOP16,SOP8,TSSOP20 | 5 | [en](https://www.wch-ic.com/products/CH32V002.html) / [zh](https://www.wch.cn/products/CH32V002.html) |
 | **CH32V004** | QingKe V2C | RV32EmC | 32K | 6K | 48 MHz | 2.7-5.5V | QFN20L,TSSOP20 | 2 | [en](https://www.wch-ic.com/products/CH32V004.html) / [zh](https://www.wch.cn/products/CH32V004.html) |
 | **CH32V005** | QingKe V2C | RV32EmC | 32K | 6K | 48 MHz | 2.0-5.5V | QFN12,QFN20,QSOP24,TSSOP20 | 4 | [en](https://www.wch-ic.com/products/CH32V005.html) / [zh](https://www.wch.cn/products/CH32V005.html) |
-| **CH32V006** | QingKe V2C | RV32EmC | - | - | 48 MHz | 2.0-5.5V | QFN12,QFN20,QFN32,QSOP24,TSSOP20 | 7 | [en](https://www.wch-ic.com/products/CH32V006.html) / [zh](https://www.wch.cn/products/CH32V006.html) |
+| **CH32V006** | QingKe V2C | RV32EmC | 16K/62K | 4K/8K | 48 MHz | 2.0-5.5V | QFN12,QFN20,QFN32,QSOP24,TSSOP20 | 7 | [en](https://www.wch-ic.com/products/CH32V006.html) / [zh](https://www.wch.cn/products/CH32V006.html) |
 | **CH32V007** | QingKe V2C | RV32EmC | 62K | 8K | 48 MHz | 2.0-5.5V | QFN32,QSOP24 | 4 | [en](https://www.wch-ic.com/products/CH32V007.html) / [zh](https://www.wch.cn/products/CH32V007.html) |
 
 ## Product comparison

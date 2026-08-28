@@ -453,9 +453,9 @@
       "status": "assigned",
       "sources": {
         "zh": {
-          "file_id": 409,
-          "version": "2.1",
-          "scope": "CH32V003"
+          "file_id": 412,
+          "version": "1.0",
+          "scope": "CH32V003A4M6, CH32V003F4P6, CH32V003F4U6, CH32V003J4M6"
         }
       }
     },
