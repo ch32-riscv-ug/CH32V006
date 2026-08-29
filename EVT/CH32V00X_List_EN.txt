@@ -1,5 +1,5 @@
 
-Nanjing Qinheng Microelectronics Co., Ltd. 2025.01
+Nanjing Qinheng Microelectronics Co., Ltd. 2026.08
 
 https://wch-ic.com
 
@@ -31,6 +31,9 @@ Directory
   |      |      |      |      |-- Motor
   |      |      |      |      |      |-- Electric_Fan:Application of medium and low speed fans based on FOC three-phase brushless motor
   |      |      |      |      |      |-- voilent_fan: BLDC-based high-speed fan applications
+  |      |      |      |      |      |-- BLDC_Motor：Application of sensorless square wave BLDC motor
+  |      |      |      |      |-- WUI
+  |      |      |      |      |      |-- wui_demo: gui lcd demo
   |      |      |      |-- DMA
   |      |      |      |      |-- DMA_MEM2MEM: Memory to memory mode routine
   |      |      |      |      |-- DMA_MEM2PERIP: Memory to peripheral mode, and peripheral to memory mode routine, see peripheral sub-routine

@@ -1,8 +1,8 @@
 /********************************** (C) COPYRIGHT *******************************
  * File Name          : main.c
  * Author             : WCH
- * Version            : V1.0.1
- * Date               : 2025/01/08
+ * Version            : V1.0.3
+ * Date               : 2026/08/11
  * Description        : Main program body.
  *********************************************************************************
  * Copyright (c) 2021 Nanjing Qinheng Microelectronics Co., Ltd.
@@ -44,11 +44,11 @@ void OPA1_Init( void )
     OPA_InitTypeDef  OPA_InitStructure = {0};
     RCC_PB2PeriphClockCmd(RCC_PB2Periph_GPIOA|RCC_PB2Periph_GPIOD, ENABLE);
     GPIO_InitStructure.GPIO_Pin = GPIO_Pin_1|GPIO_Pin_2;
-    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;
     GPIO_Init( GPIOA, &GPIO_InitStructure );
 
     GPIO_InitStructure.GPIO_Pin = GPIO_Pin_7|GPIO_Pin_3;
-    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;
     GPIO_Init( GPIOD, &GPIO_InitStructure );
 
     OPA_InitStructure.Mode = OUT_IO_OUT0;
@@ -160,10 +160,10 @@ void TIM2_PWM_In(u16 arr, u16 psc, u16 ccp)
  */
 void TIM1_PWM_OUT( u16 arr, u16 psc, u16 ccp )
 {
-    GPIO_InitTypeDef GPIO_InitStructure;
-    TIM_OCInitTypeDef TIM_OCInitStructure;
-    TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStructure;
-    TIM_BDTRInitTypeDef TIM_BDTRInitStructure;
+    GPIO_InitTypeDef GPIO_InitStructure = {0};
+    TIM_OCInitTypeDef TIM_OCInitStructure = {0};
+    TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStructure = {0};
+    TIM_BDTRInitTypeDef TIM_BDTRInitStructure = {0};
 
     RCC_PB2PeriphClockCmd( RCC_PB2Periph_GPIOD | RCC_PB2Periph_TIM1, ENABLE );
 

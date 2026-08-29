@@ -1,8 +1,8 @@
 /********************************** (C) COPYRIGHT  *******************************
  * File Name          : ch32v00X_dbgmcu.c
  * Author             : WCH
- * Version            : V1.0.1
- * Date               : 2025/02/27
+ * Version            : V1.0.2
+ * Date               : 2025/09/05
  * Description        : This file provides all the DBGMCU firmware functions.
  *********************************************************************************
  * Copyright (c) 2021 Nanjing Qinheng Microelectronics Co., Ltd.
@@ -23,7 +23,7 @@
  */
 uint32_t DBGMCU_GetREVID(void)
 {
-    return ((*(uint32_t *)0x1FFFF704) >> 16);
+	return ((*(uint32_t *)0x1FFFF704) & IDCODE_DEVID_MASK);
 }
 
 /*********************************************************************
@@ -35,7 +35,7 @@ uint32_t DBGMCU_GetREVID(void)
  */
 uint32_t DBGMCU_GetDEVID(void)
 {
-    return ((*(uint32_t *)0x1FFFF704) & IDCODE_DEVID_MASK);
+    return ((*(uint32_t *)0x1FFFF704) >> 16);
 }
 
 /*********************************************************************
@@ -108,31 +108,32 @@ void DBGMCU_Config(uint32_t DBGMCU_Periph, FunctionalState NewState)
  *
  * @return Device identifier.
  *          ChipID List-
- *    CH32V006K8U6-0x006006x0
- *    CH32V006E8R6-0x006106x0
- *    CH32V006F8U6-0x006206x0
- *    CH32V006F8P6-0x006306x0
- *    CH32V006F4U6-0x006406x0
+ *    CH32V006K8U-0x006006x0
+ *    CH32V006E8R-0x006106x0
+ *    CH32V006F8U-0x006206x0
+ *    CH32V006F8P-0x006306x0
+ *    CH32V006F4U-0x006406x0
+ *    CH32V006D8U-0x006706x0
  *
- *    CH32M007G8R6-0x007008x0
- *    CH32M007E8R6-0x007308x0
- *    CH32M007E8U6-0x007408x0
- *    CH32V007E8R6-0x007106x0
- *    CH32V007K8U6-0x007206x0
+ *    CH32M007G8R-0x007008x0
+ *    CH32M007E8R-0x007308x0
+ *    CH32M007E8U-0x007408x0
+ *    CH32V007E8R-0x007106x0
+ *    CH32V007K8U-0x007206x0
  *
- *    CH32V005E6R6-0x005006x0
- *    CH32V005F6U6-0x005106x0
- *    CH32V005F6P6-0x005206x0
- *    CH32V005D6U6-0x005306x0
+ *    CH32V005E6R-0x005006x0
+ *    CH32V005F6U-0x005106x0
+ *    CH32V005F6P-0x005206x0
+ *    CH32V005D6U-0x005306x0
  *
- *    CH32V002F4P6-0x002006x0
- *    CH32V002F4U6-0x002106x0
- *    CH32V002A4M6-0x002206x0
- *    CH32V002D4U6-0x002306x0
- *    CH32V002J4M6-0x002406x0
+ *    CH32V002F4P-0x002006x0
+ *    CH32V002F4U-0x002106x0
+ *    CH32V002A4M-0x002206x0
+ *    CH32V002D4U-0x002306x0
+ *    CH32V002J4M-0x002406x0
  *
- *    CH32V004F6P1-0x004006x0
- *    CH32V004F6U1-0x00410600
+ *    CH32V004F6P-0x004006x0
+ *    CH32V004F6U-0x004106x0
  */
 uint32_t DBGMCU_GetCHIPID( void )
 {

@@ -1,8 +1,8 @@
 /********************************** (C) COPYRIGHT  *******************************
  * File Name          : ch32v00X_gpio.h
  * Author             : WCH
- * Version            : V1.0.0
- * Date               : 2024/01/01
+ * Version            : V1.0.1
+ * Date               : 2025/12/29
  * Description        : This file contains all the functions prototypes for the
  *                      GPIO firmware library.
  *********************************************************************************
@@ -114,7 +114,7 @@ typedef enum
 #define GPIO_PartialRemap4_USART2      ((uint32_t)0x08240040) /* USART2 Partial4 Alternate Function mapping */
 #define GPIO_PartialRemap5_USART2      ((uint32_t)0x08240050) /* USART2 Partial5 Alternate Function mapping */
 #define GPIO_FullRemap_USART2          ((uint32_t)0x08240060) /* USART2 Full Alternate Function mapping */
-#define GPIO_Remap_LSI_CAL             ((uint32_t)0x00200080) /* LSI calibration Alternate Function mapping */
+#define GPIO_Remap_LSI_CAL             ((uint32_t)0x001A3000) /* LSI calibration Alternate Function mapping */
 #define GPIO_Remap_SDI_Disable         ((uint32_t)0x08300400) /* SDI Disabled */
 
 /* GPIO_Port_Sources */

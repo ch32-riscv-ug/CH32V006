@@ -1,9 +1,9 @@
 ;/********************************** (C) COPYRIGHT *******************************
 ;* File Name          : startup_ch32v00X_iap.s
 ;* Author             : WCH
-;* Version            : V1.0.2
-;* Date               : 2025/01/10
-;* Description        : ch32v002-ch32v004-ch32v005-ch32v006-ch32v007-ch32m007 vector table for eclipse toolchain.
+;* Version            : V1.0.3
+;* Date               : 2025/12/16
+;* Description        : ch32v002-ch32v004-ch32v005-ch32v006-ch32v007-ch32m007 StartUp File.
 ;*********************************************************************************
 ;* Copyright (c) 2021 Nanjing Qinheng Microelectronics Co., Ltd.
 ;* Attention: This software (modified or not) and binary are used for 

@@ -1,8 +1,8 @@
 /********************************** (C) COPYRIGHT *******************************
 * File Name          :TouchKey_CFG.h
 * Author             : WCH
-* Version            : V1.0
-* Date               : 2023/10/17
+* Version            : V1.0.1
+* Date               : 2026/08/21
 * Description        : Touch button parameter configuration header file
 * ********************************************************************************
 * Copyright(c) 2023 Nanjing Qinheng Microelectronics Co., Ltd.
@@ -51,7 +51,7 @@ TKY_QUEUE_END
     }
 
 #define TKY_CHS_INIT \
-				GEN_TKY_CH_INIT(TKY_QUEUE_0,0,49,16,0,3382,40,25),\
+				GEN_TKY_CH_INIT(TKY_QUEUE_0,0,49,16,0,3282,50,55),\
 				GEN_TKY_CH_INIT(TKY_QUEUE_1,5,22,16,0,3223,120,100),\
 				GEN_TKY_CH_INIT(TKY_QUEUE_2,7,29,16,0,3621,30,20),\
 				GEN_TKY_CH_INIT(TKY_QUEUE_3,6,29,16,0,3600,30,20),\

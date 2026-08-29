@@ -1,8 +1,8 @@
 /********************************** (C) COPYRIGHT *******************************
  * File Name          : main.c
  * Author             : WCH
- * Version            : V1.0.1
- * Date               : 2025/01/08
+ * Version            : V1.0.2
+ * Date               : 2026/08/11
  * Description        : Main program body.
  *********************************************************************************
  * Copyright (c) 2021 Nanjing Qinheng Microelectronics Co., Ltd.
@@ -44,15 +44,15 @@ void CMP_Init( void )
 
     RCC_PB2PeriphClockCmd(RCC_PB2Periph_GPIOB|RCC_PB2Periph_GPIOC|RCC_PB2Periph_GPIOD, ENABLE);
     GPIO_InitStructure.GPIO_Pin = GPIO_Pin_5|GPIO_Pin_2;
-    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;
     GPIO_Init( GPIOC, &GPIO_InitStructure );
 
     GPIO_InitStructure.GPIO_Pin = GPIO_Pin_3;
-    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;
     GPIO_Init( GPIOB, &GPIO_InitStructure );
 
     GPIO_InitStructure.GPIO_Pin = GPIO_Pin_2;
-    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;
     GPIO_Init( GPIOD, &GPIO_InitStructure );
 
     NVIC_InitStructure.NVIC_IRQChannel = OPCM_IRQn;

@@ -652,7 +652,7 @@ Pin functions (filterable): [ALL](https://ch32-riscv-ug.github.io/ch32-device-da
 | CH32V006DS2.PDF | datasheet | - | [page](https://www.wch.cn/downloads/CH32V006DS2_PDF.html) [mirror](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V006DS2.PDF) v1.1 |
 | CH32V007DS0.PDF | datasheet | [page](https://www.wch-ic.com/downloads/CH32V007DS0_PDF.html) [mirror](https://ch32-riscv-ug.github.io/CH32V006/datasheet_en/CH32V007DS0.PDF) v1.8 | [page](https://www.wch.cn/downloads/CH32V007DS0_PDF.html) [mirror](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V007DS0.PDF) v1.8 |
 | CH32V00XRM.PDF | reference-manual | [page](https://www.wch-ic.com/downloads/CH32V00XRM_PDF.html) [mirror](https://ch32-riscv-ug.github.io/CH32V006/datasheet_en/CH32V00XRM.PDF) v1.5 | [page](https://www.wch.cn/downloads/CH32V00XRM_PDF.html) [mirror](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V00XRM.PDF) v1.5 |
-| CH32V006EVT.ZIP | evt | - | [page](https://www.wch.cn/downloads/CH32V006EVT_ZIP.html) [mirror](https://github.com/ch32-riscv-ug/CH32V006/tree/main/EVT) v1.4 |
+| CH32V006EVT.ZIP | evt | - | [page](https://www.wch.cn/downloads/CH32V006EVT_ZIP.html) [mirror](https://github.com/ch32-riscv-ug/CH32V006/tree/main/EVT) v1.5 |
 
 ### Evaluation boards
 

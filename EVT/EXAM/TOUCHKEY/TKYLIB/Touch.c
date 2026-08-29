@@ -14,31 +14,30 @@
 /*********************
  *      DEFINES
  *********************/
-#define WAKEUPTIME 50          // Sleep Time = 250 * SLEEP_TRIGGER_TIME(100ms) = 25s
+#define WAKEUPTIME 50  // Sleep Time = 250 * SLEEP_TRIGGER_TIME(100ms) = 25s
 
 /**********************
  *      VARIABLES
  **********************/
-__attribute__ ((aligned (4))) uint32_t TKY_MEMBUF[ (TKY_MEMHEAP_SIZE - 1) / 4 + 1 ] = {0};
-static uint16_t keyData = 0;
-static uint16_t WheelData = TOUCH_OFF_VALUE;
-static uint16_t SilderData = TOUCH_OFF_VALUE;
+__attribute__( ( aligned( 4 ) ) ) uint32_t TKY_MEMBUF[ ( TKY_MEMHEAP_SIZE - 1 ) / 4 + 1 ] = { 0 };
+static uint16_t                            keyData                                        = 0;
+static uint16_t                            WheelData                                      = TOUCH_OFF_VALUE;
+static uint16_t                            SilderData                                     = TOUCH_OFF_VALUE;
 
-static touch_cfg_t *p_touch_cfg = NULL;
+static touch_cfg_t*                        p_touch_cfg                                    = NULL;
 
-uint8_t wakeUpCount = 0, wakeupflag = 0;
+uint8_t                                    wakeUpCount = 0, wakeupflag = 0;
 
-uint32_t tkyPinAll = 0;
-uint16_t tkyQueueAll = 0;
-static const TKY_ChannelInitTypeDef my_tky_ch_init[ TKY_QUEUE_END ] = {TKY_CHS_INIT};
-
+uint32_t                                   tkyPinAll                       = 0;
+uint16_t                                   tkyQueueAll                     = 0;
+static const TKY_ChannelInitTypeDef        my_tky_ch_init[ TKY_QUEUE_END ] = { TKY_CHS_INIT };
 
 typedef struct
 {
     GPIO_TypeDef* GPIOx;
-    uint32_t GPIO_Pin;
-    uint32_t GPIO_CFG_MASK;
-    uint32_t GPIO_CFG_OUT;
+    uint32_t      GPIO_Pin;
+    uint32_t      GPIO_CFG_MASK;
+    uint32_t      GPIO_CFG_OUT;
 } TKY_CH_GPIO_S;
 
 /*Sort gpio by touch channel hardware serial number*/
@@ -60,15 +59,15 @@ const TKY_CH_GPIO_S TKY_Pin[ 8 ] = {
  **********************/
 
 static KEY_FIFO_T s_tKey; /* °′?üFIFO±?á?,?á11ì? */
-static void touch_InitHard(void);
-static void touch_InitVar(touch_cfg_t *p);
-static void touch_PutKey(uint8_t _KeyCode);
-static void touch_DetectKey(touch_button_cfg_t * p);
-static void touch_Regcfg (void);
-static void touch_Baseinit (void);
-static void touch_Channelinit (void);
-static uint16_t touch_DetecLineSlider(touch_slider_cfg_t * p_slider);
-static uint16_t touch_DetectWheelSlider (touch_wheel_cfg_t * p_wheel);
+static void       touch_InitHard( void );
+static void       touch_InitVar( touch_cfg_t* p );
+static void       touch_PutKey( uint8_t _KeyCode );
+static void       touch_DetectKey( touch_button_cfg_t* p );
+static void       touch_Regcfg( void );
+static void       touch_Baseinit( void );
+static void       touch_Channelinit( void );
+static uint16_t   touch_DetecLineSlider( touch_slider_cfg_t* p_slider );
+static uint16_t   touch_DetectWheelSlider( touch_wheel_cfg_t* p_wheel );
 
 /**********************
  *   GLOBAL FUNCTIONS
@@ -84,10 +83,10 @@ static uint16_t touch_DetectWheelSlider (touch_wheel_cfg_t * p_wheel);
  *
  * @return  none
  */
-void touch_Init(touch_cfg_t *p)
+void touch_Init( touch_cfg_t* p )
 {
     touch_InitHard();
-    touch_InitVar(p);
+    touch_InitVar( p );
 }
 
 /*********************************************************************
@@ -99,11 +98,11 @@ void touch_Init(touch_cfg_t *p)
  *
  * @return  none
  */
-static void touch_PutKey(uint8_t _KeyCode)
+static void touch_PutKey( uint8_t _KeyCode )
 {
     s_tKey.Buf[ s_tKey.Write ] = _KeyCode;
 
-    if (++s_tKey.Write >= KEY_FIFO_SIZE)
+    if ( ++s_tKey.Write >= KEY_FIFO_SIZE )
     {
         s_tKey.Write = 0;
     }
@@ -118,11 +117,11 @@ static void touch_PutKey(uint8_t _KeyCode)
  *
  * @return  key code
  */
-uint8_t touch_GetKey (void)
+uint8_t touch_GetKey( void )
 {
     uint8_t ret;
 
-    if (s_tKey.Read == s_tKey.Write)
+    if ( s_tKey.Read == s_tKey.Write )
     {
         return KEY_NONE;
     }
@@ -130,7 +129,7 @@ uint8_t touch_GetKey (void)
     {
         ret = s_tKey.Buf[ s_tKey.Read ];
 
-        if (++s_tKey.Read >= KEY_FIFO_SIZE)
+        if ( ++s_tKey.Read >= KEY_FIFO_SIZE )
         {
             s_tKey.Read = 0;
         }
@@ -148,11 +147,10 @@ uint8_t touch_GetKey (void)
  * @return  1 - press a button
  *          0 - not pressed
  */
-uint8_t touch_GetKeyState (KEY_ID_E _ucKeyID)
+uint8_t touch_GetKeyState( KEY_ID_E _ucKeyID )
 {
-    return p_touch_cfg->touch_button_cfg->p_stbtn[_ucKeyID].State;
+    return p_touch_cfg->touch_button_cfg->p_stbtn[ _ucKeyID ].State;
 }
-
 
 /*********************************************************************
  * @fn      touch_SetKeyParam
@@ -165,11 +163,11 @@ uint8_t touch_GetKeyState (KEY_ID_E _ucKeyID)
  *
  * @return  none
  */
-void touch_SetKeyParam (uint8_t _ucKeyID, uint16_t _LongTime, uint8_t _RepeatSpeed)
+void touch_SetKeyParam( uint8_t _ucKeyID, uint16_t _LongTime, uint8_t _RepeatSpeed )
 {
-    p_touch_cfg->touch_button_cfg->p_stbtn[_ucKeyID].LongTime = _LongTime;
-    p_touch_cfg->touch_button_cfg->p_stbtn[_ucKeyID].RepeatSpeed = _RepeatSpeed;
-    p_touch_cfg->touch_button_cfg->p_stbtn[_ucKeyID].RepeatCount = 0;
+    p_touch_cfg->touch_button_cfg->p_stbtn[ _ucKeyID ].LongTime    = _LongTime;
+    p_touch_cfg->touch_button_cfg->p_stbtn[ _ucKeyID ].RepeatSpeed = _RepeatSpeed;
+    p_touch_cfg->touch_button_cfg->p_stbtn[ _ucKeyID ].RepeatCount = 0;
 }
 
 /*********************************************************************
@@ -181,11 +179,10 @@ void touch_SetKeyParam (uint8_t _ucKeyID, uint16_t _LongTime, uint8_t _RepeatSpe
  *
  * @return  none
  */
-void touch_ClearKey (void)
+void touch_ClearKey( void )
 {
     s_tKey.Read = s_tKey.Write;
 }
-
 
 /*********************************************************************
  * @fn      touch_ScanWakeUp
@@ -196,16 +193,13 @@ void touch_ClearKey (void)
  *
  * @return  none
  */
-void touch_ScanWakeUp (void)
+void touch_ScanWakeUp( void )
 {
     wakeUpCount = WAKEUPTIME;
-    wakeupflag = 1;
+    wakeupflag  = 1;
 
-    dg_log ("wake up for a while\n");
-    TKY_SaveAndStop();
-    touch_GPIOSleep();
+    dg_log( "wake up for a while\n" );
 }
-
 
 /*********************************************************************
  * @fn      touch_ScanEnterSleep
@@ -216,12 +210,10 @@ void touch_ScanWakeUp (void)
  *
  * @return  none
  */
-void touch_ScanEnterSleep (void)
+void touch_ScanEnterSleep( void )
 {
-    TKY_SaveAndStop();
-    touch_GPIOSleep();
     wakeupflag = 0;
-    dg_log ("Ready to sleep\n");
+    dg_log( "Ready to sleep\n" );
 }
 
 /*********************************************************************
@@ -233,26 +225,26 @@ void touch_ScanEnterSleep (void)
  *
  * @return  none
  */
-void touch_Scan(void)
+void touch_Scan( void )
 {
 
-    TKY_LoadAndRun();          //---Load touch settings before initiating conversion---
+    TKY_LoadAndRun();  //---Load touch settings before initiating conversion---
     keyData = TKY_PollForFilter();
     TKY_SaveAndStop();
+
 #if TKY_SLEEP_EN
-    if (keyData)
+    if ( keyData )
     {
         wakeUpCount = WAKEUPTIME;
     }
 #endif
 
-    touch_DetectKey(p_touch_cfg->touch_button_cfg);
+    touch_DetectKey( p_touch_cfg->touch_button_cfg );
 
-    WheelData = touch_DetectWheelSlider(p_touch_cfg->touch_wheel_cfg);
+    WheelData  = touch_DetectWheelSlider( p_touch_cfg->touch_wheel_cfg );
 
-    SilderData = touch_DetecLineSlider(p_touch_cfg->touch_slider_cfg);
+    SilderData = touch_DetecLineSlider( p_touch_cfg->touch_slider_cfg );
 }
-
 
 /*********************************************************************
  * @fn      touch_GPIOModeCfg
@@ -264,22 +256,21 @@ void touch_Scan(void)
  *
  * @return  none
  */
-void touch_GPIOModeCfg (GPIOMode_TypeDef mode, uint32_t channel)
+void touch_GPIOModeCfg( GPIOMode_TypeDef mode, uint32_t channel )
 {
-    switch (mode)
+    switch ( mode )
     {
-        case GPIO_Mode_AIN :
-            TKY_Pin[ channel ].GPIOx->CFGLR &= TKY_Pin[ channel ].GPIO_CFG_MASK;
-            break;
-        case GPIO_Mode_Out_PP :
-            TKY_Pin[ channel ].GPIOx->CFGLR |= TKY_Pin[ channel ].GPIO_CFG_OUT;
-            TKY_Pin[ channel ].GPIOx->BCR |= TKY_Pin[ channel ].GPIO_Pin;
-            break;
-        default :
-            break;
+    case GPIO_Mode_AIN :
+        TKY_Pin[ channel ].GPIOx->CFGLR &= TKY_Pin[ channel ].GPIO_CFG_MASK;
+        break;
+    case GPIO_Mode_Out_PP :
+        TKY_Pin[ channel ].GPIOx->CFGLR |= TKY_Pin[ channel ].GPIO_CFG_OUT;
+        TKY_Pin[ channel ].GPIOx->BCR   |= TKY_Pin[ channel ].GPIO_Pin;
+        break;
+    default :
+        break;
     }
 }
-
 
 /**********************
  *   STATIC FUNCTIONS
@@ -294,11 +285,12 @@ void touch_GPIOModeCfg (GPIOMode_TypeDef mode, uint32_t channel)
  *
  * @return  none
  */
-static void touch_InitHard (void)
+static void touch_InitHard( void )
 {
     touch_Regcfg();
     touch_Baseinit();
     touch_Channelinit();
+    
 }
 
 /*********************************************************************
@@ -310,29 +302,26 @@ static void touch_InitHard (void)
  *
  * @return  none
  */
-static void touch_InitVar(touch_cfg_t *p)
+static void touch_InitVar( touch_cfg_t* p )
 {
     uint8_t i;
 
-    p_touch_cfg = p;
+    p_touch_cfg  = p;
 
 
-    s_tKey.Read = 0;
+    s_tKey.Read  = 0;
     s_tKey.Write = 0;
 
 
-    for (i = 0; i < p_touch_cfg->touch_button_cfg->num_elements; i++)
+    for ( i = 0; i < p_touch_cfg->touch_button_cfg->num_elements; i++ )
     {
-        p_touch_cfg->touch_button_cfg->p_stbtn[i].LongTime = KEY_LONG_TIME;             
-        p_touch_cfg->touch_button_cfg->p_stbtn[i].Count = KEY_FILTER_TIME / 2;        
-        p_touch_cfg->touch_button_cfg->p_stbtn[i].State = 0;                            
-        p_touch_cfg->touch_button_cfg->p_stbtn[i].RepeatSpeed = 0;                     
-        p_touch_cfg->touch_button_cfg->p_stbtn[i].RepeatCount = 0;                   
+        p_touch_cfg->touch_button_cfg->p_stbtn[ i ].LongTime    = KEY_LONG_TIME;
+        p_touch_cfg->touch_button_cfg->p_stbtn[ i ].Count       = KEY_FILTER_TIME / 2;
+        p_touch_cfg->touch_button_cfg->p_stbtn[ i ].State       = 0;
+        p_touch_cfg->touch_button_cfg->p_stbtn[ i ].RepeatSpeed = 0;
+        p_touch_cfg->touch_button_cfg->p_stbtn[ i ].RepeatCount = 0;
     }
-
-
 }
-
 
 /*********************************************************************
  * @fn      touch_InfoDebug
@@ -343,37 +332,44 @@ static void touch_InitVar(touch_cfg_t *p)
  *
  * @return  none
  */
-void touch_InfoDebug (void)
+void touch_InfoDebug( void )
 {
-    uint8_t i;
-    int16_t data_dispNum[ TKY_MAX_QUEUE_NUM ] = {0};
+    uint8_t  i;
+    uint16_t data_dispNum[ TKY_MAX_QUEUE_NUM ] = { 0 };
 
-    for (i = 0; i < TKY_MAX_QUEUE_NUM; i++)
+    for ( i = 0; i < TKY_MAX_QUEUE_NUM; i++ )
     {
-        data_dispNum[ i ] = TKY_GetCurQueueValue (i);
+        TKY_GetCurQueueValue( i, &data_dispNum[ i ] );
     }
 
-    for (i = 0; i < TKY_MAX_QUEUE_NUM; i++)
+    for ( i = 0; i < TKY_MAX_QUEUE_NUM; i++ )
     {
-        dg_log ("%04d,", data_dispNum[ i ]);
-    } dg_log("\n");
+        dg_log( "%04d,", data_dispNum[ i ] );
+    }
+    dg_log( "\n" );
 
-    for (i = 0; i < TKY_MAX_QUEUE_NUM; i++)
+    for ( i = 0; i < TKY_MAX_QUEUE_NUM; i++ )
     {
-        data_dispNum[ i ] = TKY_GetCurQueueBaseLine (i);
+        TKY_GetCurQueueBaseLine( i, &data_dispNum[ i ] );
     }
 
-    for (i = 0; i < TKY_MAX_QUEUE_NUM; i++)
+    for ( i = 0; i < TKY_MAX_QUEUE_NUM; i++ )
     {
-        dg_log ("%04d,", data_dispNum[ i ]);
-    } dg_log("\n");
+        dg_log( "%04d,", data_dispNum[ i ] );
+    }
+    dg_log( "\n" );
 
-    for (i = 0; i < TKY_MAX_QUEUE_NUM; i++)
+    for ( i = 0; i < TKY_MAX_QUEUE_NUM; i++ )
     {
-        dg_log ("%04d,", TKY_GetCurQueueRealVal (i));
-    }dg_log("\r\n");
-    dg_log ("\r\n");
+        TKY_GetCurQueueRealVal( i, &data_dispNum[ i ] );
+    }
 
+    for ( i = 0; i < TKY_MAX_QUEUE_NUM; i++ )
+    {
+        dg_log( "%04d,", data_dispNum[ i ] );
+    }
+    dg_log( "\r\n" );
+    dg_log( "\r\n" );
 }
 
 /*********************************************************************
@@ -385,85 +381,109 @@ void touch_InfoDebug (void)
  *
  * @return  none
  */
-static void touch_DetectKey (touch_button_cfg_t* p)
+static void touch_DetectKey( touch_button_cfg_t* p )
 {
     KEY_T* pBtn;
 
-    if (p == NULL)
+    if ( p == NULL )
     {
         return;
     }
 
-    for (uint8_t i = 0; i < p->num_elements; i++)
+    for ( uint8_t i = 0; i < p->num_elements; i++ )
     {
         /*按键按下*/
         pBtn = NULL;
         pBtn = &p_touch_cfg->touch_button_cfg->p_stbtn[ i ];
-        if (keyData & (1 << p->p_elem_index[ i ]))          // pBtn->IsKeyDownFunc()==1
+        if ( keyData & ( 1 << p->p_elem_index[ i ] ) )  // pBtn->IsKeyDownFunc()==1
         {
-            if (pBtn->State == 0)
+            /*短按键，软件处理消抖*/
+            if ( pBtn->Count < KEY_FILTER_TIME )
             {
-                pBtn->State = 1;
-#if !KEY_MODE
-            /* Send a button press message */
-            touch_PutKey ((uint8_t) (3 * i + 1));
-#endif
-        }
-
-        /*Handling long keystrokes*/
-        if (pBtn->LongTime > 0)
-        {
-            if (pBtn->LongCount < pBtn->LongTime)
+                pBtn->Count = KEY_FILTER_TIME;
+            }
+            else if ( pBtn->Count < 2 * KEY_FILTER_TIME )
             {
-                /* Sending a key long-pressed message */
-                if (++pBtn->LongCount == pBtn->LongTime)
-                {
-#if !KEY_MODE
-                    pBtn->State = 2;
-
-                    /* Key value into key FIFO */
-                    touch_PutKey ((uint8_t) (3 * i + 3));
-#endif
-                }
+                pBtn->Count++;
             }
             else
             {
-                if (pBtn->RepeatSpeed > 0)
+                if ( pBtn->State == 0 )
                 {
-                    if (++pBtn->RepeatCount >= pBtn->RepeatSpeed)
-                    {
-                        pBtn->RepeatCount = 0;
+                    pBtn->State = 1;
 #if !KEY_MODE
-                        /* After a long keystroke, send 1 keystroke every pBtn->RepeatSpeed*10ms */
-                        touch_PutKey ((uint8_t) (3 * i + 1));
+                    /* Send a button press message */
+                    touch_PutKey( (uint8_t)( 3 * i + 1 ) );
 #endif
+                }
+            }
+
+            /*Handling long keystrokes*/
+            if ( pBtn->LongTime > 0 )
+            {
+                if ( pBtn->LongCount < pBtn->LongTime )
+                {
+                    /* Sending a key long-pressed message */
+                    if ( ++pBtn->LongCount == pBtn->LongTime )
+                    {
+#if !KEY_MODE
+                        pBtn->State = 2;
+
+                        /* Key value into key FIFO */
+                        touch_PutKey( (uint8_t)( 3 * i + 3 ) );
+#endif
+                    }
+                }
+                else
+                {
+                    if ( pBtn->RepeatSpeed > 0 )
+                    {
+                        if ( ++pBtn->RepeatCount >= pBtn->RepeatSpeed )
+                        {
+                            pBtn->RepeatCount = 0;
+#if !KEY_MODE
+                            /* After a long keystroke, send 1 keystroke every pBtn->RepeatSpeed*10ms */
+                            touch_PutKey( (uint8_t)( 3 * i + 1 ) );
+#endif
+                        }
                     }
                 }
             }
         }
-    }
-    else
-    {
-        if (pBtn->State)
+        else
         {
+            if ( pBtn->Count > KEY_FILTER_TIME )
+            {
+                pBtn->Count = KEY_FILTER_TIME;
+            }
+            else if ( pBtn->Count != 0 )
+            {
+                pBtn->Count--;
+            }
+            else
+            {
+                if ( pBtn->State )
+                {
 #if KEY_MODE
-            if (pBtn->State == 1)
-                /* Sends a key press message */
-                touch_PutKey ((uint8_t) (3 * i + 1));
+                    if ( pBtn->State == 1 )
+                        /* Sends a key press message */
+                        touch_PutKey( (uint8_t)( 3 * i + 1 ) );
 #endif
-            pBtn->State = 0;
+                    pBtn->State = 0;
 
 #if !KEY_MODE
-            /* Sends a button pop-up message after releasing the button KEY_FILTER_TIME */
-            touch_PutKey ((uint8_t) (3 * i + 2));
+                    /* Sends a button pop-up message after releasing the button KEY_FILTER_TIME */
+                    touch_PutKey( (uint8_t)( 3 * i + 2 ) );
 #endif
-        }
+                }
+            }
 
-        pBtn->LongCount = 0;
-        pBtn->RepeatCount = 0;
+            pBtn->LongCount   = 0;
+            pBtn->RepeatCount = 0;
         }
     }
 }
+
 /*********************************************************************
  * @fn      touch_Regcfg
  *
@@ -473,55 +493,51 @@ static void touch_DetectKey (touch_button_cfg_t* p)
  *
  * @return  none
  */
-static void touch_Regcfg (void)
+static void touch_Regcfg( void )
 {
-    ADC_InitTypeDef ADC_InitStructure = {0};
-    uint8_t i = 0;
+    ADC_InitTypeDef ADC_InitStructure = { 0 };
+    uint8_t         i                 = 0;
 
-    RCC_PB2PeriphClockCmd (RCC_PB2Periph_GPIOA | RCC_PB2Periph_GPIOC | RCC_PB2Periph_GPIOD, ENABLE);
-    RCC_PB2PeriphClockCmd (RCC_PB2Periph_ADC1, ENABLE);
-    for (i = 0; i < TKY_MAX_QUEUE_NUM; i++)
+    RCC_PB2PeriphClockCmd( RCC_PB2Periph_GPIOA | RCC_PB2Periph_GPIOC | RCC_PB2Periph_GPIOD, ENABLE );
+    RCC_PB2PeriphClockCmd( RCC_PB2Periph_ADC1, ENABLE );
+    for ( i = 0; i < TKY_MAX_QUEUE_NUM; i++ )
     {
         uint32_t tmpreg1 = 0, tmpreg2 = 0;
-#if TKY_SHIELD_EN
+
         // Prior to testing, the overall channel is set to analog input
-        touch_GPIOModeCfg (GPIO_Mode_AIN, my_tky_ch_init[ i ].channelNum);
-#else
-        // Push-pull ground discharge of the entire channel prior to testing
-        touch_GPIOModeCfg (GPIO_Mode_Out_PP, my_tky_ch_init[ i ].channelNum);
-#endif
+        touch_GPIOModeCfg( GPIO_Mode_AIN, my_tky_ch_init[ i ].channelNum );
 
-        tmpreg1 = ADC1->SAMPTR2;
-        tmpreg2 = ((uint32_t) 0x00000007) << (3 * my_tky_ch_init[ i ].channelNum);
-        tmpreg1 &= ~tmpreg2;
-        tmpreg2 = (uint32_t) ADC_SampleTime_CyclesMode0 << (3 * my_tky_ch_init[ i ].channelNum);
-        tmpreg1 |= tmpreg2;
-        ADC1->SAMPTR2 = tmpreg1;
+        tmpreg1        = ADC1->SAMPTR2;
+        tmpreg2        = ( (uint32_t)0x00000007 ) << ( 3 * my_tky_ch_init[ i ].channelNum );
+        tmpreg1       &= ~tmpreg2;
+        tmpreg2        = (uint32_t)ADC_SampleTime_CyclesMode0 << ( 3 * my_tky_ch_init[ i ].channelNum );
+        tmpreg1       |= tmpreg2;
+        ADC1->SAMPTR2  = tmpreg1;
     }
 
-    ADC_DeInit (ADC1);
+    ADC_DeInit( ADC1 );
 
-    RCC_ADCCLKConfig (RCC_PCLK2_Div8);
+    RCC_ADCCLKConfig( RCC_PCLK2_Div8 );
 
-    ADC_InitStructure.ADC_Mode = ADC_Mode_Independent;
-    ADC_InitStructure.ADC_ScanConvMode = DISABLE;
+    ADC_InitStructure.ADC_Mode               = ADC_Mode_Independent;
+    ADC_InitStructure.ADC_ScanConvMode       = DISABLE;
     ADC_InitStructure.ADC_ContinuousConvMode = DISABLE;
-    ADC_InitStructure.ADC_ExternalTrigConv = ADC_ExternalTrigConv_None;
-    ADC_InitStructure.ADC_DataAlign = ADC_DataAlign_Right;
-    ADC_InitStructure.ADC_NbrOfChannel = 1;
-    ADC_Init (ADC1, &ADC_InitStructure);
+    ADC_InitStructure.ADC_ExternalTrigConv   = ADC_ExternalTrigConv_None;
+    ADC_InitStructure.ADC_DataAlign          = ADC_DataAlign_Right;
+    ADC_InitStructure.ADC_NbrOfChannel       = 1;
+    ADC_Init( ADC1, &ADC_InitStructure );
 
-    ADC_Cmd (ADC1, ENABLE);
+    ADC_Cmd( ADC1, ENABLE );
 
-    ADC1->CTLR1 |= (1 << 24) | (1 << 25) | (1 << 26);                                                      // Enable ADC Buffer And TouchKey
+    ADC1->CTLR1 |= ( 1 << 24 ) | ( 1 << 25 ) | ( 1 << 26 );  // Enable ADC Buffer And TouchKey
 
 #if TKY_SHIELD_EN
-    for (uint8_t i = 0; i < TKY_MAX_QUEUE_NUM; i++)
+    for ( uint8_t i = 0; i < TKY_MAX_QUEUE_NUM; i++ )
     {
-        printf ("channelNum:%d\r\n", my_tky_ch_init[ i ].channelNum);
-        ADC_TKey_ChannelxMulShieldCmd (ADC1, my_tky_ch_init[ i ].channelNum, ENABLE);          // Enable MulShield Channelx
+        printf( "channelNum:%d\r\n", my_tky_ch_init[ i ].channelNum );
+        ADC_TKey_ChannelxMulShieldCmd( ADC1, my_tky_ch_init[ i ].channelNum, ENABLE );  // Enable MulShield Channelx
     }
-    ADC_TKey_MulShieldCmd (ADC1, ENABLE);                                                      // Enable MulShield
+    ADC_TKey_MulShieldCmd( ADC1, ENABLE );                                              // Enable MulShield
 #endif
     TKY_SaveCfgReg();
 }
@@ -535,26 +551,26 @@ static void touch_Regcfg (void)
  *
  * @return  none
  */
-static void touch_Baseinit (void)
+static void touch_Baseinit( void )
 {
-    uint8_t sta=0xff;
-    TKY_BaseInitTypeDef TKY_BaseInitStructure = {0};
+    uint8_t             sta                    = 0xff;
+    TKY_BaseInitTypeDef TKY_BaseInitStructure  = { 0 };
 
     //----------Initialization of touch key base settings--------
-    TKY_BaseInitStructure.filterMode = TKY_FILTER_MODE;
-    TKY_BaseInitStructure.shieldEn = TKY_SHIELD_EN;
-    TKY_BaseInitStructure.singlePressMod = TKY_SINGLE_PRESS_MODE;
-    TKY_BaseInitStructure.filterGrade = TKY_FILTER_GRADE;
-    TKY_BaseInitStructure.maxQueueNum = TKY_MAX_QUEUE_NUM;
-    TKY_BaseInitStructure.baseRefreshOnPress = TKY_BASE_REFRESH_ON_PRESS;
+    TKY_BaseInitStructure.filterMode           = FILTER_MODE_3;
+    TKY_BaseInitStructure.shieldEn             = TKY_SHIELD_EN;
+    TKY_BaseInitStructure.singlePressMod       = TKY_SINGLE_PRESS_MODE;
+    TKY_BaseInitStructure.filterGrade          = TKY_FILTER_GRADE;
+    TKY_BaseInitStructure.maxQueueNum          = TKY_MAX_QUEUE_NUM;
+    TKY_BaseInitStructure.baseRefreshOnPress   = TKY_BASE_REFRESH_ON_PRESS;
     /*---Speed of baseline update baseRefreshSampleNum and filterGrade Inversely proportional to the baseline update speed,
     the baseline update speed is also related to the code structure, which can be observed through the function GetCurQueueBaseLine---*/
     TKY_BaseInitStructure.baseRefreshSampleNum = TKY_BASE_REFRESH_SAMPLE_NUM;
-    TKY_BaseInitStructure.baseUpRefreshDouble = TKY_BASE_UP_REFRESH_DOUBLE;
-    TKY_BaseInitStructure.baseDownRefreshSlow = TKY_BASE_DOWN_REFRESH_SLOW;
-    TKY_BaseInitStructure.tkyBufP = TKY_MEMBUF;
-    sta = TKY_BaseInit( TKY_BaseInitStructure );
-    dg_log("TKY_BaseInit:%02X\r\n",sta);
+    TKY_BaseInitStructure.baseUpRefreshDouble  = TKY_BASE_UP_REFRESH_DOUBLE;
+    TKY_BaseInitStructure.baseDownRefreshSlow  = TKY_BASE_DOWN_REFRESH_SLOW;
+    TKY_BaseInitStructure.tkyBufP              = TKY_MEMBUF;
+    sta                                        = TKY_BaseInit( TKY_BaseInitStructure );
+    dg_log( "TKY_BaseInit:%02X\r\n", sta );
 }
 
 /*********************************************************************
@@ -566,85 +582,100 @@ static void touch_Baseinit (void)
  *
  * @return  none
  */
-static void touch_Channelinit (void)
+static void touch_Channelinit( void )
 {
-    uint8_t error_flag = 0;
-    uint16_t chx_mean = 0,chx_mean_last = 0;
-    for (uint8_t i = 0; i < TKY_MAX_QUEUE_NUM; i++)
+    uint8_t  error_flag       = 0;
+    uint16_t scanArray[ 100 ] = { 0 };
+    uint16_t chx_mean = 0, chx_mean_last = 0;
+    uint32_t maxCDParams =  3800;
+    uint32_t minCDParams = 3400;
+    for ( uint8_t i = 0; i < TKY_MAX_QUEUE_NUM; i++ )
     {
-        TKY_CHInit (my_tky_ch_init[ i ]);
+        TKY_CHInit( my_tky_ch_init[ i ] );
     }
 
-    for (uint8_t i = 0; i < TKY_MAX_QUEUE_NUM; i++)
+    for ( uint8_t i = 0; i < TKY_MAX_QUEUE_NUM; i++ )
     {
 
-        chx_mean = TKY_GetCurChannelMean (my_tky_ch_init[ i ].channelNum, my_tky_ch_init[ i ].chargeTime,
-                                          my_tky_ch_init[ i ].disChargeTime, 1000);
+        TKY_GetCurChannelData( my_tky_ch_init[ i ].channelNum, my_tky_ch_init[ i ].chargeTime,
+                               my_tky_ch_init[ i ].disChargeTime, scanArray, 100 );
+        TKY_NoiseAndMeanEstimate( scanArray, 100, NULL, &chx_mean );
 
-        if (chx_mean < 3400 || chx_mean > 3800)
+        if ( (chx_mean < minCDParams) || (chx_mean > maxCDParams) )
         {
             error_flag = 1;
         }
         else
         {
-            TKY_SetCurQueueBaseLine (i, chx_mean);
+            TKY_SetCurQueueBaseLine( i, chx_mean );
         }
     }
     // Charge/discharge baseline value abnormal, recalibrate baseline value
-    if (error_flag != 0)
+    if ( error_flag != 0 )
     {
-        dg_log ("\n\nCharging parameters error, preparing for recalibration ...\n\n");
+        dg_log( "\n\nCharging parameters error, preparing for recalibration ...\n\n" );
         uint16_t charge_time;
-        for (uint8_t i = 0; i < TKY_MAX_QUEUE_NUM; i++)
-        { 
+        for ( uint8_t i = 0; i < TKY_MAX_QUEUE_NUM; i++ )
+        {
             charge_time = 0, chx_mean = 0;
-#if !(TKY_SHIELD_EN)
-            touch_GPIOModeCfg (GPIO_Mode_AIN, my_tky_ch_init[ i ].channelNum);
-#endif
-            while (1)
+            while ( 1 )
             {
-                chx_mean = TKY_GetCurChannelMean (my_tky_ch_init[ i ].channelNum, charge_time, 16, 1000);
+                TKY_GetCurChannelData( my_tky_ch_init[ i ].channelNum, charge_time, my_tky_ch_init[ i ].disChargeTime, scanArray, 100 );
+                TKY_NoiseAndMeanEstimate( scanArray, 100, NULL, &chx_mean );
+                 dg_log("testing .... chg : %d, baseline : %d\n",charge_time,chx_mean);//′òó??ù???μ
 
-                //  dg_log("testing .... chg : %d, baseline : %d\n",charge_time,chx_mean);//′òó??ù???μ
-
-                if ((charge_time == 0) && ((chx_mean > 3800)))
+                if ( ( charge_time == 0 ) && ( ( chx_mean > maxCDParams ) ) )
                 {
-                    dg_log ("Error, %u KEY%u Too small Cap,Please check the hardware !\r\n", chx_mean, i);
+                    dg_log( "Error, %u KEY%u Too small Cap,Please check the hardware !\r\n", chx_mean, i );
                     break;
                 }
                 else
                 {
-                    if ((chx_mean > 3200) && (chx_mean < 3800))
-                    {          // Charging parameters are normal
-                        TKY_SetCurQueueBaseLine (i, chx_mean);
-                        TKY_SetCurQueueChargeTime (i, charge_time, 16);
-                        dg_log ("channel:%u, chargetime:%u,BaseLine:%u\r\n",
-                                i, charge_time, chx_mean);
+                    if ( ( chx_mean > minCDParams ) && ( chx_mean < maxCDParams ) )
+                    {  // Charging parameters are normal
+                        TKY_SetCurQueueBaseLine( i, chx_mean );
+                        TKY_SetCurQueueChargeTime( i, charge_time, my_tky_ch_init[ i ].disChargeTime );
+                        dg_log( "channel:%u, chargetime:%u,BaseLine:%u\r\n",
+                                i, charge_time, chx_mean );
                         break;
                     }
-                    else if (chx_mean >= 3800)
+                    else if ( chx_mean >= maxCDParams )
                     {
-                        TKY_SetCurQueueBaseLine (i, chx_mean_last);
-                        TKY_SetCurQueueChargeTime (i, charge_time - 1, 16);
-                        dg_log ("Warning,channel:%u Too large Current, chargetime:%u,BaseLine:%u\r\n",
-                                i, charge_time, chx_mean_last);
+                        TKY_SetCurQueueBaseLine( i, chx_mean_last );
+                        TKY_SetCurQueueChargeTime( i, charge_time - 1, my_tky_ch_init[ i ].disChargeTime );
+                        dg_log( "Warning,channel:%u Too large Current, chargetime:%u,BaseLine:%u\r\n",
+                                i, charge_time, chx_mean_last );
                         break;
                     }
                     charge_time++;
                     chx_mean_last = chx_mean;
-                    if (charge_time > 0x3ff)
+                    if ( charge_time > 0x3ff )
                     {
-                        dg_log ("Error, Chargetime Max,KEY%u Too large Cap,Please check the hardware !\r\n", i);
+                        dg_log( "Error, Chargetime Max,KEY%u Too large Cap,Please check the hardware !\r\n", i );
                         break;
                     }
                 }
             }
-#if !(TKY_SHIELD_EN)
-            touch_GPIOModeCfg (GPIO_Mode_Out_PP, my_tky_ch_init[ i ].channelNum);
-#endif
         }
     }
-   TKY_SaveAndStop();
+    TKY_SaveAndStop();
+}
+
+void touch_ResetBaseline( void )
+{
+    uint16_t var = 0;
+    TKY_LoadAndRun();
+    TKY_PollForFilter();
+    TKY_SaveAndStop();
+    for ( uint8_t i = 0; i < TKY_MAX_QUEUE_NUM; i++ )
+    {
+        TKY_GetCurQueueFilterVal( i, &var );
+        TKY_SetCurQueueBaseLine( i, var );
+        TKY_GetCurQueueRealVal( i, &var );
+    }
+  
+
+    TKY_ClearHistoryData( FILTER_MODE_3 );
 }
 
 /*********************************************************************
@@ -657,90 +688,91 @@ static void touch_Channelinit (void)
  *
  * @return  none
  */
-static  uint16_t touch_DetectWheelSlider (touch_wheel_cfg_t * p_wheel)
+static uint16_t touch_DetectWheelSlider( touch_wheel_cfg_t* p_wheel )
 {
-    uint8_t loop;
-    uint8_t max_data_idx;
-    uint16_t d1;
-    uint16_t d2;
-    uint16_t d3;
-    uint16_t wheel_rpos;
-    uint16_t dsum;
-    uint16_t unit;
-    uint8_t num_elements;
-    uint16_t p_threshold;
-    uint16_t * wheel_data;
+    uint8_t   loop;
+    uint8_t   max_data_idx;
+    uint16_t  d1;
+    uint16_t  d2;
+    uint16_t  d3;
+    uint16_t  wheel_rpos;
+    uint16_t  dsum;
+    uint16_t  unit;
+    uint8_t   num_elements;
+    uint16_t  p_threshold;
+    uint16_t* wheel_data;
 
-    if (p_wheel == NULL)
+    if ( p_wheel == NULL )
     {
         return TOUCH_OFF_VALUE;
     }
 
     num_elements = p_wheel->num_elements;
-    p_threshold = p_wheel->threshold;
-    wheel_data = p_wheel->pdata;
+    p_threshold  = p_wheel->threshold;
+    wheel_data   = p_wheel->pdata;
 
-    if (num_elements < 3)
+    if ( num_elements < 3 )
     {
         return TOUCH_OFF_VALUE;
     }
 
-    for (loop = 0; loop < p_wheel->num_elements; loop++)
+    for ( loop = 0; loop < p_wheel->num_elements; loop++ )
     {
-        wheel_data[ loop ] = TKY_GetCurQueueValue (p_wheel->p_elem_index[ loop ]);
+        TKY_GetCurQueueValue( p_wheel->p_elem_index[ loop ], &wheel_data[ loop ] );
+        // printf("%d\r\n",wheel_data[ loop ] );
     }
 
     /* Search max data in slider */
     max_data_idx = 0;
-    for (loop = 0; loop < (num_elements - 1); loop++)
+    for ( loop = 0; loop < ( num_elements - 1 ); loop++ )
     {
-        if (wheel_data[ max_data_idx ] < wheel_data[ loop + 1 ])
+        if ( wheel_data[ max_data_idx ] < wheel_data[ loop + 1 ] )
         {
-            max_data_idx = (uint8_t) (loop + 1);
+            max_data_idx = (uint8_t)( loop + 1 );
         }
     }
     /* Array making for wheel operation          */
     /*    Maximum change CH_No -----> Array"0"    */
     /*    Maximum change CH_No + 1 -> Array"2"    */
     /*    Maximum change CH_No - 1 -> Array"1"    */
-    if (0 == max_data_idx)
+    if ( 0 == max_data_idx )
     {
-        d1 = (uint16_t) (wheel_data[ 0 ] - wheel_data[ num_elements - 1 ]);
-        d2 = (uint16_t) (wheel_data[ 0 ] - wheel_data[ 1 ]);
-        dsum = (uint16_t) (wheel_data[ 0 ] + wheel_data[ 1 ] + wheel_data[ num_elements - 1 ]);
+        d1   = (uint16_t)( wheel_data[ 0 ] - wheel_data[ num_elements - 1 ] );
+        d2   = (uint16_t)( wheel_data[ 0 ] - wheel_data[ 1 ] );
+        dsum = (uint16_t)( wheel_data[ 0 ] + wheel_data[ 1 ] + wheel_data[ num_elements - 1 ] );
     }
-    else if ((num_elements - 1) == max_data_idx)
+    else if ( ( num_elements - 1 ) == max_data_idx )
     {
-        d1 = (uint16_t) (wheel_data[ num_elements - 1 ] - wheel_data[ num_elements - 2 ]);
-        d2 = (uint16_t) (wheel_data[ num_elements - 1 ] - wheel_data[ 0 ]);
-        dsum = (uint16_t) (wheel_data[ 0 ] + wheel_data[ num_elements - 2 ] + wheel_data[ num_elements - 1 ]);
+        d1   = (uint16_t)( wheel_data[ num_elements - 1 ] - wheel_data[ num_elements - 2 ] );
+        d2   = (uint16_t)( wheel_data[ num_elements - 1 ] - wheel_data[ 0 ] );
+        dsum = (uint16_t)( wheel_data[ 0 ] + wheel_data[ num_elements - 2 ] + wheel_data[ num_elements - 1 ] );
     }
     else
     {
-        d1 = (uint16_t) (wheel_data[ max_data_idx ] - wheel_data[ max_data_idx - 1 ]);
-        d2 = (uint16_t) (wheel_data[ max_data_idx ] - wheel_data[ max_data_idx + 1 ]);
-        dsum = (uint16_t) (wheel_data[ max_data_idx + 1 ] + wheel_data[ max_data_idx ] + wheel_data[ max_data_idx - 1 ]);
+        d1   = (uint16_t)( wheel_data[ max_data_idx ] - wheel_data[ max_data_idx - 1 ] );
+        d2   = (uint16_t)( wheel_data[ max_data_idx ] - wheel_data[ max_data_idx + 1 ] );
+        dsum = (uint16_t)( wheel_data[ max_data_idx + 1 ] + wheel_data[ max_data_idx ] + wheel_data[ max_data_idx - 1 ] );
     }
 
-    if (0 == d1)
+    if ( 0 == d1 )
     {
         d1 = 1;
     }
     /* Constant decision for operation of angle of wheel */
-    if (dsum > p_threshold)
+    if ( dsum > p_threshold )
     {
-        d3 = (uint16_t) (p_wheel->decimal_point_percision + ((d2 * p_wheel->decimal_point_percision) / d1));
+        d3         = (uint16_t)( p_wheel->decimal_point_percision + ( ( d2 * p_wheel->decimal_point_percision ) / d1 ) );
 
-        unit = (uint16_t) (p_wheel->wheel_resolution / num_elements);
-        wheel_rpos = (uint16_t) (((unit * p_wheel->decimal_point_percision) / d3) + (unit * max_data_idx));
+        unit       = (uint16_t)( p_wheel->wheel_resolution / num_elements );
+        wheel_rpos = (uint16_t)( ( ( unit * p_wheel->decimal_point_percision ) / d3 ) + ( unit * max_data_idx ) );
 
         /* Angle division output */
         /* diff_angle_ch = 0 -> 359 ------ diff_angle_ch output 1 to 360 */
-        if (0 == wheel_rpos)
+        if ( 0 == wheel_rpos )
         {
-            wheel_rpos = p_wheel->wheel_resolution ;
+            wheel_rpos = p_wheel->wheel_resolution;
         }
-        else if ((p_wheel->wheel_resolution + 1) < wheel_rpos)
+        else if ( ( p_wheel->wheel_resolution + 1 ) < wheel_rpos )
         {
             wheel_rpos = 1;
         }
@@ -767,44 +799,44 @@ static  uint16_t touch_DetectWheelSlider (touch_wheel_cfg_t * p_wheel)
  *
  * @return  slider coordinate
  */
-static uint16_t touch_DetecLineSlider(touch_slider_cfg_t * p_slider)
+static uint16_t touch_DetecLineSlider( touch_slider_cfg_t* p_slider )
 {
 
-    uint8_t loop;
-    uint8_t max_data_idx;
-    uint16_t d1;
-    uint16_t d2;
-    uint16_t d3;
-    uint16_t slider_rpos;
-    uint16_t dsum;
-    uint8_t num_elements;
-    uint16_t p_threshold;
-    uint16_t * slider_data;
+    uint8_t   loop;
+    uint8_t   max_data_idx;
+    uint16_t  d1;
+    uint16_t  d2;
+    uint16_t  d3;
+    uint16_t  slider_rpos;
+    uint16_t  dsum;
+    uint8_t   num_elements;
+    uint16_t  p_threshold;
+    uint16_t* slider_data;
 
-    if (p_slider == NULL)
+    if ( p_slider == NULL )
     {
         return TOUCH_OFF_VALUE;
     }
     num_elements = p_slider->num_elements;
-    p_threshold = p_slider->threshold;
-    slider_data = p_slider->pdata;
+    p_threshold  = p_slider->threshold;
+    slider_data  = p_slider->pdata;
 
-    if (num_elements < 3)
+    if ( num_elements < 3 )
     {
         return TOUCH_OFF_VALUE;
     }
 
-    for (uint8_t loop = 0; loop < num_elements; loop++)
+    for ( uint8_t loop = 0; loop < num_elements; loop++ )
     {
-        slider_data[ loop ] = TKY_GetCurQueueValue (p_slider->p_elem_index[ loop ]);
+        TKY_GetCurQueueValue( p_slider->p_elem_index[ loop ], &slider_data[ loop ] );
     }
     /* Search max data in slider */
     max_data_idx = 0;
-    for (loop = 0; loop < (num_elements - 1); loop++)
+    for ( loop = 0; loop < ( num_elements - 1 ); loop++ )
     {
-        if (slider_data[max_data_idx] < slider_data[loop + 1])
+        if ( slider_data[ max_data_idx ] < slider_data[ loop + 1 ] )
         {
-            max_data_idx = (uint8_t)(loop + 1);
+            max_data_idx = (uint8_t)( loop + 1 );
         }
     }
 
@@ -815,44 +847,44 @@ static uint16_t touch_DetecLineSlider(touch_slider_cfg_t * p_slider)
 
     uint16_t unit;
 
-    if (0 == max_data_idx)
+    if ( 0 == max_data_idx )
     {
-        d1 = (uint16_t) (slider_data[ 0 ] - slider_data[ num_elements - 1 ]);
-        d2 = (uint16_t) (slider_data[ 0 ] - slider_data[ 1 ]);
-        dsum = (uint16_t) (slider_data[ 0 ] + slider_data[ 1 ] + slider_data[ num_elements - 1 ]);
+        d1   = (uint16_t)( slider_data[ 0 ] - slider_data[ num_elements - 1 ] );
+        d2   = (uint16_t)( slider_data[ 0 ] - slider_data[ 1 ] );
+        dsum = (uint16_t)( slider_data[ 0 ] + slider_data[ 1 ] + slider_data[ num_elements - 1 ] );
     }
-    else if ((num_elements - 1) == max_data_idx)
+    else if ( ( num_elements - 1 ) == max_data_idx )
     {
-        d1 = (uint16_t) (slider_data[ num_elements - 1 ] - slider_data[ num_elements - 2 ]);
-        d2 = (uint16_t) (slider_data[ num_elements - 1 ] - slider_data[ 0 ]);
-        dsum = (uint16_t) (slider_data[ 0 ] + slider_data[ num_elements - 2 ] + slider_data[ num_elements - 1 ]);
+        d1   = (uint16_t)( slider_data[ num_elements - 1 ] - slider_data[ num_elements - 2 ] );
+        d2   = (uint16_t)( slider_data[ num_elements - 1 ] - slider_data[ 0 ] );
+        dsum = (uint16_t)( slider_data[ 0 ] + slider_data[ num_elements - 2 ] + slider_data[ num_elements - 1 ] );
     }
     else
     {
-        d1 = (uint16_t) (slider_data[ max_data_idx ] - slider_data[ max_data_idx - 1 ]);
-        d2 = (uint16_t) (slider_data[ max_data_idx ] - slider_data[ max_data_idx + 1 ]);
-        dsum = (uint16_t) (slider_data[ max_data_idx + 1 ] + slider_data[ max_data_idx ] + slider_data[ max_data_idx - 1 ]);
+        d1   = (uint16_t)( slider_data[ max_data_idx ] - slider_data[ max_data_idx - 1 ] );
+        d2   = (uint16_t)( slider_data[ max_data_idx ] - slider_data[ max_data_idx + 1 ] );
+        dsum = (uint16_t)( slider_data[ max_data_idx + 1 ] + slider_data[ max_data_idx ] + slider_data[ max_data_idx - 1 ] );
     }
 
-    if (0 == d1)
+    if ( 0 == d1 )
     {
         d1 = 1;
     }
     /* Constant decision for operation of angle of wheel    */
-    if (dsum > p_threshold)
+    if ( dsum > p_threshold )
     {
-        d3 = (uint16_t) (p_slider->decimal_point_percision + ((d2 * p_slider->decimal_point_percision) / d1));
+        d3          = (uint16_t)( p_slider->decimal_point_percision + ( ( d2 * p_slider->decimal_point_percision ) / d1 ) );
 
-        unit = (uint16_t) (p_slider->slider_resolution / num_elements);
-        slider_rpos = (uint16_t) (((unit * p_slider->decimal_point_percision) / d3) + (unit * max_data_idx));
+        unit        = (uint16_t)( p_slider->slider_resolution / num_elements );
+        slider_rpos = (uint16_t)( ( ( unit * p_slider->decimal_point_percision ) / d3 ) + ( unit * max_data_idx ) );
 
         /* Angle division output */
         /* diff_angle_ch = 0 -> 359 ------ diff_angle_ch output 1 to 360 */
-        if (0 == slider_rpos)
+        if ( 0 == slider_rpos )
         {
             slider_rpos = p_slider->slider_resolution;
         }
-        else if ((p_slider->slider_resolution + 1) < slider_rpos)
+        else if ( ( p_slider->slider_resolution + 1 ) < slider_rpos )
         {
             slider_rpos = 1;
         }
@@ -869,12 +901,12 @@ static uint16_t touch_DetecLineSlider(touch_slider_cfg_t * p_slider)
     return slider_rpos;
 }
 
-uint16_t touch_GetLineSliderData(void)
+uint16_t touch_GetLineSliderData( void )
 {
     return SilderData;
 }
 
-uint16_t touch_GetWheelSliderData(void)
+uint16_t touch_GetWheelSliderData( void )
 {
     return WheelData;
 }

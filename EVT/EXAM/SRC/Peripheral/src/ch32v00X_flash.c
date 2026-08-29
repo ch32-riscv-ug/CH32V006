@@ -1,8 +1,8 @@
 /********************************** (C) COPYRIGHT  *******************************
  * File Name          : ch32v00X_flash.c
  * Author             : WCH
- * Version            : V1.0.1
- * Date               : 2024/12/11
+ * Version            : V1.0.3
+ * Date               : 2026/08/12
  * Description        : This file provides all the FLASH firmware functions.
  *********************************************************************************
  * Copyright (c) 2021 Nanjing Qinheng Microelectronics Co., Ltd.
@@ -49,8 +49,8 @@
 #define FLASH_KEY2                 ((uint32_t)0xCDEF89AB)
 
 /* Delay definition */
-#define EraseTimeout               ((uint32_t)0x000B0000)
-#define ProgramTimeout             ((uint32_t)0x00002000)
+#define EraseTimeout               ((uint32_t)0x10000000)
+#define ProgramTimeout             ((uint32_t)0x10000000)
 
 /* Flash Program Valid Address */
 #define ValidAddrStart             (FLASH_BASE)
@@ -457,7 +457,7 @@ FlagStatus FLASH_GetFlagStatus(uint32_t FLASH_FLAG)
 
     if(FLASH_FLAG == FLASH_FLAG_OPTERR)
     {
-        if((FLASH->OBR & FLASH_FLAG_OPTERR) != (uint32_t)RESET)
+        if((FLASH->OBR & (1<<0)) != (uint32_t)RESET)
         {
             bitstatus = SET;
         }
@@ -850,6 +850,7 @@ static void ROM_ERASE(uint32_t StartAddr, uint32_t Cnt, uint32_t Erase_Size)
  *
  * @param   StartAddr - Erases Flash start address(StartAddr%256 == 0).
  *          Length - Erases Flash start Length(Length%256 == 0).
+ *          Recommended for FLASH erasing.
  *
  * @return  FLASH Status - The returned value can be: FLASH_ADR_RANGE_ERROR,
  *        FLASH_ALIGN_ERROR, FLASH_OP_RANGE_ERROR or FLASH_COMPLETE.
@@ -995,6 +996,7 @@ FLASH_Status FLASH_ROM_ERASE( uint32_t StartAddr, uint32_t Length )
  * @param   StartAddr - Writes Flash start address(StartAddr%256 == 0).
  *          Length - Writes Flash start Length(Length%256 == 0).
  *          pbuf - Writes Flash value buffer.
+ *          Recommended for FLASH programming.
  *
  * @return  FLASH Status - The returned value can be: FLASH_ADR_RANGE_ERROR,
  *        FLASH_ALIGN_ERROR, FLASH_OP_RANGE_ERROR or FLASH_COMPLETE.

@@ -1,8 +1,8 @@
 /********************************** (C) COPYRIGHT  *******************************
  * File Name          : iap.c
  * Author             : WCH
- * Version            : V1.0.1
- * Date               : 2025/01/13
+ * Version            : V1.0.2
+ * Date               : 2026/08/19
  * Description        : IAP
  *******************************************************************************
  * Copyright (c) 2021 Nanjing Qinheng Microelectronics Co., Ltd.
@@ -61,27 +61,9 @@ u8 RecData_Deal(void)
     u8 s;
 
     switch ( isp_cmd_t->UART.Cmd) {
-        case CMD_IAP_ERASE:
-            s = ERR_ERROR;
-            break;
-
-        case CMD_IAP_PROM:
-            s = ERR_ERROR;
-            break;
-
-        case CMD_IAP_VERIFY:
-            s = ERR_ERROR;
-            break;
-
-        case CMD_IAP_END:
-            s = ERR_ERROR;
-            break;
-
         case CMD_JUMP_IAP:
-            FLASH_Unlock_Fast();
-            FLASH_ErasePage_Fast(CalAddr & 0xFFFFFF00);
-            FLASH->CTLR |= ((uint32_t)0x00008000);
-            FLASH->CTLR |= ((uint32_t)0x00000080);
+            FLASH_ROM_ERASE(CalAddr & 0xFFFFFF00,256);
+
             s = ERR_SUCCESS;
             break;
 

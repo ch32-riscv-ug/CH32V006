@@ -1,8 +1,8 @@
 /********************************** (C) COPYRIGHT  *******************************
  * File Name          : debug.c
  * Author             : WCH
- * Version            : V1.0.0
- * Date               : 2024/01/01
+ * Version            : V1.0.2
+ * Date               : 2026/07/13
  * Description        : This file contains all the functions prototypes for UART
  *                      Printf , Delay functions.
  *********************************************************************************
@@ -90,8 +90,8 @@ void Delay_Ms(uint32_t n)
  */
 void USART_Printf_Init(uint32_t baudrate)
 {
-    GPIO_InitTypeDef  GPIO_InitStructure;
-    USART_InitTypeDef USART_InitStructure;
+    GPIO_InitTypeDef  GPIO_InitStructure = {0};
+    USART_InitTypeDef USART_InitStructure = {0};
 
 #if (DEBUG == DEBUG_UART1_NoRemap)
     RCC_PB2PeriphClockCmd(RCC_PB2Periph_GPIOD | RCC_PB2Periph_USART1, ENABLE);
@@ -287,13 +287,14 @@ __attribute__((used))
 int _write(int fd, char *buf, int size)
 {
     int i = 0;
-    int writeSize = size;
+
 #if (SDI_PRINT == SDI_PR_OPEN)
+	int writeSize = size;
     do
     {
 
         /**
-         * data0  data1 8 bytes
+         * data0 + data1 = 8 bytes
          * data0 The lowest byte storage length, the maximum is 7
          *
          */
@@ -305,17 +306,32 @@ int _write(int fd, char *buf, int size)
 
         if(writeSize>7)
         {
-            *(DEBUG_DATA1_ADDRESS) = (*(buf+i+3)) | (*(buf+i+4)<<8) | (*(buf+i+5)<<16) | (*(buf+i+6)<<24);
-            *(DEBUG_DATA0_ADDRESS) = (7u) | (*(buf+i)<<8) | (*(buf+i+1)<<16) | (*(buf+i+2)<<24);
+            *(DEBUG_DATA1_ADDRESS) =      \
+              ((uint8_t)(buf[i+3])) |     \
+              ((uint8_t)(buf[i+4]) << 8) |  \
+              ((uint8_t)(buf[i+5]) << 16) | \
+              ((uint8_t)(buf[i+6]) << 24);
+            *(DEBUG_DATA0_ADDRESS) =      \
+              (7u) |                      \
+              ((uint8_t)(buf[i]) << 8) |    \
+              ((uint8_t)(buf[i+1]) << 16) | \
+              ((uint8_t)(buf[i+2]) << 24);   
 
             i += 7;
             writeSize -= 7;
         }
         else
         {
-            *(DEBUG_DATA1_ADDRESS) = (*(buf+i+3)) | (*(buf+i+4)<<8) | (*(buf+i+5)<<16) | (*(buf+i+6)<<24);
-            *(DEBUG_DATA0_ADDRESS) = (writeSize) | (*(buf+i)<<8) | (*(buf+i+1)<<16) | (*(buf+i+2)<<24);
-
+            uint8_t tmp = (uint8_t)writeSize;
+            *(DEBUG_DATA1_ADDRESS) =                       \
+                ((tmp > 3 ? (uint8_t)buf[i+3] : 0)) |      \
+                ((tmp > 4 ? (uint8_t)buf[i+4] : 0) << 8) | \
+                ((tmp > 5 ? (uint8_t)buf[i+5] : 0) << 16) |\
+                ((tmp > 6 ? (uint8_t)buf[i+6] : 0) << 24);
+            *(DEBUG_DATA0_ADDRESS) = 
+                (tmp) | ((uint8_t)buf[i] << 8) |           \
+                ((tmp > 1 ? (uint8_t)buf[i+1] : 0) << 16) |\
+                ((tmp > 2 ? (uint8_t)buf[i+2] : 0) << 24);
             writeSize = 0;
         }
 
@@ -337,7 +353,7 @@ int _write(int fd, char *buf, int size)
 
 
 #endif
-    return writeSize;
+    return size;
 }
 
 /*********************************************************************

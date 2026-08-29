@@ -25,10 +25,16 @@
   #define dg_log(x,...)
 #endif
 
+
+
 /************************KEY_FIFO_DEFINE******************************/
 #define KEY_COUNT       	TKY_MAX_QUEUE_NUM               // Number of keys
 
+#if (TKY_FILTER_MODE == FILTER_MODE_3)
 #define TKY_PollForFilter() TKY_PollForFilterMode_3()
+#elif (TKY_FILTER_MODE == FILTER_MODE_CS10)
+#define TKY_PollForFilter() TKY_PollForFilterMode_CS10()
+#endif
 
 #define TKY_MEMHEAP_SIZE   		(TKY_MAX_QUEUE_NUM*TKY_BUFLEN)     	 //Externally defined data buffer length
 
@@ -208,6 +214,6 @@ extern void touch_Scan(void);
 extern void touch_InfoDebug(void);
 extern uint16_t touch_GetLineSliderData(void);
 extern uint16_t touch_GetWheelSliderData(void);
-void touch_GPIOModeCfg (GPIOMode_TypeDef mode, uint32_t channel);
-extern void touch_GPIOSleep(void);
+extern void touch_GPIOModeCfg (GPIOMode_TypeDef mode, uint32_t channel);
+extern void touch_ResetBaseline( void );
 #endif

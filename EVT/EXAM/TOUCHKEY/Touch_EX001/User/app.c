@@ -1,8 +1,8 @@
 /********************************** (C) COPYRIGHT *******************************
  * File Name          : app.c
  * Author             : WCH
- * Version            : V1.1
- * Date               : 2025/01/14
+ * Version            : V1.0.2
+ * Date               : 2026/08/21
  * Description        : Touch Key Routines
  *******************************************************************************/
 
@@ -42,7 +42,7 @@ touch_button_cfg_t p_selfkey =
 touch_wheel_cfg_t p_wheel = {
     .num_elements = TOUCH_WHEEL_ELEMENTS,
     .p_elem_index = touch_wheel_ch,
-    .threshold = 200,
+    .threshold = 250,
     .decimal_point_percision = TOUCH_DECIMAL_POINT_PRECISION,
     .wheel_resolution = TOUCH_WHEEL_RESOLUTION,
     .pdata = wheel_data};
@@ -175,8 +175,8 @@ void TKY_dataProcess (void)
  */
 void Timer_Init(void)
 {
-    TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStructure;
-    NVIC_InitTypeDef NVIC_InitStructure;
+    TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStructure = {0};
+    NVIC_InitTypeDef NVIC_InitStructure = {0};
 
     RCC_PB1PeriphClockCmd(RCC_PB1Periph_TIM2, ENABLE);
     //--TIMER4--
@@ -209,9 +209,17 @@ void TKY_Init(void)
 
 	touch_Init(&touch_cfg);
 
-     TKY_SetSleepStatusValue( ~tkyQueueAll );
+    TKY_SetCS10FilterParams(290,150);
 
-    Timer_Init();               //Timing period of 1ms
+    TKY_SetSleepStatusValue( ~tkyQueueAll );
+
+    for ( uint32_t i = 0; i < 240; i++ )
+    {
+        touch_ResetBaseline();
+    }
+
+
+    Timer_Init();  // Timing period of 1ms
 
     dg_log("Touch Key init Finish!\n");
 }
@@ -286,7 +294,7 @@ void TKY_WheelSliderLedProcess (uint16_t pros)
                 TKY_KeyBacklightOut (i, DISABLE);
             }
         }
-        // dg_log ("%d, %d\n", pros, idx);
+     
     }
     else
     {

@@ -1,8 +1,8 @@
 /********************************** (C) COPYRIGHT  *******************************
  * File Name          : iap.c
  * Author             : WCH
- * Version            : V1.0.1
- * Date               : 2025/01/13
+ * Version            : V1.0.2
+ * Date               : 2026/08/19
  * Description        : IAP
  *******************************************************************************
  * Copyright (c) 2021 Nanjing Qinheng Microelectronics Co., Ltd.
@@ -59,7 +59,7 @@ void Program_Buf_Modify(void)
 {
     for(int i = 0 ;i < 64 ;i++)
     {
-        if(i != 63)
+        if(((CalAddr & 0xFFFFFF00)+4*i)!=CalAddr)
         {
             Program_Buf[i] = *(uint32_t*)((CalAddr & 0xFFFFFF00)+4*i);
         }
@@ -146,13 +146,9 @@ u8 RecData_Deal(void)
             Verify_addr = FLASH_Base;
 
             s = ERR_End;
-
-            FLASH_ErasePage_Fast(CalAddr & 0xFFFFFF00);
+            FLASH_ROM_ERASE(CalAddr & 0xFFFFFF00,256);
             Program_Buf_Modify();
             CH32_IAP_Program(CalAddr & 0xFFFFFF00,(u32*)Program_Buf);
-
-            FLASH->CTLR |= ((uint32_t)0x00008000);
-            FLASH->CTLR |= ((uint32_t)0x00000080);
 
             break;
         case CMD_JUMP_IAP:

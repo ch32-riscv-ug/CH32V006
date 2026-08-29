@@ -1,8 +1,8 @@
 /********************************** (C) COPYRIGHT  *******************************
  * File Name          : ch32v00X_flash.h
  * Author             : WCH
- * Version            : V1.0.0
- * Date               : 2024/11/04
+ * Version            : V1.0.1
+ * Date               : 2025/04/16
  * Description        : This file contains all the functions prototypes for the FLASH
  *                      firmware library.
  *********************************************************************************
@@ -101,7 +101,7 @@ typedef enum
 #define FLASH_FLAG_EOP                   ((uint32_t)0x00000020) /* FLASH End of Operation flag */
 #define FLASH_FLAG_FWAKE                 ((uint32_t)0x00000040) /* FLASH Wake Up flag */
 #define FLASH_FLAG_WRPRTERR              ((uint32_t)0x00000010) /* FLASH Write protected error flag */
-#define FLASH_FLAG_OPTERR                ((uint32_t)0x00000001) /* FLASH Option Byte error flag */
+#define FLASH_FLAG_OPTERR                ((uint32_t)0x80000001) /* FLASH Option Byte error flag */
 
 #define FLASH_FLAG_BANK1_BSY             FLASH_FLAG_BSY       /* FLASH BANK1 Busy flag*/
 #define FLASH_FLAG_BANK1_WRPRTERR        FLASH_FLAG_WRPRTERR  /* FLASH BANK1 Write protected error flag */

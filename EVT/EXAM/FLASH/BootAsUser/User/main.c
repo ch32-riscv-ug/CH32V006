@@ -1,8 +1,8 @@
 /********************************** (C) COPYRIGHT *******************************
  * File Name          : main.c
  * Author             : WCH
- * Version            : V1.0.0
- * Date               : 2024/01/01
+ * Version            : V1.0.1
+ * Date               : 2025/04/29
  * Description        : Main program body.
  *********************************************************************************
  * Copyright (c) 2021 Nanjing Qinheng Microelectronics Co., Ltd.
@@ -12,15 +12,15 @@
 
 /*
  *@Note
- *BOOT FLASH area 1920Byte is used for User Flash usage tutorial:
- *The User FLASH extension for this routine is 16Byte+1920Byte.
+ *BOOT FLASH area 3328Byte is used for User Flash usage tutorial:
+ *The User FLASH extension for this routine is 16KByte+3328Byte.
  *There are a few points to note when using this routine:
  *1.If you want to put the function in BOOT FLASH,you need to add the prefix
  *__attribute__((section(".Bcode"))).
  *2.BOOT FLASH and User FLASH function between the jump,in theory ,there will
  *be a 1us delay ,so the use of BOOT FLASH need to pay attention to.
  *3.The project can only be compiled after the use of WCH-LinkUtility V1.80 or
- *later version of the tool to download,and configure the address to select 0x1FFFF000.
+ *later version of the tool to download,and configure the address to select 0x1FFF0000.
  *And the tool only supports Hex file download.
  *4.BOOT FLASH does not support user code erasure,so the FLASH data can only be
  *stored in User FLASH area.

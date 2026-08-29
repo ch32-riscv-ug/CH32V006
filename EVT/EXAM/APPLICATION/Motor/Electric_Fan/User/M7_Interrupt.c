@@ -1,8 +1,8 @@
 /********************************** (C) COPYRIGHT *******************************
  * File Name          : M7_Interrupt.c
  * Author             : WCH
- * Version            : V1.0.0
- * Date               : 2024/11/04
+ * Version            : V1.0.2
+ * Date               : 2026/08/26
  * Description        : Interrupt configuration
 
 *********************************************************************************
@@ -34,36 +34,32 @@ void HardFault_Handler(void) __attribute__((interrupt("WCH-Interrupt-fast")));
  */
 void Interrupt_Configuration(void)
 {
-    NVIC_InitTypeDef NVIC_InitStructure;
-    NVIC_PriorityGroupConfig(NVIC_PriorityGroup_1);             //中断优先级分组配置
+    NVIC_InitTypeDef NVIC_InitStructure = {0};
+    NVIC_PriorityGroupConfig(NVIC_PriorityGroup_1);             
 
-    //ADC注入中断配置
-    NVIC_InitStructure.NVIC_IRQChannel = ADC_IRQn;              //中断通道ADC_IRQn
-    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;   //抢占优先级0
-    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;          //从优先级1
-    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;             //中断使能
-    NVIC_Init(&NVIC_InitStructure);                             //配置寄存器实体
+    NVIC_InitStructure.NVIC_IRQChannel = ADC_IRQn;             
+    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;  
+    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;         
+    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;             
+    NVIC_Init(&NVIC_InitStructure);                           
 
-    //Timer1中断配置
-    NVIC_InitStructure.NVIC_IRQChannel = TIM1_UP_IRQn;          //中断通道TIM1_UP_IRQn
-    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;   //抢占优先级0
-    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;          //从优先级2
-    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;             //中断使能
-    NVIC_Init(&NVIC_InitStructure);                             //配置寄存器实体
+    NVIC_InitStructure.NVIC_IRQChannel = TIM1_UP_IRQn;          
+    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;  
+    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;         
+    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;             
+    NVIC_Init(&NVIC_InitStructure);                             
 
-    //刹车中断配置
-    NVIC_InitStructure.NVIC_IRQChannel = TIM1_BRK_IRQn;         //中断通道TIM1_BRK_IRQn
-    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;   //抢占优先级0
-    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;          //从优先级1
-    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;             //中断使能
-    NVIC_Init(&NVIC_InitStructure);                             //配置寄存器实体
-    TIM_ClearITPendingBit(TIM1, TIM_IT_Break);                  //清除刹车中断标志清除
-    TIM_ITConfig(TIM1, TIM_IT_Break,ENABLE);                    //使能刹车中断
+    NVIC_InitStructure.NVIC_IRQChannel = TIM1_BRK_IRQn;         
+    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;   
+    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;          
+    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;             
+    NVIC_Init(&NVIC_InitStructure);                             
+    TIM_ClearITPendingBit(TIM1, TIM_IT_Break);                  
+    TIM_ITConfig(TIM1, TIM_IT_Break,ENABLE);                    
 
-    //SysTicK中断配置
     NVIC_InitStructure.NVIC_IRQChannel = SysTicK_IRQn;
-    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;   //抢占优先级为1
-    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;          //从优先级为2
+    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;   
+    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;          
     NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
     NVIC_Init(&NVIC_InitStructure);
 }
@@ -78,10 +74,10 @@ void Interrupt_Configuration(void)
 __attribute__((section(".highcode")))
 void TIM1_UP_IRQHandler(void)
 {
-    if( RunningStatus_M == PRESTART)//电机启动处理
+    if( RunningStatus_M == PRESTART)
     {
-        TIM1->CH4CVR = 48;//ADC触发时刻
-        ADC_Start(ENABLE);//ADC启动
+        TIM1->CH4CVR = 48;
+        ADC_Start(ENABLE);
         RunningStatus_M=DIRCHECK;
     }
 
@@ -90,11 +86,11 @@ void TIM1_UP_IRQHandler(void)
          Flystart_Switch(&Flystart_M,&SpeedRamp_M);
      }
 
-    ADC_SoftwareStartConvCmd(ADC1, ENABLE);//母线电压采样触发
-    DCBUS_Volt_Cal(&ADC_M,ADC1);//母线电压计算
+    ADC_SoftwareStartConvCmd(ADC1, ENABLE);
+    DCBUS_Volt_Cal(&ADC_M,ADC1);
 
-//    Waveform_Display();//虚拟示波器观测
-    TIM1->INTFR = (uint16_t)~TIM_FLAG_Update;//清除更新事件中断标志
+//    Waveform_Display();
+    TIM1->INTFR = (uint16_t)~TIM_FLAG_Update;
 }
 /*********************************************************************
  * @fn      TIM1_BRK_IRQHandler
