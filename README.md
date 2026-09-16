@@ -31,7 +31,7 @@ Flash and SRAM list every value the series has; more than one means it varies by
 | **CH32V002** | QingKe V2C | RV32EmC | 16K | 4K | 48 MHz | 2.0-5.5V | QFN12,QFN20,SOP16,SOP8,TSSOP20 | 5 | [en](https://www.wch-ic.com/products/CH32V002.html) / [zh](https://www.wch.cn/products/CH32V002.html) |
 | **CH32V004** | QingKe V2C | RV32EmC | 32K | 6K | 48 MHz | 2.7-5.5V | QFN20L,TSSOP20 | 2 | [en](https://www.wch-ic.com/products/CH32V004.html) / [zh](https://www.wch.cn/products/CH32V004.html) |
 | **CH32V005** | QingKe V2C | RV32EmC | 32K | 6K | 48 MHz | 2.0-5.5V | QFN12,QFN20,QSOP24,TSSOP20 | 4 | [en](https://www.wch-ic.com/products/CH32V005.html) / [zh](https://www.wch.cn/products/CH32V005.html) |
-| **CH32V006** | QingKe V2C | RV32EmC | 16K/62K | 4K/8K | 48 MHz | 2.0-5.5V | QFN12,QFN20,QFN32,QSOP24,TSSOP20 | 7 | [en](https://www.wch-ic.com/products/CH32V006.html) / [zh](https://www.wch.cn/products/CH32V006.html) |
+| **CH32V006** | QingKe V2C | RV32EmC | 16K/62K | 4K/8K | 48 MHz | 2.0-5.5V | QFN12,QFN20,QFN32,QSOP24,TSSOP20 | 8 | [en](https://www.wch-ic.com/products/CH32V006.html) / [zh](https://www.wch.cn/products/CH32V006.html) |
 | **CH32V007** | QingKe V2C | RV32EmC | 62K | 8K | 48 MHz | 2.0-5.5V | QFN32,QSOP24 | 4 | [en](https://www.wch-ic.com/products/CH32V007.html) / [zh](https://www.wch.cn/products/CH32V007.html) |
 
 ## Product comparison
@@ -146,6 +146,8 @@ Only the 3 rows that differ between these 4 products; the other 9 are the same f
 
 ### CH32V006 product comparison
 
+CH32V006K8U6 is not in the datasheet's comparison table, so it has no column here; every value it does have is in `catalog/products.csv`.
+
 Only the 10 rows that differ between these 7 products; the other 5 are the same for all of them.
 
 | | [CH32V006&#8203;D8U7](https://ch32-riscv-ug.github.io/ch32-device-data/pins.html?chip=CH32V006D8U7)&#8203;(QFN12) | [CH32V006&#8203;E8R6](https://ch32-riscv-ug.github.io/ch32-device-data/pins.html?chip=CH32V006E8R6)&#8203;(QSOP24) | [CH32V006&#8203;E8R7](https://ch32-riscv-ug.github.io/ch32-device-data/pins.html?chip=CH32V006E8R7)&#8203;(QSOP24) | [CH32V006&#8203;F4U6](https://ch32-riscv-ug.github.io/ch32-device-data/pins.html?chip=CH32V006F4U6)&#8203;(QFN20) | [CH32V006&#8203;F8P7](https://ch32-riscv-ug.github.io/ch32-device-data/pins.html?chip=CH32V006F8P7)&#8203;(TSSOP20) | [CH32V006&#8203;F8U7](https://ch32-riscv-ug.github.io/ch32-device-data/pins.html?chip=CH32V006F8U7)&#8203;(QFN20) | [CH32V006&#8203;K8U7](https://ch32-riscv-ug.github.io/ch32-device-data/pins.html?chip=CH32V006K8U7)&#8203;(QFN32) |
@@ -217,22 +219,22 @@ Only the 2 rows that differ between these 4 products; the other 14 are the same 
 
 ## Packages & pinout drawings
 
-Pinout drawings are in the datasheet (chapter *Pinouts*):
+Pinout drawings are in the datasheet (chapter *Pinouts*); each link opens at the page that carries the drawing:
 
 | Package | Products | Datasheet | Outline |
 |---|---|---|---|
-| QSOP24 | CH32M007E8R6 | [en](https://ch32-riscv-ug.github.io/CH32V006/datasheet_en/CH32V007DS0.PDF) / [zh](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V007DS0.PDF) | [drawing](https://raw.githubusercontent.com/ch32-riscv-ug/WCH-common/main/image/package_QSOP24.png) |
-| QFN26C3 | CH32M007E8U7 | [en](https://ch32-riscv-ug.github.io/CH32V006/datasheet_en/CH32V007DS0.PDF) / [zh](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V007DS0.PDF) | [drawing](https://raw.githubusercontent.com/ch32-riscv-ug/WCH-common/main/image/package_QFN26C3.png) |
-| QSOP28 | CH32M007G8R6 | [en](https://ch32-riscv-ug.github.io/CH32V006/datasheet_en/CH32V007DS0.PDF) / [zh](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V007DS0.PDF) | [drawing](https://raw.githubusercontent.com/ch32-riscv-ug/WCH-common/main/image/package_QSOP28.png) |
-| QFN32 | CH32M007K8U7 | [en](https://ch32-riscv-ug.github.io/CH32V006/datasheet_en/CH32V007DS0.PDF) / [zh](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V007DS0.PDF) | [drawing](https://raw.githubusercontent.com/ch32-riscv-ug/WCH-common/main/image/package_QFN32.png) |
-| SOP16 | CH32V002A4M6 | [en](https://ch32-riscv-ug.github.io/CH32V006/datasheet_en/CH32V002DS0.PDF) / [zh](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V002DS0.PDF) | [drawing](https://raw.githubusercontent.com/ch32-riscv-ug/WCH-common/main/image/package_SOP16.png) |
-| QFN12 | CH32V002D4U6, CH32V005D6U6, CH32V006D8U7 | [en](https://ch32-riscv-ug.github.io/CH32V006/datasheet_en/CH32V002DS0.PDF) / [zh](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V002DS0.PDF) | [drawing](https://raw.githubusercontent.com/ch32-riscv-ug/WCH-common/main/image/package_QFN12.png) |
-| TSSOP20 | CH32V002F4P6, CH32V004F6P1, CH32V005F6P6, CH32V006F8P7 | [en](https://ch32-riscv-ug.github.io/CH32V006/datasheet_en/CH32V002DS0.PDF) / [zh](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V002DS0.PDF) | [drawing](https://raw.githubusercontent.com/ch32-riscv-ug/WCH-common/main/image/package_TSSOP20.png) |
-| QFN20 | CH32V002F4U6, CH32V005F6U6, CH32V006F4U6, CH32V006F8U7 | [en](https://ch32-riscv-ug.github.io/CH32V006/datasheet_en/CH32V002DS0.PDF) / [zh](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V002DS0.PDF) | [drawing](https://raw.githubusercontent.com/ch32-riscv-ug/WCH-common/main/image/package_QFN20.png) |
-| SOP8 | CH32V002J4M6 | [en](https://ch32-riscv-ug.github.io/CH32V006/datasheet_en/CH32V002DS0.PDF) / [zh](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V002DS0.PDF) | [drawing](https://raw.githubusercontent.com/ch32-riscv-ug/WCH-common/main/image/package_SOP8.png) |
-| QFN20L | CH32V004F6U1 | [en](https://ch32-riscv-ug.github.io/CH32V006/datasheet_en/CH32V004DS0.PDF) / [zh](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V004DS0.PDF) | [drawing](https://raw.githubusercontent.com/ch32-riscv-ug/WCH-common/main/image/package_QFN20L.png) |
-| QSOP24 | CH32V005E6R6, CH32V006E8R6, CH32V006E8R7, CH32V007E8R6, CH32V007E8R7 | [en](https://ch32-riscv-ug.github.io/CH32V006/datasheet_en/CH32V006DS0.PDF) / [zh](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V006DS0.PDF) | [drawing](https://raw.githubusercontent.com/ch32-riscv-ug/WCH-common/main/image/package_QSOP24.png) |
-| QFN32 | CH32V006K8U7, CH32V007K8U6, CH32V007K8U7 | [en](https://ch32-riscv-ug.github.io/CH32V006/datasheet_en/CH32V006DS0.PDF) / [zh](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V006DS0.PDF) | [drawing](https://raw.githubusercontent.com/ch32-riscv-ug/WCH-common/main/image/package_QFN32.png) |
+| QSOP24 | CH32M007E8R6 | [en](https://ch32-riscv-ug.github.io/CH32V006/datasheet_en/CH32V007DS0.PDF#page=20) / [zh](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V007DS0.PDF#page=16) | [drawing](https://raw.githubusercontent.com/ch32-riscv-ug/WCH-common/main/image/package_QSOP24.png) |
+| QFN26C3 | CH32M007E8U7 | [en](https://ch32-riscv-ug.github.io/CH32V006/datasheet_en/CH32V007DS0.PDF#page=20) / [zh](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V007DS0.PDF#page=16) | [drawing](https://raw.githubusercontent.com/ch32-riscv-ug/WCH-common/main/image/package_QFN26C3.png) |
+| QSOP28 | CH32M007G8R6 | [en](https://ch32-riscv-ug.github.io/CH32V006/datasheet_en/CH32V007DS0.PDF#page=19) / [zh](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V007DS0.PDF#page=15) | [drawing](https://raw.githubusercontent.com/ch32-riscv-ug/WCH-common/main/image/package_QSOP28.png) |
+| QFN32 | CH32M007K8U7 | [en](https://ch32-riscv-ug.github.io/CH32V006/datasheet_en/CH32V007DS0.PDF#page=19) / [zh](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V007DS0.PDF#page=15) | [drawing](https://raw.githubusercontent.com/ch32-riscv-ug/WCH-common/main/image/package_QFN32.png) |
+| SOP16 | CH32V002A4M6 | [en](https://ch32-riscv-ug.github.io/CH32V006/datasheet_en/CH32V002DS0.PDF#page=14) / [zh](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V002DS0.PDF#page=11) | [drawing](https://raw.githubusercontent.com/ch32-riscv-ug/WCH-common/main/image/package_SOP16.png) |
+| QFN12 | CH32V002D4U6, CH32V005D6U6, CH32V006D8U7 | [en](https://ch32-riscv-ug.github.io/CH32V006/datasheet_en/CH32V002DS0.PDF#page=14) / [zh](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V002DS0.PDF#page=11) | [drawing](https://raw.githubusercontent.com/ch32-riscv-ug/WCH-common/main/image/package_QFN12.png) |
+| TSSOP20 | CH32V002F4P6, CH32V004F6P1, CH32V005F6P6, CH32V006F8P7 | [en](https://ch32-riscv-ug.github.io/CH32V006/datasheet_en/CH32V002DS0.PDF#page=13) / [zh](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V002DS0.PDF#page=10) | [drawing](https://raw.githubusercontent.com/ch32-riscv-ug/WCH-common/main/image/package_TSSOP20.png) |
+| QFN20 | CH32V002F4U6, CH32V005F6U6, CH32V006F4U6, CH32V006F8U7 | [en](https://ch32-riscv-ug.github.io/CH32V006/datasheet_en/CH32V002DS0.PDF#page=13) / [zh](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V002DS0.PDF#page=10) | [drawing](https://raw.githubusercontent.com/ch32-riscv-ug/WCH-common/main/image/package_QFN20.png) |
+| SOP8 | CH32V002J4M6 | [en](https://ch32-riscv-ug.github.io/CH32V006/datasheet_en/CH32V002DS0.PDF#page=14) / [zh](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V002DS0.PDF#page=11) | [drawing](https://raw.githubusercontent.com/ch32-riscv-ug/WCH-common/main/image/package_SOP8.png) |
+| QFN20L | CH32V004F6U1 | [en](https://ch32-riscv-ug.github.io/CH32V006/datasheet_en/CH32V004DS0.PDF#page=13) / [zh](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V004DS0.PDF#page=10) | [drawing](https://raw.githubusercontent.com/ch32-riscv-ug/WCH-common/main/image/package_QFN20L.png) |
+| QSOP24 | CH32V005E6R6, CH32V006E8R6, CH32V006E8R7, CH32V007E8R6, CH32V007E8R7 | [en](https://ch32-riscv-ug.github.io/CH32V006/datasheet_en/CH32V006DS0.PDF#page=17) / [zh](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V006DS0.PDF#page=13) | [drawing](https://raw.githubusercontent.com/ch32-riscv-ug/WCH-common/main/image/package_QSOP24.png) |
+| QFN32 | CH32V006K8U6, CH32V006K8U7, CH32V007K8U6, CH32V007K8U7 | [en](https://ch32-riscv-ug.github.io/CH32V006/datasheet_en/CH32V006DS0.PDF#page=14) / [zh](https://ch32-riscv-ug.github.io/CH32V006/datasheet_zh/CH32V006DS0.PDF#page=10) | [drawing](https://raw.githubusercontent.com/ch32-riscv-ug/WCH-common/main/image/package_QFN32.png) |
 
 ## Pin maps & alternate functions
 
@@ -497,43 +499,43 @@ Pin functions (filterable): [ALL](https://ch32-riscv-ug.github.io/ch32-device-da
 
 Pin functions (filterable): [ALL](https://ch32-riscv-ug.github.io/ch32-device-data/pins.html?chip=CH32V006) [ADC](https://ch32-riscv-ug.github.io/ch32-device-data/pins.html?chip=CH32V006&features=ADC) [I2C](https://ch32-riscv-ug.github.io/ch32-device-data/pins.html?chip=CH32V006&features=I2C) [SPI](https://ch32-riscv-ug.github.io/ch32-device-data/pins.html?chip=CH32V006&features=SPI) [SYS](https://ch32-riscv-ug.github.io/ch32-device-data/pins.html?chip=CH32V006&features=SYS) [TIM](https://ch32-riscv-ug.github.io/ch32-device-data/pins.html?chip=CH32V006&features=TIM) [UART](https://ch32-riscv-ug.github.io/ch32-device-data/pins.html?chip=CH32V006&features=UART) [USB](https://ch32-riscv-ug.github.io/ch32-device-data/pins.html?chip=CH32V006&features=USB)
 
-<details><summary><b>CH32V006 pin map</b> (33 pads x 7 products)</summary>
+<details><summary><b>CH32V006 pin map</b> (33 pads x 8 products)</summary>
 
-| Pin name | Type | [CH32V006&#8203;D8U7](https://ch32-riscv-ug.github.io/ch32-device-data/pins.html?chip=CH32V006D8U7)&#8203;(QFN12) | [CH32V006&#8203;E8R6](https://ch32-riscv-ug.github.io/ch32-device-data/pins.html?chip=CH32V006E8R6)&#8203;(QSOP24) | [CH32V006&#8203;E8R7](https://ch32-riscv-ug.github.io/ch32-device-data/pins.html?chip=CH32V006E8R7)&#8203;(QSOP24) | [CH32V006&#8203;F4U6](https://ch32-riscv-ug.github.io/ch32-device-data/pins.html?chip=CH32V006F4U6)&#8203;(QFN20) | [CH32V006&#8203;F8P7](https://ch32-riscv-ug.github.io/ch32-device-data/pins.html?chip=CH32V006F8P7)&#8203;(TSSOP20) | [CH32V006&#8203;F8U7](https://ch32-riscv-ug.github.io/ch32-device-data/pins.html?chip=CH32V006F8U7)&#8203;(QFN20) | [CH32V006&#8203;K8U7](https://ch32-riscv-ug.github.io/ch32-device-data/pins.html?chip=CH32V006K8U7)&#8203;(QFN32) | Notes |
-|---|---|---|---|---|---|---|---|---|---|
-| PA0 | I/O | - | 18 | 18 | - | - | - | 5 |  |
-| PA1 | I/O/A | 1 | 17 | 17 | 2 | 5 | 2 | 6 |  |
-| PA2 | I/O/A | 2 | 19 | 19 | 3 | 6 | 3 | 7 |  |
-| PA3 | I/O | - | 21 | 21 | - | - | - | 9 |  |
-| PA4 | I/O/A | 12 | 15 | 15 | - | 4 | 1 | 32 |  |
-| PA5 | I/O/A | - | 16 | 16 | - | - | - | 2 |  |
-| PA6 | I/O | - | 17 | 17 | - | - | - | 3 |  |
-| PA7 | I/O | - | - | - | - | - | - | 4 |  |
-| PB0 | I/O | - | 22 | 22 | - | - | - | 10 |  |
-| PB1 | I/O | - | 23 | 23 | - | - | - | 11 |  |
-| PB2 | I/O | - | - | - | - | - | - | 12 |  |
-| PB3 | I/O | - | 24 | 24 | - | - | - | 1 |  |
-| PB4 | I/O | - | - | - | - | - | - | 22 |  |
-| PB5 | I/O | - | - | - | - | - | - | 29 |  |
-| PB6 | I/O | - | - | - | - | - | - | 30 |  |
-| PC0 | I/O | 5 | 2 | 2 | 7 | 10 | 7 | 13 |  |
-| PC1 | I/O | - | 3 | 3 | 8 | 11 | 8 | 14 |  |
-| PC2 | I/O/A | - | 4 | 4 | 9 | 12 | 9 | 15 |  |
-| PC3 | I/O | 6 | - | - | 10 | 13 | 10 | 16 |  |
-| PC4 | I/O/A | 7 | 8 | 8 | 11 | 14 | 11 | 18 |  |
-| PC5 | I/O | - | 7 | 7 | 12 | 15 | 12 | 19 |  |
-| PC6 | I/O | 8 | - | - | 13 | 16 | 13 | 20 |  |
-| PC7 | I/O | 9 | - | - | 14 | 17 | 14 | 21 |  |
-| PD0 | I/O/A | 3 | 20 | 20 | 5 | 8 | 5 | 8 |  |
-| PD1 | I/O/A | 10 | 1 | 1 | 15 | 18 | 15 | 23 | SWDIO |
-| PD2 | I/O/A | - | 9 | 9 | 16 | 19 | 16 | 24 |  |
-| PD3 | I/O/A | - | 10 | 10 | 17 | 20 | 17 | 25 |  |
-| PD4 | I/O/A | 11 | 11 | 11 | 18 | 1 | 18 | 26 |  |
-| PD5 | I/O/A | - | 12 | 12 | 19 | 2 | 19 | 27 |  |
-| PD6 | I/O/A | - | 13 | 13 | 20 | 3 | 20 | 28 |  |
-| PD7 | I/O/A | 12 | 14 | 14 | 1 | 4 | 1 | 31 |  |
-| VDD | P | 4 | 6 | 6 | 6 | 9 | 6 | 17 |  |
-| VSS | P | EP | 5 | 5 | 4/EP | 7 | 4/EP | EP |  |
+| Pin name | Type | [CH32V006&#8203;D8U7](https://ch32-riscv-ug.github.io/ch32-device-data/pins.html?chip=CH32V006D8U7)&#8203;(QFN12) | [CH32V006&#8203;E8R6](https://ch32-riscv-ug.github.io/ch32-device-data/pins.html?chip=CH32V006E8R6)&#8203;(QSOP24) | [CH32V006&#8203;E8R7](https://ch32-riscv-ug.github.io/ch32-device-data/pins.html?chip=CH32V006E8R7)&#8203;(QSOP24) | [CH32V006&#8203;F4U6](https://ch32-riscv-ug.github.io/ch32-device-data/pins.html?chip=CH32V006F4U6)&#8203;(QFN20) | [CH32V006&#8203;F8P7](https://ch32-riscv-ug.github.io/ch32-device-data/pins.html?chip=CH32V006F8P7)&#8203;(TSSOP20) | [CH32V006&#8203;F8U7](https://ch32-riscv-ug.github.io/ch32-device-data/pins.html?chip=CH32V006F8U7)&#8203;(QFN20) | [CH32V006&#8203;K8U6](https://ch32-riscv-ug.github.io/ch32-device-data/pins.html?chip=CH32V006K8U6)&#8203;(QFN32) | [CH32V006&#8203;K8U7](https://ch32-riscv-ug.github.io/ch32-device-data/pins.html?chip=CH32V006K8U7)&#8203;(QFN32) | Notes |
+|---|---|---|---|---|---|---|---|---|---|---|
+| PA0 | I/O | - | 18 | 18 | - | - | - | 5 | 5 |  |
+| PA1 | I/O/A | 1 | 17 | 17 | 2 | 5 | 2 | 6 | 6 |  |
+| PA2 | I/O/A | 2 | 19 | 19 | 3 | 6 | 3 | 7 | 7 |  |
+| PA3 | I/O | - | 21 | 21 | - | - | - | 9 | 9 |  |
+| PA4 | I/O/A | 12 | 15 | 15 | - | 4 | 1 | 32 | 32 |  |
+| PA5 | I/O/A | - | 16 | 16 | - | - | - | 2 | 2 |  |
+| PA6 | I/O | - | 17 | 17 | - | - | - | 3 | 3 |  |
+| PA7 | I/O | - | - | - | - | - | - | 4 | 4 |  |
+| PB0 | I/O | - | 22 | 22 | - | - | - | 10 | 10 |  |
+| PB1 | I/O | - | 23 | 23 | - | - | - | 11 | 11 |  |
+| PB2 | I/O | - | - | - | - | - | - | 12 | 12 |  |
+| PB3 | I/O | - | 24 | 24 | - | - | - | 1 | 1 |  |
+| PB4 | I/O | - | - | - | - | - | - | 22 | 22 |  |
+| PB5 | I/O | - | - | - | - | - | - | 29 | 29 |  |
+| PB6 | I/O | - | - | - | - | - | - | 30 | 30 |  |
+| PC0 | I/O | 5 | 2 | 2 | 7 | 10 | 7 | 13 | 13 |  |
+| PC1 | I/O | - | 3 | 3 | 8 | 11 | 8 | 14 | 14 |  |
+| PC2 | I/O/A | - | 4 | 4 | 9 | 12 | 9 | 15 | 15 |  |
+| PC3 | I/O | 6 | - | - | 10 | 13 | 10 | 16 | 16 |  |
+| PC4 | I/O/A | 7 | 8 | 8 | 11 | 14 | 11 | 18 | 18 |  |
+| PC5 | I/O | - | 7 | 7 | 12 | 15 | 12 | 19 | 19 |  |
+| PC6 | I/O | 8 | - | - | 13 | 16 | 13 | 20 | 20 |  |
+| PC7 | I/O | 9 | - | - | 14 | 17 | 14 | 21 | 21 |  |
+| PD0 | I/O/A | 3 | 20 | 20 | 5 | 8 | 5 | 8 | 8 |  |
+| PD1 | I/O/A | 10 | 1 | 1 | 15 | 18 | 15 | 23 | 23 | SWDIO |
+| PD2 | I/O/A | - | 9 | 9 | 16 | 19 | 16 | 24 | 24 |  |
+| PD3 | I/O/A | - | 10 | 10 | 17 | 20 | 17 | 25 | 25 |  |
+| PD4 | I/O/A | 11 | 11 | 11 | 18 | 1 | 18 | 26 | 26 |  |
+| PD5 | I/O/A | - | 12 | 12 | 19 | 2 | 19 | 27 | 27 |  |
+| PD6 | I/O/A | - | 13 | 13 | 20 | 3 | 20 | 28 | 28 |  |
+| PD7 | I/O/A | 12 | 14 | 14 | 1 | 4 | 1 | 31 | 31 |  |
+| VDD | P | 4 | 6 | 6 | 6 | 9 | 6 | 17 | 17 |  |
+| VSS | P | EP | 5 | 5 | 4/EP | 7 | 4/EP | EP | EP |  |
 
 </details>
 
