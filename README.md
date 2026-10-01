@@ -2,7 +2,7 @@
 
 <!-- This file is generated from ch32-riscv-ug/ch32-device-data (index/ + evidence/ + tools/build_readme.py). Edit there, not here. -->
 
-[Choose a part](#product-comparison) &middot; [Pin viewer](https://ch32-riscv-ug.github.io/ch32-device-data/pins.html?chip=CH32M007) &middot; [Pin maps](#pin-maps--alternate-functions) &middot; [Examples](#evt-examples) &middot; [Documents](#documents) &middot; [Address map](#address-map)
+[Choose a part](#product-comparison) &middot; [Pin viewer](https://ch32-riscv-ug.github.io/ch32-device-data/pins.html?chip=CH32M007) &middot; [Pin maps](#pin-maps--alternate-functions) &middot; [Errata](#errata) &middot; [Examples](#evt-examples) &middot; [Documents](#documents) &middot; [Address map](#address-map)
 
 ## Quick start
 
@@ -731,6 +731,10 @@ Pin functions (filterable): [ALL](https://ch32-riscv-ug.github.io/ch32-device-da
 
 ### CH32V007
 <img src="image/architecture_CH32V007.png" alt="CH32V007 block diagram" />
+
+## Errata
+
+- Only UNIID1 and UNIID2 (the low 64 bits) of the unique ID differ between chips; UNIID3 is not unique although the reference manual describes a 96-bit unique identifier. UNIID3 reads 0xFFFFFFFF on the measured V003, V006, X035 and L103 chips, and the same 0xE339E339 on a V203 and a V307. Use UNIID1|UNIID2 as the chip's unique value. *(applies: CH32L103, CH32V003, CH32V006, CH32V203, CH32V307, CH32X035; )*
 
 ## EVT examples
 
