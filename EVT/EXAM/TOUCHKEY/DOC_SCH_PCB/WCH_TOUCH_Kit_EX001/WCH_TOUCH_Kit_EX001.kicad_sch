@@ -1,0 +1,7853 @@
+(kicad_sch
+	(version 20260306)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "5e7b9514-4c14-4a78-a1a6-2087ebe21a1b")
+	(paper "A4")
+	(lib_symbols
+		(symbol "Miscellaneous Connectors:Header 10X2"
+			(pin_numbers
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Header, 10-Pin, Dual row"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "*HDR-TH_20P-P2.54-H-F-R2-C10-W8.5*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Header 10X2_1_0"
+				(rectangle
+					(start 10.16 0)
+					(end 0 -27.94)
+					(stroke
+						(width 0.0254)
+						(type solid)
+						(color 128 0 0 1)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at -5.08 -2.54 0)
+					(length 5.08)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 15.24 -2.54 180)
+					(length 5.08)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -5.08 0)
+					(length 5.08)
+					(name "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 15.24 -5.08 180)
+					(length 5.08)
+					(name "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -7.62 0)
+					(length 5.08)
+					(name "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 15.24 -7.62 180)
+					(length 5.08)
+					(name "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -10.16 0)
+					(length 5.08)
+					(name "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 15.24 -10.16 180)
+					(length 5.08)
+					(name "8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -12.7 0)
+					(length 5.08)
+					(name "9"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "9"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 15.24 -12.7 180)
+					(length 5.08)
+					(name "10"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "10"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -15.24 0)
+					(length 5.08)
+					(name "11"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "11"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 15.24 -15.24 180)
+					(length 5.08)
+					(name "12"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "12"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -17.78 0)
+					(length 5.08)
+					(name "13"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "13"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 15.24 -17.78 180)
+					(length 5.08)
+					(name "14"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "14"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -20.32 0)
+					(length 5.08)
+					(name "15"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "15"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 15.24 -20.32 180)
+					(length 5.08)
+					(name "16"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "16"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -22.86 0)
+					(length 5.08)
+					(name "17"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "17"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 15.24 -22.86 180)
+					(length 5.08)
+					(name "18"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "18"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -25.4 0)
+					(length 5.08)
+					(name "19"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "19"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 15.24 -25.4 180)
+					(length 5.08)
+					(name "20"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "20"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Miscellaneous Connectors:Header 7X2"
+			(pin_numbers
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Header, 7-Pin, Dual row"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "*HDR-TH_14P-P2.54-H-F-R2-C10-W8.5*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Header 7X2_1_0"
+				(rectangle
+					(start 10.16 0)
+					(end 0 -20.32)
+					(stroke
+						(width 0.0254)
+						(type solid)
+						(color 128 0 0 1)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at -5.08 -2.54 0)
+					(length 5.08)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 15.24 -2.54 180)
+					(length 5.08)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -5.08 0)
+					(length 5.08)
+					(name "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 15.24 -5.08 180)
+					(length 5.08)
+					(name "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -7.62 0)
+					(length 5.08)
+					(name "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 15.24 -7.62 180)
+					(length 5.08)
+					(name "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -10.16 0)
+					(length 5.08)
+					(name "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 15.24 -10.16 180)
+					(length 5.08)
+					(name "8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -12.7 0)
+					(length 5.08)
+					(name "9"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "9"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 15.24 -12.7 180)
+					(length 5.08)
+					(name "10"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "10"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -15.24 0)
+					(length 5.08)
+					(name "11"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "11"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 15.24 -15.24 180)
+					(length 5.08)
+					(name "12"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "12"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -17.78 0)
+					(length 5.08)
+					(name "13"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "13"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 15.24 -17.78 180)
+					(length 5.08)
+					(name "14"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "14"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Miscellaneous Devices:LED3"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Typical BLUE SiC LED"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "*LED0805-RD_EH*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "LED3_1_0"
+				(polyline
+					(pts
+						(xy 0 -5.08) (xy 2.54 -2.54) (xy 0 0) (xy 0 -5.08)
+					)
+					(stroke
+						(width -0.0001)
+						(type solid)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 1.016) (xy 4.318 2.794)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 0) (xy 2.54 -5.08)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.556 0) (xy 5.334 1.778)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 4.318 2.794) (xy 3.302 2.286) (xy 3.81 1.778) (xy 4.318 2.794)
+					)
+					(stroke
+						(width -0.0001)
+						(type solid)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 5.334 1.778) (xy 4.318 1.27) (xy 4.826 0.762) (xy 5.334 1.778)
+					)
+					(stroke
+						(width -0.0001)
+						(type solid)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(pin passive line
+					(at -5.08 -2.54 0)
+					(length 5.08)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 7.62 -2.54 180)
+					(length 5.08)
+					(name "K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PCB_Project-altium-import:3V3_BAR"
+			(power global)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "#PWR"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "3V3"
+				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "电源符号创建名为 '3V3' 的全局标签"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "power-flag"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "3V3_BAR_0_0"
+				(polyline
+					(pts
+						(xy -1.27 -2.54) (xy 1.27 -2.54)
+					)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 -2.54)
+					)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin power_in line
+					(at 0 0 0)
+					(length 0)
+					(hide yes)
+					(name "3V3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PCB_Project-altium-import:GND_POWER_GROUND"
+			(power global)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "#PWR"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "GND"
+				(at 0 -6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "电源符号创建名为 'GND' 的全局标签"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "power-flag"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "GND_POWER_GROUND_0_0"
+				(polyline
+					(pts
+						(xy -2.54 -2.54) (xy 2.54 -2.54)
+					)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.778 -3.302) (xy 1.778 -3.302)
+					)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.016 -4.064) (xy 1.016 -4.064)
+					)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -0.254 -4.826) (xy 0.254 -4.826)
+					)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 -2.54)
+					)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin power_in line
+					(at 0 0 0)
+					(length 0)
+					(hide yes)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "wch_sch_others:HEADER 1"
+			(pin_numbers
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Header, 1-Pin"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "*key*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "HEADER 1_1_0"
+				(rectangle
+					(start 10.16 2.54)
+					(end 5.08 -2.54)
+					(stroke
+						(width 0.0254)
+						(type solid)
+						(color 128 0 0 1)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at 0 0 0)
+					(length 5.08)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "wch_sch_others:HEADER 3"
+			(pin_numbers
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Header, 3-Pin"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "*滑轮10-18-3*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "HEADER 3_1_0"
+				(rectangle
+					(start 12.7 2.54)
+					(end 5.08 -7.62)
+					(stroke
+						(width 0.0254)
+						(type solid)
+						(color 128 0 0 1)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at 0 0 0)
+					(length 5.08)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -2.54 0)
+					(length 5.08)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -5.08 0)
+					(length 5.08)
+					(name "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "wch_sch_others:HEADER 4"
+			(pin_numbers
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Header, 4-Pin"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "*Slider_4_46X8.5*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "HEADER 4_1_0"
+				(rectangle
+					(start 12.7 2.54)
+					(end 5.08 -10.16)
+					(stroke
+						(width 0.0254)
+						(type solid)
+						(color 128 0 0 1)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at 0 0 0)
+					(length 5.08)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -2.54 0)
+					(length 5.08)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -5.08 0)
+					(length 5.08)
+					(name "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -7.62 0)
+					(length 5.08)
+					(name "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "wch_sch_others:RB-8P4R"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "贴片网络排阻"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "*RCA-8P4R-0603*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "RB-8P4R_1_0"
+				(rectangle
+					(start 1.27 2.54)
+					(end 8.89 -10.16)
+					(stroke
+						(width 0.0254)
+						(type solid)
+						(color 128 0 0 1)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(polyline
+					(pts
+						(xy 7.62 -1.016) (xy 7.62 1.016) (xy 2.54 1.016) (xy 2.54 -1.016) (xy 7.62 -1.016)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 7.62 -3.556) (xy 7.62 -1.524) (xy 2.54 -1.524) (xy 2.54 -3.556) (xy 7.62 -3.556)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 7.62 -6.096) (xy 7.62 -4.064) (xy 2.54 -4.064) (xy 2.54 -6.096) (xy 7.62 -6.096)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 7.62 -8.636) (xy 7.62 -6.604) (xy 2.54 -6.604) (xy 2.54 -8.636) (xy 7.62 -8.636)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at 0 0 0)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -2.54 0)
+					(length 2.54)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -5.08 0)
+					(length 2.54)
+					(name "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -7.62 0)
+					(length 2.54)
+					(name "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 10.16 -7.62 180)
+					(length 2.54)
+					(name "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 10.16 -5.08 180)
+					(length 2.54)
+					(name "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 10.16 -2.54 180)
+					(length 2.54)
+					(name "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 10.16 0 180)
+					(length 2.54)
+					(name "8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+	)
+	(text "LED"
+		(exclude_from_sim no)
+		(at 241.3 166.8272 0)
+		(effects
+			(font
+				(size 2.794 2.794)
+			)
+			(justify left bottom)
+		)
+		(uuid "515424e2-4a17-4265-98a9-fd8e9cfd6843")
+	)
+	(junction
+		(at 228.6 118.5672)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "0385ea5a-4665-4829-bcb6-7f632be542d1")
+	)
+	(junction
+		(at 212.09 118.5672)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "09011e9c-4c46-40b3-a92e-f57863f161af")
+	)
+	(junction
+		(at 212.09 47.4472)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "096f5116-4606-4907-97cb-7edcf530fc12")
+	)
+	(junction
+		(at 212.09 99.5172)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "1593e1f6-2719-4c01-9d65-24807f982935")
+	)
+	(junction
+		(at 223.52 86.8172)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "18411b7e-4cfa-4b66-b061-e17f06cf63e8")
+	)
+	(junction
+		(at 228.6 136.3472)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "23ad18c1-6255-49e2-90fc-791d90d26ec9")
+	)
+	(junction
+		(at 246.38 47.4472)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "406eb2f4-ad58-4a73-98b5-4c7ff0b1c8e3")
+	)
+	(junction
+		(at 208.28 105.8672)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "4bf2158f-3638-4e8f-b238-8b9e7ad9669d")
+	)
+	(junction
+		(at 195.58 136.3472)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "56ae5206-1f33-4ea7-a480-fa3a45e0c56e")
+	)
+	(junction
+		(at 195.58 65.2272)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "63137c91-3e69-4117-b4ba-955472432376")
+	)
+	(junction
+		(at 212.09 81.7372)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "64921cfb-326a-45b3-a99b-fad3280a1ba9")
+	)
+	(junction
+		(at 212.09 136.3472)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "6dc7e5e2-1289-4fb8-816d-cfea3d61e0d4")
+	)
+	(junction
+		(at 208.28 69.0372)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "6e0bc631-6f35-45be-8460-e167cf284d28")
+	)
+	(junction
+		(at 208.28 86.8172)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "6ea05fa6-b87f-4c47-9b5c-c0961d3fdb29")
+	)
+	(junction
+		(at 190.5 69.0372)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "7038719e-9794-4562-9417-1d9a1833eab0")
+	)
+	(junction
+		(at 195.58 81.7372)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "76464393-c48c-40ce-bbc3-894aa8cb43d4")
+	)
+	(junction
+		(at 190.5 105.8672)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "7b265869-5db0-43ce-9718-6d3dd5f98331")
+	)
+	(junction
+		(at 241.3 86.8172)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "8957bdc2-47cf-40d4-b4aa-b11447e867d7")
+	)
+	(junction
+		(at 228.6 65.2272)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "97663f48-d04c-444b-81f3-b7db45302727")
+	)
+	(junction
+		(at 241.3 105.8672)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "9b318ecd-4cbe-48fb-acca-e54f44b2fc1c")
+	)
+	(junction
+		(at 195.58 118.5672)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "9f989203-95c8-405b-85b3-619e831097a1")
+	)
+	(junction
+		(at 228.6 99.5172)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a46679cc-9781-4ede-b85d-497dc5132be6")
+	)
+	(junction
+		(at 190.5 86.8172)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c96cfe32-4ce3-4c9e-b1d5-246614c65edb")
+	)
+	(junction
+		(at 195.58 47.4472)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "cfe1b55d-cfb4-4a3c-8244-4a527c4b7ab3")
+	)
+	(junction
+		(at 223.52 105.8672)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "d2287d8e-9e5d-4616-a132-a5ee53868913")
+	)
+	(junction
+		(at 212.09 65.2272)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f0c9a52e-7d06-4705-afab-a675fb6c804b")
+	)
+	(junction
+		(at 223.52 69.0372)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f397bcb0-eaac-49b5-9d9e-fcc1cda0a1be")
+	)
+	(junction
+		(at 195.58 99.5172)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f64ad06c-19c6-449e-b937-b2393dcd521a")
+	)
+	(junction
+		(at 228.6 81.7372)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f7269537-b284-4609-92ae-40485c11ea48")
+	)
+	(junction
+		(at 241.3 69.0372)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f87e19a2-1fc3-4b3e-a42b-9f3540352352")
+	)
+	(junction
+		(at 228.6 47.4472)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "fe55b9f2-00a1-4433-b8c8-c23e2bf8b01a")
+	)
+	(wire
+		(pts
+			(xy 190.5 69.0372) (xy 190.5 86.8172)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "00333355-da4e-4e1b-aff2-698d0b920b64")
+	)
+	(wire
+		(pts
+			(xy 208.28 86.8172) (xy 212.09 86.8172)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "00e52ab4-ea9c-43f9-846b-ad4acc52e3ca")
+	)
+	(wire
+		(pts
+			(xy 223.52 86.8172) (xy 223.52 105.8672)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "02f983b8-7818-4dd4-82c0-4c59321166b7")
+	)
+	(wire
+		(pts
+			(xy 228.6 47.4472) (xy 228.6 39.8272)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "05577441-3e99-40f8-bc1a-406fcfb68479")
+	)
+	(wire
+		(pts
+			(xy 20.32 154.1272) (xy 43.18 154.1272)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "06674a0b-1f29-4aa6-a12b-a20efb463cfb")
+	)
+	(wire
+		(pts
+			(xy 212.09 123.6472) (xy 208.28 123.6472)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "099c998d-aef5-4f7c-93f8-129b3a069dfe")
+	)
+	(wire
+		(pts
+			(xy 190.5 47.4472) (xy 190.5 69.0372)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0a937c3a-ad69-440c-b081-fa6dbdf881b2")
+	)
+	(wire
+		(pts
+			(xy 30.48 156.6672) (xy 43.18 156.6672)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0b190eb0-1571-4f0e-9996-952e406d8253")
+	)
+	(wire
+		(pts
+			(xy 246.38 118.5672) (xy 228.6 118.5672)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0c7560a9-6459-4ed5-934a-870e31db5661")
+	)
+	(wire
+		(pts
+			(xy 53.34 52.5272) (xy 58.42 52.5272)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0cf4c545-aebb-4ab0-bac6-724285f80ad5")
+	)
+	(wire
+		(pts
+			(xy 246.38 51.2572) (xy 246.38 47.4472)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0f3d55af-613c-43a1-aedf-27638ce6cbf3")
+	)
+	(wire
+		(pts
+			(xy 127 42.3672) (xy 139.7 42.3672)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "16befa26-bc0e-47bb-9235-17f7bbbb2f7c")
+	)
+	(wire
+		(pts
+			(xy 127 44.9072) (xy 139.7 44.9072)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "16fd0060-10cd-48ac-a40f-d349754cfdc1")
+	)
+	(wire
+		(pts
+			(xy 246.38 63.9572) (xy 246.38 65.2272)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1eb57406-0b64-44b3-a392-99efa5548952")
+	)
+	(wire
+		(pts
+			(xy 101.6 44.9072) (xy 106.68 44.9072)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1f771486-6dbc-4bd6-94df-bb01b29468c2")
+	)
+	(wire
+		(pts
+			(xy 212.09 136.3472) (xy 195.58 136.3472)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1f7f8666-2508-48b0-ba9d-220f433e5b5e")
+	)
+	(wire
+		(pts
+			(xy 246.38 47.4472) (xy 246.38 39.8272)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "221697bf-0d02-4b9a-a24c-ffe75bd7455a")
+	)
+	(wire
+		(pts
+			(xy 195.58 47.4472) (xy 195.58 39.8272)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2349fc90-6414-4174-896d-5718394ad7b2")
+	)
+	(wire
+		(pts
+			(xy 101.6 42.3672) (xy 106.68 42.3672)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2b4137ea-786a-4cf5-a172-b90a312dcec7")
+	)
+	(wire
+		(pts
+			(xy 127 47.4472) (xy 139.7 47.4472)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2d0b788e-0fd4-46fa-b369-701f9074ceee")
+	)
+	(wire
+		(pts
+			(xy 246.38 123.6472) (xy 241.3 123.6472)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "32646553-4662-477f-9710-416cfcc3be2c")
+	)
+	(wire
+		(pts
+			(xy 228.6 47.4472) (xy 223.52 47.4472)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3663f1f3-eaaa-471b-a971-d43b3ed5d498")
+	)
+	(wire
+		(pts
+			(xy 30.48 159.2072) (xy 43.18 159.2072)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "368a8191-fa4f-4a08-bd90-e1d4ee3df4ca")
+	)
+	(wire
+		(pts
+			(xy 190.5 86.8172) (xy 190.5 105.8672)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3d900bc2-d3b7-4f97-9a27-cb7845e9ba41")
+	)
+	(wire
+		(pts
+			(xy 223.52 69.0372) (xy 223.52 86.8172)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3e50044e-8443-4c1a-acd5-1cb934a61452")
+	)
+	(wire
+		(pts
+			(xy 228.6 63.9572) (xy 228.6 65.2272)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "44101ae9-7850-4eb5-9855-c3fea78caefd")
+	)
+	(wire
+		(pts
+			(xy 212.09 118.5672) (xy 195.58 118.5672)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4763d07d-3b96-4974-839c-ef04d2a07252")
+	)
+	(wire
+		(pts
+			(xy 195.58 99.5172) (xy 172.72 99.5172)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "54e5ad5c-09ba-4829-968a-4817e780009c")
+	)
+	(wire
+		(pts
+			(xy 228.6 51.2572) (xy 228.6 47.4472)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5a24a10f-bb33-49b4-8239-eb4479ec9290")
+	)
+	(wire
+		(pts
+			(xy 246.38 81.7372) (xy 228.6 81.7372)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5a4d04d8-5314-414a-bea6-4de4d1de0b9a")
+	)
+	(wire
+		(pts
+			(xy 208.28 69.0372) (xy 208.28 47.4472)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5d0418e6-e9fc-43d7-9ab9-04d4815961f1")
+	)
+	(wire
+		(pts
+			(xy 190.5 123.6472) (xy 190.5 105.8672)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "61928000-e01b-4ac6-b5ab-6331173b9c62")
+	)
+	(wire
+		(pts
+			(xy 127 52.5272) (xy 139.7 52.5272)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "64c46bc4-4d6e-40e5-82c9-6363174a19bb")
+	)
+	(wire
+		(pts
+			(xy 223.52 123.6472) (xy 223.52 105.8672)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "651d4b88-681c-4c83-9e83-51ddcf5ee672")
+	)
+	(wire
+		(pts
+			(xy 83.82 44.9072) (xy 91.44 44.9072)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "67f3a928-d06e-4afc-890e-f626b15e87bb")
+	)
+	(wire
+		(pts
+			(xy 212.09 63.9572) (xy 212.09 65.2272)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6a263013-3808-4695-bb01-f3c9d9c4e7e1")
+	)
+	(wire
+		(pts
+			(xy 241.3 86.8172) (xy 241.3 105.8672)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6aaa54d6-a11b-4504-aca5-57a98b0e0c36")
+	)
+	(wire
+		(pts
+			(xy 101.6 49.9872) (xy 106.68 49.9872)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6ae05fcf-951e-4ced-aebd-0a0cd673f029")
+	)
+	(wire
+		(pts
+			(xy 223.52 47.4472) (xy 223.52 69.0372)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "72d2f1ed-60ac-4d6e-a9f4-2cc09fb18e26")
+	)
+	(wire
+		(pts
+			(xy 241.3 69.0372) (xy 241.3 86.8172)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "767cec5c-7b45-4fd3-b8d5-34d8dc9bf6af")
+	)
+	(wire
+		(pts
+			(xy 223.52 105.8672) (xy 228.6 105.8672)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "76a632d4-1e5b-42a4-96b6-7fc1653a21c4")
+	)
+	(wire
+		(pts
+			(xy 127 49.9872) (xy 139.7 49.9872)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7984eb4a-df55-44e4-9ba9-a31c3cbd67d2")
+	)
+	(wire
+		(pts
+			(xy 228.6 65.2272) (xy 212.09 65.2272)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7a793adc-ff65-4e39-91d1-a8ca7c63fc1c")
+	)
+	(wire
+		(pts
+			(xy 246.38 47.4472) (xy 241.3 47.4472)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7a7e345d-2c94-4518-8d00-ed4f865dbe1e")
+	)
+	(wire
+		(pts
+			(xy 208.28 105.8672) (xy 212.09 105.8672)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7ae33035-bdb8-422f-89c6-0449cd6780c1")
+	)
+	(wire
+		(pts
+			(xy 190.5 105.8672) (xy 195.58 105.8672)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7cb71a44-4b75-4303-b20a-f14b58fbfdce")
+	)
+	(wire
+		(pts
+			(xy 83.82 42.3672) (xy 91.44 42.3672)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7f3147d7-df44-4fcb-afa7-a0e23e488544")
+	)
+	(wire
+		(pts
+			(xy 43.18 161.7472) (xy 20.32 161.7472)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "815dcf5a-6cf1-44f3-8123-effb0333984a")
+	)
+	(wire
+		(pts
+			(xy 223.52 69.0372) (xy 228.6 69.0372)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "81944ee9-ca25-4930-a86b-a0e647e14c26")
+	)
+	(wire
+		(pts
+			(xy 208.28 69.0372) (xy 208.28 86.8172)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "81de80d5-f943-49ec-9448-e1fdad47091e")
+	)
+	(wire
+		(pts
+			(xy 93.98 52.5272) (xy 106.68 52.5272)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "81f4abe1-0857-4d22-9463-a72d2cc54a31")
+	)
+	(wire
+		(pts
+			(xy 20.32 161.7472) (xy 20.32 154.1272)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "83a65f94-984b-47ab-b8f7-0a98f50af595")
+	)
+	(wire
+		(pts
+			(xy 241.3 47.4472) (xy 241.3 69.0372)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "87935c61-9b80-40de-b835-7306a21a7bc4")
+	)
+	(wire
+		(pts
+			(xy 246.38 65.2272) (xy 228.6 65.2272)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "88ad505b-bfe9-44d9-bcee-afdef80b7cb7")
+	)
+	(wire
+		(pts
+			(xy 127 55.0672) (xy 139.7 55.0672)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "88d6db93-081d-471d-a372-aa641a6cf1d7")
+	)
+	(wire
+		(pts
+			(xy 195.58 47.4472) (xy 190.5 47.4472)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8a6d3cf6-f024-46ce-9397-5aeb3faaa601")
+	)
+	(wire
+		(pts
+			(xy 246.38 136.3472) (xy 228.6 136.3472)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "92176b3d-96d2-47ee-a21c-9fbcad6ec912")
+	)
+	(wire
+		(pts
+			(xy 241.3 123.6472) (xy 241.3 105.8672)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "94c9d271-d7ae-4874-9df9-e7f2d530c817")
+	)
+	(wire
+		(pts
+			(xy 195.58 65.2272) (xy 172.72 65.2272)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "96c0bf7f-b2ec-4b7d-ac70-5acc6211b931")
+	)
+	(wire
+		(pts
+			(xy 212.09 81.7372) (xy 195.58 81.7372)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9904aab1-5917-449a-ad3f-26f47b455ec4")
+	)
+	(wire
+		(pts
+			(xy 195.58 136.3472) (xy 172.72 136.3472)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9b37431f-4e16-4751-9d2a-0a8fa11ae54a")
+	)
+	(wire
+		(pts
+			(xy 241.3 69.0372) (xy 246.38 69.0372)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9c0d96a1-e3f9-4808-8d24-67857190c5c9")
+	)
+	(wire
+		(pts
+			(xy 212.09 47.4472) (xy 212.09 51.2572)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9cac999e-da2d-4a7a-b685-ad1f07c428fb")
+	)
+	(wire
+		(pts
+			(xy 228.6 99.5172) (xy 212.09 99.5172)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9fb741e5-267f-48e6-ae57-632ed1d34eea")
+	)
+	(wire
+		(pts
+			(xy 223.52 86.8172) (xy 228.6 86.8172)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a080b6a3-065e-417b-8f62-1ab29bc7f77c")
+	)
+	(wire
+		(pts
+			(xy 53.34 49.9872) (xy 58.42 49.9872)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a3aa5b83-96e5-4fd8-a707-9362261a8cca")
+	)
+	(wire
+		(pts
+			(xy 190.5 69.0372) (xy 195.58 69.0372)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a4aa5193-22bc-4deb-b8fb-2134ce25081e")
+	)
+	(wire
+		(pts
+			(xy 246.38 99.5172) (xy 228.6 99.5172)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a58544a7-7095-4e2f-9e5a-5db2ba9543e4")
+	)
+	(wire
+		(pts
+			(xy 195.58 81.7372) (xy 172.72 81.7372)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a70ff361-fa3a-4fb5-b525-f34b9a745fa2")
+	)
+	(wire
+		(pts
+			(xy 208.28 86.8172) (xy 208.28 105.8672)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a7d68ec7-e7b3-488c-8424-ff2fd6de5065")
+	)
+	(wire
+		(pts
+			(xy 195.58 63.9572) (xy 195.58 65.2272)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "aa8bf51e-0ae9-487c-8208-ccf6701214b3")
+	)
+	(wire
+		(pts
+			(xy 40.64 105.8672) (xy 45.72 105.8672)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "aab7f039-30aa-439f-ba72-f638101372e7")
+	)
+	(wire
+		(pts
+			(xy 190.5 86.8172) (xy 195.58 86.8172)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "aae755e1-fd22-4b3e-94a2-a5385ebd4d79")
+	)
+	(wire
+		(pts
+			(xy 241.3 105.8672) (xy 246.38 105.8672)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ac598aa7-61d9-4b34-b11f-44129f48fc8f")
+	)
+	(wire
+		(pts
+			(xy 53.34 47.4472) (xy 58.42 47.4472)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "acb2ff1b-3583-4dbe-b71e-43b7a7a4df91")
+	)
+	(wire
+		(pts
+			(xy 83.82 49.9872) (xy 91.44 49.9872)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "af94a1e7-bfee-4f54-a848-25f05e4cc048")
+	)
+	(wire
+		(pts
+			(xy 228.6 136.3472) (xy 212.09 136.3472)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b3e765f3-dba8-4268-bcdf-d04de529a231")
+	)
+	(wire
+		(pts
+			(xy 228.6 118.5672) (xy 212.09 118.5672)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "be10b773-c0e8-4e30-87a2-c392651c6aff")
+	)
+	(wire
+		(pts
+			(xy 212.09 69.0372) (xy 208.28 69.0372)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bf6e3369-c0af-4954-9698-4c348920e244")
+	)
+	(wire
+		(pts
+			(xy 101.6 47.4472) (xy 106.68 47.4472)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c0dd30af-fa57-40e5-97e1-eccb69fa7fab")
+	)
+	(wire
+		(pts
+			(xy 195.58 51.2572) (xy 195.58 47.4472)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c357faa5-b563-44c3-966d-2e490c1a0a20")
+	)
+	(wire
+		(pts
+			(xy 208.28 47.4472) (xy 212.09 47.4472)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c79c80ea-08c6-4e45-bd33-28f8b4f41985")
+	)
+	(wire
+		(pts
+			(xy 212.09 65.2272) (xy 195.58 65.2272)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c7b69374-0b8d-4c89-8564-f203066fa287")
+	)
+	(wire
+		(pts
+			(xy 35.56 83.0072) (xy 40.64 83.0072)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c88f081e-62fb-4147-9d5d-6f114821e24c")
+	)
+	(wire
+		(pts
+			(xy 212.09 99.5172) (xy 195.58 99.5172)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ca017bd5-b958-4ad8-8fd0-1788f523c96f")
+	)
+	(wire
+		(pts
+			(xy 228.6 81.7372) (xy 212.09 81.7372)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d308133e-e971-40c5-b4fb-558c4d55927a")
+	)
+	(wire
+		(pts
+			(xy 195.58 123.6472) (xy 190.5 123.6472)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d52280a2-716f-4007-822d-1d7fca2d37b8")
+	)
+	(wire
+		(pts
+			(xy 241.3 86.8172) (xy 246.38 86.8172)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "da7cbd3c-6f56-462d-9694-37af2f4060f9")
+	)
+	(wire
+		(pts
+			(xy 83.82 47.4472) (xy 91.44 47.4472)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "db498af5-abb7-484d-878b-b1bb965b3c7e")
+	)
+	(wire
+		(pts
+			(xy 208.28 123.6472) (xy 208.28 105.8672)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ddce5aff-2c7a-4a4b-9d4e-4615494f6ed1")
+	)
+	(wire
+		(pts
+			(xy 212.09 47.4472) (xy 212.09 39.8272)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e3419cfb-45a0-484f-9755-a232576cef13")
+	)
+	(wire
+		(pts
+			(xy 228.6 123.6472) (xy 223.52 123.6472)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ebac29e4-e9c4-472b-943c-c5d86ce6bd9c")
+	)
+	(wire
+		(pts
+			(xy 53.34 44.9072) (xy 58.42 44.9072)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ed9326d6-2cc4-4726-8413-ea8bded31e6e")
+	)
+	(wire
+		(pts
+			(xy 195.58 118.5672) (xy 172.72 118.5672)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f112b12e-0f27-4340-b4c8-59bc6dc48d90")
+	)
+	(wire
+		(pts
+			(xy 93.98 55.0672) (xy 106.68 55.0672)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f3a81524-aa43-4924-9053-5f2a62d6098a")
+	)
+	(label "SEG_3"
+		(at 195.58 39.8272 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "113682db-b56b-486e-9f80-69fb5c461b7e")
+	)
+	(label "TS3"
+		(at 30.48 156.6672 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "19291ab6-e706-430c-a488-8c2aadfbbe27")
+	)
+	(label "SEG2"
+		(at 101.6 44.9072 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "1c9c77e6-bf0c-44c1-aa96-5e00ad3ab635")
+	)
+	(label "COM4"
+		(at 172.72 118.5672 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "1f6b3d3e-0b49-429d-8096-48cdcee2b608")
+	)
+	(label "TS6"
+		(at 33.02 52.5272 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "24dfbcef-21a9-46cc-ab39-d3e251b8693b")
+	)
+	(label "COM5"
+		(at 172.72 136.3472 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "283f6de7-b665-4f26-a621-7a7b7c873254")
+	)
+	(label "TS1"
+		(at 53.34 44.9072 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "3e68d367-32af-41a7-9a95-c2e02aa550a4")
+	)
+	(label "TS3"
+		(at 53.34 47.4472 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "4d1d2530-5e2c-489b-82d3-67dd37c095dc")
+	)
+	(label "COM2"
+		(at 172.72 81.7372 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "4f1f4285-907c-4bc7-846a-a58e7bf2e479")
+	)
+	(label "COM1"
+		(at 132.08 42.3672 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "61677a96-fb7f-430f-ad97-c130afa89bac")
+	)
+	(label "TS7"
+		(at 53.34 52.5272 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "643ebaaa-ab27-483a-b54b-3ca6fafb7e08")
+	)
+	(label "COM3"
+		(at 132.08 47.4472 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "64f716e9-5a82-495d-ba42-4c26990e49c4")
+	)
+	(label "COM4"
+		(at 132.08 49.9872 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "7082ae8c-d368-4934-80c5-6f091ed7fe2c")
+	)
+	(label "TS2"
+		(at 33.02 47.4472 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "70adb9c5-cf8f-4167-9126-c51a66c3ab13")
+	)
+	(label "COM1"
+		(at 172.72 65.2272 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "78cb0c5b-6df9-49bb-9768-78cc1bd05f31")
+	)
+	(label "TS2"
+		(at 30.48 159.2072 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "8425d38f-5d53-4a60-aedf-2b616d6d49e4")
+	)
+	(label "TS7"
+		(at 43.18 131.2672 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "85a23afd-80f0-4875-98d6-7fc0be787624")
+	)
+	(label "TS4"
+		(at 43.18 133.8072 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "89924c94-8cbf-4d67-b016-c4cde451e369")
+	)
+	(label "TS6"
+		(at 43.18 128.7272 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "8e284907-8685-4f81-998c-f6dc15fe3bbb")
+	)
+	(label "TS1"
+		(at 30.48 154.1272 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "95d26b9d-4d92-4427-b4ff-362bf0ec23d5")
+	)
+	(label "COM2"
+		(at 132.08 44.9072 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "a0290f77-40df-4ede-9107-bfeaadd64c4e")
+	)
+	(label "SEG_0"
+		(at 246.38 39.8272 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "a03ff731-0ff0-4208-9ad1-f566a9f852f4")
+	)
+	(label "TS4"
+		(at 33.02 49.9872 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "a66b752c-d8a3-479b-bb0e-254796ebc890")
+	)
+	(label "TS5"
+		(at 40.64 105.8672 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "bc3d45fd-aa1a-4f1d-a07e-a03876ee5e66")
+	)
+	(label "COM3"
+		(at 172.72 99.5172 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "bcf2084c-4fa5-4dc6-983b-dfda567c45cd")
+	)
+	(label "SEG_1"
+		(at 228.6 39.8272 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "bdf66946-a66e-4fc5-b369-efa7fa8fed6a")
+	)
+	(label "SEG_3"
+		(at 83.82 42.3672 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "beb2d303-0e28-4cf6-a05f-e901dc2bac34")
+	)
+	(label "SEG0"
+		(at 101.6 49.9872 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "c84dc634-1ae6-4aff-bc9b-b2dbd8d50fcb")
+	)
+	(label "TS5"
+		(at 53.34 49.9872 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "c85647df-a4d6-404b-bc08-031e0321a764")
+	)
+	(label "SEG1"
+		(at 101.6 47.4472 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "cb10dc92-c7e6-4ba9-bfd3-aaad4f1f0066")
+	)
+	(label "TS0"
+		(at 33.02 44.9072 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "ccfd7903-1d57-45b6-a776-dd328c131268")
+	)
+	(label "SEG_1"
+		(at 83.82 47.4472 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "db2eade7-fd92-4025-9cf5-8d010851e00a")
+	)
+	(label "SEG_2"
+		(at 83.82 44.9072 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "db6af52e-ad0f-4c22-902e-dd47fcca9371")
+	)
+	(label "SEG3"
+		(at 101.6 42.3672 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "dee958b7-c2bc-4559-a510-c5005ea1a442")
+	)
+	(label "SEG_2"
+		(at 212.09 39.8272 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "e4267049-0fff-4651-a95e-c3b51d414242")
+	)
+	(label "SEG_0"
+		(at 83.82 49.9872 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "f136bce1-b09c-474f-acdb-d6d5141aba9a")
+	)
+	(label "TS0"
+		(at 35.56 83.0072 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "f41293a7-945f-4f73-aa4d-de3596a431fe")
+	)
+	(label "COM5"
+		(at 132.08 52.5272 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "fb0763ab-3f31-4c81-9922-5b054923bafb")
+	)
+	(symbol
+		(lib_id "Miscellaneous Devices:LED3")
+		(at 198.12 128.7272 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "01d66de7-9f57-4f81-a539-2ecb766c695b")
+		(property "Reference" "LED19"
+			(at 201.168 131.0132 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" ""
+			(at 201.168 133.5532 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "LED0805-RD_EH"
+			(at 198.12 128.7272 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 198.12 128.7272 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Typical BLUE SiC LED"
+			(at 198.12 128.7272 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "PUBLISHED" "8-Jun-2000"
+			(at 192.786 123.1392 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "LATESTREVISIONDATE" "17-Dec-2003"
+			(at 192.786 123.1392 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "LATESTREVISIONNOTE" "PCB Footprint replaced."
+			(at 192.786 123.1392 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "DATASHEETVERSION" "16-Apr-2002"
+			(at 192.786 123.1392 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEVERSION" "16-Apr-2002"
+			(at 192.786 123.1392 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEREFERENCE" "3.5X2.8X1.9"
+			(at 192.786 123.1392 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PUBLISHER" "Altium Limited"
+			(at 192.786 123.1392 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEDESCRIPTION" "SM LED; 2 C-Bend Leads; Body 3.5 x 2.8 x 1.9 mm, inc leads (LxWxH typ)"
+			(at 192.786 123.1392 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(pin "1"
+			(uuid "b8c19bf6-b435-47cc-85fd-e1b233eba408")
+		)
+		(pin "2"
+			(uuid "4356bad5-2620-485a-a7ce-30d9ec7d48f5")
+		)
+		(instances
+			(project "PCB_Project"
+				(path "/5e7b9514-4c14-4a78-a1a6-2087ebe21a1b"
+					(reference "LED19")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Miscellaneous Devices:LED3")
+		(at 248.92 74.1172 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "22bf85fe-c3f6-4422-8d4f-580d9c5d74fe")
+		(property "Reference" "LED4"
+			(at 251.968 76.4032 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" ""
+			(at 251.46 80.4672 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "LED0805-RD_EH"
+			(at 248.92 74.1172 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 248.92 74.1172 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Typical BLUE SiC LED"
+			(at 248.92 74.1172 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "PUBLISHED" "8-Jun-2000"
+			(at 243.586 68.5292 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "LATESTREVISIONDATE" "17-Dec-2003"
+			(at 243.586 68.5292 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "LATESTREVISIONNOTE" "PCB Footprint replaced."
+			(at 243.586 68.5292 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "DATASHEETVERSION" "16-Apr-2002"
+			(at 243.586 68.5292 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEVERSION" "16-Apr-2002"
+			(at 243.586 68.5292 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEREFERENCE" "3.5X2.8X1.9"
+			(at 243.586 68.5292 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PUBLISHER" "Altium Limited"
+			(at 243.586 68.5292 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEDESCRIPTION" "SM LED; 2 C-Bend Leads; Body 3.5 x 2.8 x 1.9 mm, inc leads (LxWxH typ)"
+			(at 243.586 68.5292 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(pin "2"
+			(uuid "71b4509d-6e0d-4ae3-aea3-7f5241b70215")
+		)
+		(pin "1"
+			(uuid "e7f36431-059d-4e63-abfe-3f71b2775dbe")
+		)
+		(instances
+			(project "PCB_Project"
+				(path "/5e7b9514-4c14-4a78-a1a6-2087ebe21a1b"
+					(reference "LED4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "wch_sch_others:HEADER 4")
+		(at 43.18 154.1272 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "3962e903-0c29-490c-b32b-9a3896a790e3")
+		(property "Reference" "P6"
+			(at 48.26 151.5872 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "LineSlider"
+			(at 48.26 166.8272 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "Slider_4_46X8.5"
+			(at 43.18 154.1272 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 43.18 154.1272 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Header, 4-Pin"
+			(at 43.18 154.1272 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "9edc352a-ab4f-49fb-9653-e2b2a96368fc")
+		)
+		(pin "2"
+			(uuid "e15b8ef1-0e28-467c-b4f7-cef74c014457")
+		)
+		(pin "4"
+			(uuid "329c19a3-0af0-4ccc-989c-fc6193cffcd8")
+		)
+		(pin "3"
+			(uuid "e9b20d94-b158-4f6f-a127-1733ce83980d")
+		)
+		(instances
+			(project "PCB_Project"
+				(path "/5e7b9514-4c14-4a78-a1a6-2087ebe21a1b"
+					(reference "P6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Miscellaneous Devices:LED3")
+		(at 231.14 74.1172 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "3a83f0bd-f513-438d-b2ca-1d8a70958790")
+		(property "Reference" "LED5"
+			(at 234.188 76.4032 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" ""
+			(at 234.188 78.9432 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "LED0805-RD_EH"
+			(at 231.14 74.1172 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 231.14 74.1172 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Typical BLUE SiC LED"
+			(at 231.14 74.1172 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "PUBLISHED" "8-Jun-2000"
+			(at 225.806 68.5292 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "LATESTREVISIONDATE" "17-Dec-2003"
+			(at 225.806 68.5292 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "LATESTREVISIONNOTE" "PCB Footprint replaced."
+			(at 225.806 68.5292 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "DATASHEETVERSION" "16-Apr-2002"
+			(at 225.806 68.5292 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEVERSION" "16-Apr-2002"
+			(at 225.806 68.5292 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEREFERENCE" "3.5X2.8X1.9"
+			(at 225.806 68.5292 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PUBLISHER" "Altium Limited"
+			(at 225.806 68.5292 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEDESCRIPTION" "SM LED; 2 C-Bend Leads; Body 3.5 x 2.8 x 1.9 mm, inc leads (LxWxH typ)"
+			(at 225.806 68.5292 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(pin "2"
+			(uuid "347a6c98-dd32-4771-96b2-dd1ebfa54838")
+		)
+		(pin "1"
+			(uuid "34967174-c612-4c24-ac69-016728cd8b8f")
+		)
+		(instances
+			(project "PCB_Project"
+				(path "/5e7b9514-4c14-4a78-a1a6-2087ebe21a1b"
+					(reference "LED5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "wch_sch_others:HEADER 3")
+		(at 43.18 128.7272 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "435ed741-7e86-432b-a1ae-a7591ab76c25")
+		(property "Reference" "W1"
+			(at 48.26 126.1872 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "WheelSlider"
+			(at 48.26 138.8872 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "滑轮10-18-3"
+			(at 43.18 128.7272 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 43.18 128.7272 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Header, 3-Pin"
+			(at 43.18 128.7272 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "3"
+			(uuid "6ce4aa4a-2f62-497f-baf3-a533ae823e09")
+		)
+		(pin "1"
+			(uuid "8223e9a8-ba58-418d-9fbf-28581f537815")
+		)
+		(pin "2"
+			(uuid "76689641-064d-4416-bcf2-9eb9b6fdcf9c")
+		)
+		(instances
+			(project "PCB_Project"
+				(path "/5e7b9514-4c14-4a78-a1a6-2087ebe21a1b"
+					(reference "W1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCB_Project-altium-import:3V3_BAR")
+		(at 106.68 65.2272 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "55c98ff4-a869-4d4d-9a6e-c8f101cab07e")
+		(property "Reference" "#PWR?"
+			(at 106.68 65.2272 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "3V3"
+			(at 102.87 65.2272 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 106.68 65.2272 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 106.68 65.2272 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 106.68 65.2272 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin ""
+			(uuid "6f0a0947-997f-4e8b-af4f-f136da83d53a")
+		)
+		(instances
+			(project "PCB_Project"
+				(path "/5e7b9514-4c14-4a78-a1a6-2087ebe21a1b"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Miscellaneous Devices:LED3")
+		(at 248.92 128.7272 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "6143bf0a-24d4-4c2c-aa8b-af27c2750b60")
+		(property "Reference" "LED16"
+			(at 251.968 131.0132 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" ""
+			(at 251.968 133.5532 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "LED0805-RD_EH"
+			(at 248.92 128.7272 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 248.92 128.7272 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Typical BLUE SiC LED"
+			(at 248.92 128.7272 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "PUBLISHED" "8-Jun-2000"
+			(at 243.586 123.1392 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "LATESTREVISIONDATE" "17-Dec-2003"
+			(at 243.586 123.1392 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "LATESTREVISIONNOTE" "PCB Footprint replaced."
+			(at 243.586 123.1392 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "DATASHEETVERSION" "16-Apr-2002"
+			(at 243.586 123.1392 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEVERSION" "16-Apr-2002"
+			(at 243.586 123.1392 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEREFERENCE" "3.5X2.8X1.9"
+			(at 243.586 123.1392 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PUBLISHER" "Altium Limited"
+			(at 243.586 123.1392 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEDESCRIPTION" "SM LED; 2 C-Bend Leads; Body 3.5 x 2.8 x 1.9 mm, inc leads (LxWxH typ)"
+			(at 243.586 123.1392 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(pin "1"
+			(uuid "dbf4c957-12f3-4340-b0c4-c916eca49abf")
+		)
+		(pin "2"
+			(uuid "869ea056-bba3-467e-b08c-0d997e3faedd")
+		)
+		(instances
+			(project "PCB_Project"
+				(path "/5e7b9514-4c14-4a78-a1a6-2087ebe21a1b"
+					(reference "LED16")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "wch_sch_others:RB-8P4R")
+		(at 101.6 42.3672 0)
+		(mirror y)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "6eaf70c5-57b2-4e23-bc23-1087da4d3955")
+		(property "Reference" "RB1"
+			(at 92.71 39.8272 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right bottom)
+			)
+		)
+		(property "Value" "RB-8P4R"
+			(at 92.71 55.0672 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right bottom)
+			)
+		)
+		(property "Footprint" "RCA-8P4R-0603"
+			(at 101.6 42.3672 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 101.6 42.3672 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "贴片网络排阻"
+			(at 101.6 42.3672 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "6"
+			(uuid "dd174434-7657-4154-a423-3d2eb105ad92")
+		)
+		(pin "3"
+			(uuid "0a024336-a981-4da1-a036-9dd36be32ebb")
+		)
+		(pin "7"
+			(uuid "d8f6913e-a35f-4008-867a-91ab51b16b6f")
+		)
+		(pin "8"
+			(uuid "7dc1deb7-47b8-4839-939b-fa58e9d6ab78")
+		)
+		(pin "1"
+			(uuid "c8e9361a-7969-43f8-a182-df625d43f037")
+		)
+		(pin "2"
+			(uuid "26b985e6-0dad-4e1e-a6a2-6c6b70484fb4")
+		)
+		(pin "5"
+			(uuid "38042259-24ce-415b-a8da-0f429387a4c0")
+		)
+		(pin "4"
+			(uuid "9bfb1bd9-1a92-44ea-9a01-1522277b37c1")
+		)
+		(instances
+			(project "PCB_Project"
+				(path "/5e7b9514-4c14-4a78-a1a6-2087ebe21a1b"
+					(reference "RB1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Miscellaneous Devices:LED3")
+		(at 214.63 91.8972 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "6f51818f-ace2-49ed-9e0e-4d1934e7ae6b")
+		(property "Reference" "LED10"
+			(at 217.678 94.1832 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" ""
+			(at 217.678 96.7232 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "LED0805-RD_EH"
+			(at 214.63 91.8972 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 214.63 91.8972 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Typical BLUE SiC LED"
+			(at 214.63 91.8972 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "PUBLISHED" "8-Jun-2000"
+			(at 209.296 86.3092 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "LATESTREVISIONDATE" "17-Dec-2003"
+			(at 209.296 86.3092 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "LATESTREVISIONNOTE" "PCB Footprint replaced."
+			(at 209.296 86.3092 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "DATASHEETVERSION" "16-Apr-2002"
+			(at 209.296 86.3092 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEVERSION" "16-Apr-2002"
+			(at 209.296 86.3092 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEREFERENCE" "3.5X2.8X1.9"
+			(at 209.296 86.3092 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PUBLISHER" "Altium Limited"
+			(at 209.296 86.3092 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEDESCRIPTION" "SM LED; 2 C-Bend Leads; Body 3.5 x 2.8 x 1.9 mm, inc leads (LxWxH typ)"
+			(at 209.296 86.3092 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(pin "2"
+			(uuid "0fc199ee-40e2-4415-a667-6fdbb13e7ff6")
+		)
+		(pin "1"
+			(uuid "9ea407ce-46a0-4122-b0aa-9144e4f4a3d6")
+		)
+		(instances
+			(project "PCB_Project"
+				(path "/5e7b9514-4c14-4a78-a1a6-2087ebe21a1b"
+					(reference "LED10")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCB_Project-altium-import:GND_POWER_GROUND")
+		(at 127 65.2272 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "71550b24-351c-4324-aedd-9a94cbf14e9a")
+		(property "Reference" "#PWR?"
+			(at 127 65.2272 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 133.35 65.2272 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 127 65.2272 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 127 65.2272 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 127 65.2272 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin ""
+			(uuid "816569e6-a5bb-4188-adaa-2bf5d2085ae4")
+		)
+		(instances
+			(project "PCB_Project"
+				(path "/5e7b9514-4c14-4a78-a1a6-2087ebe21a1b"
+					(reference "#PWR?")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Miscellaneous Devices:LED3")
+		(at 231.14 56.3372 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "74418915-397c-47ca-8108-be9f8424d840")
+		(property "Reference" "LED1"
+			(at 234.188 58.6232 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" ""
+			(at 234.188 61.1632 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "LED0805-RD_EH"
+			(at 231.14 56.3372 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 231.14 56.3372 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Typical BLUE SiC LED"
+			(at 231.14 56.3372 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "PUBLISHED" "8-Jun-2000"
+			(at 225.806 50.7492 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "LATESTREVISIONDATE" "17-Dec-2003"
+			(at 225.806 50.7492 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "LATESTREVISIONNOTE" "PCB Footprint replaced."
+			(at 225.806 50.7492 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "DATASHEETVERSION" "16-Apr-2002"
+			(at 225.806 50.7492 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEVERSION" "16-Apr-2002"
+			(at 225.806 50.7492 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEREFERENCE" "3.5X2.8X1.9"
+			(at 225.806 50.7492 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PUBLISHER" "Altium Limited"
+			(at 225.806 50.7492 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEDESCRIPTION" "SM LED; 2 C-Bend Leads; Body 3.5 x 2.8 x 1.9 mm, inc leads (LxWxH typ)"
+			(at 225.806 50.7492 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(pin "2"
+			(uuid "336166c4-530b-460f-8ca8-052f3766436b")
+		)
+		(pin "1"
+			(uuid "d88a8cd6-a5b8-4d16-aff6-51e3ec875d4d")
+		)
+		(instances
+			(project "PCB_Project"
+				(path "/5e7b9514-4c14-4a78-a1a6-2087ebe21a1b"
+					(reference "LED1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Miscellaneous Devices:LED3")
+		(at 198.12 91.8972 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "76a25efb-a813-4cc7-b736-7f24e2191ada")
+		(property "Reference" "LED11"
+			(at 201.168 94.1832 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" ""
+			(at 201.168 96.7232 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "LED0805-RD_EH"
+			(at 198.12 91.8972 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 198.12 91.8972 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Typical BLUE SiC LED"
+			(at 198.12 91.8972 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "PUBLISHED" "8-Jun-2000"
+			(at 192.786 86.3092 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "LATESTREVISIONDATE" "17-Dec-2003"
+			(at 192.786 86.3092 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "LATESTREVISIONNOTE" "PCB Footprint replaced."
+			(at 192.786 86.3092 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "DATASHEETVERSION" "16-Apr-2002"
+			(at 192.786 86.3092 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEVERSION" "16-Apr-2002"
+			(at 192.786 86.3092 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEREFERENCE" "3.5X2.8X1.9"
+			(at 192.786 86.3092 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PUBLISHER" "Altium Limited"
+			(at 192.786 86.3092 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEDESCRIPTION" "SM LED; 2 C-Bend Leads; Body 3.5 x 2.8 x 1.9 mm, inc leads (LxWxH typ)"
+			(at 192.786 86.3092 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(pin "2"
+			(uuid "d64fbe1a-0885-4b0e-8627-186ecb78aa74")
+		)
+		(pin "1"
+			(uuid "c64c3fa0-9572-4ca8-85bb-d1122b3f3c96")
+		)
+		(instances
+			(project "PCB_Project"
+				(path "/5e7b9514-4c14-4a78-a1a6-2087ebe21a1b"
+					(reference "LED11")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "wch_sch_others:HEADER 1")
+		(at 45.72 105.8672 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "77588df0-a082-4ca7-9ee0-07476501f6f1")
+		(property "Reference" "P4"
+			(at 50.8 103.3272 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "key"
+			(at 50.8 110.9472 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "MYPCB:key"
+			(at 45.72 105.8672 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 45.72 105.8672 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Header, 1-Pin"
+			(at 45.72 105.8672 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "633b9653-d322-4a77-b85b-b78fca43b99e")
+		)
+		(instances
+			(project "PCB_Project"
+				(path "/5e7b9514-4c14-4a78-a1a6-2087ebe21a1b"
+					(reference "P4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Miscellaneous Devices:LED3")
+		(at 231.14 91.8972 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "831200db-f048-4317-b775-fa705030b98e")
+		(property "Reference" "LED9"
+			(at 234.188 94.1832 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" ""
+			(at 234.188 96.7232 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "LED0805-RD_EH"
+			(at 231.14 91.8972 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 231.14 91.8972 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Typical BLUE SiC LED"
+			(at 231.14 91.8972 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "PUBLISHED" "8-Jun-2000"
+			(at 225.806 86.3092 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "LATESTREVISIONDATE" "17-Dec-2003"
+			(at 225.806 86.3092 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "LATESTREVISIONNOTE" "PCB Footprint replaced."
+			(at 225.806 86.3092 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "DATASHEETVERSION" "16-Apr-2002"
+			(at 225.806 86.3092 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEVERSION" "16-Apr-2002"
+			(at 225.806 86.3092 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEREFERENCE" "3.5X2.8X1.9"
+			(at 225.806 86.3092 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PUBLISHER" "Altium Limited"
+			(at 225.806 86.3092 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEDESCRIPTION" "SM LED; 2 C-Bend Leads; Body 3.5 x 2.8 x 1.9 mm, inc leads (LxWxH typ)"
+			(at 225.806 86.3092 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(pin "2"
+			(uuid "d7fac5c6-8cf3-4cf5-8a6d-859d37f0ca20")
+		)
+		(pin "1"
+			(uuid "32c4753a-3946-4eae-ab73-cdb811444bce")
+		)
+		(instances
+			(project "PCB_Project"
+				(path "/5e7b9514-4c14-4a78-a1a6-2087ebe21a1b"
+					(reference "LED9")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Miscellaneous Devices:LED3")
+		(at 231.14 110.9472 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "8887ad28-f1cc-45df-94ac-a74dc85abaea")
+		(property "Reference" "LED13"
+			(at 234.188 113.2332 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" ""
+			(at 234.188 115.7732 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "LED0805-RD_EH"
+			(at 231.14 110.9472 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 231.14 110.9472 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Typical BLUE SiC LED"
+			(at 231.14 110.9472 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "PUBLISHED" "8-Jun-2000"
+			(at 225.806 105.3592 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "LATESTREVISIONDATE" "17-Dec-2003"
+			(at 225.806 105.3592 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "LATESTREVISIONNOTE" "PCB Footprint replaced."
+			(at 225.806 105.3592 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "DATASHEETVERSION" "16-Apr-2002"
+			(at 225.806 105.3592 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEVERSION" "16-Apr-2002"
+			(at 225.806 105.3592 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEREFERENCE" "3.5X2.8X1.9"
+			(at 225.806 105.3592 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PUBLISHER" "Altium Limited"
+			(at 225.806 105.3592 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEDESCRIPTION" "SM LED; 2 C-Bend Leads; Body 3.5 x 2.8 x 1.9 mm, inc leads (LxWxH typ)"
+			(at 225.806 105.3592 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(pin "2"
+			(uuid "932078d9-238a-4642-af4c-f6bcedea6163")
+		)
+		(pin "1"
+			(uuid "c56a59ee-c2e2-4bce-b0cc-eb6270a0aa68")
+		)
+		(instances
+			(project "PCB_Project"
+				(path "/5e7b9514-4c14-4a78-a1a6-2087ebe21a1b"
+					(reference "LED13")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Miscellaneous Devices:LED3")
+		(at 214.63 74.1172 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "8c243b35-8f7e-4d18-b5b1-b33aeea764b6")
+		(property "Reference" "LED6"
+			(at 217.678 76.4032 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" ""
+			(at 217.678 78.9432 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "LED0805-RD_EH"
+			(at 214.63 74.1172 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 214.63 74.1172 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Typical BLUE SiC LED"
+			(at 214.63 74.1172 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "PUBLISHED" "8-Jun-2000"
+			(at 209.296 68.5292 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "LATESTREVISIONDATE" "17-Dec-2003"
+			(at 209.296 68.5292 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "LATESTREVISIONNOTE" "PCB Footprint replaced."
+			(at 209.296 68.5292 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "DATASHEETVERSION" "16-Apr-2002"
+			(at 209.296 68.5292 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEVERSION" "16-Apr-2002"
+			(at 209.296 68.5292 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEREFERENCE" "3.5X2.8X1.9"
+			(at 209.296 68.5292 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PUBLISHER" "Altium Limited"
+			(at 209.296 68.5292 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEDESCRIPTION" "SM LED; 2 C-Bend Leads; Body 3.5 x 2.8 x 1.9 mm, inc leads (LxWxH typ)"
+			(at 209.296 68.5292 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(pin "1"
+			(uuid "044d098a-ad42-49c7-9d59-15164f8edcae")
+		)
+		(pin "2"
+			(uuid "16e3787c-d0ac-4876-a3ab-783df21b9dfa")
+		)
+		(instances
+			(project "PCB_Project"
+				(path "/5e7b9514-4c14-4a78-a1a6-2087ebe21a1b"
+					(reference "LED6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Miscellaneous Devices:LED3")
+		(at 231.14 128.7272 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "8e19b8bc-df75-419d-8570-4188eb44c4b4")
+		(property "Reference" "LED17"
+			(at 234.188 131.0132 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" ""
+			(at 234.188 133.5532 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "LED0805-RD_EH"
+			(at 231.14 128.7272 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 231.14 128.7272 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Typical BLUE SiC LED"
+			(at 231.14 128.7272 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "PUBLISHED" "8-Jun-2000"
+			(at 225.806 123.1392 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "LATESTREVISIONDATE" "17-Dec-2003"
+			(at 225.806 123.1392 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "LATESTREVISIONNOTE" "PCB Footprint replaced."
+			(at 225.806 123.1392 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "DATASHEETVERSION" "16-Apr-2002"
+			(at 225.806 123.1392 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEVERSION" "16-Apr-2002"
+			(at 225.806 123.1392 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEREFERENCE" "3.5X2.8X1.9"
+			(at 225.806 123.1392 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PUBLISHER" "Altium Limited"
+			(at 225.806 123.1392 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEDESCRIPTION" "SM LED; 2 C-Bend Leads; Body 3.5 x 2.8 x 1.9 mm, inc leads (LxWxH typ)"
+			(at 225.806 123.1392 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(pin "1"
+			(uuid "478ae196-1804-4751-b0ee-14c9c9587ca0")
+		)
+		(pin "2"
+			(uuid "985c41d5-e253-49f5-a480-35e963cb8da8")
+		)
+		(instances
+			(project "PCB_Project"
+				(path "/5e7b9514-4c14-4a78-a1a6-2087ebe21a1b"
+					(reference "LED17")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Miscellaneous Connectors:Header 7X2")
+		(at 38.1 42.3672 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "8e56ce9a-b413-45a2-8b75-c2040f24e1df")
+		(property "Reference" "P1"
+			(at 38.1 42.3672 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "Header 7X2"
+			(at 38.1 65.2272 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "HDR-TH_14P-P2.54-H-F-R2-C10-W8.5"
+			(at 38.1 42.3672 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 38.1 42.3672 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Header, 7-Pin, Dual row"
+			(at 38.1 42.3672 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LATESTREVISIONDATE" "17-Jul-2002"
+			(at 38.1 42.3672 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "LATESTREVISIONNOTE" "Re-released for DXP Platform."
+			(at 38.1 42.3672 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PUBLISHER" "Altium Limited"
+			(at 38.1 42.3672 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(pin "3"
+			(uuid "ecd79e8a-46e1-491d-a22f-09012c55bcda")
+		)
+		(pin "5"
+			(uuid "dc79eb4b-b1eb-40d4-a44c-b6d2f3a0da43")
+		)
+		(pin "7"
+			(uuid "7974a218-9b7f-4f3d-8991-c62fbbaf7d2e")
+		)
+		(pin "1"
+			(uuid "9a3d0b77-33a6-4aed-8868-ae4d99ae68e1")
+		)
+		(pin "2"
+			(uuid "504d01d7-f841-4a1d-8f0f-edacba348813")
+		)
+		(pin "4"
+			(uuid "2be257ba-adb8-4131-aea6-ea7da5e3f799")
+		)
+		(pin "6"
+			(uuid "8294924b-3ed8-4ecd-af8a-3ccd1b95eab0")
+		)
+		(pin "11"
+			(uuid "5a96cbc8-3f22-44e0-9bbe-09fd5e657098")
+		)
+		(pin "12"
+			(uuid "dd4c6569-7aab-4c0d-b056-bd6e92c135aa")
+		)
+		(pin "10"
+			(uuid "76750fbf-654d-482b-902a-368ea2fb4397")
+		)
+		(pin "8"
+			(uuid "59e21735-6d28-4c55-b52a-408c7febe15f")
+		)
+		(pin "9"
+			(uuid "68a40334-99ab-4a51-aa5c-68f6535db279")
+		)
+		(pin "14"
+			(uuid "a89c8f5d-9330-4e48-a70d-bb536c864a03")
+		)
+		(pin "13"
+			(uuid "5cef19ad-cb35-4515-b3c7-8b50f1a1e74f")
+		)
+		(instances
+			(project "PCB_Project"
+				(path "/5e7b9514-4c14-4a78-a1a6-2087ebe21a1b"
+					(reference "P1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Miscellaneous Devices:LED3")
+		(at 198.12 74.1172 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "91a72364-51c6-472f-a3e1-77d5f4dc5393")
+		(property "Reference" "LED7"
+			(at 201.168 76.4032 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" ""
+			(at 201.168 78.9432 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "LED0805-RD_EH"
+			(at 198.12 74.1172 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 198.12 74.1172 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Typical BLUE SiC LED"
+			(at 198.12 74.1172 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "PUBLISHED" "8-Jun-2000"
+			(at 192.786 68.5292 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "LATESTREVISIONDATE" "17-Dec-2003"
+			(at 192.786 68.5292 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "LATESTREVISIONNOTE" "PCB Footprint replaced."
+			(at 192.786 68.5292 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "DATASHEETVERSION" "16-Apr-2002"
+			(at 192.786 68.5292 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEVERSION" "16-Apr-2002"
+			(at 192.786 68.5292 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEREFERENCE" "3.5X2.8X1.9"
+			(at 192.786 68.5292 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PUBLISHER" "Altium Limited"
+			(at 192.786 68.5292 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEDESCRIPTION" "SM LED; 2 C-Bend Leads; Body 3.5 x 2.8 x 1.9 mm, inc leads (LxWxH typ)"
+			(at 192.786 68.5292 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(pin "1"
+			(uuid "186f2b02-3b94-4270-a59b-6ee1b39e1ed5")
+		)
+		(pin "2"
+			(uuid "a0066422-1795-4cdb-87ac-167c05eea4b0")
+		)
+		(instances
+			(project "PCB_Project"
+				(path "/5e7b9514-4c14-4a78-a1a6-2087ebe21a1b"
+					(reference "LED7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Miscellaneous Devices:LED3")
+		(at 214.63 128.7272 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "941bfd3f-bf43-4985-a5f1-4406fc3f3cdb")
+		(property "Reference" "LED18"
+			(at 217.678 131.0132 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" ""
+			(at 217.678 133.5532 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "LED0805-RD_EH"
+			(at 214.63 128.7272 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 214.63 128.7272 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Typical BLUE SiC LED"
+			(at 214.63 128.7272 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "PUBLISHED" "8-Jun-2000"
+			(at 209.296 123.1392 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "LATESTREVISIONDATE" "17-Dec-2003"
+			(at 209.296 123.1392 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "LATESTREVISIONNOTE" "PCB Footprint replaced."
+			(at 209.296 123.1392 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "DATASHEETVERSION" "16-Apr-2002"
+			(at 209.296 123.1392 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEVERSION" "16-Apr-2002"
+			(at 209.296 123.1392 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEREFERENCE" "3.5X2.8X1.9"
+			(at 209.296 123.1392 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PUBLISHER" "Altium Limited"
+			(at 209.296 123.1392 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEDESCRIPTION" "SM LED; 2 C-Bend Leads; Body 3.5 x 2.8 x 1.9 mm, inc leads (LxWxH typ)"
+			(at 209.296 123.1392 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(pin "2"
+			(uuid "d7d7a8d1-8b7a-436a-9c25-6c4adc6c8b3c")
+		)
+		(pin "1"
+			(uuid "abb16545-92ea-4634-a37b-57b0d3e814fa")
+		)
+		(instances
+			(project "PCB_Project"
+				(path "/5e7b9514-4c14-4a78-a1a6-2087ebe21a1b"
+					(reference "LED18")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Miscellaneous Devices:LED3")
+		(at 198.12 56.3372 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "aeefca58-a510-4f32-8e75-a12a44e11f1a")
+		(property "Reference" "LED3"
+			(at 201.168 58.6232 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" ""
+			(at 201.168 61.1632 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "LED0805-RD_EH"
+			(at 198.12 56.3372 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 198.12 56.3372 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Typical BLUE SiC LED"
+			(at 198.12 56.3372 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "PUBLISHED" "8-Jun-2000"
+			(at 192.786 50.7492 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "LATESTREVISIONDATE" "17-Dec-2003"
+			(at 192.786 50.7492 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "LATESTREVISIONNOTE" "PCB Footprint replaced."
+			(at 192.786 50.7492 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "DATASHEETVERSION" "16-Apr-2002"
+			(at 192.786 50.7492 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEVERSION" "16-Apr-2002"
+			(at 192.786 50.7492 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEREFERENCE" "3.5X2.8X1.9"
+			(at 192.786 50.7492 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PUBLISHER" "Altium Limited"
+			(at 192.786 50.7492 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEDESCRIPTION" "SM LED; 2 C-Bend Leads; Body 3.5 x 2.8 x 1.9 mm, inc leads (LxWxH typ)"
+			(at 192.786 50.7492 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(pin "2"
+			(uuid "e8b4c8e0-27d8-412b-9534-bb69f2b6b0fe")
+		)
+		(pin "1"
+			(uuid "4d71370e-2397-4aea-a50d-e5e0a13374c7")
+		)
+		(instances
+			(project "PCB_Project"
+				(path "/5e7b9514-4c14-4a78-a1a6-2087ebe21a1b"
+					(reference "LED3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Miscellaneous Connectors:Header 10X2")
+		(at 111.76 39.8272 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "c8c33b84-c5d1-49f3-a5c0-d5564e39bd1e")
+		(property "Reference" "P2"
+			(at 111.76 39.8272 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "Header 10X2"
+			(at 111.76 70.3072 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "HDR-TH_20P-P2.54-H-F-R2-C10-W8.5"
+			(at 111.76 39.8272 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 111.76 39.8272 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Header, 10-Pin, Dual row"
+			(at 111.76 39.8272 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LATESTREVISIONDATE" "17-Jul-2002"
+			(at 111.76 39.8272 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "LATESTREVISIONNOTE" "Re-released for DXP Platform."
+			(at 111.76 39.8272 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PUBLISHER" "Altium Limited"
+			(at 111.76 39.8272 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(pin "4"
+			(uuid "19984eae-2374-4b54-b6fc-b16780e7f672")
+		)
+		(pin "1"
+			(uuid "3f5981a1-47b0-460f-87cb-d06120492ae4")
+		)
+		(pin "5"
+			(uuid "cf7be4ad-0e31-4fd3-a58d-29ef192493bc")
+		)
+		(pin "2"
+			(uuid "cd1b7912-0e39-490c-9410-932a7e4bea2c")
+		)
+		(pin "3"
+			(uuid "28eb9402-b062-4b89-895c-52f478d3a6d7")
+		)
+		(pin "6"
+			(uuid "c3d039d6-561b-4dd1-ac50-ba833b4b06b8")
+		)
+		(pin "7"
+			(uuid "ee444d2d-b735-44c4-8050-b363c9552025")
+		)
+		(pin "10"
+			(uuid "5359d477-c45a-46b2-91c6-79872b9c026a")
+		)
+		(pin "11"
+			(uuid "a3c7b07a-4a8c-443a-ae28-de1b99f04117")
+		)
+		(pin "15"
+			(uuid "864a595d-1978-4ae1-8a23-6e7fb1e97ca9")
+		)
+		(pin "9"
+			(uuid "f73defe4-6b4b-4820-9089-32477ba68843")
+		)
+		(pin "16"
+			(uuid "bba60981-1977-4556-b9e7-34fbbdee4f33")
+		)
+		(pin "18"
+			(uuid "7fc88d51-0f3b-4e19-b641-4747882ed004")
+		)
+		(pin "19"
+			(uuid "319d49e7-734b-4e66-82e7-59220fd2648e")
+		)
+		(pin "20"
+			(uuid "9ae6c6a4-eb37-4360-a1af-698eb894cfd1")
+		)
+		(pin "14"
+			(uuid "fe182312-6f4b-429f-8fcf-ad76ab793684")
+		)
+		(pin "12"
+			(uuid "0dc7b61b-8b63-4a50-92d2-bcb2ba4dd1f4")
+		)
+		(pin "17"
+			(uuid "e9ddac6a-fc9a-47a9-8013-4c01a94d9f91")
+		)
+		(pin "8"
+			(uuid "5c32664a-e452-465b-bb47-df5c7745432e")
+		)
+		(pin "13"
+			(uuid "a8ab2bcf-c1ec-4346-94a4-117fd44bcfbe")
+		)
+		(instances
+			(project "PCB_Project"
+				(path "/5e7b9514-4c14-4a78-a1a6-2087ebe21a1b"
+					(reference "P2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Miscellaneous Devices:LED3")
+		(at 214.63 110.9472 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "cb9463a5-9951-46a8-bd17-b33b9b46fbf1")
+		(property "Reference" "LED14"
+			(at 217.678 113.2332 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" ""
+			(at 217.678 115.7732 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "LED0805-RD_EH"
+			(at 214.63 110.9472 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 214.63 110.9472 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Typical BLUE SiC LED"
+			(at 214.63 110.9472 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "PUBLISHED" "8-Jun-2000"
+			(at 209.296 105.3592 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "LATESTREVISIONDATE" "17-Dec-2003"
+			(at 209.296 105.3592 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "LATESTREVISIONNOTE" "PCB Footprint replaced."
+			(at 209.296 105.3592 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "DATASHEETVERSION" "16-Apr-2002"
+			(at 209.296 105.3592 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEVERSION" "16-Apr-2002"
+			(at 209.296 105.3592 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEREFERENCE" "3.5X2.8X1.9"
+			(at 209.296 105.3592 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PUBLISHER" "Altium Limited"
+			(at 209.296 105.3592 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEDESCRIPTION" "SM LED; 2 C-Bend Leads; Body 3.5 x 2.8 x 1.9 mm, inc leads (LxWxH typ)"
+			(at 209.296 105.3592 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(pin "2"
+			(uuid "8dfba290-ff46-417f-854a-6a47cccf041b")
+		)
+		(pin "1"
+			(uuid "ca9d160c-88ef-4436-a537-3c7512ec920d")
+		)
+		(instances
+			(project "PCB_Project"
+				(path "/5e7b9514-4c14-4a78-a1a6-2087ebe21a1b"
+					(reference "LED14")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Miscellaneous Devices:LED3")
+		(at 248.92 56.3372 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "cebd5627-694b-4c51-8561-1d3bf951e03c")
+		(property "Reference" "LED0"
+			(at 251.968 58.6232 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" ""
+			(at 251.46 62.6872 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "LED0805-RD_EH"
+			(at 248.92 56.3372 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 248.92 56.3372 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Typical BLUE SiC LED"
+			(at 248.92 56.3372 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "PUBLISHED" "8-Jun-2000"
+			(at 243.586 50.7492 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "LATESTREVISIONDATE" "17-Dec-2003"
+			(at 243.586 50.7492 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "LATESTREVISIONNOTE" "PCB Footprint replaced."
+			(at 243.586 50.7492 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "DATASHEETVERSION" "16-Apr-2002"
+			(at 243.586 50.7492 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEVERSION" "16-Apr-2002"
+			(at 243.586 50.7492 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEREFERENCE" "3.5X2.8X1.9"
+			(at 243.586 50.7492 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PUBLISHER" "Altium Limited"
+			(at 243.586 50.7492 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEDESCRIPTION" "SM LED; 2 C-Bend Leads; Body 3.5 x 2.8 x 1.9 mm, inc leads (LxWxH typ)"
+			(at 243.586 50.7492 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(pin "1"
+			(uuid "e17058b7-cc06-4ef4-9ec5-adf920688011")
+		)
+		(pin "2"
+			(uuid "0f0558bb-46f6-445e-bd08-25c91cd01015")
+		)
+		(instances
+			(project "PCB_Project"
+				(path "/5e7b9514-4c14-4a78-a1a6-2087ebe21a1b"
+					(reference "LED0")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Miscellaneous Devices:LED3")
+		(at 214.63 56.3372 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "d1944fac-dc84-4529-b868-4ea9c8adc4bd")
+		(property "Reference" "LED2"
+			(at 217.678 58.6232 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" ""
+			(at 217.678 61.1632 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "LED0805-RD_EH"
+			(at 214.63 56.3372 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 214.63 56.3372 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Typical BLUE SiC LED"
+			(at 214.63 56.3372 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "PUBLISHED" "8-Jun-2000"
+			(at 209.296 50.7492 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "LATESTREVISIONDATE" "17-Dec-2003"
+			(at 209.296 50.7492 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "LATESTREVISIONNOTE" "PCB Footprint replaced."
+			(at 209.296 50.7492 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "DATASHEETVERSION" "16-Apr-2002"
+			(at 209.296 50.7492 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEVERSION" "16-Apr-2002"
+			(at 209.296 50.7492 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEREFERENCE" "3.5X2.8X1.9"
+			(at 209.296 50.7492 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PUBLISHER" "Altium Limited"
+			(at 209.296 50.7492 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEDESCRIPTION" "SM LED; 2 C-Bend Leads; Body 3.5 x 2.8 x 1.9 mm, inc leads (LxWxH typ)"
+			(at 209.296 50.7492 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(pin "2"
+			(uuid "87d2c76c-5b2a-4b62-8708-6ddf0661d5e7")
+		)
+		(pin "1"
+			(uuid "7c997a5e-caee-479c-9389-ff322891500f")
+		)
+		(instances
+			(project "PCB_Project"
+				(path "/5e7b9514-4c14-4a78-a1a6-2087ebe21a1b"
+					(reference "LED2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Miscellaneous Devices:LED3")
+		(at 248.92 110.9472 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "ef27337c-6392-4ecd-b28a-e1d398c5e4da")
+		(property "Reference" "LED12"
+			(at 251.968 113.2332 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" ""
+			(at 251.968 115.7732 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "LED0805-RD_EH"
+			(at 248.92 110.9472 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 248.92 110.9472 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Typical BLUE SiC LED"
+			(at 248.92 110.9472 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "PUBLISHED" "8-Jun-2000"
+			(at 243.586 105.3592 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "LATESTREVISIONDATE" "17-Dec-2003"
+			(at 243.586 105.3592 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "LATESTREVISIONNOTE" "PCB Footprint replaced."
+			(at 243.586 105.3592 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "DATASHEETVERSION" "16-Apr-2002"
+			(at 243.586 105.3592 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEVERSION" "16-Apr-2002"
+			(at 243.586 105.3592 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEREFERENCE" "3.5X2.8X1.9"
+			(at 243.586 105.3592 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PUBLISHER" "Altium Limited"
+			(at 243.586 105.3592 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEDESCRIPTION" "SM LED; 2 C-Bend Leads; Body 3.5 x 2.8 x 1.9 mm, inc leads (LxWxH typ)"
+			(at 243.586 105.3592 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(pin "2"
+			(uuid "449c7627-7778-438f-bea5-f53403a16167")
+		)
+		(pin "1"
+			(uuid "28f7f0d0-08d5-43f9-b493-3f0752e8f9b8")
+		)
+		(instances
+			(project "PCB_Project"
+				(path "/5e7b9514-4c14-4a78-a1a6-2087ebe21a1b"
+					(reference "LED12")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Miscellaneous Devices:LED3")
+		(at 248.92 91.8972 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "fb4c25c7-b08c-43b7-8555-21d8834f1fc4")
+		(property "Reference" "LED8"
+			(at 251.968 94.1832 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" ""
+			(at 251.968 96.7232 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "LED0805-RD_EH"
+			(at 248.92 91.8972 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 248.92 91.8972 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Typical BLUE SiC LED"
+			(at 248.92 91.8972 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "PUBLISHED" "8-Jun-2000"
+			(at 243.586 86.3092 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "LATESTREVISIONDATE" "17-Dec-2003"
+			(at 243.586 86.3092 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "LATESTREVISIONNOTE" "PCB Footprint replaced."
+			(at 243.586 86.3092 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "DATASHEETVERSION" "16-Apr-2002"
+			(at 243.586 86.3092 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEVERSION" "16-Apr-2002"
+			(at 243.586 86.3092 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEREFERENCE" "3.5X2.8X1.9"
+			(at 243.586 86.3092 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PUBLISHER" "Altium Limited"
+			(at 243.586 86.3092 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEDESCRIPTION" "SM LED; 2 C-Bend Leads; Body 3.5 x 2.8 x 1.9 mm, inc leads (LxWxH typ)"
+			(at 243.586 86.3092 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(pin "2"
+			(uuid "7a49ebff-8c56-4746-8ca8-1e279b3151a4")
+		)
+		(pin "1"
+			(uuid "aff39ac3-b90c-45bf-bbe1-d27c18942550")
+		)
+		(instances
+			(project "PCB_Project"
+				(path "/5e7b9514-4c14-4a78-a1a6-2087ebe21a1b"
+					(reference "LED8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Miscellaneous Devices:LED3")
+		(at 198.12 110.9472 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "ffbfbc35-60a6-49c3-9905-ea58d9d7b113")
+		(property "Reference" "LED15"
+			(at 201.168 113.2332 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" ""
+			(at 201.168 115.7732 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "LED0805-RD_EH"
+			(at 198.12 110.9472 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 198.12 110.9472 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Typical BLUE SiC LED"
+			(at 198.12 110.9472 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "PUBLISHED" "8-Jun-2000"
+			(at 192.786 105.3592 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "LATESTREVISIONDATE" "17-Dec-2003"
+			(at 192.786 105.3592 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "LATESTREVISIONNOTE" "PCB Footprint replaced."
+			(at 192.786 105.3592 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "DATASHEETVERSION" "16-Apr-2002"
+			(at 192.786 105.3592 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEVERSION" "16-Apr-2002"
+			(at 192.786 105.3592 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEREFERENCE" "3.5X2.8X1.9"
+			(at 192.786 105.3592 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PUBLISHER" "Altium Limited"
+			(at 192.786 105.3592 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "PACKAGEDESCRIPTION" "SM LED; 2 C-Bend Leads; Body 3.5 x 2.8 x 1.9 mm, inc leads (LxWxH typ)"
+			(at 192.786 105.3592 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(pin "1"
+			(uuid "5c80a3e3-9e42-40be-9cae-1bc930381951")
+		)
+		(pin "2"
+			(uuid "7167ec73-0a47-4727-8f39-a96bcab7a8e7")
+		)
+		(instances
+			(project "PCB_Project"
+				(path "/5e7b9514-4c14-4a78-a1a6-2087ebe21a1b"
+					(reference "LED15")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(sheet_instances
+		(path "/"
+			(page "#")
+		)
+	)
+	(embedded_fonts no)
+)

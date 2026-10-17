@@ -97,8 +97,8 @@
       "sources": {
         "zh": {
           "file_id": 477,
-          "version": "1.5",
-          "scope": "CH32V002、CH32V004、CH32V005、CH32V006、CH32V007、CH32M007"
+          "version": "1.6",
+          "scope": "CH32V002, CH32V004, CH32V005, CH32V006, CH32V007, CH32M007"
         }
       }
     },
