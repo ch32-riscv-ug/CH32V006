@@ -1,5 +1,5 @@
 
-Nanjing Qinheng Microelectronics Co., Ltd. 2026.08
+Nanjing Qinheng Microelectronics Co., Ltd. 2026.11
 
 https://wch-ic.com
 
@@ -29,7 +29,7 @@ Directory
   |      |      |      |-- APPLICATION
   |      |      |      |      |-- SoftUART: I/O port simulation serial port routine 
   |      |      |      |      |-- Motor
-  |      |      |      |      |      |-- Electric_Fan:Application of medium and low speed fans based on FOC three-phase brushless motor
+  |      |      |      |      |      |-- Electric_Fan:Low-pressure fan application
   |      |      |      |      |      |-- voilent_fan: BLDC-based high-speed fan applications
   |      |      |      |      |      |-- BLDC_Motor: Application of sensorless square wave BLDC motor
   |      |      |      |      |-- WUI

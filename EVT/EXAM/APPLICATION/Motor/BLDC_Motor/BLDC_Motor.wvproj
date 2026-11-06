@@ -17,6 +17,7 @@
 			"calibrateSupport": false,
 			"calibrateCommand": "",
 			"UIConfigSupport": false,
+			"UIConfigCommand": "",
 			"externalFlashSupport": false
 		},
 		"linkedFolders": [
@@ -29,16 +30,8 @@
 				"location": "../../../SRC/Debug"
 			},
 			{
-				"name": "Ld",
-				"location": "../../../SRC/Ld"
-			},
-			{
 				"name": "Peripheral",
 				"location": "../../../SRC/Peripheral"
-			},
-			{
-				"name": "Startup",
-				"location": "../../../SRC/Startup"
 			}
 		],
 		"removedResources": [
@@ -56,6 +49,21 @@
 				"parentLogicPath": "source",
 				"type": "file",
 				"name": "init.h"
+			},
+			{
+				"parentLogicPath": "",
+				"type": "file",
+				"name": "*.7z"
+			},
+			{
+				"parentLogicPath": "",
+				"type": "file",
+				"name": "*.zip"
+			},
+			{
+				"parentLogicPath": "",
+				"type": "file",
+				"name": "*.tar"
 			}
 		],
 		"projectName": "BLDC_Motor",
@@ -65,14 +73,15 @@
 	"buildConfig": {
 		"configurations": [
 			{
+				"parallelizationNumber": "optimal",
 				"buildArtifact": {
 					"artifact_name": "${ProjName}",
 					"artifact_extension": "elf",
 					"output_prefix": "",
 					"artifact_type": "Executable"
 				},
-				"parallelizationNumber": "optimal",
 				"stop_on_first_build_error": true,
+				"usingCacheAccelerate": false,
 				"pre_script": "",
 				"pre_script_description": "",
 				"post_script": "",
@@ -245,10 +254,10 @@
 					"libraries": {
 						"libraries": [
 							"IQmath_RV32",
-							"BLDC-LIB"
+							"bldc"
 						],
 						"library_search_path": [
-							"${project}/source/application"
+							"${project}/source/clib"
 						]
 					},
 					"miscellaneous": {
@@ -284,10 +293,10 @@
 					"libraries": {
 						"libraries": [
 							"IQmath_RV32",
-							"BLDC-LIB"
+							"bldc"
 						],
 						"library_search_path": [
-							"${project}/source/application"
+							"${project}/source/clib"
 						]
 					},
 					"miscellaneous": {
@@ -458,10 +467,8 @@
 			"ATTR_BUILD_BEFORE_LAUNCH_ATTR": 2,
 			"GdbServerAllocateConsole": true,
 			"GdbServerAllocateTelnetConsole": false,
-			"SkipDownloadBeforeDebug": false,
 			"StartGdbCLient": true,
-			"UPDATE_THREADLIST_ON_SUSPEND": false,
-			"DebugInRam": false
+			"UPDATE_THREADLIST_ON_SUSPEND": false
 		}
 	}
 }

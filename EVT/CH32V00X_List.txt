@@ -1,5 +1,5 @@
 
-南京沁恒微电子股份有限公司 2026.08
+南京沁恒微电子股份有限公司 2026.11
 最新资料请到我们的网站上查询
 https://wch.cn
 
@@ -29,7 +29,7 @@ https://wch.cn
   |      |      |      |-- APPLICATION
   |      |      |      |      |-- SoftUART：I/O口模拟串口例程 
   |      |      |      |      |-- Motor
-  |      |      |      |      |      |-- Electric_Fan：基于FOC三相无刷电机的中低速风扇应用
+  |      |      |      |      |      |-- Electric_Fan：低压风扇应用
   |      |      |      |      |      |-- Voilent_Fan：基于BLDC的高速风扇应用
   |      |      |      |      |      |-- BLDC_Motor：无感方波BLDC电机应用
   |      |      |      |      |-- WUI

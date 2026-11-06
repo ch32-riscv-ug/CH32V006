@@ -1,8 +1,8 @@
 /********************************** (C) COPYRIGHT  *******************************
  * File Name          : drvtime1.h
  * Author             : WCH
- * Version            : V1.0.0
- * Date               : 2026/08/05
+ * Version            : V1.0.1
+ * Date               : 2026/11/05
  * Description        : This file contains all the functions prototypes for the
  *                       firmware library.
  *********************************************************************************
@@ -15,7 +15,7 @@
 
 #include "def.h"
 
-// PWM引脚配置
+// PWM pin configuration
 #define DRVTIME1_UH_PORT GPIOA
 #define DRVTIME1_UH_PIN GPIO_Pin_3
 #define DRVTIME1_VH_PORT GPIOB
@@ -30,7 +30,7 @@
 #define DRVTIME1_WL_PORT GPIOD
 #define DRVTIME1_WL_PIN GPIO_Pin_0
 
-//死区寄存器配置值
+// Dead-time register configuration value
 #define DRVTIME1_DEADTIME_CONFIGURE  (uint8_t)24
 
 typedef enum {
@@ -39,28 +39,28 @@ typedef enum {
     DRVTIME1_PHASE_W,
 } DRVTIME1_PHASE;
 
-// DrvTime1Init 定时器1初始化
+// DrvTime1Init: timer 1 initialization
 void DrvTime1Init(void);
 
-// DrvTime1SetHighBridgePwm 设置高桥PWM占空比
+// DrvTime1SetHighBridgePwm: set the high-side bridge PWM duty cycle
 void DrvTime1SetHighBridgePwm(DRVTIME1_PHASE phase, uint16_t period);
 
-// DrvTime1SetLowBridgeSwitch 设置低桥开关
+// DrvTime1SetLowBridgeSwitch: set a low-side bridge switch
 void DrvTime1SetLowBridgeSwitch(DRVTIME1_PHASE phase, bool state);
 
-// DrvTime1SetAllLowBridgeSwitch 设置所有低桥开关
+// DrvTime1SetAllLowBridgeSwitch: set all low-side bridge switches
 void DrvTime1SetAllLowBridgeSwitch(bool state);
 
-// DrvTime1SetAllOff 设置所有输出为低电平
+// DrvTime1SetAllOff: set all outputs low
 void DrvTime1SetAllOff(void);
 
-// DrvTime1Start 启动定时器
+// DrvTime1Start: start the timer
 void DrvTime1Start(void);
 
-// DrvTime1Stop 停止定时器
+// DrvTime1Stop: stop the timer
 void DrvTime1Stop(void);
 
-// DrvTime1SetCC4 设置CC4占空比
+// DrvTime1SetCC4: set the CC4 duty cycle
 void DrvTime1SetCC4(uint16_t duty);
 
 #endif

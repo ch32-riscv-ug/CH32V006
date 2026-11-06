@@ -1,16 +1,4 @@
-/********************************** (C) COPYRIGHT *******************************
- * File Name          : M4_SVPWM_ADC2R.c
- * Author             : WCH
- * Version            : V1.0.0
- * Date               : 2024/11/04
- * Description        : SVPWM parameter calculation, state initialization, related timer and pin configuration,
- *                      ADC parameter calculation, state initialization, related timer and pin configuration,
- *                      zero offset read, ADC trigger time configuration
-*********************************************************************************
-* Copyright (c) 2021 Nanjing Qinheng Microelectronics Co., Ltd.
-* Attention: This software (modified or not) and binary are used for
-* microcontroller manufactured by Nanjing Qinheng Microelectronics.
-*******************************************************************************/
+
 /* Includes------------------------------------------------------------------*/
 #include "M0_Control_Library.h"
 /* Private typedef ----------------------------------------------------------*/
@@ -19,40 +7,36 @@
 /* Private functions --------------------------------------------------------*/
 /* Private variables --------------------------------------------------------*/
 /* variables ----------------------------------------------------------------*/
-SVPWM_2R_Type    SVPWM_Cal_M;     //SVPWM calculation structure
-ADCStruc_Type    ADC_M;           //ADC sampling calculation structure
-/*********************************************************************
- * @fn      SVPWM_2R_Paramter_Init
- *
- * @brief   SVPWM parameter initialization
- *
- * @para    SVPWM_Cal: SVPWM calculation structure pointer
- *          Mbase :motor base value parameter structure pointer
- *
- * @return  none
- */
+SVPWM_2R_Type    SVPWM_Cal_M;    //SVPWN calculation structure
+ADCStruc_Type    ADC_M;          //ADC sampling structure
+/******************************************************************************
+* Function Name  : SVPWM_2R_Paramter_Init
+* Description    : SVPWM parameter initialization
+* Input          : SVPWM calculation structure, pointer to motor base value parameter structure
+* Output         : None
+* Return         : None
+******************************************************************************/
 void SVPWM_2R_Paramter_Init(SVPWM_2R_Type *SVPWM_Cal,Motor_Base_Type *Mbase)
 {
     SVPWM_Cal->T = ((uint16_t)(TIMER_CLOCK_FREQ_SVPWM/(uint32_t)(FREQ_SVPWM)));
     SVPWM_Cal->HALF_T = SVPWM_Cal->T/2;
     SVPWM_Cal->Quard_T = SVPWM_Cal->T/4;
 
-    //矢量作用时间计算系数
+    //vector action time calculation coefficients
     SVPWM_Cal->coef1 = _IQ16mpy(_IQ16div((_IQ16(SVPWM_Cal->T))/2,(_IQ16div(DCBUS_RATED_VOLT,Mbase->Vbase))),Three_Q16);
     SVPWM_Cal->coef2 = _IQ16mpy(_IQ16div((_IQ16(SVPWM_Cal->T))/2,(_IQ16div(DCBUS_RATED_VOLT,Mbase->Vbase))),SQRT3_Q16);
 
     SVPWM_Cal->Maxmodulesqure = MAX_MODULATIONSQUARE;
     SVPWM_Cal->Maxmodule = MAX_MODULATION;
 }
-/*********************************************************************
- * @fn      SVPWM_Status_Initial_M
- *
- * @brief   SVPWM status initialization
- *
- * @para    SVPWM_Cal: SVPWM calculation structure pointer
- *
- * @return  none
- */
+
+/******************************************************************************
+* Function Name  : SVPWM_Status_Initial_M
+* Description    : SVPWM status initialization
+* Input          : SVPWM calculation structure
+* Output         : None
+* Return         : None
+******************************************************************************/
 void SVPWM_2R_Status_Init_M(SVPWM_2R_Type *SVPWM_Cal)
 {
     TIM1->CH1CVR = SVPWM_Cal->Quard_T;
@@ -66,48 +50,49 @@ void SVPWM_2R_Status_Init_M(SVPWM_2R_Type *SVPWM_Cal)
     SVPWM_Cal->sector = 1;
     SVPWM_Cal->VoltLimMark = 0;
 }
-/*********************************************************************
- * @fn      ADC_Parameter_Init
- *
- * @brief   ADC parameter calculation
- *
- * @para    ADCStruc: ADC sampling calculation structure pointer
- *          Mbase :motor base value parameter structure pointer
- *
- * @return  none
- */
+
+/******************************************************************************
+* Function Name  : ADC_Parameter_Init
+* Description    : ADC parameter calculation
+* Input          : pointer to ADC calculation structure, pointer to motor base value parameter structure
+* Output         : None
+* Return         : None
+******************************************************************************/
 void ADC_Parameter_Init (ADCStruc_Type *ADCStruc,Motor_Base_Type *Mbase)
 {
-    //额定电流对应的采样值计算
-    ADCStruc->RatedCurr_ConvInv = _IQ16mpyIQX(_IQ16div(_IQ16(128),_IQ16(16384)),\
+    //sampling value calculation corresponding to rated current
+    ADCStruc->RatedCurr_ConvInv = _IQ16mpyIQX(_IQ16div(_IQ16(128),_IQ16(32767)),\
                             16,_IQ16div(CURR_SAMPLE_RANGE_ADC,Mbase->Ibase),16);
 
-    //额定电压对应的采样值倒数计算
-    ADCStruc->DCVoltRatedADCInv =_IQ16div(_IQ16(1.0),(_IQ16div(_IQ16mpy(DCVOLT_CONV_RATIO,DCBUS_RATED_VOLT),_IQ16(5.0))*4096));
+    //reciprocal sampling value calculation corresponding to rated voltage
+     ADCStruc->DCVoltRatedADCInv  =_IQ16div_FAST(_IQ16(128.0),(_IQ16div_FAST(_IQ16mpy(DCVOLT_CONV_RATIO,DCBUS_RATED_VOLT),_IQ16(5.0))*4096));
 
-    //母线电压平均值计算系数
+    //bus voltage average calculation coefficients
     ADCStruc->DCVoltAverSizeInv1 = _IQ(1.0)/DCVOLT_AVER_SIZE;
     ADCStruc->DCVoltAverSizeInv2 = _IQ(1.0) - ADCStruc->DCVoltAverSizeInv1;
 
 }
-/*********************************************************************
- * @fn      SVPWM_2R_Timer_Configure
- *
- * @brief   SVPWM timer and PWM ports initialization
- *
- * @return  none
- */
+/******************************************************************************
+* Function Name  : SVPWM_2R_Timer_Configure
+* Description    : SVPWM port and timer initialization
+* Input          : None
+* Output         : None
+* Return         : None
+******************************************************************************/
 void SVPWM_2R_Timer_Configure(void)
 {
+    // configuration register structure definition
     TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure={0};
     TIM_OCInitTypeDef TIM_OCInitStructure={0};
     TIM_BDTRInitTypeDef TIM_BDTRInitStructure={0};
     GPIO_InitTypeDef GPIO_InitStructure={0};
 
+    //clock configuration
     RCC_PB2PeriphClockCmd(RCC_PB2Periph_GPIOA | RCC_PB2Periph_GPIOB| RCC_PB2Periph_GPIOD\
                           | RCC_PB2Periph_AFIO | RCC_PB2Periph_TIM1, ENABLE);
 
     GPIO_PinRemapConfig(GPIO_PartialRemap6_TIM1, ENABLE);
+    //PWM IO configuration
     GPIO_StructInit(&GPIO_InitStructure);
     GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_2 | GPIO_Pin_3;
     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
@@ -122,113 +107,148 @@ void SVPWM_2R_Timer_Configure(void)
     GPIO_InitStructure.GPIO_Speed = GPIO_Speed_30MHz;
     GPIO_Init(GPIOD, &GPIO_InitStructure);
 
-    TIM_DeInit(TIM1);
+    //timer 1 configuration
+    TIM_DeInit(TIM1);//reset timer registers
 
+    //initialization of the timer initialization structure
     TIM_TimeBaseStructInit(&TIM_TimeBaseStructure);
 
+    //prescaler configuration
     TIM_TimeBaseStructure.TIM_Prescaler = TIMER_PRESCALER_SVPWM;
 
+    //up/down counting mode configuration
     TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_CenterAligned1;
 
+    //period configuration
     TIM_TimeBaseStructure.TIM_Period = SVPWM_Cal_M.HALF_T-1;
 
+    //digital filter and dead time generator division ratio: divided by 1
     TIM_TimeBaseStructure.TIM_ClockDivision = TIM_CKD_DIV1;
 
+    //event update rate
     TIM_TimeBaseStructure.TIM_RepetitionCounter = TIMER_UPDATE_RATE_SVPWM;
 
+    //configure register entities
     TIM_TimeBaseInit(TIM1, &TIM_TimeBaseStructure);
 
+    //initialization of the compare initialization structure
     TIM_OCStructInit(&TIM_OCInitStructure);
 
     TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM2;
 
+    //forward channel compare output enable
     TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;
 
+    //complementary channel compare output enable
     TIM_OCInitStructure.TIM_OutputNState = TIM_OutputNState_Enable;
 
+    //dummy value
     TIM_OCInitStructure.TIM_Pulse = SVPWM_Cal_M.HALF_T/2;
 
+    //forward channel compare output active high
     TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_High;
 
-    TIM_OCInitStructure.TIM_OCNPolarity = TIM_OCNPolarity_High;
+    //complementary channel compare output active low
+    TIM_OCInitStructure.TIM_OCNPolarity = TIM_OCNPolarity_High;     //positive logic
 
+    //forward channel idle state low
     TIM_OCInitStructure.TIM_OCIdleState = TIM_OCIdleState_Reset;
 
-    TIM_OCInitStructure.TIM_OCNIdleState = TIM_OCNIdleState_Reset;
+    //complementary channel idle state high
+    TIM_OCInitStructure.TIM_OCNIdleState = TIM_OCNIdleState_Reset;   //positive logic
 
-    TIM_OC1Init(TIM1, &TIM_OCInitStructure);
-    TIM_OC2Init(TIM1, &TIM_OCInitStructure);
-    TIM_OC3Init(TIM1, &TIM_OCInitStructure);
+    TIM_OC1Init(TIM1, &TIM_OCInitStructure);//capture/compare channel 1 initialization
+    TIM_OC2Init(TIM1, &TIM_OCInitStructure);//capture/compare channel 2 initialization
+    TIM_OC3Init(TIM1, &TIM_OCInitStructure);//capture/compare channel 3 initialization
 
+    //channel 4 configuration, used to trigger ADC
     TIM_OCStructInit(&TIM_OCInitStructure);
 
+    //valid when greater than the compare register value, otherwise invalid
     TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM1;
     TIM_OCInitStructure.TIM_Pulse = 1;
 
+    //forward channel compare output enable
     TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;
 
+    //complementary channel compare output disable
     TIM_OCInitStructure.TIM_OutputNState = TIM_OutputNState_Disable;
 
+    //forward channel compare output active high
     TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_High;
 
+    //complementary channel compare output active low
     TIM_OCInitStructure.TIM_OCNPolarity = TIM_OCNPolarity_Low;
 
+    //complementary channel idle state low
     TIM_OCInitStructure.TIM_OCIdleState = TIM_OCIdleState_Reset;
 
+    //complementary channel idle state low
     TIM_OCInitStructure.TIM_OCNIdleState = TIM_OCIdleState_Reset;
 
-    TIM_OC4Init(TIM1, &TIM_OCInitStructure);
+    TIM_OC4Init(TIM1, &TIM_OCInitStructure);         //configure register entities
 
-    TIM_OC1PreloadConfig(TIM1, TIM_OCPreload_Enable);
-    TIM_OC2PreloadConfig(TIM1, TIM_OCPreload_Enable);
-    TIM_OC3PreloadConfig(TIM1, TIM_OCPreload_Enable);
-    TIM_OC4PreloadConfig(TIM1, TIM_OCPreload_Enable);
+    //enable the preload function of the four compare outputs of timer1
+    TIM_OC1PreloadConfig(TIM1, TIM_OCPreload_Enable);//enable capture/compare channel 1 preload
+    TIM_OC2PreloadConfig(TIM1, TIM_OCPreload_Enable);//enable capture/compare channel 2 preload
+    TIM_OC3PreloadConfig(TIM1, TIM_OCPreload_Enable);//enable capture/compare channel 3 preload
+    TIM_OC4PreloadConfig(TIM1, TIM_OCPreload_Enable);//enable capture/compare channel 4 preload
 
-    TIM_BDTRInitStructure.TIM_OSSRState = TIM_OSSRState_Enable;
-    TIM_BDTRInitStructure.TIM_OSSIState = TIM_OSSIState_Enable;
+    //brake and dead time related configuration
+    TIM_BDTRInitStructure.TIM_OSSRState = TIM_OSSRState_Enable;//OSSR enable
+    TIM_BDTRInitStructure.TIM_OSSIState = TIM_OSSIState_Enable;//OSSI enable
 
+    //register configuration lock level 1
     TIM_BDTRInitStructure.TIM_LOCKLevel = TIM_LOCKLevel_1;
 
+    //set dead time
     TIM_BDTRInitStructure.TIM_DeadTime = DEADTIME_CONFIGURE;
 
-    TIM_BDTRInitStructure.TIM_Break = TIM_Break_Enable;
+    TIM_BDTRInitStructure.TIM_Break = TIM_Break_Enable;     //brake enable
+//    TIM_BDTRInitStructure.TIM_Break = TIM_Break_Disable;  //brake enable disable
 
-    TIM_BDTRInitStructure.TIM_BreakPolarity = TIM_BreakPolarity_Low;
+    TIM_BDTRInitStructure.TIM_BreakPolarity = TIM_BreakPolarity_Low;    //  brake signal polarity configured as active low
 
+    //automatic output disable
     TIM_BDTRInitStructure.TIM_AutomaticOutput = TIM_AutomaticOutput_Disable;
 
+    //configure register entities
     TIM_BDTRConfig(TIM1, &TIM_BDTRInitStructure);
 
-    TIM_SetCounter(TIM1,0);
-    TIM_ClearFlag(TIM1, TIM_FLAG_Update);
-    TIM_ITConfig(TIM1, TIM_IT_Update, ENABLE);
-    TIM_ITConfig(TIM1, TIM_IT_CC4,DISABLE);
+    //interrupt configuration
+    TIM_SetCounter(TIM1,0);                    //clear timer counter
+    TIM_ClearFlag(TIM1, TIM_FLAG_Update);      //clear update event interrupt flag
+    TIM_ITConfig(TIM1, TIM_IT_Update, ENABLE); //enable update event interrupt
+    TIM_ITConfig(TIM1, TIM_IT_CC4,DISABLE);    //disable capture/compare 4 interrupt
+
 }
-/*********************************************************************
- * @fn      ADC_OPA_Configure
- *
- * @brief   ADC and OPA configuration
- *
- * @para    ADCStruc: ADC sampling calculation structure pointer
- *
- * @return  none
- */
+
+/******************************************************************************
+* Function Name  : ADC_OPA_Configure
+* Description    : ADC and op-amp configuration
+* Input          : pointer to ADC calculation structure, ADC register pointer
+* Output         : None
+* Return         : None
+******************************************************************************/
 void ADC_OPA_Configure(ADCStruc_Type *ADCStruc)
 {
+    // configuration register structure definition
     ADC_InitTypeDef ADC_InitStructure={0};
     GPIO_InitTypeDef GPIO_InitStructure={0};
     CMP1_InitTypeDef  CMP_InitStructure = {0};
 
+    //OPA unlock
     OPA_Unlock();
     OPA_CMP_Unlock();
 
-    RCC_ADCCLKConfig(RCC_PCLK2_Div2);
-
-    RCC_PB2PeriphClockCmd(RCC_PB2Periph_GPIOA|RCC_PB2Periph_GPIOB|RCC_PB2Periph_GPIOC|RCC_PB2Periph_GPIOD\
+    //clock configuration
+    RCC_ADCCLKConfig(RCC_PCLK2_Div2);//ADC clock is PCLK2 divided by 2, 24M
+    //clock enable
+    RCC_PB2PeriphClockCmd(RCC_PB2Periph_GPIOA|RCC_PB2Periph_GPIOC|RCC_PB2Periph_GPIOD\
                           |RCC_PB2Periph_AFIO | RCC_PB2Periph_ADC1, ENABLE);
-
+    //CMP port configuration
     GPIO_InitStructure.GPIO_Pin = GPIO_Pin_2|GPIO_Pin_5;
-    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;
     GPIO_Init(GPIOC, &GPIO_InitStructure);
 
     CMP_InitStructure.CMP_Out_Mode = 3;
@@ -242,199 +262,231 @@ void ADC_OPA_Configure(ADCStruc_Type *ADCStruc)
     OPA_CMP_FILT_LEN_Config(CMP_FILT_Len_0);
     OPA_CMP_Cmd(CMP1,ENABLE);
 
-    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_1|GPIO_Pin_5;
+    //PGA port configuration PA4:OPA_N0 PD3:OPA_P2 PD7:OPA_P1
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_4;
     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;
     GPIO_Init(GPIOA, &GPIO_InitStructure);
-    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_3|GPIO_Pin_7;
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_3| GPIO_Pin_7;
     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;
     GPIO_Init(GPIOD, &GPIO_InitStructure);
+
+    //ADC bus voltage sampling
     GPIO_InitStructure.GPIO_Pin = GPIO_Pin_2;
     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;
     GPIO_Init(GPIOD, &GPIO_InitStructure);
 
-    ADC_StructInit(&ADC_InitStructure);
-    ADC_InitStructure.ADC_Mode = ADC_Mode_Independent;
-    ADC_InitStructure.ADC_ScanConvMode = ENABLE;
-    ADC_InitStructure.ADC_ContinuousConvMode = DISABLE;
-    ADC_InitStructure.ADC_ExternalTrigConv = ADC_ExternalTrigInjecConv_None;
-    ADC_InitStructure.ADC_DataAlign = ADC_DataAlign_Left;
-    ADC_InitStructure.ADC_NbrOfChannel = 1;
-    ADC_Init(ADC1, &ADC_InitStructure);
+    ADC_StructInit(&ADC_InitStructure);                 //initialization of the AD initialization structure
+    ADC_InitStructure.ADC_Mode = ADC_Mode_Independent;  //select independent mode
+    ADC_InitStructure.ADC_ScanConvMode = ENABLE;        //scan enable
+    ADC_InitStructure.ADC_ContinuousConvMode = DISABLE; //continuous conversion disable
+    ADC_InitStructure.ADC_ExternalTrigConv = ADC_ExternalTrigInjecConv_None;//use software triggered conversion
+    ADC_InitStructure.ADC_DataAlign = ADC_DataAlign_Left;//data uses left-aligned mode
+    ADC_InitStructure.ADC_NbrOfChannel = 1;              //number of conversion channels is 1
+    ADC_Init(ADC1, &ADC_InitStructure);                  //configure register entities
 
-    ADC_RegularChannelConfig(ADC1,ADC_Channel_3, 1, ADC_SampleTime_CyclesMode1);
+    //regular sampling configuration, used for bus voltage sampling
+    ADC_RegularChannelConfig(ADC1,DCVOLT_CHANNEL_PHASEA_M, 1, ADC_SampleTime_CyclesMode1);
 
-    ADC_Cmd(ADC1, ENABLE);
+    ADC_Cmd(ADC1, ENABLE); //ADC1 enable
 
-    ADC_Sample_ModeConfig(ADC1,ADC_Sample_Over_1M_Mode);
+    ADC_Sample_ModeConfig(ADC1,ADC_Sample_Over_1M_Mode);//disable ADC low power mode
+
+    ADC_BufferCmd(ADC1, DISABLE);    //disable buffer
+
 }
-/*********************************************************************
- * @fn      DCBUS_Volt_Cal
- *
- * @brief   Bus voltage calculation
- *
- * @para    ADCStruc: ADC sampling calculation structure pointer
- *          ADCx:ADC register pointer
- *
- * @return  none
- */
+/******************************************************************************
+* Function Name  : DCBUS_Volt_Cal
+* Description    : bus voltage calculation
+* Input          : pointer to ADC calculation structure, ADC register pointer
+* Output         : None
+* Return         : None
+******************************************************************************/
 void DCBUS_Volt_Cal(ADCStruc_Type *ADCStruc,ADC_TypeDef *ADCx)
 {
     if((ADCx->STATR & ADC_FLAG_EOC) == ADC_FLAG_EOC)
    {
-        //获取当前母线电压
-        ADCStruc->DCVoltPres = _IQ16toIQ(_IQ16MPY_MACRO(_IQ16(ADCx->RDATAR>>4),ADCStruc->DCVoltRatedADCInv));
+        //get current bus voltage
+        ADCStruc->DCVoltPres=ADCStruc->DCVoltRatedADCInv * (ADCx->RDATAR>>3);
 
-        //均值计算
+        //average calculation
         ADCStruc->DCVoltAver = _IQMPY_MACRO(ADCStruc->DCVoltAver,ADCStruc->DCVoltAverSizeInv2)\
                                 + _IQMPY_MACRO(ADCStruc->DCVoltPres,ADCStruc->DCVoltAverSizeInv1);
-
+                                
         ADCStruc->DCVoltcali= (_IQdiv(_IQ(1.0),ADCStruc->DCVoltAver));
+
    }
 }
 
-/*********************************************************************
- * @fn      ADC_1R_Offset_Reading
- *
- * @brief   Current sample static offset calculation
- *
- * @para    ADCStruc: ADC sampling calculation structure pointer
- *          ADCx:ADC register pointer
- *          ADC_num: ADC number
- *
- * @return  none
- */
+/******************************************************************************
+* Function Name  : ADC_Offset_Reading
+* Description    : AD current sampling zero reading
+* Input          : ADC register pointer, pointer to ADC calculation structure, ADC number
+* Output         : None
+* Return         : None
+******************************************************************************/
 void ADC_Offset_Reading(ADC_TypeDef *ADCx, ADCStruc_Type *ADCStruc,u_int8_t ADC_num)
 {
     OPA_InitTypeDef  OPA_InitStructure = {0};
-    uint16_t i=0;
 
-    ADCStruc->OffsetValue1 = 0;
+    uint16_t i;
+
+    ADCStruc->OffsetValue1 = 0;//current channel offset initialization
     ADCStruc->OffsetValue2 = 0;
 
     OPA_Cmd(DISABLE);
     OPA_StructInit(&OPA_InitStructure);
-    OPA_InitStructure.NSEL = CHN0;
+    OPA_InitStructure.NSEL = CHN_PGA_4xIN;
     OPA_InitStructure.PSEL = CHP1;
-    OPA_InitStructure.OPA_HS = HS_ON;
+
+    OPA_InitStructure.FB = FB_ON;
+    OPA_InitStructure.PGADIF = PGADIF_OFF;
+    OPA_InitStructure.PGA_VBEN = PGA_VBEN_ON;
+    OPA_InitStructure.PGA_VBSEL = PGA_VBSEL_VDD_DIV2;
+
     OPA_InitStructure.Mode = OUT_IO_OUT1;
     OPA_Init(&OPA_InitStructure);
     OPA_Cmd(ENABLE);
 
+    //disable automatic injected channel group conversion, disable injected interrupt
     ADC_ITConfig(ADCx, ADC_IT_JEOC, DISABLE);
 
+    //injected conversion external trigger source is software trigger
     ADC_ExternalTrigInjectedConvConfig(ADCx, ADC_ExternalTrigInjecConv_None);
 
+    //enable external event to start injected conversion
     ADC_ExternalTrigInjectedConvCmd(ADCx,ENABLE);
 
+    //injected sequence conversion length is 1
     ADC_InjectedSequencerLengthConfig(ADCx,1);
 
+    //current sampling order is 1, sampling time is SAMPLING_TIME_CK
     ADC_InjectedChannelConfig(ADCx, CURR_CHANNEL_PHASEA_M,1,CURR_SAMPLING_TIMER_CLOCK);
 
-    ADC_ClearFlag(ADCx, ADC_FLAG_JEOC);
+    ADC_ClearFlag(ADCx, ADC_FLAG_JEOC);//clear injected conversion end flag
 
-    ADC_SoftwareStartInjectedConvCmd(ADCx,ENABLE);
+    ADC_SoftwareStartInjectedConvCmd(ADCx,ENABLE);//software trigger injected conversion
 
+    //accumulate 16 times, i.e. shift sampling result left by 4 bits, achieving left alignment of injected conversion (consistent with regular sampling)
     for(i=0; i <CURR_OFFSET_READ_NUM_ADC; i++)
     {
-         while(!ADC_GetFlagStatus(ADCx,ADC_FLAG_JEOC));
+         while(!ADC_GetFlagStatus(ADCx,ADC_FLAG_JEOC));//wait for injected conversion to end
+        //phase A offset sampling result shifted right by 3 bits and accumulated
          ADCStruc->OffsetValue1 += (ADC_GetInjectedConversionValue(ADCx,ADC_InjectedChannel_1)>>3);
-         ADC_ClearFlag(ADCx, ADC_FLAG_JEOC);
-         ADC_SoftwareStartInjectedConvCmd(ADCx,ENABLE);
+         ADC_ClearFlag(ADCx, ADC_FLAG_JEOC);//clear injected conversion end flag
+         ADC_SoftwareStartInjectedConvCmd(ADCx,ENABLE);//software trigger again
     }
-    while(!ADC_GetFlagStatus(ADCx,ADC_FLAG_JEOC));
-    ADC_ClearFlag(ADCx, ADC_FLAG_JEOC);
+
+    while(!ADC_GetFlagStatus(ADCx,ADC_FLAG_JEOC));//wait for injected conversion to end
+   //phase A offset sampling result shifted right by 3 bits and accumulated
+    ADC_ClearFlag(ADCx, ADC_FLAG_JEOC);//clear injected conversion end flag
 
     OPA_Cmd(DISABLE);
     OPA_StructInit(&OPA_InitStructure);
-    OPA_InitStructure.NSEL = CHN0;
+    OPA_InitStructure.NSEL = CHN_PGA_4xIN;
     OPA_InitStructure.PSEL = CHP2;
-    OPA_InitStructure.OPA_HS = HS_ON;
+
+    OPA_InitStructure.FB = FB_ON;
+    OPA_InitStructure.PGADIF = PGADIF_OFF;
+    OPA_InitStructure.PGA_VBEN = PGA_VBEN_ON;
+    OPA_InitStructure.PGA_VBSEL = PGA_VBSEL_VDD_DIV2;
+
     OPA_InitStructure.Mode = OUT_IO_OUT1;
     OPA_Init(&OPA_InitStructure);
     OPA_Cmd(ENABLE);
-    ADC_ClearFlag(ADCx, ADC_FLAG_JEOC);
-    ADC_SoftwareStartInjectedConvCmd(ADCx,ENABLE);
+    ADC_ClearFlag(ADCx, ADC_FLAG_JEOC);//clear injected conversion end flag
+    ADC_SoftwareStartInjectedConvCmd(ADCx,ENABLE);//software trigger injected conversion
 
-   for(i=0; i <CURR_OFFSET_READ_NUM_ADC; i++)
-   {
-        while(!ADC_GetFlagStatus(ADCx,ADC_FLAG_JEOC));
-        ADCStruc->OffsetValue2 += (ADC_GetInjectedConversionValue(ADCx,ADC_InjectedChannel_1)>>3);
-        ADC_ClearFlag(ADCx, ADC_FLAG_JEOC);
-        ADC_SoftwareStartInjectedConvCmd(ADCx,ENABLE);
-   }
-   while(!ADC_GetFlagStatus(ADCx,ADC_FLAG_JEOC));
-   ADC_ClearFlag(ADCx, ADC_FLAG_JEOC);
+   //accumulate 16 times, i.e. shift sampling result left by 4 bits, achieving left alignment of injected conversion (consistent with regular sampling)
+       for(i=0; i <CURR_OFFSET_READ_NUM_ADC; i++)
+       {
+            while(!ADC_GetFlagStatus(ADCx,ADC_FLAG_JEOC));//wait for injected conversion to end
+           //phase A offset sampling result shifted right by 3 bits and accumulated
+            ADCStruc->OffsetValue2 += (ADC_GetInjectedConversionValue(ADCx,ADC_InjectedChannel_1)>>3);
+            ADC_ClearFlag(ADCx, ADC_FLAG_JEOC);//clear injected conversion end flag
+            ADC_SoftwareStartInjectedConvCmd(ADCx,ENABLE);//software trigger again
+       }
 
-   OPA_Cmd(DISABLE);
-   OPA_StructInit(&OPA_InitStructure);
-   OPA_InitStructure.Mode = OUT_IO_OUT1;
-   OPA_InitStructure.POLL_NUM = CHP_POLL_NUM_2;
-   OPA_InitStructure.PSEL_POLL = CHP_OPA_POLL_ON;
-   OPA_InitStructure.POLL_CH1 = CHP1;
-   OPA_InitStructure.POLL_CH2 = CHP2;
-   OPA_InitStructure.POLL_AT = OPA_POLL_AUTO_ON;
-   OPA_InitStructure.SETUP_CFG = OPA_SETUP_CFG_0;
-   OPA_InitStructure.NSEL = CHN0;
-   OPA_InitStructure.OPA_HS = HS_ON;
-   OPA_InitStructure.POLL_SEL = OPA_POLL_SEL_TIM1_CH4;
-   OPA_InitStructure.OUT_IE = DISABLE;
-   OPA_Init(&OPA_InitStructure);
-   OPA_Cmd( ENABLE );
+       while(!ADC_GetFlagStatus(ADCx,ADC_FLAG_JEOC));//wait for injected conversion to end
+       ADC_ClearFlag(ADCx, ADC_FLAG_JEOC);//clear injected conversion end flag
 
-   ADC_InjectedSequencerLengthConfig(ADC1, 2);
-   ADC_InjectedChannelConfig(ADC1, CURR_CHANNEL_PHASEA_M, 1, CURR_SAMPLING_TIMER_CLOCK);
-   ADC_InjectedChannelConfig(ADC1, CURR_CHANNEL_PHASEA_M, 2, CURR_SAMPLING_TIMER_CLOCK);
+       OPA_Cmd(DISABLE);
+       OPA_StructInit(&OPA_InitStructure);
+       OPA_InitStructure.Mode = OUT_IO_OUT1;
+       OPA_InitStructure.POLL_NUM = CHP_POLL_NUM_2;
+       OPA_InitStructure.PSEL_POLL = CHP_OPA_POLL_ON;
+       OPA_InitStructure.POLL_CH1 = OPA_POLL_CH1_PD7;
+       OPA_InitStructure.POLL_CH2 = OPA_POLL_CH2_PD3;
+       OPA_InitStructure.POLL_AT = OPA_POLL_AUTO_ON;
+       OPA_InitStructure.SETUP_CFG = OPA_SETUP_CFG_0;
+       OPA_InitStructure.NSEL = CHN_PGA_4xIN;
 
-   ADC_ClearFlag(ADCx, ADC_FLAG_JEOC);
+       OPA_InitStructure.FB = FB_ON;
+       OPA_InitStructure.PGADIF = PGADIF_OFF;
+       OPA_InitStructure.PGA_VBEN = PGA_VBEN_ON;
+       OPA_InitStructure.PGA_VBSEL = PGA_VBSEL_VDD_DIV2;
+
+       OPA_InitStructure.POLL_SEL = OPA_POLL_SEL_TIM1_CH4;
+       OPA_InitStructure.OUT_IE = OUT_IE_OFF;
+       OPA_Init(&OPA_InitStructure);
+       OPA_Cmd( ENABLE );
+
+       ADC_InjectedSequencerLengthConfig(ADC1, 2);
+       ADC_InjectedChannelConfig(ADC1, CURR_CHANNEL_PHASEA_M, 1, CURR_SAMPLING_TIMER_CLOCK);
+       ADC_InjectedChannelConfig(ADC1, CURR_CHANNEL_PHASEA_M, 2, CURR_SAMPLING_TIMER_CLOCK);
+
+       ADC_ClearFlag(ADCx, ADC_FLAG_JEOC);//clear injected conversion end flag
 }
 
-/*********************************************************************
- * @fn      ADC_1R_Start
- *
- * @brief   ADC conversion enable
- *
- * @param   NewState - ENABLE or DISABLE.
- *
- * @return  none
- */
+/******************************************************************************
+* Function Name  : ADC_Start
+* Description    : ADC conversion start
+* Input          : enable command, ADC register pointer
+* Output         : None
+* Return         : None
+******************************************************************************/
 void ADC_Start (FunctionalState cmd)
 {
     if (cmd == ENABLE)
     {
+        //ADC1 external trigger source is OPA polling
         ADC_ExternalTrigInjectedConvConfig(ADC1,ADC_ExternalTrigInjecConv_Ext_PD1_PA2_OPA );
 
+        //external conversion triggered by OPA
         ADC1->CTLR2 &= ~ADC_InjectedExTrigConv_OPA;
         ADC1->CTLR2 |= ADC_InjectedExTrigConv_OPA;
 
+        //clear ADC conversion complete flag
         ADC1->STATR = ~(uint32_t)ADC_FLAG_JEOC;
+
+        //enable ADC injected conversion interrupt
         ADC1->CTLR1 |= (1<<7);
 
     }
     else
     {
+        //cancel ADC external trigger source
         ADC_ExternalTrigInjectedConvConfig(ADC1, ADC_ExternalTrigInjecConv_None);
 
+        //disable ADC injected conversion interrupt
         ADC1->CTLR1 &= ~(1<<7);
 
+        //clear ADC conversion complete flag
         ADC1->STATR = ~(uint32_t)ADC_FLAG_JEOC;
 
+        //disable ADC external injected conversion interrupt
         ADC1->CTLR2 &= ((uint32_t)0xFFFF7FFF);
 
         TIM1->BDTR &= (uint16_t)(~((uint16_t)TIM_MOE));
-
-        ADC1->CTLR1 &= ((uint32_t)0xFFFFEFFF);
     }
 }
 
-/*********************************************************************
- * @fn      SVPWM_Lowside_Effective
- *
- * @brief   All low side MOS on, effective immediately
- *
- * @para    SVPWM_Cal: SVPWM calculation structure pointer
- *
- * @return  none
- */
+/*******************************************************************************
+* Function Name  : SVPWM_Lowside_Effective
+* Description    : all low-side switches on
+* Input          : None
+* Output         : None
+* Return         : None
+*******************************************************************************/
 void SVPWM_Lowside_Effective(SVPWM_2R_Type *SVPWM_Cal)
 {
     SVPWM_Cal->cc1Load = SVPWM_Cal->HALF_T+1;
@@ -442,15 +494,13 @@ void SVPWM_Lowside_Effective(SVPWM_2R_Type *SVPWM_Cal)
     SVPWM_Cal->cc3Load = SVPWM_Cal->HALF_T+1;
 }
 
-/*********************************************************************
- * @fn      SVPWM_Zerovolt_Output
- *
- * @brief   0 voltage output, effective immediately
- *
- * @para    SVPWM_Cal: SVPWM calculation structure pointer
- *
- * @return  none
- */
+/*******************************************************************************
+* Function Name  : SVPWM_Zerovolt_Output
+* Description    : zero voltage output
+* Input          : SVPWM calculation structure pointer
+* Output         : None
+* Return         : None
+*******************************************************************************/
 void SVPWM_Zerovolt_Output(SVPWM_2R_Type *SVPWM_Cal)
 {
     SVPWM_Cal->cc1Load = SVPWM_Cal->Quard_T;
@@ -458,18 +508,182 @@ void SVPWM_Zerovolt_Output(SVPWM_2R_Type *SVPWM_Cal)
     SVPWM_Cal->cc3Load = SVPWM_Cal->Quard_T;
 }
 
-/*********************************************************************
- * @fn      SVPWM_Update
- *
- * @brief   Time comparison value updated
- *
- * @para    SVPWM_Cal: SVPWM calculation structure pointer
- *
- * @return  none
- */
+/******************************************************************************
+* Function Name  : SVPWM_Update
+* Description    : timer counter compare value update
+* Input          : SVPWM calculation structure pointer
+* Output         : None
+* Return         : None
+******************************************************************************/
 void SVPWM_Update (SVPWM_2R_Type *SVPWM_Cal)
 {
     TIM1->CH1CVR = SVPWM_Cal->cc1Load;
     TIM1->CH2CVR = SVPWM_Cal->cc2Load;
     TIM1->CH3CVR = SVPWM_Cal->cc3Load;
+}
+
+/*******************************************************************************
+* Function Name  : SVPWM_ALL_OFF
+* Description    : SVPWM output all disabled
+* Input          : None
+* Output         : None
+* Return         : None
+*******************************************************************************/
+void SVPWM_ALL_OFF(void)
+{
+    TIM1->CCER&=~((1<<0)|(1<<2)|(1<<4)|(1<<6)|(1<<8)|(1<<10));
+}
+
+/*******************************************************************************
+* Function Name  : SVPWM_ALL_ON
+* Description    : SVPWM output all enabled
+* Input          : None
+* Output         : None
+* Return         : None
+*******************************************************************************/
+void SVPWM_ALL_ON(void)
+{
+    TIM1->CCER|=((1<<0)|(1<<2)|(1<<4)|(1<<6)|(1<<8)|(1<<10));
+}
+
+/*******************************************************************************
+* Function Name  : SVPWM_UP_ON
+* Description    : SVPWM output all high-side switches enabled
+* Input          : None
+* Output         : None
+* Return         : None
+*******************************************************************************/
+void SVPWM_UP_ON(void)
+{
+    TIM1->CCER|=((1<<0)|(1<<4)|(1<<8));
+}
+
+/*******************************************************************************
+* Function Name  : SVPWM_DOWN_ON
+* Description    : SVPWM output all low-side switches enabled
+* Input          : None
+* Output         : None
+* Return         : None
+*******************************************************************************/
+void SVPWM_DOWN_ON(void)
+{
+    TIM1->CCER|=((1<<2)|(1<<6)|(1<<10));
+}
+
+/*******************************************************************************
+* Function Name  : SVPWM_UP_OFF
+* Description    : SVPWM output all high-side switches disabled
+* Input          : None
+* Output         : None
+* Return         : None
+*******************************************************************************/
+void SVPWM_UP_OFF(void)
+{
+    TIM1->CCER&=~((1<<0)|(1<<4)|(1<<8));
+}
+
+/*******************************************************************************
+* Function Name  : SVPWM_DOWN_OFF
+* Description    : SVPWM output all low-side switches disabled
+* Input          : None
+* Output         : None
+* Return         : None
+*******************************************************************************/
+void SVPWM_DOWN_OFF(void)
+{
+    TIM1->CCER&=~((1<<2)|(1<<6)|(1<<10));
+}
+
+/*******************************************************************************
+* Function Name  : SVPWM_Calculation
+* Description    : SVPWM calculation
+* Input          : SVPWM calculation structure pointer, two-phase stationary frame voltage pointer
+* Output         : None
+* Return         : None
+*******************************************************************************/
+__attribute__((section(".highcode")))
+void SVPWM_Calculation(SVPWM_2R_Type *SVPWM_Cal, Component_2S_Type *VoltRef)
+{
+    _iq16 Ualphacoef1=0;   //SVPWM calculation coefficient 1
+    _iq16 Ubetacoef2=0;    //SVPWM calculation coefficient 2
+    _iq16 hx=0;            //sector and conduction time judgement intermediate variable
+    _iq16 hy=0;            //sector and conduction time judgement intermediate variable
+    _iq16 hz=0;            //sector and conduction time judgement intermediate variable
+    _iq16 ht1=0;           //voltage vector 1 action time scaling value
+    _iq16 ht2=0;           //voltage vector 2 action time scaling value
+
+    Ualphacoef1 = _IQ16MPY_MACRO(SVPWM_Cal->coef1,  VoltRef->Alpha>>8);
+    Ubetacoef2 = _IQ16MPY_MACRO(SVPWM_Cal->coef2, VoltRef->Beta>>8);
+
+    hx = Ubetacoef2 * 2;
+    hy = Ualphacoef1 + Ubetacoef2;
+    hz = Ubetacoef2 - Ualphacoef1;
+
+    //sector judgement
+    if(hx > 0)
+    {
+        if((-hz) > 0)
+        {
+            SVPWM_Cal->sector = 1;
+            ht1 = -hz;//t1=-z
+            ht2 = hx;//t2 =x
+            SVPWM_Cal->cc3Load = SVPWM_Cal->Quard_T + (uint16_t)(ht1>>18) + (uint16_t)(ht2>>18);
+            SVPWM_Cal->cc2Load = SVPWM_Cal->cc3Load-(uint16_t)(ht2>>17);
+            SVPWM_Cal->cc1Load = SVPWM_Cal->cc2Load-(uint16_t)(ht1>>17);
+        }
+        else
+        {
+            if((-hy)>= 0)
+            {
+                SVPWM_Cal->sector = 3;
+                ht1 = hx;
+                ht2 = -hy;
+                SVPWM_Cal->cc1Load = SVPWM_Cal->Quard_T + (uint16_t)(ht1>>18) + (uint16_t)(ht2>>18);
+                SVPWM_Cal->cc3Load = SVPWM_Cal->cc1Load-(uint16_t)(ht2>>17);
+                SVPWM_Cal->cc2Load = SVPWM_Cal->cc3Load-(uint16_t)(ht1>>17);
+            }
+            else
+            {
+                SVPWM_Cal->sector = 2;
+                ht1 = hz;
+                ht2 = hy;
+                SVPWM_Cal->cc3Load = SVPWM_Cal->Quard_T + (uint16_t)(ht1>>18) + (uint16_t)(ht2>>18);
+                SVPWM_Cal->cc1Load = SVPWM_Cal->cc3Load-(uint16_t)(ht2>>17);
+                SVPWM_Cal->cc2Load = SVPWM_Cal->cc1Load-(uint16_t)(ht1>>17);
+            }
+        }
+    }
+    else
+    {
+        if((-hz) <= 0)
+        {
+            SVPWM_Cal->sector = 4;
+            ht1 = -hx;
+            ht2 = hz;
+            SVPWM_Cal->cc1Load = SVPWM_Cal->Quard_T + (uint16_t)(ht1>>18) + (uint16_t)(ht2>>18);
+            SVPWM_Cal->cc2Load = SVPWM_Cal->cc1Load-(uint16_t)(ht2>>17);
+            SVPWM_Cal->cc3Load = SVPWM_Cal->cc2Load-(uint16_t)(ht1>>17);
+        }
+        else
+        {
+            if((-hy)>= 0)
+            {
+                SVPWM_Cal->sector= 5;
+                ht1 = -hy;
+                ht2 = -hz;
+                SVPWM_Cal->cc2Load = SVPWM_Cal->Quard_T + (uint16_t)(ht1>>18) + (uint16_t)(ht2>>18);
+                SVPWM_Cal->cc1Load = SVPWM_Cal->cc2Load-(uint16_t)(ht2>>17);
+                SVPWM_Cal->cc3Load = SVPWM_Cal->cc1Load-(uint16_t)(ht1>>17);
+            }
+            else
+            {
+                SVPWM_Cal->sector = 6;
+                ht1 = hy;
+                ht2 = -hx;
+                SVPWM_Cal->cc2Load = SVPWM_Cal->Quard_T + (uint16_t)(ht1>>18) + (uint16_t)(ht2>>18);
+                SVPWM_Cal->cc3Load = SVPWM_Cal->cc2Load-(uint16_t)(ht2>>17);
+                SVPWM_Cal->cc1Load = SVPWM_Cal->cc3Load-(uint16_t)(ht1>>17);
+            }
+        }
+    }
 }

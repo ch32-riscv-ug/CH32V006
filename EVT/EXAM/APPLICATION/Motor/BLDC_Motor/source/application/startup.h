@@ -1,8 +1,8 @@
 /********************************** (C) COPYRIGHT  *******************************
  * File Name          : startup.h
  * Author             : WCH
- * Version            : V1.0.0
- * Date               : 2026/08/05
+ * Version            : V1.0.1
+ * Date               : 2026/11/05
  * Description        : This file contains all the functions prototypes for the
  *                       firmware library.
  *********************************************************************************
@@ -13,33 +13,45 @@
 #ifndef STARTUP_H
 #define STARTUP_H
 
-#include "stddef.h"
-#include "stdint.h"
-#include "stdbool.h"
+#include <stddef.h>
+#include <stdint.h>
+#include <stdbool.h>
 
-// StartupLoad 载入
-// zeroRatio 过零比例 范围0-100,推荐5
-// zeroCnt 过零次数 默认推荐3次
-void StartupLoad(uint8_t zeroRatio, uint8_t zeroCnt, bool supportHighSpeed);
+// Startup configuration parameters (loaded at run time, replacing the config.h compile-time macros)
+typedef struct {
+    uint8_t  zeroMaxCnt;              // Number of zero-crossing detections at startup
+    uint32_t systemClockFreq;         // System clock frequency (Hz)
+    uint32_t speedMin;                // Minimum speed (eRPM)
+    uint32_t phaseDelayEnable;        // Commutation delay enable (0/1)
+    float    dragVoltageMin;          // Minimum forced-drag voltage (V)
+    float    dragVoltageMax;          // Maximum forced-drag voltage (V)
+    float    voltageMax;              // Maximum supported voltage (V)
+    uint32_t stallTimeMs;             // Stall protection time (ms)
+    uint32_t avoidChargingTimeUs;     // Freewheeling avoidance time (us)
+    int32_t  tempAdvance;             // Commutation advance angle during startup (Q15 per-unit)
+    uint32_t dragRampTimeMs;          // Drag ramp-up time: linear time for the duty cycle to rise from dutyMin to dutyMax (ms)
+} StartupConfig_T;
 
-// startupCheckZeroCross 检测过零点
-bool StartupCheckZeroCross(uint8_t dir, uint8_t phase, uint16_t bemfNow, uint16_t vbus);
+// StartupLoad: load
+// config: configuration parameter pointer; pass NULL to use the defaults (all 0, not recommended)
+void StartupLoad(const StartupConfig_T *config);
 
-// StartupReset 重置启动参数
+// startupCheckZeroCross: detect zero crossings
+void StartupRun(void);
+
+// StartupReset: reset the startup parameters
 void StartupReset(void);
 
-// StartupIsUp 判断是否上升沿
-bool StartupIsUp(void);
-
-// StartupIsFinish 判断启动是否完成
+// StartupIsFinish: check whether startup has finished
 bool StartupIsFinish(void);
 
-// CheckZeroCross 检测过零点
-bool CheckZeroCross(uint8_t dir, uint8_t phase, uint16_t bemfNow, uint16_t vbus);
+// StartupGetDutyMin: get the minimum duty cycle at startup
+int32_t StartupGetDutyMin(void);
 
-// StartupIsFirstZeroCrossTriggered 判断首次过零触发信号是否已触发
-// 注意：此函数会重置标志位，仅在需要时调用一次
-// 返回值：如果首次过零已触发则返回true，否则返回false
-bool StartupIsFirstZeroCrossTriggered(void);
+// StartupGetDutyMax: get the maximum duty cycle at startup
+int32_t StartupGetDutyMax(void);
+
+// StartupGetZeroCrossCount: get the zero-crossing count at startup
+uint8_t StartupGetZeroCrossCount(void);
 
 #endif

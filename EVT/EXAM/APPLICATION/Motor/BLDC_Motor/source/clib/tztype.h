@@ -1,6 +1,15 @@
-// Copyright 2021-2021 The jdh99 Authors. All rights reserved.
-// 常用基础数据类型
-// Authors: jdh99 <jdh821@163.com>
+/********************************** (C) COPYRIGHT  *******************************
+ * File Name          : tztype.h
+ * Author             : WCH
+ * Version            : V1.0.1
+ * Date               : 2026/11/05
+ * Description        : This file contains all the functions prototypes for the
+ *                       firmware library.
+ *********************************************************************************
+ * Copyright (c) 2021 Nanjing Qinheng Microelectronics Co., Ltd.
+ * Attention: This software (modified or not) and binary are used for 
+ * microcontroller manufactured by Nanjing Qinheng Microelectronics.
+ *******************************************************************************/
 
 #ifndef TZTYPE_H
 #define TZTYPE_H
@@ -12,10 +21,10 @@
 #include <stdio.h>
 #include <stdarg.h>
 
-// 未使用命令声明.可避免编译器警告
+// Unused parameter declaration, avoids compiler warnings
 #define TZ_UNUSED(v) (void)v
 
-// 中断优先级
+// Interrupt priority
 #define TZ_IRQ_PRIORITY_HIGHEST 0
 #define TZ_IRQ_PRIORITY_HIGH 1
 #define TZ_IRQ_PRIORITY_MIDDLE 2
@@ -24,7 +33,7 @@
 
 #pragma pack(1)
 
-// 缓冲区数据结构
+// Buffer data structure
 #define TZ_BUFFER_TINY_LEN 32
 typedef struct {
     int len;
@@ -55,7 +64,7 @@ typedef struct {
     uint8_t buf[TZ_BUFFER_LARGE_LEN];
 } TZBufferLarge;
 
-// TZBufferDynamic 动态缓存
+// TZBufferDynamic dynamic buffer
 typedef struct {
     int len;
     uint8_t buf[];
@@ -63,36 +72,36 @@ typedef struct {
 
 #pragma pack()
 
-// 处理帧的返回值
+// Return values of frame handling
 typedef enum {
-    // 放行
+    // Pass through
     TZ_PASS,
-    // 拦截
+    // Block
     TZ_STOP
 } TZDealFrameReturn;
 
-// TZIsAllowSendFunc 是否允许发送函数类型
+// TZIsAllowSendFunc: whether sending is allowed function type
 typedef bool (*TZIsAllowSendFunc)(void);
 
-// TZEmptyFunc 空函数类型
+// TZEmptyFunc: empty function type
 typedef void (*TZEmptyFunc)(void);
 
-// TZDataFunc 数据函数类型
+// TZDataFunc: data function type
 typedef void (*TZDataFunc)(uint8_t* bytes, int size);
 
-// TZNetDataFunc 网络数据函数类型
+// TZNetDataFunc: network data function type
 typedef void (*TZNetDataFunc)(uint8_t* bytes, int size, uint32_t ip, uint16_t port);
 
-// TZPipeDataFunc 管道数据函数类型
+// TZPipeDataFunc: pipe data function type
 typedef void (*TZPipeDataFunc)(uint8_t* bytes, int size, uint32_t ip, uint16_t port, int pipe);
 
-// TZDataByIAFunc 根据ia地址发送数据函数类型
+// TZDataByIAFunc: send data by IA address function type
 typedef void (*TZDataByIAFunc)(uint8_t* bytes, int size, uint32_t ia);
 
-// TZWriteIO 设置引脚电平
+// TZWriteIO: set the pin level
 typedef void (*TZWriteIO)(bool level);
 
-// TZReadIO 读取引脚电平
+// TZReadIO: read the pin level
 typedef bool (*TZReadIO)(void);
 
 #endif

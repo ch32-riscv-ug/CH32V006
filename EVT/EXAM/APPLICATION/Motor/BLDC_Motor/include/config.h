@@ -1,8 +1,8 @@
 /********************************** (C) COPYRIGHT  *******************************
  * File Name          : config.h
  * Author             : WCH
- * Version            : V1.0.0
- * Date               : 2026/08/05
+ * Version            : V1.0.1
+ * Date               : 2026/11/05
  * Description        : This file contains all the functions prototypes for the
  *                       firmware library.
  *********************************************************************************
@@ -13,135 +13,200 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
-#define VERSION "1.0.2"
-
 #define FAST_FUNC __attribute__((section(".highcode")))
 
 #define UART_DEBUG_ENABLE 0
-#define SDI_DEBUG_ENABLE 0
+#define SDI_DEBUG_ENABLE 1
 
-// 方向
-#define CW 0
-#define CCW 1
+#define SYSTEM_CLOCK_FREQ 48000000uL // System clock frequency (unit: Hz)
 
-#define SYSTEM_CLOCK_FREQ 48000000uL // 系统时钟频率(unit-Hz)
+// Independent watchdog: no drvwdg driver in this project, disabled
+#define IWDG_ENABLE 0
 
-#define PWM_FRE (20000) // PWM的频率
-#define PWM_FRE_SETATA (SYSTEM_CLOCK_FREQ / PWM_FRE - 1)
-#define PWM_DUTYCYCLE_95 ((PWM_FRE_SETATA / 20) * 19) // PWM的占空比  95%
-#define PWM_DUTYCYCLE_75 ((PWM_FRE_SETATA / 4) * 3)   // PWM的占空比  75%
-#define PWM_DUTYCYCLE_50 (PWM_FRE_SETATA / 2)         // PWM的占空比  50%
-#define PWM_DUTYCYCLE_25 (PWM_FRE_SETATA / 4)         // PWM的占空比  25%
-#define PWM_DUTYCYCLE_20 (PWM_FRE_SETATA / 5)         // PWM的占空比  20%
-#define PWM_DUTYCYCLE_15 ((PWM_FRE_SETATA / 20) * 3)  // PWM的占空比  15%
-#define PWM_DUTYCYCLE_10 (PWM_FRE_SETATA / 10)        // PWM的占空比  10%
-#define PWM_DUTYCYCLE_05 (PWM_FRE_SETATA / 20)        // PWM的占空比  5%
-#define PWM_DUTYCYCLE_01 (PWM_FRE_SETATA / 100)
+#define PWM_FRE (20000) // PWM frequency
+#define PWM_FRE_SETATA (SYSTEM_CLOCK_FREQ / PWM_FRE - 1) // Default PWM period register value
 
-#define PWM_START_DUTY (PWM_DUTYCYCLE_10)
-#define PWM_MIN_DUTY (PWM_DUTYCYCLE_10) // 最小占空比
-#define PWM_MAX_DUTY PWM_FRE_SETATA     // 最大占空比
+// Duty cycle definitions (Q15 per-unit, _IQ15(1.0)=32768=100%)
+#define PWM_DUTYCYCLE_95 _IQ15(0.95f) // PWM duty cycle  95%
+#define PWM_DUTYCYCLE_75 _IQ15(0.75f) // PWM duty cycle  75%
+#define PWM_DUTYCYCLE_50 _IQ15(0.50f) // PWM duty cycle  50%
+#define PWM_DUTYCYCLE_25 _IQ15(0.25f) // PWM duty cycle  25%
+#define PWM_DUTYCYCLE_20 _IQ15(0.20f) // PWM duty cycle  20%
+#define PWM_DUTYCYCLE_15 _IQ15(0.15f) // PWM duty cycle  15%
+#define PWM_DUTYCYCLE_10 _IQ15(0.10f) // PWM duty cycle  10%
+#define PWM_DUTYCYCLE_05 _IQ15(0.05f) // PWM duty cycle  5%
+#define PWM_DUTYCYCLE_01 _IQ15(0.01f) // PWM duty cycle  1%
 
-// 下管预充电时间 单位: us
-#define LOW_BRIDGE_CHAGRE_TIME 5000
-// 规避续流时间 单位:us
+// Minimum duty cycle
+#define PWM_MIN_DUTY _IQ15(0.10)
+// Maximum duty cycle
+#define PWM_MAX_DUTY _IQ15(1)
+
+// Low-side precharge time, unit: us
+#define LOW_BRIDGE_CHARGE_TIME 5000
+// Freewheeling avoidance time, unit: us
 #define AVOID_CHARGING_TIME 25
-// 采样时间 单位:us
-// 需要根据硬件电路进行分析
-// 需要结合PWM
-#define SAMPLING_TIME 2.0f
-// 开关避开时间 单位:us
+// Sampling time, unit: us
+// Injected sequence is fixed to U/V/W/OPA four channels: 24MHz ADC, 20 cycles per channel, about 3.3us
+#define SAMPLING_TIME 3.3f
+// Switching avoidance time, unit: us
 #define AVOID_SWITCH_TIME 3
-// 同步续流开关
+// Synchronous freewheeling switch
 #define SYNC_CHARGING_SWITCH 0
-// 换相delay补偿 单位运行周期
-#define PHASE_DELAY_COMPENSATION (50 * 48)
-// 多次采样中间间隔 单位:us
-#define SAMPLING_INTERVAL 15.0f
-// ADC方案高速支持
+// Commutation delay compensation, unit: us
+#define PHASE_DELAY_COMPENSATION 50
+// Interval between multiple samples, unit: us
+#define SAMPLING_INTERVAL 20.0f
+// ADC scheme high-speed support
 #define ADC_SUPPORT_HIGH_SPEED 1
-// 换相延时使能
+// Commutation delay enable
 #define PHASE_DELAY_ENABLE 1
-/*************************电机参数标幺值*************************/
-// 最大支持电流 A
+// Comparator support: this board has no CMP zero-crossing circuit, ADC scheme only (CMP2 is used for OPA hardware over-current brake only)
+#define CMP_SUPPORT_ENABLE 0
+
+/********************Motor parameter per-unit values********************/
+// Maximum supported current, A
 #define CURRENT_MAX 125.0f
-// 最大支持电压 V
+// Maximum supported voltage, V
 #define VOLTAGE_MAX 17.78f
 
-// 电机运行参数
-// 最大转速 单位:电角度 eRPM
-#define SPEED_MAX 16000
-// 最低转速 单位:电角度 eRPM
+// Motor running parameters
+// Maximum speed, unit: electrical RPM (eRPM)
+#define SPEED_MAX 80000
+// Minimum speed, unit: electrical RPM (eRPM)
 #define SPEED_MIN 2000
 /*************************************************************/
 
-/***************************启动参数***************************/
-// 定位占空比
-#define ALIGN_PWM_DUTY PWM_DUTYCYCLE_15
-// 定位次数
+/***************************Startup parameters***************************/
+// Alignment duty cycle
+#define ALIGN_PWM_DUTY _IQ15(0.15)
+// Alignment count
 #define ALIGN_CNT 1
-// 定位时间 单位:ms
+// Alignment time, unit: ms
 #define ALIGN_TIME 0
-// 启动检测过零点次数 推荐默认值:3
-#define STARTUP_ZCP_CNT 3
-// 启动检测阈值 阈值:0~100 推荐默认值:5
+// Number of zero-crossing detections at startup, recommended value: 3
+#define STARTUP_ZCP_CNT 6
+// Startup detection threshold, range: 0~100, recommended value: 5
 #define STARTUP_ZERO_THRESHOLD 5
-// 强托起始速度 单位:电角度 eRPM
-#define DRAG_SPEED_MIN 500
-// 强托最大速度 单位:电角度 eRPM
-#define DRAG_SPEED_MAX 1000
-// 强托占空比最大值
-#define DRAG_PWM_DUTY_MAX PWM_DUTYCYCLE_15
-// 强托占空比最小值
-#define DRAG_PWM_DUTY_MIN PWM_DUTYCYCLE_15
-// 启动最大时间, 单位ms
-#define START_STALL_TIME 3000
-// 顺逆风启动电压阈值 单位:V
-#define WARMBOOT_VOLTAGE_THRESHOLD 1.0f
-// 顺逆风超时时间 单位:ms
+// Maximum forced-drag voltage, unit: V
+// Note: the new shared library drags in zero-crossing-follow mode, so the rotor must be
+// pushed open-loop above SPEED_MIN (2000 eRPM) before handing over to closed loop;
+// 2V (about the old 15% duty cycle) usually cannot drive a load, R0 verified a 4~6V ramp.
+// On this board start with 3~5V and tune it on hardware.
+#define DRAG_VOLTAGE_MAX 5.0f
+// Minimum forced-drag voltage, unit: V
+#define DRAG_VOLTAGE_MIN 3.0f
+// Drag ramp-up time, unit: ms (time for the duty cycle to rise linearly from DRAG_VOLTAGE_MIN to DRAG_VOLTAGE_MAX)
+#define DRAG_RAMP_TIME 100
+// Maximum startup time, unit: ms
+#define START_TIMEOUT 1000
+// Drag stall step-up / closed-loop stall time, unit: ms (early zero-crossing intervals may be 20~30ms, leave enough margin to prevent zcpCnt from being cleared)
+#define STALL_TIME 30
+// Head/tail-wind startup voltage threshold, unit: V (R0=0.05; 1.0V would misjudge coasting rotation as standstill)
+#define WARMBOOT_VOLTAGE_THRESHOLD 0.05f
+// BEMF continuous-disappearance confirmation time, unit: ms
 #define WARMBOOT_TIMEOUT 50
+// Reverse-wind handling mode 0: short-circuit brake then start as standstill (keep target direction) 1: follow the wind direction directly into closed loop
+#define WARMBOOT_REVERSE_MODE 0
+// Total reverse-wind brake timeout, unit: ms, report stall and stop if reverse wind is still detected
+#define WARMBOOT_REVERSE_TIMEOUT 1000
+// Short-circuit brake duration per reverse-wind round, unit: ms
+#define REVERSE_BRAKE_ON_MS 20
+// Time to wait for winding current decay with all switches off after reverse-wind brake, unit: ms
+#define REVERSE_DEMAG_MS 2
+// Holding time to keep short circuit after the reverse BEMF disappears, unit: ms
+#define REVERSE_HOLD_MS 200
 /*************************************************************/
 
-/****************************速度环***************************/
-// 速度环PI参数 单位:float
+/********************Static pulse injection parameters********************/
+// Enable static pulse injection (detect rotor standstill position before alignment); parameters must still be provided to shared main.c when disabled
+#define STATIC_PULSE_INJECT_ENABLE 0
+// Injection PWM duty cycle (large duty for a short time to prevent motor rotation)
+#define STATIC_PULSE_INJECT_DUTY _IQ15(1)
+// Demagnetization time after each PWM turn-off, unit: us
+#define STATIC_PULSE_DEMAG_TIME_US 50
+// Settling time to wait for current stabilization after PWM injection, unit: us
+#define STATIC_PULSE_SETTLE_TIME_US 50
+// Timeout of software-triggered ADC injected sampling, unit: us
+#define STATIC_PULSE_ADC_TIMEOUT_US 50
+// Phase-loss detection current threshold, unit: raw ADC value
+#define STATIC_PULSE_PHASE_LOSS_THRESHOLD 10
+// Short-circuit detection current threshold, unit: raw ADC value
+#define STATIC_PULSE_SHORT_THRESHOLD 2000
+/*************************************************************/
+
+// Desync protection threshold, unit: us (the shared library desync criterion is currently disabled, definition kept)
+#define DESYNC_TIME 2000
+
+/****************************Speed loop***************************/
+// Speed loop enable
+#define SPEED_LOOP_ENABLE 1
+// Speed loop PI parameters, unit: float
 #define SPEED_KP 0.01f
 #define SPEED_KI 0.005f
-// 占空比输出范围 单位:float 范围0~1;
+// Duty cycle output range, unit: float, range 0~1;
 #define SPEED_OUT_MAX 1.0f
 #define SPEED_OUT_MIN 0.15f
+// Speed first-order IIR filter coefficient (larger follows faster with more noise)
+// Group delay = (1-a)/a commutations: 0.1->9 times, 0.25->3 times, 0.4->1.5 times
+#define SPEED_IIR_ALPHA 0.4f
 /************************************************************/
 
-/***************************保护参数***************************/
-// 过流保护1 单位:A
-#define OVER_CURRENT1 5
-// 过流保护1持续时间 单位:ms
+/***************************Current limit loop***************************/
+// Current loop enable
+#define CURRENT_LOOP_ENABLE 0
+// Default current limit, unit: A (current limit loop disabled, must not exceed OVER_CURRENT2 when enabled)
+#define CURRENT_LIMIT 8.0f
+// Current limit loop PI parameters
+#define CURRENT_KP 0.5f
+#define CURRENT_KI 0.01f
+// Output range, unit: per-unit
+#define CURRENT_OUT_MAX 1.0f
+#define CURRENT_OUT_MIN 0.15f
+/************************************************************/
+
+/***************************Power loop***************************/
+// Power loop enable
+#define POWER_LOOP_ENABLE 0
+// Default target power, unit: W (power loop disabled, must be reset to the machine power before enabling)
+#define POWER_TARGET 20.0f
+// Power loop PI parameters
+#define POWER_KP 2.0f
+#define POWER_KI 0.2f
+// Output range, unit: per-unit
+#define POWER_OUT_MAX 1.0f
+#define POWER_OUT_MIN 0.15f
+/************************************************************/
+
+/***************************Protection parameters***************************/
+// Software protection enable (over-voltage / under-voltage / soft over-current)
+#define PROTECT_ENABLE 1
+// Over-current protection 1, unit: A
+#define OVER_CURRENT1 10
+// Over-current protection 1 duration, unit: ms
 #define OVER_CURRENT1_TIME 200
-// 过流保护2 单位:A
-#define OVER_CURRENT2 8
-// 过流保护2持续时间 单位:ms
+// Over-current protection 2, unit: A
+#define OVER_CURRENT2 15
+// Over-current protection 2 duration, unit: ms
 #define OVER_CURRENT2_TIME 50
-// 过压 单位:V
+// Over-voltage, unit: V
 #define OVER_VOLTAGE 15
-// 欠压 单位:V
-#define UNDER_VOLTAGE 8
-// 电压保护时间
+// Under-voltage, unit: V
+#define UNDER_VOLTAGE 6
+// Voltage protection time
 #define VOLTAGE_PROTECT_TIME 200
-// 闭环堵转时间 单位:ms
-#define STALL_TIME 100
-// 缺项保护阈值 低于该值则触发缺项保护
-// ADC采样值，通常很小
-#define PHASE_LOSS_THRESHOLD 25
-// 电机刹车时间 单位:ms
+// Motor brake time, unit: ms
 #define BRAKE_TIME 5000
 /***********************************************************/
 
-/********************参数自动计算，请不要修改******************/
-#define DRAG_CNT_MIN ((uint32_t)(PWM_FRE * 60 / DRAG_SPEED_MAX / 6))
-#define DRAG_CNT_MAX ((uint32_t)(PWM_FRE * 60 / DRAG_SPEED_MIN / 6))
-#define SAMPLING_TIME_CNT ((uint32_t)((SAMPLING_TIME / (1e6 / PWM_FRE)) * PWM_FRE_SETATA))
-#define AVOID_CHARGING_CNT ((uint32_t)((AVOID_CHARGING_TIME / (1e6 / PWM_FRE)) * PWM_FRE_SETATA))
-#define SAMPLING_INTERVAL_CNT ((uint32_t)((SAMPLING_INTERVAL / (1e6 / PWM_FRE)) * PWM_FRE_SETATA))
-#define AVOID_SWITCH_CNT ((uint32_t)((AVOID_SWITCH_TIME / (1e6 / PWM_FRE)) * PWM_FRE_SETATA))
+/********************Auto-calculated parameters, do not modify******************/
+#define SAMPLING_TIME_CNT ((uint32_t)((SAMPLING_TIME) * ((float)SYSTEM_CLOCK_FREQ / 1000000.0f)))
+#define AVOID_CHARGING_CNT ((uint32_t)(((uint64_t)SYSTEM_CLOCK_FREQ * (uint64_t)(AVOID_CHARGING_TIME)) / 1000000uL))
+#define SAMPLING_INTERVAL_CNT ((uint32_t)((SAMPLING_INTERVAL) * ((float)SYSTEM_CLOCK_FREQ / 1000000.0f)))
+#define AVOID_SWITCH_CNT ((uint32_t)(((uint64_t)SYSTEM_CLOCK_FREQ * (uint64_t)(AVOID_SWITCH_TIME)) / 1000000uL))
+#define PHASE_DELAY_COMPENSATION_CNT ((uint32_t)(((uint64_t)SYSTEM_CLOCK_FREQ * (uint64_t)(PHASE_DELAY_COMPENSATION)) / 1000000uL))
+#define STALL_TIME_CNT ((uint32_t)((STALL_TIME) * ((float)SYSTEM_CLOCK_FREQ / 1000.0f)))
+#define DESYNC_TIME_CNT ((uint32_t)((DESYNC_TIME) * ((float)SYSTEM_CLOCK_FREQ / 1000000.0f)))
 /***********************************************************/
 
 #endif

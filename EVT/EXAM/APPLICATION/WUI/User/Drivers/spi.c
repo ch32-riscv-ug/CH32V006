@@ -1,8 +1,8 @@
 /*********************************************************************
  * File Name          : spi.c
  * Author             : WCH
- * Version            : V1.0.0
- * Date               : 2023/8/15
+ * Version            : V1.0.1
+ * Date               : 2026/10/29
  * Description        : file for spi.
  *********************************************************************************
 * Copyright (c) 2023 Nanjing Qinheng Microelectronics Co., Ltd.
@@ -135,9 +135,9 @@ void SPI1_Read_DMA(uint8_t* data, uint16_t len)
 
     SPI1_DMA_RX_CH->MADDR = (uint32_t)data;
     SPI1_DMA_RX_CH->CNTR  = len;
-
-    DMA_Cmd(SPI1_DMA_TX_CH, ENABLE);
+	
     DMA_Cmd(SPI1_DMA_RX_CH, ENABLE);
+    DMA_Cmd(SPI1_DMA_TX_CH, ENABLE);
 }
 
 /*********************************************************************

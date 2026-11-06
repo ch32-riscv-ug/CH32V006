@@ -1,8 +1,8 @@
 /********************************** (C) COPYRIGHT  *******************************
  * File Name          : drivers.h
  * Author             : WCH
- * Version            : V1.0.0
- * Date               : 2026/08/05
+ * Version            : V1.0.1
+ * Date               : 2026/11/05
  * Description        : This file contains all the functions prototypes for the
  *                       firmware library.
  *********************************************************************************
@@ -22,7 +22,7 @@
 #include "drvtime2.h"
 #include "drvsystick.h"
 
-// DriversInit 初始化
+// DriversInit: initialization
 void DriversInit(void);
 
 #endif

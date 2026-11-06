@@ -1,8 +1,8 @@
 /********************************** (C) COPYRIGHT  *******************************
  * File Name          : launch.h
  * Author             : WCH
- * Version            : V1.0.0
- * Date               : 2026/08/05
+ * Version            : V1.0.1
+ * Date               : 2026/11/05
  * Description        : This file contains all the functions prototypes for the
  *                       firmware library.
  *********************************************************************************
@@ -16,9 +16,9 @@
 #include "drivers.h"
 #include "adcsample.h"
 
-// 启动器载入
+// Launcher load initialization
 void LaunchLoad(void);
-// 启动器运行
+// Launcher run loop
 void LaunchRun(void);
 
 #endif

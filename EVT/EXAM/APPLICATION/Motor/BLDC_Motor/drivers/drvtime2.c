@@ -1,8 +1,8 @@
 /********************************** (C) COPYRIGHT  *******************************
  * File Name          : drvtime2.c
  * Author             : WCH
- * Version            : V1.0.0
- * Date               : 2026/08/05
+ * Version            : V1.0.1
+ * Date               : 2026/11/05
  * Description        : This file provides all firmware functions.
  *********************************************************************************
  * Copyright (c) 2021 Nanjing Qinheng Microelectronics Co., Ltd.
@@ -11,15 +11,15 @@
  *******************************************************************************/
 #include "drivers.h"
 
-// DrvTime2Init 定时器2初始化
+// DrvTime2Init: timer 2 initialization
 void DrvTime2Init(void) {
-    // 配置寄存器结构体定义
+    // Configuration register structure definition
     TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure = {0};
 
     NVIC_InitTypeDef NVIC_InitStructure = {0};
-    NVIC_PriorityGroupConfig(NVIC_PriorityGroup_1); // 中断优先级分组配置
+    NVIC_PriorityGroupConfig(NVIC_PriorityGroup_1); // Interrupt priority grouping configuration
 
-    // 时钟配置
+    // Clock configuration
     RCC_PB1PeriphClockCmd(RCC_PB1Periph_TIM2, ENABLE);
 
     TIM_TimeBaseStructure.TIM_Period = 65535;

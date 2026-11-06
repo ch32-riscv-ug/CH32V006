@@ -8,22 +8,22 @@
 			"toolchain": "RISC-V",
 			"series": "CH32V006",
 			"rtos": "NoneOS",
-			"mcu": "CH32V006K8U",
-			"description": "===CH32V006 series is based on barley RISC-V2C core design of industrial-grade general-purpose microcontrollers, support for 48MHz system frequency, with a wide range of voltage, low power consumption, single and dual-wire debugging and so on.CH32V006 series chip built-in 1 group of 12-bit analog-to-digital converter ADC, the sampling rate of up to 3Msps; built-in OPA op-amps to support the high-speed mode to increase the swing rate of the pressure, and the positive side of its It supports 3-channel polling; it provides 2 sets of voltage comparator CMP, 7-channel DMA controller, 8-channel TouchKey, multi-group timer, 2 sets of USART serial port, I2C, SPI and other rich peripheral resources.",
+			"mcu": "CH32V006K8U6",
+			"description": "=================CH32V006 series is based on barley RISC-V2C core design of industrial-grade general-purpose microcontrollers, support for 48MHz system frequency, with a wide range of voltage, low power consumption, single and dual-wire debugging and so on.CH32V006 series chip built-in 1 group of 12-bit analog-to-digital converter ADC, the sampling rate of up to 3Msps; built-in OPA op-amps to support the high-speed mode to increase the swing rate of the pressure, and the positive side of its It supports 3-channel polling; it provides 2 sets of voltage comparator CMP, 7-channel DMA controller, 8-channel TouchKey, multi-group timer, 2 sets of USART serial port, I2C, SPI and other rich peripheral resources.",
+			"tempratureScope": "",
+			"artifactType": "executable",
 			"link": "WCH-Link",
-			"peripheral_version": "===1.0",
+			"peripheral_version": "=================1.0",
 			"calibrateSupport": false,
+			"calibrateCommand": "",
 			"UIConfigSupport": false,
+			"UIConfigCommand": "",
 			"externalFlashSupport": false
 		},
 		"linkedFolders": [
 			{
 				"name": "Core",
 				"location": "../../../SRC/Core"
-			},
-			{
-				"name": "Debug",
-				"location": "../../../SRC/Debug"
 			},
 			{
 				"name": "Peripheral",
@@ -35,6 +35,21 @@
 				"parentLogicPath": "",
 				"type": "file",
 				"name": "*.wvproj"
+			},
+			{
+				"parentLogicPath": "",
+				"type": "file",
+				"name": "*.7z"
+			},
+			{
+				"parentLogicPath": "",
+				"type": "file",
+				"name": "*.zip"
+			},
+			{
+				"parentLogicPath": "",
+				"type": "file",
+				"name": "*.tar"
 			}
 		],
 		"projectName": "Electric_Fan",
@@ -44,23 +59,24 @@
 	"buildConfig": {
 		"configurations": [
 			{
+				"parallelizationNumber": "optimal",
 				"buildArtifact": {
 					"artifact_name": "${ProjName}",
 					"artifact_extension": "elf",
 					"output_prefix": "",
 					"artifact_type": "Executable"
 				},
-				"parallelizationNumber": "optimal",
 				"stop_on_first_build_error": true,
+				"usingCacheAccelerate": false,
 				"pre_script": "",
 				"pre_script_description": "",
 				"post_script": "",
 				"post_script_description": "",
 				"excludeResources": [
-					"${project}/SRC"
+					"${project}/User/M2_PID_Parameter_Cal.c"
 				],
 				"optimization": {
-					"level": "most",
+					"level": "size",
 					"message_length": true,
 					"char_is_signed": true,
 					"function_sections": true,
@@ -140,10 +156,10 @@
 					},
 					"includes": {
 						"include_paths": [
-							"${project}/Peripheral/inc",
-							"${project}/User",
+							"${project}/Debug",
 							"${project}/Core",
-							"${project}/Debug"
+							"${project}/User",
+							"${project}/Peripheral/inc"
 						],
 						"include_system_paths": [],
 						"include_files": []
@@ -207,7 +223,7 @@
 				"clinker": {
 					"general": {
 						"scriptFiles": [
-							"${project}/Ld/Link_Electric_Fan.ld"
+							"${project}/Ld/Link.ld"
 						],
 						"do_not_use_standard_start_files": true,
 						"do_not_use_default_libraries": false,
@@ -218,8 +234,8 @@
 					},
 					"libraries": {
 						"libraries": [
-							"M12014SV_M007_LIB_20250115",
-							"IQMath_RV32EC_ZMMUL_XW"
+							"IQMath_RV32EC_ZMMUL_XW",
+							"M12014_SV_00x_1.09_Lib"
 						],
 						"library_search_path": [
 							"${project}/User"
@@ -246,7 +262,7 @@
 				"cpplinker": {
 					"general": {
 						"scriptFiles": [
-							"${project}/Ld/Link_Electric_Fan.ld"
+							"${project}/Ld/Link.ld"
 						],
 						"do_not_use_standard_start_files": true,
 						"do_not_use_default_libraries": false,
@@ -257,8 +273,8 @@
 					},
 					"libraries": {
 						"libraries": [
-							"M12014SV_M007_LIB_20250115",
-							"IQMath_RV32EC_ZMMUL_XW"
+							"IQMath_RV32EC_ZMMUL_XW",
+							"M12014_SV_00x_1.09_Lib"
 						],
 						"library_search_path": [
 							"${project}/User"
@@ -342,20 +358,20 @@
 		]
 	},
 	"flashConfig": {
-		"mcutype": "CH32M007",
+		"mcutype": "CH32V002/4/5/6/7",
 		"address": "0x08000000",
-		"target_path": "obj\\Electric_Fan.hex",
+		"target_path": "obj/Electric_Fan.hex",
 		"clkSpeed": "High",
 		"debug_interface_mode": "1-wire serial",
 		"erase": true,
 		"program": true,
 		"verify": true,
 		"reset": true,
-		"sdiPrintf": false,
+		"sdiPrintf": true,
 		"disablepowerout": false,
 		"clearcodeflash": false,
 		"disablecodeprotect": false,
-		"flashType": "",
+		"flashType": "Internal",
 		"asmFile_path": "",
 		"exepath": "",
 		"exearguments": ""

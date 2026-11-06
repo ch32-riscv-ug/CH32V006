@@ -1,33 +1,25 @@
-/********************************** (C) COPYRIGHT *******************************
- * File Name          : M5_Operation_KeyandLed.c
- * Author             : WCH
- * Version            : V1.0.0
- * Date               : 2024/11/04
- * Description        : Key and LED operation
-*********************************************************************************
-* Copyright (c) 2021 Nanjing Qinheng Microelectronics Co., Ltd.
-* Attention: This software (modified or not) and binary are used for
-* microcontroller manufactured by Nanjing Qinheng Microelectronics.
-*******************************************************************************/
 /* Includes -----------------------------------------------------------------*/
 #include "M0_Control_Library.h"
 /* Private typedef ----------------------------------------------------------*/
 /* Private variables --------------------------------------------------------*/
 /* Variables ----------------------------------------------------------------*/
 
-/*********************************************************************
- * @fn      KEY_AND_LEDIO_Init
- *
- * @brief   Button and LED indicator I/O configuration
- *
- * @return  none
- */
+/******************************************************************************
+* Function Name  : KEY_AND_LEDIO_Init
+* Description    : key and LED IO configuration
+* Input          : None
+* Output         : None
+* Return         : None
+******************************************************************************/
 void KeyandLED_IOInit(void)
 {
+    //GPIO initialization structure definition
     GPIO_InitTypeDef GPIO_InitStructure={0};
 
-    RCC_PB2PeriphClockCmd(RCC_PB2Periph_AFIO|RCC_PB2Periph_GPIOA|RCC_PB2Periph_GPIOB|RCC_PB2Periph_GPIOC, ENABLE);
+    //clock enable
+    RCC_PB2PeriphClockCmd(RCC_PB2Periph_AFIO|RCC_PB2Periph_GPIOB|RCC_PB2Periph_GPIOC, ENABLE);
 
+    //key IO configuration PB3:KEY3->RUN PC4:KEY4->SPEED
     GPIO_StructInit(&GPIO_InitStructure);
     GPIO_InitStructure.GPIO_Pin = GPIO_Pin_3;
     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;
@@ -40,47 +32,37 @@ void KeyandLED_IOInit(void)
     GPIO_InitStructure.GPIO_Speed = GPIO_Speed_30MHz;
     GPIO_Init(GPIOC, &GPIO_InitStructure);
 
-    GPIO_StructInit(&GPIO_InitStructure);
-    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0;
-    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;
-    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_30MHz;
-    GPIO_Init(GPIOC, &GPIO_InitStructure);
-
 }
 
-/*********************************************************************
- * @fn      KeyandLED_Parameter_Define
- *
- * @brief   Key detection operation parameter definition
- *
- *  @para   KeyM: Key management structure pointer
- *
- * @return  none
- */
+/******************************************************************************
+* Function Name  : KeyandLED_Parameter_Define
+* Description    : speed and LED parameter definition
+* Input          : pointer to key manager structure, pointer to LED manager structure
+* Output         : None
+* Return         : None
+******************************************************************************/
 void KeyandLED_Parameter_Define(Key_Manager_Type *KeyM)
 {
     KeyM->RUN.Effectivetime = (uint16_t)(SRKEY_EFFECTIVE_TIME*KEY_CHECK_FREQ);
     KeyM->RUN.Ineffectivetime = (uint16_t)(SRKEY_INEFFECTIVE_TIME*KEY_CHECK_FREQ);
-    KeyM->RUN.Group = GPIOC;
-    KeyM->RUN.Pin = GPIO_Pin_0;
+    KeyM->RUN.Group = GPIOB;
+    KeyM->RUN.Pin = GPIO_Pin_3;
     KeyM->RUN.KeyPress=PRESSUP;
 
     KeyM->Speedadjust.Effectivetime = (uint16_t)(SRKEY_EFFECTIVE_TIME*KEY_CHECK_FREQ);
     KeyM->Speedadjust.Ineffectivetime = (uint16_t)(SRKEY_INEFFECTIVE_TIME*KEY_CHECK_FREQ);
-    KeyM->Speedadjust.Group = GPIOB;
-    KeyM->Speedadjust.Pin = GPIO_Pin_3;
+    KeyM->Speedadjust.Group = GPIOC;
+    KeyM->Speedadjust.Pin = GPIO_Pin_4;
     KeyM->Speedadjust.KeyPress=PRESSUP;
 }
 
-/*********************************************************************
- * @fn      KeyandLED_Status_Init
- *
- * @brief   Key detection operation status initialization
- *
- *  @para   KeyM: Key management structure pointer
- *
- * @return  none
- */
+/******************************************************************************
+* Function Name  : KeyandLED_Status_Init
+* Description    : speed and LED status initialization
+* Input          : pointer to key manager structure, pointer to LED manager structure
+* Output         : None
+* Return         : None
+******************************************************************************/
 void KeyandLED_Status_Init(Key_Manager_Type *KeyM)
 {
     KeyM->Speedadjust.Effectivecnt = 0;
@@ -92,18 +74,17 @@ void KeyandLED_Status_Init(Key_Manager_Type *KeyM)
     KeyM->RUN.Status = FALSE;
 }
 
-/*********************************************************************
- * @fn      Skeycheck_Recover
- *
- * @brief   Recover type Speed key detection
- *
- *  @para   Keyrec: Recove Key structure pointer
- *
- * @return  none
- */
+/******************************************************************************
+* Function Name  : Skeycheck_Recover
+* Description    : recoverable key detection -- single key, short press
+* Input          : pointer to recoverable key structure
+* Output         : None
+* Return         : None
+******************************************************************************/
 void Skeycheck_Recover(Keyrecover_Type *Keyrec)
 {
-    if(GPIO_ReadInputDataBit(Keyrec->Group, Keyrec->Pin) == 0)
+    //key detection
+    if(GPIO_ReadInputDataBit(Keyrec->Group, Keyrec->Pin) == 0)//active low
     {
         if(Keyrec->Effectivecnt <= U16_MAX)
             Keyrec->Effectivecnt++;
@@ -117,7 +98,7 @@ void Skeycheck_Recover(Keyrecover_Type *Keyrec)
 
             Keyrec->Effectivecnt=0;
     }
-    if((Keyrec->Effectivecnt >= Keyrec->Effectivetime)&&(Keyrec->KeyPress==PRESSUP))
+    if((Keyrec->Effectivecnt >= Keyrec->Effectivetime)&&(Keyrec->KeyPress==PRESSUP))//valid and in released state
     {
         Keyrec->Status=TRUE;
         Keyrec->Effectivecnt=0;
@@ -132,78 +113,109 @@ void Skeycheck_Recover(Keyrecover_Type *Keyrec)
 
 }
 
-/*********************************************************************
- * @fn      KeyCheck_Process
- *
- * @brief   Key detection and Process
- *
- *  @para   KeyM: Key management structure pointer
- *          Speed_Ramp: acceleration and deceleration control structure
- *
- * @return  none
- */
-void KeyCheck_Process(Key_Manager_Type *KeyM, Speedrampctr_Type *Speed_Ramp)
+/******************************************************************************
+* Function Name  : KeyCheck_Process
+* Description    : key detection and processing
+* Input          : pointer to key manager structure, pointer to acceleration/deceleration control structure
+* Output         : None
+* Return         : None
+******************************************************************************/
+void KeyCheck_Process(Key_Manager_Type *KeyM, Rampctr_Type *Ramp_M)
 {
-    Skeycheck_Recover(&(KeyM->RUN));
 
-    if(((RunningStatus_M == RUN)&&(Speed_Ramp->Decemark == FALSE))&&(KeyM->RUN.KeyPress==PRESSUP))
-    {
-        Skeycheck_Recover(&(KeyM->Speedadjust));
-    }
-    if(KeyM->RUN.Status == TRUE)
-    {
-     switch(Operation_M.Checkmode)
+        Skeycheck_Recover(&(KeyM->RUN));
+
+        if(((RunningStatus_M == RUN)&&(Ramp_M->Decemark == FALSE))&&(KeyM->RUN.KeyPress==PRESSUP))//in run state, not during deceleration, and RUN key is not pressed
+        {
+            Skeycheck_Recover(&(KeyM->Speedadjust));
+        }
+
+    //startup processing
+     if(KeyM->RUN.Status == TRUE)
      {
-         case 0:
-             if(( (RunningStatus_M == IDLE)||((RunningStatus_M == FAULT)) )&&(Operation_M.Checkmode ==0))
-             {
-                   RunningStatus_M = INIT;
+         switch(Operation_M.Checkmode)
+         {
+             case 0:
+                 //startup in stop state or fault state
+                 if(( (RunningStatus_M == IDLE)||((RunningStatus_M == FAULT)) )&&(Operation_M.Checkmode ==0))
+                 {
+                       RunningStatus_M = INIT;
 
-                   Speed_Set(Speed_Ramp);
+                       Ramp_Set(Ramp_M);
 
-                   Operation_M.Checkmode =1;
+                       Operation_M.Checkmode =1;
+                 }
+
+                 //restart during deceleration
+                 if((Operation_M.Checkmode ==0)&&(Ramp_M->Decemark ==TRUE))
+                 {
+                       Ramp_Set(Ramp_M);
+
+                       Ramp_M->Decemark = FALSE;
+                       Operation_M.Checkmode = 1;
+
+                 }
+                break;
+            case 1:
+                if(Operation_M.Checkmode ==1)
+                {
+                // for direct stop use
+                // RunningStatus_M=STOP;
+
+                // for deceleration stop use
+#if     (CLOSE_LOOP==SPEED_LOOP)
+                    Ramp_M->Preramp = BREAKSPEED;
+#elif   (CLOSE_LOOP==POWER_LOOP)
+                    Ramp_M->Preramp = BREAKPOWER;
+#endif
+                    Ramp_M->Decemark =TRUE;
+
+                    Operation_M.Checkmode =0;
+
+                }
+                break;
+
+            default:
+                break;
              }
-             if((Operation_M.Checkmode ==0)&&(Speed_Ramp->Decemark ==TRUE))
-             {
-                   Speed_Set(Speed_Ramp);
 
-                   Speed_Ramp->Decemark = FALSE;
-                   Operation_M.Checkmode = 1;
-             }
-            break;
-        case 1:
-            if(Operation_M.Checkmode ==1)
-            {
-                Speed_Ramp->Preramp = BREAKSPEED;
-                Speed_Ramp->Decemark =TRUE;
-                Operation_M.Checkmode =0;
-            }
-            break;
-        default:
-            break;
-       }
+         KeyM->RUN.Status = FALSE;
+     }
 
-     KeyM->RUN.Status = FALSE;
-    }
-    if((KeyM->Speedadjust.Status == TRUE) &&(Speed_Ramp->Decemark == FALSE))
-    {
-         Speed_Ramp->Speed_adncnt++;
+    //acceleration/deceleration processing
+     if((KeyM->Speedadjust.Status == TRUE) &&(Ramp_M->Decemark == FALSE))
+     {
+         Ramp_M->Point_adncnt++;
 
-         if(Speed_Ramp->Speed_adncnt > SPEEDPOINT_RANK)
-             Speed_Ramp->Speed_adncnt = 1;
+         if(Ramp_M->Point_adncnt > POINT_RANK)
+             Ramp_M->Point_adncnt = 1;
 
          KeyM->Speedadjust.Status = FALSE;
 
-         Speed_Set(Speed_Ramp);
-    }
-    if(Speed_Ramp->Decemark ==TRUE)
-    {
-         if(_IQabs(Speed_Ramp->Aftramp)<=FAST_DECE_SPEED)
+         Ramp_Set(Ramp_M);//speed setting
+     }
+
+    //deceleration stop processing
+     //if((Ramp_M->Startfinish ==TRUE)&&(Ramp_M->Decemark ==TRUE))
+     if(Ramp_M->Decemark ==TRUE)
+     {
+#if     (CLOSE_LOOP==SPEED_LOOP)
+    //    if(_IQabs(SMO_M.Cal_Struc.Angspeed_Aver1)<=FAST_DECE_SPEED)
+        if(_IQabs(Ramp_M->Aftramp)<=FAST_DECE_SPEED)
+         {
+                 if(RunningStatus_M!=FAULT)
+                     RunningStatus_M = STOP;
+                 Ramp_M->Decemark = FALSE;
+         }
+#elif   (CLOSE_LOOP==POWER_LOOP)
+         //if(Power_Cal.AngPower_Aver1<=FAST_DECE_POWER)
+        if(_IQabs(Ramp_M->Aftramp)<=FAST_DECE_POWER)
          {
              if(RunningStatus_M!=FAULT)
-                RunningStatus_M = STOP;
-             Speed_Ramp->Decemark = FALSE;
+                 RunningStatus_M = STOP;
+             Ramp_M->Decemark = FALSE;
          }
-    }
+#endif
+     }
 }
 

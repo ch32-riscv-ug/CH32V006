@@ -6,7 +6,7 @@
 **  Fixed Point Math lib for RISC-V    **
 **  IDE: MounRiver Studio              **
 *****************************************
-IQMATH:为不支持硬件浮点的RISC-V内核MCU提供一套快速的MATH函数
+IQMATH: provides a set of fast MATH functions for RISC-V core MCUs without hardware floating point support
 */
 
 #ifndef __IQMATH_RV_H__
@@ -21,21 +21,21 @@ extern "C"
 /* ********************************************************************************************************************* */
 
 
-/* 选择IQ_MATH基本运算函数来源*/
-#define FLOAT_MATH              1   //IQMATH函数将使用标准MATH.LIB内的函数,运算效率会低
-#define IQ_MATH                 0   //IQMATH函数所需的基本运算函数将调用IQMATH库内自定义函数进行运算，速度上比FLOAT_MATH要高。
+/* Select the source of the IQ_MATH basic operation functions */
+#define FLOAT_MATH              1   //IQMATH functions use the functions of the standard MATH.LIB, the calculation efficiency is lower
+#define IQ_MATH                 0   //The basic operation functions required by IQMATH are called from the IQMATH library, which is faster than FLOAT_MATH.
 
 
 #ifndef MATH_TYPE
 #define MATH_TYPE               IQ_MATH
 #endif
 
-/* 设定IQMATH库默认精度(Q精度)，范围： 1 <= GLOBAL_Q <= 30 */
+/* Set the default precision of the IQMATH library (Q precision), range: 1 <= GLOBAL_Q <= 30 */
 #ifndef GLOBAL_Q
 #define GLOBAL_Q                24
 #endif
 
-/* 快速除法，运算速度较IQDIV提高2倍，但代码会增加2KB左右 */
+/* Fast division, about 2 times faster than IQDIV, but the code size increases by about 2KB */
 //#define DIV_FAST                 0
 #define DIV_FAST                 1
 
@@ -45,7 +45,7 @@ extern "C"
 #endif
 #include <limits.h>
 
-/* 常量宏定义 */
+/* Constant macro definition */
 
 #define Q30                     30
 #define Q29                     29
@@ -84,10 +84,10 @@ extern "C"
 #define MIN_IQ_POS              1
 #define MIN_IQ_NEG              -1
 
-/* MATH_TYPE选择定点运算 */
+/* MATH_TYPE selects the fixed point calculation */
 #if MATH_TYPE == IQ_MATH
 
-/* 各种IQ格式的定义 */
+/* Definition of the various IQ formats */
 typedef long _iq30;
 typedef long _iq29;
 typedef long _iq28;
@@ -120,7 +120,7 @@ typedef long _iq2;
 typedef long _iq1;
 typedef long _iq;
 
-/* 各种IQ格式的数乘以2的倍数 */
+/* Multiply the numbers of various IQ formats by a power of 2 */
 #define _IQmpy2(A)              ((A) << 1)
 #define _IQmpy4(A)              ((A) << 2)
 #define _IQmpy8(A)              ((A) << 3)
@@ -140,7 +140,7 @@ typedef long _iq;
 #define _IQdiv256(A)            ((A) >> 8)
 #define _IQdiv512(A)            ((A) >> 9)
 
-/* 将浮点数转换成各种IQ格式的数 */
+/* Convert a floating point number into numbers of various IQ formats */
 #define _IQ30(A)                ((_iq30)((A) * (1 << 30)))
 #define _IQ29(A)                ((_iq29)((A) * (1 << 29)))
 #define _IQ28(A)                ((_iq28)((A) * (1 << 28)))
@@ -173,9 +173,9 @@ typedef long _iq;
 #define _IQ1(A)                 ((_iq1)((A) * (1 << 1)))
 /*******************************************************************************
 * Function Name  : _IQ
-* Description    : 将浮点数转换成IQ格式数
-* Input          : float类型数值
-* Return         : 返回转换后的IQ格式数，与GLOBAL_Q指定的IQ格式相同
+* Description    : Convert a floating point number into an IQ format number
+* Input          : Float type value
+* Return         : The converted IQ format number, the same IQ format as specified by GLOBAL_Q
 *******************************************************************************/
 #if GLOBAL_Q == 30
 #define _IQ(A)                  _IQ30(A)
@@ -271,9 +271,9 @@ typedef long _iq;
 
 /*******************************************************************************
 * Function Name  : _IQMathVerStr
-* Description    : IQMath版本信息与编译时间的字符串
-* Input          : 无
-* Return         : 返回IQMath版本信息与编译时间的字符串
+* Description    : String of the IQMath version information and build time
+* Input          : None
+* Return         : String of the IQMath version information and build time
 *******************************************************************************/
 extern char * _IQMathVerStr(void);
 
@@ -310,9 +310,9 @@ extern float _IQ1toF(_iq1 A);
 
 /*******************************************************************************
 * Function Name  : _IQtoF
-* Description    : 将IQ格式的数转换成单精度浮点数
-* Input          : IQ类型数据
-* Return         : 转换后的float类型的数据
+* Description    : Convert an IQ format number into a single precision floating point number
+* Input          : IQ type data
+* Return         : Converted float type data
 *******************************************************************************/
 #if GLOBAL_Q == 30
 #define _IQtoF(A)               _IQ30toF(A)
@@ -439,9 +439,9 @@ extern double _IQ1toD(_iq1 A);
 
 /*******************************************************************************
 * Function Name  : _IQtoD
-* Description    : 将IQ格式的数转换成双精度浮点数
-* Input          : IQ类型数据
-* Return         : 转换后的double类型的数据
+* Description    : Convert an IQ format number into a double precision floating point number
+* Input          : IQ type data
+* Return         : Converted double type data
 *******************************************************************************/
 #if GLOBAL_Q == 30
 #define _IQtoD(A)               _IQ30toD(A)
@@ -539,7 +539,7 @@ extern double _IQ1toD(_iq1 A);
                                  (Pos) :                                      \
                                  (((A) < (Neg)) ? (Neg) : (A)))
 
-/* GLOBAL_Q指定的IQ精度的数与指定IQ精度数之间相互转换函数 */
+/* Mutual conversion functions between the numbers of the IQ precision specified by GLOBAL_Q and the numbers of a specified IQ precision */
 #define _IQtoIQ30(A)            ((_iq30)(A) << (30 - GLOBAL_Q))
 #define _IQ30toIQ(A)            ((_iq30)(A) >> (30 - GLOBAL_Q))
 
@@ -917,9 +917,9 @@ extern _iq2 _IQ2mpy(_iq2 A, _iq2 B);
 extern _iq1 _IQ1mpy(_iq1 A, _iq1 B);
 /*******************************************************************************
 * Function Name  : _IQmpy
-* Description    : IQ格式数的乘法运算:A*B
-* Input          : A、B为两个相同IQ格式的乘数
-* Return         : A与B的乘积，与参数的IQ格式相同
+* Description    : Multiplication of IQ format numbers: A*B
+* Input          : A and B are two multipliers of the same IQ format
+* Return         : Product of A and B, the same IQ format as the parameters
 *******************************************************************************/
 #if GLOBAL_Q == 30
 #define _IQmpy(A, B)            _IQ30mpy(A, B)
@@ -1045,9 +1045,9 @@ extern _iq2 _IQ2rmpy(_iq2 A, _iq2 B);
 extern _iq1 _IQ1rmpy(_iq1 A, _iq1 B);
 /*******************************************************************************
 * Function Name  : _IQrmpy
-* Description    : IQ格式数的乘法运算,结果4舍5入: A*B
-* Input          : A、B为两个相同IQ格式的乘数
-* Return         : A与B的乘积，与参数的IQ格式相同
+* Description    : Multiplication of IQ format numbers, the result is rounded: A*B
+* Input          : A and B are two multipliers of the same IQ format
+* Return         : Product of A and B, the same IQ format as the parameters
 *******************************************************************************/
 #if GLOBAL_Q == 30
 #define _IQrmpy(A, B)           _IQ30rmpy(A, B)
@@ -1172,7 +1172,7 @@ extern _iq3 _IQ3div(_iq3 A, _iq3 B);
 extern _iq2 _IQ2div(_iq2 A, _iq2 B);
 extern _iq1 _IQ1div(_iq1 A, _iq1 B);
 
-/* 快速计算除法 */
+/* Fast division calculation */
 extern _iq30 _IQ30div_FAST(_iq30 A, _iq30 B);
 extern _iq29 _IQ29div_FAST(_iq29 A, _iq29 B);
 extern _iq28 _IQ28div_FAST(_iq28 A, _iq28 B);
@@ -1206,9 +1206,9 @@ extern _iq1 _IQ1div_FAST(_iq1 A, _iq1 B);
 
 /*******************************************************************************
 * Function Name  : _IQdiv
-* Description    : IQ格式数的除法运算:A/B
-* Input          : A为被除数，B为除数，A与B为相同IQ格式的数
-* Return         : A除以B的商，与参数的IQ格式相同
+* Description    : Division of IQ format numbers: A/B
+* Input          : A is the dividend, B is the divisor, A and B are numbers of the same IQ format
+* Return         : Quotient of A divided by B, the same IQ format as the parameters
 *******************************************************************************/
 #if  DIV_FAST == 0
 #if GLOBAL_Q == 30
@@ -1429,9 +1429,9 @@ extern _iq2 _IQ2sin(_iq2 A);
 extern _iq1 _IQ1sin(_iq1 A);
 /*******************************************************************************
 * Function Name  : _IQsin
-* Description    : IQ格式数的正弦函数:sin(A)
-* Input          : 输入参数为IQ格式的弧度值
-* Return         : 返回A的正弦值，与参数的IQ格式相同
+* Description    : Sine function of an IQ format number: sin(A)
+* Input          : The input parameter is a radian value in IQ format
+* Return         : Sine of A, the same IQ format as the parameters
 *******************************************************************************/
 #if GLOBAL_Q == 29
 #define _IQsin(A)               _IQ29sin(A)
@@ -1554,9 +1554,9 @@ extern _iq2 _IQ2sinPU(_iq2 A);
 extern _iq1 _IQ1sinPU(_iq1 A);
 /*******************************************************************************
 * Function Name  : _IQsinPU
-* Description    : IQ格式数的正弦函数：sin((2*PI)*A)
-* Input          : 输入参数是几分之一个圆
-* Return         : 返回A的正弦值，与参数的IQ格式相同
+* Description    : Sine function of an IQ format number: sin((2*PI)*A)
+* Input          : The input parameter is a fraction of a circle
+* Return         : Sine of A, the same IQ format as the parameters
 *******************************************************************************/
 #if GLOBAL_Q == 30
 #define _IQsinPU(A)             _IQ30sinPU(A)
@@ -1680,9 +1680,9 @@ extern _iq2 _IQ2asin(_iq2 A);
 extern _iq1 _IQ1asin(_iq1 A);
 /*******************************************************************************
 * Function Name  : _IQasin
-* Description    : IQ格式数的反正弦函数:asin(A)
-* Input          : 输入参数为IQ格式的弧度值
-* Return         : 返回A的反正弦值，与参数的IQ格式相同
+* Description    : Arc sine function of an IQ format number: asin(A)
+* Input          : The input parameter is a radian value in IQ format
+* Return         : Arc sine of A, the same IQ format as the parameters
 *******************************************************************************/
 #if GLOBAL_Q == 29
 #define _IQasin(A)              _IQ29asin(A)
@@ -1804,9 +1804,9 @@ extern _iq2 _IQ2cos(_iq2 A);
 extern _iq1 _IQ1cos(_iq1 A);
 /*******************************************************************************
 * Function Name  : _IQcos
-* Description    : IQ格式数的余弦函数:cos(A)
-* Input          : 输入参数为IQ格式的弧度值
-* Return         : 返回A的余弦值，与参数的IQ格式相同
+* Description    : Cosine function of an IQ format number: cos(A)
+* Input          : The input parameter is a radian value in IQ format
+* Return         : Cosine of A, the same IQ format as the parameters
 *******************************************************************************/
 #if GLOBAL_Q == 29
 #define _IQcos(A)               _IQ29cos(A)
@@ -1929,9 +1929,9 @@ extern _iq2 _IQ2cosPU(_iq2 A);
 extern _iq1 _IQ1cosPU(_iq1 A);
 /*******************************************************************************
 * Function Name  : _IQcosPU
-* Description    : IQ格式数的余弦函数,acos((2*PI)*A)
-* Input          : 输入参数是几分之一个圆
-* Return         : 返回A的余弦值，与参数的IQ格式相同
+* Description    : Cosine function of an IQ format number, cos((2*PI)*A)
+* Input          : The input parameter is a fraction of a circle
+* Return         : Cosine of A, the same IQ format as the parameters
 *******************************************************************************/
 #if GLOBAL_Q == 30
 #define _IQcosPU(A)             _IQ30cosPU(A)
@@ -2056,9 +2056,9 @@ extern _iq1 _IQ1cosPU(_iq1 A);
 #define _IQ1acos(A)             (_IQ1(1.570796327) - _IQ1asin(A))
 /*******************************************************************************
 * Function Name  : _IQacos
-* Description    : IQ格式数的反余弦函数:acos(A)
-* Input          : 输入参数为IQ格式的弧度值
-* Return         : 返回A的反余弦值，与参数的IQ格式相同
+* Description    : Arc cosine function of an IQ format number: acos(A)
+* Input          : The input parameter is a radian value in IQ format
+* Return         : Arc cosine of A, the same IQ format as the parameters
 *******************************************************************************/
 #if GLOBAL_Q == 29
 #define _IQacos(A)              _IQ29acos(A)
@@ -2180,9 +2180,9 @@ extern _iq2 _IQ2atan2(_iq2 A, _iq2 B);
 extern _iq1 _IQ1atan2(_iq1 A, _iq1 B);
 /*******************************************************************************
 * Function Name  : _IQatan2
-* Description    : IQ格式数的反正切函数，可计算4个象限内的点:atan2(A,B)
-* Input          : A为IQ格式的Y轴坐标值，B为IQ格式的X轴坐标值
-* Return         : 返回点(B,A)与X轴的夹角的弧度值，与参数的IQ格式相同
+* Description    : Arc tangent function of IQ format numbers, can calculate points in 4 quadrants: atan2(A,B)
+* Input          : A is the Y axis coordinate value in IQ format, B is the X axis coordinate value in IQ format
+* Return         : Radian value of the angle between the point (B,A) and the X axis, the same IQ format as the parameters
 *******************************************************************************/
 #if GLOBAL_Q == 29
 #define _IQatan2(A, B)          _IQ29atan2(A, B)
@@ -2305,9 +2305,9 @@ extern _iq2 _IQ2atan2PU(_iq2 A, _iq2 B);
 extern _iq1 _IQ1atan2PU(_iq1 A, _iq1 B);
 /*******************************************************************************
 * Function Name  : _IQatan2PU
-* Description    : IQ格式数的反正切函数，可计算4个象限内的点
-* Input          : A为IQ格式的Y轴坐标值，B为IQ格式的X轴坐标值
-* Return         : 返回值是0到1之间的一个小数，代表几分之一个圆，与参数的IQ格式相同
+* Description    : Arc tangent function of IQ format numbers, can calculate points in 4 quadrants
+* Input          : A is the Y axis coordinate value in IQ format, B is the X axis coordinate value in IQ format
+* Return         : A decimal between 0 and 1 representing a fraction of a circle, the same IQ format as the parameters
 *******************************************************************************/
 #if GLOBAL_Q == 30
 #define _IQatan2PU(A, B)        _IQ30atan2PU(A, B)
@@ -2432,9 +2432,9 @@ extern _iq1 _IQ1atan2PU(_iq1 A, _iq1 B);
 #define _IQ1atan(A)             _IQ1atan2(A, _IQ1(1.0))
 /*******************************************************************************
 * Function Name  : _IQatan
-* Description    : IQ格式数的反正切函数，计算第1、4象限内的点:atan(A)
-* Input          : 参数A为IQ格式的数
-* Return         : 返回值介于-pi/2和pi/2之间，与参数的IQ格式相同
+* Description    : Arc tangent function of an IQ format number, calculates points in the 1st and 4th quadrants: atan(A)
+* Input          : Parameter A is a number in IQ format
+* Return         : Value between -pi/2 and pi/2, the same IQ format as the parameters
 *******************************************************************************/
 #if GLOBAL_Q == 29
 #define _IQatan(A)              _IQ29atan2(A, _IQ29(1.0))
@@ -2557,9 +2557,9 @@ extern _iq2 _IQ2sqrt(_iq2 A);
 extern _iq1 _IQ1sqrt(_iq1 A);
 /*******************************************************************************
 * Function Name  : _IQsqrt
-* Description    : IQ格式数的平方根函数:A^(1/2)
-* Input          : 参数A为IQ格式的数
-* Return         : 返回A的平方根值，与参数的IQ格式相同
+* Description    : Square root function of an IQ format number: A^(1/2)
+* Input          : Parameter A is a number in IQ format
+* Return         : Square root of A, the same IQ format as the parameters
 *******************************************************************************/
 #if GLOBAL_Q == 30
 #define _IQsqrt(A)              _IQ30sqrt(A)
@@ -2685,9 +2685,9 @@ extern _iq2 _IQ2isqrt(_iq2 A);
 extern _iq1 _IQ1isqrt(_iq1 A);
 /*******************************************************************************
 * Function Name  : _IQisqrt
-* Description    : IQ格式数的平方根倒数函数:A^(-1/2)
-* Input          : 参数A为IQ格式的数
-* Return         : 返回A的平方根倒数值，与参数的IQ格式相同
+* Description    : Inverse square root function of an IQ format number: A^(-1/2)
+* Input          : Parameter A is a number in IQ format
+* Return         : Inverse square root of A, the same IQ format as the parameters
 *******************************************************************************/
 #if GLOBAL_Q == 30
 #define _IQisqrt(A)             _IQ30isqrt(A)
@@ -2813,9 +2813,9 @@ extern _iq2 _IQ2exp(_iq2 A);
 extern _iq1 _IQ1exp(_iq1 A);
 /*******************************************************************************
 * Function Name  : _IQexp
-* Description    : IQ格式数以e为底的指数函数:e^A
-* Input          : 参数A为IQ格式的数
-* Return         : 返回A以e为底的指数值，与参数的IQ格式相同
+* Description    : Exponential function with base e of an IQ format number: e^A
+* Input          : Parameter A is a number in IQ format
+* Return         : Exponential value of A with base e, the same IQ format as the parameters
 *******************************************************************************/
 #if GLOBAL_Q == 30
 #define _IQexp(A)               _IQ30exp(A)
@@ -2941,9 +2941,9 @@ extern _iq2 _IQ2exp2(_iq2 A);
 extern _iq1 _IQ1exp2(_iq1 A);
 /*******************************************************************************
 * Function Name  : _IQexp2
-* Description    : IQ格式数以2为底的指数函数:2^A
-* Input          : 参数A为IQ格式的数
-* Return         : 返回A以2为底的指数值，与参数的IQ格式相同
+* Description    : Exponential function with base 2 of an IQ format number: 2^A
+* Input          : Parameter A is a number in IQ format
+* Return         : Exponential value of A with base 2, the same IQ format as the parameters
 *******************************************************************************/
 #if GLOBAL_Q == 30
 #define _IQexp2(A)              _IQ30exp2(A)
@@ -3069,9 +3069,9 @@ extern _iq1 _IQ1exp2(_iq1 A);
 #define _IQ1int(A)              ((A) >> 1)
 /*******************************************************************************
 * Function Name  : _IQint
-* Description    : 计算IQ格式数的整数部分
-* Input          : 参数A为IQ格式的数
-* Return         : 返回A整数部分
+* Description    : Calculate the integer part of an IQ format number
+* Input          : Parameter A is a number in IQ format
+* Return         : Integer part of A
 *******************************************************************************/
 #define _IQint(A)               ((A) >> GLOBAL_Q)
 
@@ -3108,9 +3108,9 @@ extern _iq2 _IQ2frac(_iq2 A);
 extern _iq1 _IQ1frac(_iq1 A);
 /*******************************************************************************
 * Function Name  : _IQfrac
-* Description    : 计算IQ格式数的小数部分
-* Input          : 参数A为IQ格式的数
-* Return         : 返回A小数部分，与参数的IQ格式相同
+* Description    : Calculate the fractional part of an IQ format number
+* Input          : Parameter A is a number in IQ format
+* Return         : Fractional part of A, the same IQ format as the parameters
 *******************************************************************************/
 #if GLOBAL_Q == 30
 #define _IQfrac(A)              _IQ30frac(A)
@@ -3236,10 +3236,10 @@ extern long __IQxmpy(long A, long B, long S);
 #define _IQ1mpyIQX(A, IQA, B, IQB)  __IQxmpy(A, B, 1 + 32 - (IQA) - (IQB))
 /*******************************************************************************
 * Function Name  : _IQmpyIQX
-* Description    : 2个任意IQ格式数乘积
-* Input          : A:IQ格式数。IQA:A的IQ精度
-* Input          : B:IQ格式数。IQB:B的IQ精度
-* Return         : 返回A与B的乘积，与GLOBAL_Q指定的IQ格式相同
+* Description    : Product of 2 numbers of arbitrary IQ formats
+* Input          : A: number in IQ format. IQA: IQ precision of A
+* Input          : B: number in IQ format. IQB: IQ precision of B
+* Return         : Product of A and B, the same IQ format as specified by GLOBAL_Q
 *******************************************************************************/
 #define _IQmpyIQX(A, IQA, B, IQB)   __IQxmpy(A, B,                            \
                                              (GLOBAL_Q) + 32 - (IQA) - (IQB))
@@ -3277,9 +3277,9 @@ extern long __IQxmpy(long A, long B, long S);
 #define _IQ1mpyI32(A, B)        ((A) * (B))
 /*******************************************************************************
 * Function Name  : _IQmpyI32
-* Description    : IQ格式数乘以整数
-* Input          : A:IQ格式数。B:整数
-* Return         : 返回A与B的乘积,与参数A的IQ格式相同
+* Description    : Multiply an IQ format number by an integer
+* Input          : A: number in IQ format. B: integer
+* Return         : Product of A and B, the same IQ format as parameter A
 *******************************************************************************/
 #define _IQmpyI32(A, B)         ((A) * (B))
 
@@ -3315,9 +3315,9 @@ extern _iq2 _IQ2mpyI32int(_iq2 A, long B);
 extern _iq1 _IQ1mpyI32int(_iq1 A, long B);
 /*******************************************************************************
 * Function Name  : _IQmpyI32int
-* Description    : IQ格式数乘以整数
-* Input          : A:IQ格式数。B:整数
-* Return         : 返回A与B乘积的整数部分
+* Description    : Multiply an IQ format number by an integer
+* Input          : A: number in IQ format. B: integer
+* Return         : Integer part of the product of A and B
 *******************************************************************************/
 #if GLOBAL_Q == 30
 #define _IQmpyI32int(A, B)      _IQ30mpyI32int(A, B)
@@ -3442,9 +3442,9 @@ extern _iq2 _IQ2mpyI32frac(_iq2 A, long B);
 extern _iq1 _IQ1mpyI32frac(_iq1 A, long B);
 /*******************************************************************************
 * Function Name  : _IQmpyI32frac
-* Description    : IQ格式数乘以整数
-* Input          : A:IQ格式数。B:整数
-* Return         : 返回乘积的小数部分，与参数A的IQ格式相同
+* Description    : Multiply an IQ format number by an integer
+* Input          : A: number in IQ format. B: integer
+* Return         : Fractional part of the product, the same IQ format as parameter A
 *******************************************************************************/
 #if GLOBAL_Q == 30
 #define _IQmpyI32frac(A, B)     _IQ30mpyI32frac(A, B)
@@ -3569,9 +3569,9 @@ extern _iq2 _IQ2mag(_iq2 A, _iq2 B);
 extern _iq1 _IQ1mag(_iq1 A, _iq1 B);
 /*******************************************************************************
 * Function Name  : _IQmag
-* Description    : IQ格式数的的求模函数:(A*A+B*B)^(1/2)
-* Input          : 参数A、B为IQ格式的数
-* Return         : 返回原点与点(A,B)之间的长度值，与参数的IQ格式相同
+* Description    : Magnitude function of IQ format numbers: (A*A+B*B)^(1/2)
+* Input          : Parameters A and B are numbers in IQ format
+* Return         : Length between the origin and the point (A,B), the same IQ format as the parameters
 *******************************************************************************/
 #if GLOBAL_Q == 30
 #define _IQmag(A, B)            _IQ30mag(A, B)
@@ -3698,9 +3698,9 @@ extern _iq _atoIQN(const char *A, long B);
 #define _atoIQ1(A)              _atoIQN(A, 1)
 /*******************************************************************************
 * Function Name  : _atoIQ
-* Description    : 将一个字符串转换成IQ格式数。
-* Input          : 参数A为一个字符串
-* Return         : 返回IQ格式数
+* Description    : Convert a string into an IQ format number.
+* Input          : Parameter A is a string
+* Return         : IQ format number
 *******************************************************************************/
 #define _atoIQ(A)               _atoIQN(A, GLOBAL_Q)
 
@@ -3737,12 +3737,12 @@ extern int _IQNtoa(char *A, const char *B, _iq C, int D);
 #define _IQ1toa(A, B, C)        _IQNtoa(A, B, C, 1);
 /*******************************************************************************
 * Function Name  : _IQtoa
-* Description    : 将IQ格式数转换成一个字符串。
-* Input          : A:存放转换结果的缓冲区。
-*                : B:格式化输出参数"%I.Qf",I和Q分别代表整数、小数部分的10进制个数。
-*                :   例如，"%7.8f"打印整数部分7个10进制数，小数部分打印8个10进制数。
-*                : C:要转换的IQ格式数。
-* Return         : 返回C的字符串形式。
+* Description    : Convert an IQ format number into a string.
+* Input          : A: buffer that stores the conversion result.
+*                : B: format output parameter "%I.Qf", I and Q represent the decimal digits of the integer and fractional parts.
+*                :   For example, "%7.8f" prints 7 decimal digits for the integer part and 8 decimal digits for the fractional part.
+*                : C: IQ format number to be converted.
+* Return         : String form of C.
 *******************************************************************************/
 #define _IQtoa(A, B, C)         _IQNtoa(A, B, C, GLOBAL_Q)
 
@@ -3779,9 +3779,9 @@ extern int _IQNtoa(char *A, const char *B, _iq C, int D);
 #define _IQ1abs(A)              (((A) < 0) ? - (A) : (A))
 /*******************************************************************************
 * Function Name  : _IQabs
-* Description    : IQ格式数的绝对值函数:|A|
-* Input          : 参数A为IQ格式的数
-* Return         : 返回A的绝对值，与参数的IQ格式相同
+* Description    : Absolute value function of an IQ format number: |A|
+* Input          : Parameter A is a number in IQ format
+* Return         : Absolute value of A, the same IQ format as the parameters
 *******************************************************************************/
 #define _IQabs(A)               (((A) < 0) ? - (A) : (A))
 
@@ -3817,9 +3817,9 @@ extern _iq2 _IQ2log10(_iq2 A);
 
 /*******************************************************************************
 * Function Name  : _IQlog10
-* Description    : IQ格式数的以10为底的对数:log10
-* Input          : 参数A为IQ格式的数
-* Return         : 返回A的以10为底的对数，与参数的IQ格式相同
+* Description    : Base 10 logarithm of an IQ format number: log10
+* Input          : Parameter A is a number in IQ format
+* Return         : Base 10 logarithm of A, the same IQ format as the parameters
 *******************************************************************************/
 #if GLOBAL_Q == 30
 #define _IQlog10(A)            _IQ30log10(A)
@@ -3912,9 +3912,9 @@ extern _iq2 _IQ2log10(_iq2 A);
 
 /*******************************************************************************
 * Function Name  : _IQlog10Float
-* Description    : 以定点的方式求浮点数log10，最大误差3.8893104843e-6
-* Input          : 参数A为浮点格式数
-* Return         : 以浮点形式返回A的以10为底的对数。
+* Description    : Calculate the log10 of a floating point number in a fixed point way, maximum error 3.8893104843e-6
+* Input          : Parameter A is a floating point number
+* Return         : Base 10 logarithm of A returned in floating point form.
 *******************************************************************************/
 extern float _IQlog10Float(float A);
 

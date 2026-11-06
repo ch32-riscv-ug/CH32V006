@@ -1,8 +1,8 @@
 /********************************** (C) COPYRIGHT  *******************************
  * File Name          : key.c
  * Author             : WCH
- * Version            : V1.0.0
- * Date               : 2026/08/05
+ * Version            : V1.0.1
+ * Date               : 2026/11/05
  * Description        : This file provides all firmware functions.
  *********************************************************************************
  * Copyright (c) 2021 Nanjing Qinheng Microelectronics Co., Ltd.
@@ -45,12 +45,12 @@ static bool gIsLoad = false;
 static void notifyObserver(int index, KeyEvent event);
 static int task(tItem *item);
 
-// KeyLoad 按键载入
-// buf 内存首地址
-// len 内存长度
-// keyNum 按键数量
-// 长按时间 单位ms
-// 超长按时间 单位ms
+// KeyLoad: key load
+// buf: memory start address
+// len: memory length
+// keyNum: number of keys
+// long-press time, unit: ms
+// extra-long-press time, unit: ms
 bool KeyLoad(uint8_t *buf, int len) {
     gBuf = buf;
     gBufLen = len;
@@ -66,7 +66,7 @@ bool KeyLoad(uint8_t *buf, int len) {
     return true;
 }
 
-// KeyRun 按键运行
+// KeyRun: key run
 void KeyRun(void) {
     if (gIsLoad == false) {
         return;
@@ -80,31 +80,31 @@ void KeyRun(void) {
 static int task(tItem *item) {
     PT_BEGIN(&item->pt);
 
-    // 等按下
+    // Wait for press
     PT_WAIT_UNTIL(&item->pt, item->keyIO() == true);
 
-    // 防抖
+    // Debounce
     item->timestamp = TZTimeGetMillsecond();
     PT_WAIT_UNTIL(&item->pt, item->keyIO() == false || TZTimeGetMillsecond() - item->timestamp > gDebounceTime);
     if (item->keyIO() == false) {
-        // 存在抖动
+        // Jitter present
         PT_EXIT(&item->pt);
     }
     notifyObserver(item->key, KEY_EVENT_PUSH);
 
-    // 等待松开或者长按事件
+    // Wait for release or the long-press event
     PT_WAIT_UNTIL(&item->pt, item->keyIO() == false || TZTimeGetMillsecond() - item->timestamp > gLongPushTime);
     if (item->keyIO() == false) {
-        // 短按释放按键
+        // Short press, key released
         notifyObserver(item->key, KEY_EVENT_SHORT_PUSH);
         PT_EXIT(&item->pt);
     }
     notifyObserver(item->key, KEY_EVENT_LONG_PUSH);
 
-    // 等待松开或者超长按事件
+    // Wait for release or the extra-long-press event
     PT_WAIT_UNTIL(&item->pt, item->keyIO() == false || TZTimeGetMillsecond() - item->timestamp > gExtraLongPushTime);
     if (item->keyIO() == false) {
-        // 短按释放按键
+        // Key released
         notifyObserver(item->key, KEY_EVENT_RELEASE);
         PT_EXIT(&item->pt);
     }
@@ -125,7 +125,7 @@ static void notifyObserver(int index, KeyEvent event) {
     }
 }
 
-// KeyGetState 读取按键状态
+// KeyGetState: read the key state
 bool KeyGetState(int index) {
     for (int i = 0; i < gItemLen; i++) {
         if (gItem[i].key == index) {
@@ -136,32 +136,32 @@ bool KeyGetState(int index) {
     return false;
 }
 
-// KeySetLongPushTime 设置长按事件的时长.单位:ms
+// KeySetLongPushTime: set the long-press event duration, unit: ms
 void KeySetLongPushTime(int time) {
     gLongPushTime = time;
 }
 
-// KeySetExtraLongPushTime 设置超长按事件的时长.单位:ms
+// KeySetExtraLongPushTime: set the extra-long-press event duration, unit: ms
 void KeySetExtraLongPushTime(int time) {
     gExtraLongPushTime = time;
 }
 
-// KeySetDebounceTime 设置防抖时间.单位:ms
+// KeySetDebounceTime: set the debounce time, unit: ms
 void KeySetDebounceTime(int time) {
     gDebounceTime = time;
 }
 
-// KeyRegister 注册按键
+// KeyRegister: register a key
 bool KeyRegister(int key, KeyGetStateFunc getKeyState) {
-    // 检测内存是否足够
+    // Check whether memory is sufficient
     if (gBufUsedLen + sizeof(tItem) > gBufLen) {
         return false;
     }
 
-    // 检测有没有被重复注册
+    // Check whether it is already registered
     for (int i = 0; i < gItemLen; i++) {
         if (gItem[i].key == key) {
-            gItem->keyIO = getKeyState;
+            gItem[i].keyIO = getKeyState;
             return true;
         }
     }
@@ -174,25 +174,25 @@ bool KeyRegister(int key, KeyGetStateFunc getKeyState) {
     return true;
 }
 
-// KeyRegisterObserver 注册观察者
+// KeyRegisterObserver: register an observer
 bool KeyRegisterObserver(KeyPushEventFunc callback) {
-    // 检测内存是否足够
+    // Check whether memory is sufficient
     if (gBufUsedLen + sizeof(KeyPushEventFunc) > gBufLen) {
         return false;
     }
 
-    // 检测有没有被重复注册
+    // Check whether it is already registered
     for (int i = 0; i < gObserverFuncLen; i++) {
         if (gObserverFunc[i] == callback) {
             return true;
         }
     }
 
-    // 从末尾开始从后往前添加回调函数
+    // Add callbacks from the end backwards
     if (gObserverFuncLen == 0) {
         gObserverFunc = (KeyPushEventFunc *)(gBuf + gBufLen - sizeof(KeyPushEventFunc));
     } else {
-        // 该变量是函数指针, +-1的操作是以函数指针的单位进行偏移(4字节)
+        // This variable is a function pointer, so +-1 offsets by the size of a function pointer (4 bytes)
         gObserverFunc -= 1;
     }
 

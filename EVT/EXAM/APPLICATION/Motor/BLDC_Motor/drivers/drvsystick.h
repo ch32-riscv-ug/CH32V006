@@ -1,8 +1,8 @@
 /********************************** (C) COPYRIGHT  *******************************
  * File Name          : drvsystick.h
  * Author             : WCH
- * Version            : V1.0.0
- * Date               : 2026/08/05
+ * Version            : V1.0.1
+ * Date               : 2026/11/05
  * Description        : This file contains all the functions prototypes for the
  *                       firmware library.
  *********************************************************************************
@@ -15,16 +15,16 @@
 
 #include "def.h"
 
-// DrvSystickInit 驱动初始化
+// DrvSystickInit: driver initialization
 void DrvSystickInit(void);
 
-// DrvSystickCmd 使能或失能滴答时钟
-// enable 使能
-// 无论使能还是使能都会设置CNT为0
+// DrvSystickCmd: enable or disable the systick timer
+// enable: enable flag
+// CNT is set to 0 whether enabled or disabled
 void DrvSystickCmd(bool enable);
 
 
-// DrvSystickClear 清除滴答时钟
+// DrvSystickClear: clear the systick counter
 void DrvSystickClear(void);
 
 #endif

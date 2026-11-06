@@ -1,8 +1,8 @@
 /********************************** (C) COPYRIGHT  *******************************
  * File Name          : drvuart.c
  * Author             : WCH
- * Version            : V1.0.0
- * Date               : 2026/08/05
+ * Version            : V1.0.1
+ * Date               : 2026/11/05
  * Description        : This file provides all firmware functions.
  *********************************************************************************
  * Copyright (c) 2021 Nanjing Qinheng Microelectronics Co., Ltd.
@@ -11,7 +11,7 @@
  *******************************************************************************/
 #include "drivers.h"
 
-// DrvUartInit 初始化
+// DrvUartInit: initialization
 void DrvUartInit(void) {
     GPIO_InitTypeDef GPIO_InitStructure = {0};
 #if UART_DEBUG_ENABLE == 1
@@ -44,7 +44,7 @@ void DrvUartInit(void) {
 #endif
 }
 
-// DrvUartSendByte 发送字节
+// DrvUartSendBytes: send bytes
 void DrvUartSendBytes(uint8_t *bytes, uint16_t size) {
     for (uint16_t i = 0; i < size; i++) {
         USART_SendData(USART1, bytes[i]);

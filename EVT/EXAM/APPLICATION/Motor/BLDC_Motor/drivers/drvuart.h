@@ -1,8 +1,8 @@
 /********************************** (C) COPYRIGHT  *******************************
  * File Name          : drvuart.h
  * Author             : WCH
- * Version            : V1.0.0
- * Date               : 2026/08/05
+ * Version            : V1.0.1
+ * Date               : 2026/11/05
  * Description        : This file contains all the functions prototypes for the
  *                       firmware library.
  *********************************************************************************
@@ -15,10 +15,10 @@
 
 #include "def.h"
 
-// DrvUartInit 初始化
+// DrvUartInit: initialization
 void DrvUartInit(void);
 
-// DrvUartSendByte 发送字节
+// DrvUartSendBytes: send bytes
 void DrvUartSendBytes(uint8_t *bytes, uint16_t size);
 
 #endif

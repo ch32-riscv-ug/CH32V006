@@ -1,8 +1,8 @@
 /********************************** (C) COPYRIGHT  *******************************
  * File Name          : drvadc.h
  * Author             : WCH
- * Version            : V1.0.0
- * Date               : 2026/08/05
+ * Version            : V1.0.1
+ * Date               : 2026/11/05
  * Description        : This file contains all the functions prototypes for the
  *                       firmware library.
  *********************************************************************************
@@ -13,7 +13,8 @@
 #ifndef DRVADC_H
 #define DRVADC_H
 
-#include "def.h"
+// Definitions required to export common types and sampling pin macros
+#include "def.h" // IWYU pragma: export
 
 #define DRVADC_U_PIN GPIO_Pin_6
 #define DRVADC_U_PORT GPIOD
@@ -35,28 +36,38 @@
 #define DRVADC_OPA_P_PORT GPIOD
 #define DRVADC_OPA_N_PIN GPIO_Pin_4
 #define DRVADC_OPA_N_PORT GPIOA
+
 #define DRVADC_OPA_CHANNEL ADC_Channel_OPA
 
-typedef enum {
-    DRVADC_OPA,
-    DRVADC_VBUS,
-    DRVADC_U,
-    DRVADC_V,
-    DRVADC_W,
-    // 闭环过程中的指定相电压采样值
-    DRVADC_BEMF,
-} DrvAdcChannel;
+typedef struct {
+    uint16_t current;
+    uint16_t voltage;
+} DrvAdcRegularSample_T;
 
-// DrvAdcInit ADC初始化
+typedef struct {
+    uint32_t frameCount;
+    uint32_t missedCount;
+    uint32_t dmaErrorCount;
+    uint16_t currentRaw;
+    uint16_t voltageRaw;
+} DrvAdcDiag_T;
+
+extern volatile DrvAdcDiag_T gDrvAdcDiag;
+
+// DrvAdcInit: ADC initialization
 void DrvAdcInit(void);
 
-// DrvAdcGetValue ADC获取值
-uint16_t DrvAdcGetValue(DrvAdcChannel channel);
+// Read the regular group sample directly, allowed across rounds, without disabling interrupts or clearing DMA flags
+bool DrvAdcGetRegularSample(DrvAdcRegularSample_T *sample);
 
-// DrvAdcSetBemfChannel 设置BEMF ADC注入通道
-void DrvAdcSetBemfChannel(DrvAdcChannel channel);
+// Update readings and DMA progress from the control interrupt, may repeat old values, without stopping or re-arming DMA
+bool DrvAdcReadRegular(DrvAdcRegularSample_T *sample);
 
-// DrvAdcGetVbusValue 获取母线电压
+// Pause the regular group during static pulse detection and restore the three-phase sampling chain on exit
+void DrvAdcPauseRegular(void);
+void DrvAdcResumeRegular(void);
+
+// DrvAdcGetVbusValue: get the bus voltage
 uint16_t DrvAdcGetVbusValue(void);
 
 #endif

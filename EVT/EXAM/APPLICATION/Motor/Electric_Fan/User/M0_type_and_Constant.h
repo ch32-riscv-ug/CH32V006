@@ -18,333 +18,221 @@
 #include "IQmath_RV32.h"
 
 /* Exported types -----------------------------------------------------------*/
-//3-phase static coordinate system component structure prototype(per unit)
+//Three-phase stationary coordinate frame components (per-unit)
 typedef struct
 {
-  _iq24 PhaseA;
-  _iq24 PhaseB;
-  _iq24 PhaseC;
+    _iq24 PhaseA;
+    _iq24 PhaseB;
+    _iq24 PhaseC;
 } Component_3S_Type;
 
-//2-phase static coordinate system component structure prototype(per unit)
+//Two-phase stationary coordinate frame components (per-unit)
 typedef struct
 {
-  _iq24 Alpha;
-  _iq24 Beta;
+    _iq24 Alpha;
+    _iq24 Beta;
 } Component_2S_Type;
 
-//2 Phase rotating coordinate system component structure prototype(per unit)
+//Two-phase rotating coordinate frame components (per-unit)
 typedef struct
 {
-  _iq24 cd;
-  _iq24 cq;
-  _iq24 peak;
+    _iq24 cd;
+    _iq24 cq;
 } Component_2R_Type;
 
-//System running status enumeration prototype
+//System running state enumeration prototype: idle, init, direction check, pre-start, positioning, start, run, stop, brake, wait, fault
 typedef enum
 {
-  IDLE, INIT, DIRCHECK ,PRESTART,POSITION, START , RUN, STOP, BRAKE, WAIT, FAULT
+  IDLE, INIT, DIRCHECK,PRESTART, POSITION, START , RUN, STOP, BRAKE, WAIT, FAULT
 } Runningstatus_Type;
 
-//Motor start-up status enumeration prototype
+//Current injection startup state enumeration prototype: initialization, current injection positioning, current closed-loop acceleration
 typedef enum
 {
  INITIAL, INJECTION, RAMP
 }Motor_Startup_Status_Type;
 
-//Sine and cosine structure prototype
+//Sine/cosine structure prototype
 typedef struct
 {
-  _iq24 Cos;
-  _iq24 Sin;
+  _iq24 Cos;//angle cosine value
+  _iq24 Sin;//angle sine value
 }Struct_Cossin_Type;
 
-// Enumeration of true and false prototype
-typedef enum {FALSE = 0, TRUE = !FALSE} Truth_Verify_Type;
+//Truth judgement result enumeration
+typedef enum {FALSE = 0, TRUE = !FALSE} Truth_Verify_Type;//0 is false, 1 is true
 
-// Enumeration of direction
-typedef enum {DIRDOWN = 0, DIRUP = !DIRDOWN} Direction_Type;
+//Direction judgement result enumeration
+typedef enum {DIRDOWN = 0, DIRUP = !DIRDOWN} Direction_Type;//0 decrease, 1 increase
 
-//PID  regulator structure prototype
+//PID regulator parameter structure prototype
 typedef struct
 {
-    _iq24 CalT;                                 //Calculation period
-    _iq24 Kpreal;                               //Actual Proportional coefficient
-    _iq24 Kireal;                               //Actual Integral coefficient
-    _iq24 Kdreal;                               //Actual Differential coefficient
+    _iq24 CalT;            //calculation period
+    _iq24 Kpreal;          //proportional coefficient actual value
+    _iq24 Kireal;          //integral coefficient actual value
+    _iq24 Kdreal;          //derivative coefficient actual value
 
-    _iq24 Kp;                                   //Proportional coefficient
-    _iq24 Kpadj;                                //Proportional coefficient adjustment
-    _iq24 Ki;                                   //Integral coefficient
-    _iq24 Kiadj;                                //Integral coefficient adjustment
-    _iq24 Kd;                                   //Differential coefficient
-    _iq24 Kdadj;                                //Differential coefficient adjustment
-    _iq24 Lower_Lim;                            //Lower limit of PID output
-    _iq24 Upper_Lim;                            //Upper limit of PID output
-    _iq24 Integral;                             //Integral value, incremental PID use
-    _iq24 Differential;                         //Differential value, incremental PID use
-    _iq24 Err_New;                              //Present error value
-    _iq24 Err_Prev1;                            //Previous error value
-    _iq24 Err_Prev2;                            //Error value before Last
-    _iq24 Output_New;                           //Present output
-    _iq24 Output_Prev;                          //Previous output
-    _iq24 Deltaoutput;                          //Single output increment
-    _iq24 Deltalim;                             //Single output increment limit
-    _iq24 Propotion;                            //Proportional output, absolute PID use
-    _iq24 Integer;                              //Integral output, absolute PID use
-    _iq24 Difference;                           //Differential output, absolute PID use
+    _iq24 Kp;              //proportional coefficient
+    _iq24 Kpadj;           //proportional coefficient adjustment factor
+    _iq24 Ki;              //integral coefficient
+    _iq24 Kiadj;           //integral coefficient adjustment factor
+    _iq24 Kd;              //derivative coefficient
+    _iq24 Kdadj;           //derivative coefficient adjustment factor
 
-    uint16_t Bw;                                //Regulator bandwidth
-    uint16_t CalFreq;                           //Calculation the frequency
+    _iq24 Lower_Lim;       //PID total output lower limit
+    _iq24 Upper_Lim;       //PID total output upper limit
+
+    _iq24 Integral;        //integral value
+    _iq24 Differential;    //derivative value
+    _iq24 Err_New;         //current error value
+    _iq24 Err_Prev1;       //previous error value
+    _iq24 Err_Prev2;       //error value before previous
+    _iq24 Output_New;      //latest regulator output value
+    _iq24 Output_Prev;     //previous regulator output value
+
+    _iq24 Deltaoutput;     //single regulator output increment
+    _iq24 Deltalim;        //single regulator output increment limit
+
+    uint16_t Bw;           //regulator control bandwidth
+    uint16_t CalFreq;      //calculation frequency
 } PID_Structure_Type;
 
-// First order low-pass filter prototype definition
+//First-order low-pass filter prototype
 typedef struct
 {
-    _iq24 Out_Pre;                              //Output present value
-    _iq24 Out_New;                              //Output previous value
-    _iq24 Input_Coef;                           //Input coefficient
-    _iq24 Output_Coef;                          //Output coefficient
+    _iq24 Out_Pre;        //previous output value
+    _iq24 Out_New;        //current output value
+    _iq24 Input_Coef;     //input calculation coefficient (T*wc/(T*wc+1))
+    _iq24 Output_Coef;    //output calculation coefficient (1/(T*wc+1))
 } LPF_First_Order_Type;
 
-// First order high-pass filter prototype definition
+//First-order high-pass filter prototype
 typedef struct
 {
-    _iq24 In_Pre;                               //Input previous value
-    _iq24 Out_Pre;                              //Output previous value
-    _iq24 Out_New;                              //Output Present value
-    _iq24 Input_Coef;                           //Input  coefficient
-    _iq24 Output_Coef;                          //Output coefficient
+    _iq24 In_Pre;         //previous input value
+    _iq24 Out_Pre;        //previous output value
+    _iq24 Out_New;        //current output value
+    _iq24 Input_Coef;     //input calculation coefficient (T*wc/(T*wc+1))
+    _iq24 Output_Coef;    //output calculation coefficient (T*wc/(T*wc+1))
 } HPF_First_Order_Type;
 
-// Second order low-pass filter prototype definition
+//Speed observation PLL parameter structure prototype
 typedef struct
 {
-    _iq24 Out_Pre1;                             //Output previous value
-    _iq24 Out_Pre2;                             //Output before last value
-    _iq24 Out_New;                              //Output Present value
-    _iq24 Input_Coef;                           //Input  coefficient
-    _iq24 Output_Coef1;                         //Output coefficient 1
-    _iq24 Output_Coef2;                         //Output coefficient 2
-} LPF_Second_Order_Type;
+    _iq24 Kp;             //PLL proportional coefficient
+    _iq24 Ki;             //PLL integral coefficient
+    _iq24 Error_New;      //PLL input error current value
+    _iq24 Error_Prev;     //PLL input error previous value
+    _iq24 Output_New;     //PLL output current value
+    _iq24 Output_Prev;    //PLL output previous value
+    _iq24 Lower_Lim;      //PLL output lower limit
+    _iq24 Upper_Lim;      //PLL output upper limit
+    _iq24 Vslim;          //output square limit
+    _iq24 SpeedLim;       //speed limit
+    _iq24 SpeedLim1;      //speed limit 1
+    _iq24 Zeta;           //PLL damping ratio
+    _iq24 Bandwidth;      //PLL bandwidth
+} Speed_PLL_Type;
 
-// Second order high-pass filter prototype definition
+//Pulse injection positioning structure prototype
 typedef struct
 {
-    _iq24 In_Pre1;                              //Input previous value
-    _iq24 In_Pre2;                              //Input before last value
-    _iq24 Out_Pre1;                             //Output previous value
-    _iq24 Out_Pre2;                             //Output before last value
-    _iq24 Out_New;                              //Output Present value
-    _iq24 Input_Coef;                           //Input coefficient
-    _iq24 Output_Coef1;                         //Output coefficient 1
-    _iq24 Output_Coef2;                         //Output coefficient 2
-} HPF_Second_Order_Type;
+    _iq24 Vmag;                      //injection voltage amplitude
+    _iq24 Vmagmax;                   //injection voltage amplitude maximum
+    _iq24 Vmagmin;                   //injection voltage amplitude minimum
 
-// Second order bandpass filter prototype definition
+    //Pulse voltage injection positioning variables
+    _iq24 AngleInit;                 //injection angle initial value
+    _iq24 AngleStep;                 //angle switching step
+    _iq24 AngleInj;                  //injection angle
+    _iq24 Position;                  //angle search result
+    _iq24 Posi_Cali;                 //angle calculation correction value
+    _iq24 Phaseloss_Currthre;        //phase-loss current threshold
+
+    Component_2R_Type Curr2R;        //two-phase rotating frame current (per-unit)
+    Component_2R_Type VoltRef2RC;    //two-phase rotating frame voltage reference (after correction)
+    Struct_Cossin_Type Triangle;     //injection angle sine/cosine values
+
+    uint32_t Counter;                //HFVQI observer startup counter value
+
+    uint16_t Fixduty;                //duty cycle value in fixed-duty modulation mode (unused)
+    uint16_t TimeStep;               //switching time step
+    uint16_t TimeEffect;             //pulse active time
+
+    uint8_t Phaseloss_Cntthre;       //phase-loss current judgement count threshold
+    uint8_t Phaseloss_Cnt;           //phase-loss current condition satisfied count
+    uint8_t Modulemode;              //modulation mode 0: voltage modulation, 1: fixed duty (unused)
+    uint8_t SectorMax;               //sector of maximum current amplitude
+    uint8_t SectorSet;               //interval definition
+    uint8_t SectorAct;               //actual interval
+    Truth_Verify_Type Finish;        //finish flag
+} HFVQI_Start_Type;
+
+//SVPWM calculation structure prototype -- dual resistor
 typedef struct
 {
-    _iq24 In_Pre1;                              //Input previous value
-    _iq24 In_Pre2;                              //Input before last value
-    _iq24 Out_Pre1;                             //Output before last value
-    _iq24 Out_Pre2;                             //Output the last value
-    _iq24 Out_New;                              //Output present value
-    _iq24 Input_Coef;                           //Input coefficient
-    _iq24 Output_Coef1;                         //Output coefficient 1
-    _iq24 Output_Coef2;                         //Output coefficient 2
-} BPF_Second_Order_Type;
+    _iq24 Maxmodulesqure;    //voltage limit (amplitude squared)
+    _iq24 Maxmodule;         //voltage limit (amplitude)
 
-// PLL parameter structure prototype definition
-typedef struct
-{
-    _iq24 Kp;
-    _iq24 Ki;
-    _iq24 Kpadj;
-    _iq24 Kiadj;
-    _iq24 Error_New;
-    _iq24 Error_Prev;
-    _iq24 Output_New;
-    _iq24 Output_Prev;
-    _iq24 Lower_Lim;
-    _iq24 Upper_Lim;
-    _iq24 Vslim;
-}Speed_PLL_Type;
+    _iq16 coef1;             //3*T/2Udc
+    _iq16 coef2;             //sqrt(3)*T/2Udc
 
-// Quadrature filter structure prototype definition
-typedef struct
-{
-    _iq24 Err_CoefT;                            //EMF Error coefficient
-    _iq24 EMF_CoefT;                            //EMF coefficient
-    _iq24 EMF_Adj;                              //EMF coefficient adjustment factor
-    _iq24 Alpha_Err;                            //Alpha component error
-    _iq24 Alpha_Pre;                            //Alpha component previous value
-    _iq24 Alpha_New;                            //Alpha component present value
-    _iq24 Beta_Err;                             //Beta component error
-    _iq24 Beta_Pre;                             //Beta component previous value
-    _iq24 Beta_New;                             //Beta component present value
+    uint16_t T;              //timer period value
+    uint16_t HALF_T;         //timer half period value
+    uint16_t Quard_T;        //timer period value/4
 
-    int32_t Gain;                               //Error gain
-    uint8_t Enable;                             //Enable
-} Observer_Adaptor_type;
+    uint16_t cc1Load;        //SVPWM timer compare channel 1 up-count load value
+    uint16_t cc2Load;        //SVPWM timer compare channel 2 up-count load value
+    uint16_t cc3Load;        //SVPWM timer compare channel 3 up-count load value
 
-// Observer status structure prototype
-typedef struct
-{
-    _iq24 OverspeedThresh;                      //Over speed threshold
-    _iq24 UnderspeedThresh;                     //Under speed threshold
-    _iq24 VarianceThresh;                       //Speed variance threshold
-    _iq24 UnstableSpeedThresh;                  //Under speed threshold
-
-    _iq24 StallSpeedBand;                       //Stall verification speed error threshold
-    _iq24 StallSpeed;                           //Stall verification speed threshold
-    _iq24 StallCurr;                            //Stall verification current threshold
-
-    uint16_t Overspeed_CNT;                     //Over speed counter
-    uint16_t OverspeedcntThresh;                //Over speed counter threshold
-    uint16_t Underspeed_CNT;                    //Under speed counter
-    uint16_t UnderspeedcntThresh;               //Under speed counter threshold
-
-    uint16_t Unstable_CNT;                      //Unstable counter
-    uint16_t UnstableCntThresh;                 //Unstable counter threshold
-    uint16_t Stall_CNT;                         //Stall verification counter
-    uint16_t StallCntThresh;                    //Stall verification counter threshold
-
-    Truth_Verify_Type Overspeed;                //Over speed
-    Truth_Verify_Type Underspeed;               //Under speed
-    Truth_Verify_Type Reliable;                 //Reliable
-    Truth_Verify_Type Stable;                   //Stable
-    Truth_Verify_Type Stall;                    //Stall;
-
-}Observer_Status_Type;
-
-//SVPWM calculation structure prototype--two shunt
-typedef struct
-{
-    _iq24 Maxmodulesqure;                       // Voltage limiting (amplitude squared)
-    _iq24 Maxmodule;                            // Voltage limit (amplitude)
-
-    _iq16 coef1;                                //3*T/2Udc
-    _iq16 coef2;                                //sqrt(3)*T/2Udc
-
-    uint16_t T;                                 // Timer period value
-    uint16_t HALF_T;                            // Half period of the timer
-    uint16_t Quard_T;                           // Timer period value /4
-
-    uint16_t cc1Load;                           //SVPWM timer comparator 1 Loads the calculated value upward
-    uint16_t cc2Load;                           //SVPWM timer comparator 2 Loads the calculated value upward
-    uint16_t cc3Load;                           //SVPWM timer comparator 3 Loads the calculated value upward
-
-    uint8_t VoltLimMark;                        // Voltage limiting sign
-    uint8_t  sector;                            // Voltage vector sector
+    uint8_t VoltLimMark;     //voltage limit flag
+    uint8_t sector;          //voltage vector sector
 } SVPWM_2R_Type;
 
 //ADC sampling calculation structure prototype
 typedef struct
 {
-    _iq16 RatedCurr_ConvInv;                    //Current calculation coefficient
-    _iq24 DCVoltPres;                           //Bus voltage present value
-    _iq24 DCVoltAver;                           //Bus voltage average value
-    _iq16 DCVoltRatedADCInv;                    //Integer ADC value of rated bus voltage
-    _iq24 DCVoltAverSizeInv1;                   //Bus voltage average calculation coefficient 1
-    _iq24 DCVoltAverSizeInv2;                   //Bus voltage average calculation coefficient 2
-    _iq24 DCVoltcali;                           //Bus voltage calibration coefficient
-    uint16_t OffsetValue1;                      //Current sample offset 1
-    uint16_t OffsetValue2;                      //Current sample offset 2
-
+    _iq16 RatedCurr_ConvInv;     //reciprocal of the AD sample integer corresponding to rated current amplitude, used to compute per-unit sampled current (scaled by 128 to reduce error, must be restored when used in actual calculation)
+    _iq24 DCVoltPres;            //bus voltage sample current value (unit-V_per)
+    _iq24 DCVoltAver;            //bus voltage sample average value (unit-V_per)
+    _iq16 DCVoltRatedADCInv;     //reciprocal of the AD sample integer corresponding to rated bus voltage
+    _iq24 DCVoltAverSizeInv1;    //bus voltage average calculation coefficient 1
+    _iq24 DCVoltAverSizeInv2;    //bus voltage average calculation coefficient 2
+    _iq24 DCVoltcali;            //bus voltage correction coefficient
+    uint16_t OffsetValue1;       //current sampling offset
+    uint16_t OffsetValue2;       //current sampling offset
 } ADCStruc_Type;
 
-// Array parameter definition structure prototype
+//Array parameter definition prototype
 typedef struct
 {
-    _iq24 Inv1;                                 //Calculation coefficient 1
-    _iq24 Inv2;                                 //Calculation coefficient 2
-    uint8_t Length;                             //Length
-    uint8_t Index;                              //Index
+    _iq24 Inv1;        //calculation coefficient 1
+    _iq24 Inv2;        //calculation coefficient 2
+    uint8_t Length;    //length
+    uint8_t Index;     //index
 } BuffPara_Type;
 
-//Acceleration and deceleration control structure prototype
-typedef struct
+//Direction switching control enumeration prototype: unchanged, forward-to-reverse, reverse-to-forward
+typedef enum
 {
-    _iq24 Preramp;                              //Speed reference before slope(unit-rad/s_per)
-    _iq24 Aftramp;                              //Speed reference after slope(unit-rad/s_per)
-    _iq24 AccStep;                              //Acceleration step(unit-rad/s^2_per)
-    _iq24 DecStep;                              //Deceleration step(unit-rad/s^2_per)
+    UNCHANGE, CHANGEOVER
+}Directionswitch_Type;
 
-    uint8_t  Speed_adncnt;                      //Speed rank indicator
-    int8_t   Direction;                         //Rotate direction.
-
-    Truth_Verify_Type Startfinish;              //Start finish mark
-    Truth_Verify_Type Decemark;                 //Deceleration mark
-}Speedrampctr_Type;
-
-//D-axis current processing structure prototype
+//D-axis current processing structure
 typedef struct DCurrProcess
 {
-    _iq24 Target;                               //d axis current set target value
-    _iq24 Target1;                              //d axis current set target value 1 definition
-    _iq24 Target2;                              //d axis current set target value 2 definition
-    _iq24 Weakpoint;                            //Magnetic weak speed
-    _iq24 AdjustStep;                           //Current adjust the step
-    _iq24 AdjustStep1;                          //Current adjust step definition 1
-    _iq24 AdjustStep2;                          //Current adjust step definition 2
-    uint8_t Stage;                              //Phase, 0- fast decrease, 1- slow decrease
+    _iq24 Target;         //d-axis current reference current target value (unit-A_per)
+    _iq24 Target1;        //d-axis current reference target value 1 (unit-A_per)
+    _iq24 Target2;        //d-axis current reference target value 2 (unit-A_per)
+    _iq24 Weakpoint;      //field-weakening speed (unit-rad/s_per)
+    _iq24 AdjustStep;     //adjustment step (unit-A/s_per)
+    _iq24 AdjustStep1;    //adjustment step 1 (unit-A/s_per)
+    _iq24 AdjustStep2;    //adjustment step 2 (unit-A/s_per)
+    uint8_t Stage;        //stage, 1-target value 1, 2-target value 2
 }DCurrProcess_Type;
 
-//Instantaneous over current protection structure prototype
-typedef struct
-{
-    _iq24 CurrThreshold;                        //Over current threshold
-    uint16_t CntThreshold;                      //Over current counter threshold
-    uint16_t Cnt;                               //Over current counter
-} InstPhaseOC_Type;
-
-// Bus voltage protection structure
-typedef struct
-{
-    _iq24 OverThresh;                           //Over voltage threshold (unit-V_per)
-    _iq24 UnderThresh;                          //Under voltage threshold (unit-V_per)
-
-    uint16_t UnderCntThresh;                    //Under voltage counter threshold
-    uint16_t UnderCnt;                          //Under voltage counter
-    uint16_t OverCntThresh;                     //Over voltage counter threshold
-    uint16_t OverCnt;                           //Over voltage counter
-
-    Truth_Verify_Type Undervolt;                //Over voltage mark
-    Truth_Verify_Type Overvolt;                 //Under voltage mark
-} DCbusProtection_Type;
-
-// Overload protection structure
-typedef struct
-{
-    _iq24 CurrCal;                              // Current for verification (unit-A_per)
-    _iq24 CurrThresh;                           // Current threshold (unit-A_per)
-    _iq24 CalCoef;                              // Calculation coefficient
-    uint16_t CntThresh;                         // Counter threshold
-    uint16_t Cnt;                               // Counter
-} OverLoad_Type;
-
-
-//缺相保护结构体原型
-typedef struct
-{
-    _iq24 CurrThresh;                           // Current threshold (unit-A_per)
-    _iq24 CurrAabs;                             // Absolute value of phase A current (unit-A_per)
-    _iq24 CurrBabs;                             // Absolute value of phase B current (unit-A_per)
-    _iq24 CurrCabs;                             // Absolute value of phase C current (unit-A_per)
-    _iq24 Curr_LowerThresh;
-    BuffPara_Type CurrBuffPara;                 // Average current calculation parameters
-
-    uint16_t CntThresh;                         // Counter threshold
-    uint16_t SiglephaseCntA;                    // U phase loss counter
-    uint16_t SiglephaseCntB;                    // V phase loss counter
-    uint16_t SiglephaseCntC;                    // W phase loss counter
-    uint16_t MultiphaseCnt;                     // Multi-phase loss counter
-
-} Phaseloss_Type;
-
-
-// Motor base value structure definition
+//Motor base value structure prototype
 typedef struct
 {
     _iq24 Flux;
@@ -368,249 +256,233 @@ typedef struct
     uint16_t Wmbase;
 } Motor_Base_Type;
 
-//Power-on and power-off control structure prototype
+//Power on/off control structure prototype
 typedef struct
 {
-    _iq24 Poweron_Volt;                         // Power on voltage threshold
-    _iq24 Poweroff_Volt;                        // Power off voltage threshold
-    _iq24 DCVoltAverSizeInv1;                   // Calculation coefficient 1 of average bus voltage
-    _iq24 DCVoltAverSizeInv2;                   // Calculation coefficient 2 of average bus voltage
-    _iq24 DCVoltAver;                           // Average bus voltage
-    uint16_t Poweron_CntThresh;                 // Power on counter threshold
-    uint16_t Poweron_Cnt;                       // Power on counter
-    volatile Truth_Verify_Type Poweron;         // Power on mark
+    _iq24 Poweron_Volt;                    //power-on voltage threshold (unused)
+    _iq24 Poweroff_Volt;                   //power-off voltage threshold
+    _iq24 DCVoltAverSizeInv1;              //bus voltage average calculation coefficient 1
+    _iq24 DCVoltAverSizeInv2;              //bus voltage average calculation coefficient 2
+    _iq24 DCVoltAver;                      //bus average voltage
+    uint16_t Poweron_CntThresh;            //power-on count threshold
+    uint16_t Poweron_Cnt;                  //power-on counter
+    volatile Truth_Verify_Type Poweron;    //power-on flag
 } Powercontrol_Type;
 
-// Motor overall status structure prototype
+//Motor overall state structure prototype
 typedef struct
 {
-   Component_2R_Type VRef2R;                    // Two-phase rotating coordinate system voltage reference
-   Component_2R_Type VRef2RC;                   // Two-phase rotating coordinate system voltage reference after calibration
-   Component_2S_Type VRef2S;                    // Two-phase stationary coordinate system voltage reference
-   Component_2S_Type VRef2SC;                   // Two-phase stationary coordinate system voltage reference after calibration
-   Component_2R_Type CRef2R;                    // Current reference of two-phase rotating coordinate system
-   Component_3S_Type C3S;                       // Current of the three-phase stationary coordinate system
-   Component_2S_Type C2S;                       // Current of the two-phase stationary coordinate system
-   Component_2R_Type C2R;                       // Current of two-phase rotating coordinate system for feedback
-   Component_2R_Type C2R_H;                     // Current of two-phase rotating coordinate system after filter at high speed
-   Struct_Cossin_Type Cossin;                   // Sine and cosine structure
+    Component_2R_Type VRef2R;          //two-phase rotating frame voltage reference (per-unit)
+    Component_2R_Type VRef2RC;         //two-phase rotating frame voltage reference after correction (per-unit)
+    Component_2S_Type VRef2S;          //two-phase stationary frame voltage reference (per-unit)
+    Component_2S_Type VRef2SC;         //two-phase stationary frame voltage reference after correction (per-unit)
+    Component_2R_Type CRef2R;          //two-phase rotating frame current reference (per-unit)
+    Component_3S_Type C3S;             //three-phase stationary frame current (per-unit)
+    Component_2S_Type C2S;             //two-phase stationary frame current (per-unit)
+    Component_2R_Type C2R;             //two-phase rotating frame current (per-unit) used as feedback
+    Component_2R_Type C2R_H;           //two-phase rotating frame current (per-unit) high-speed section
+    Struct_Cossin_Type Cossin;         //coordinate transform sine/cosine structure
 
-   LPF_First_Order_Type IdLPF1stH;              // D-axis current low-pass filter, feedback use, high-speed
-   LPF_First_Order_Type IqLPF1stH;              // Q-axis current low-pass filter, feedback use, high-speed
+    Component_2R_Type C2R_Obs;         //two-phase rotating frame filtered current used by observer
+    Component_2S_Type C2S_Obs;         //two-phase stationary frame filtered current used by observer
+
+    LPF_First_Order_Type IdLPF1stH;    //d-axis current low-pass filter
+    LPF_First_Order_Type IqLPF1stH;    //q-axis current low-pass filter
 } Motor_Sructure_Type;
 
-// Motor PID regulator structure
+//Motor PID regulator structure
 typedef struct
 {
-    PID_Structure_Type Speed;                   // Speed regulator structure
-    PID_Structure_Type dCurr;                   // D axis current regulator structure
-    PID_Structure_Type qCurr;                   // Q axis current regulator structure
+    PID_Structure_Type Speed;    //speed regulator structure definition
+    PID_Structure_Type dCurr;    //D-axis current regulator structure definition
+    PID_Structure_Type qCurr;    //Q-axis current regulator structure definition
 } Motor_PID_Type;
 
 
-typedef struct
-{
-    uint16_t StopwaitCnt;
-    uint16_t StopwaitSet;
-
-    uint16_t StartbuttonSet;
-    uint16_t SpeedbuttonCnt;
-    uint16_t SpeedbuttonSetdown;
-
-    uint16_t FaultHoldingSet;
-    uint16_t FaultHoldingCnt;
-    Truth_Verify_Type Startmark;
-    uint8_t Checkmode;
-} Operation_Type;
-
+//Windmill startup state enumeration prototype: forward high speed, forward low speed, standstill, reverse low speed, reverse high speed
 typedef enum
 {
     STILL, POSI_HIGH, POSI_LOW, NEG_HIGH, NEG_LOW,
-}Flystart_Status_Type;
+} Flystart_Status_Type;
 
+//Windmill startup structure
 typedef struct
 {
-    _iq24 Speedinst;
-    _iq24 Speed_Filter;
-    _iq24 Speedboundary;
-    _iq24 Direction;
-    _iq24 CalT;
-    _iq24 K_WetoPos;
+    _iq24 Speedinst;                       //observed angular speed real-time value
+    _iq24 Speed_Filter;                    //observed average angular speed filtered value
+    _iq24 Speedboundary;                   //high/low speed boundary threshold
+    _iq24 Direction;                       //observed rotation direction
+    _iq24 CalT;                            //windmill calculation period (unit-1s)
+    _iq24 K_WetoPos;                       //angular speed to angle accumulation coefficient rad/s_per to 0-1 PU
 
-    _iq24 Vd;
-    _iq24 Vq;
-    _iq24 Vd_Filter;
-    _iq24 Vq_Filter;
+    _iq24 Vd;                              //Vd voltage
+    _iq24 Vq;                              //Vq voltage
+    _iq24 Vd_Filter;                       //Vd voltage filtered value
+    _iq24 Vq_Filter;                       //Vq voltage filtered value
 
-    _iq24 EAngle_new_phase;
-    _iq24 RAngle_new_phase;
-    _iq24 Pll_Bandwidth;
-    _iq24 KVE;
-    _iq24 Vs;
-    _iq24 StillEMF;
-    _iq24 Bemf_Threshold;
-    _iq24 Stillcurrthresh;
+    _iq24 EAngle_new_phase;                //current value of detected back-EMF angle
+    _iq24 RAngle_new_phase;                //current value of detected rotor angle
+    _iq24 Pll_Bandwidth;                   //PLL bandwidth
+    _iq24 Pll_Zeta;                        //PLL damping ratio
+    _iq24 KVE;                             //voltage divided by back-EMF coefficient
+    _iq24 Vs;                              //DQ-axis combined voltage
+    _iq24 StillEMF;                        //standstill judgement back-EMF threshold
+    _iq24 Bemf_Threshold;                  //back-EMF hold threshold
+    _iq24 Stillcurrthresh;                 //standstill current judgement threshold
 
-    _iq24 Speed_Upper;
-    _iq24 Speed_Lower;
+    _iq24 Speed_Upper;                     //observed speed upper limit
+    _iq24 Speed_Lower;                     //observed speed lower limit
 
-    LPF_First_Order_Type Vd_LPF;
-    LPF_First_Order_Type Vq_LPF;
-    LPF_First_Order_Type Angspeed_LPF;
-    Speed_PLL_Type BemfSpeed_PLL;
+    LPF_First_Order_Type Vd_LPF;           //Vd low-pass filter
+    LPF_First_Order_Type Vq_LPF;           //Vq low-pass filter
+    LPF_First_Order_Type Angspeed_LPF;     //observed speed low-pass filter
+    Speed_PLL_Type BemfSpeed_PLL;          //phase-locked loop
 
-    Component_2R_Type EMFP2R;
-    Struct_Cossin_Type TriangleR;
-    Struct_Cossin_Type TriangleE;
+    Component_2R_Type EMFP2R;              //two-phase rotating frame back-EMF
+    Struct_Cossin_Type TriangleR;          //two-phase rotating frame trigonometric values_rotor
+    Struct_Cossin_Type TriangleE;          //two-phase rotating frame trigonometric values_rotor
 
-    uint16_t  Breakcntset;
-    uint16_t  Breakcnt;
-    uint16_t  Stillcurrcntset;
-    uint16_t  Stillcurrcnt;
-    uint16_t  Stillveri_cntset;
-    uint16_t  Stillveri_cnt;
+    uint16_t Breakcntset;                  //low-speed current braking time setting
+    uint16_t Breakcnt;                     //low-speed current braking counter value
+    uint16_t Stillcurrcntset;              //standstill current judgement count threshold
+    uint16_t Stillcurrcnt;                 //standstill current judgement counter value
+    uint16_t Stillveri_cntset;             //standstill judgement time count threshold
+    uint16_t Stillveri_cnt;                //standstill judgement time counter value
 
-    uint16_t  Vq_DirPosiEffcnt;
-    uint16_t  Vq_DirPosiEffSet_thresh;
-    uint16_t  Vq_DirNegEffcnt;
-    uint16_t  Vq_DirNegEffSet_thresh;
-    uint16_t  Vq_DirDetectionSet;
-    uint16_t  Vq_DirDetectionCnt;
-    uint16_t  Vq_PosiEffcnt;
-    uint16_t  Vq_PosiEffSet_thresh;
-    uint16_t  Vq_NegEffcnt;
-    uint16_t  Vq_NegEffSet_thresh;
-    uint16_t  BEMFDetectSet;
-    uint16_t  BEMFDetectcnt;
-    uint16_t  BemfwaitCnt;
-    uint16_t  BemfwaitSet;
+    uint16_t Vq_DirPosiEffcnt;             //forward direction judgement counter value
+    uint16_t Vq_DirPosiEffSet_thresh;      //forward direction judgement count threshold
+    uint16_t Vq_DirNegEffcnt;              //reverse direction judgement counter value
+    uint16_t Vq_DirNegEffSet_thresh;       //reverse direction judgement count threshold
+    uint16_t Vq_DirDetectionSet;           //direction detection time
+    uint16_t Vq_DirDetectionCnt;           //direction detection count
+    uint16_t Vq_PosiEffcnt;                //Vq positive half-cycle valid count
+    uint16_t Vq_PosiEffSet_thresh;         //Vq positive half-cycle valid setting value
+    uint16_t Vq_NegEffcnt;                 //Vq negative half-cycle valid count
+    uint16_t Vq_NegEffSet_thresh;          //Vq negative half-cycle valid setting value
+    uint16_t BEMFDetectSet;                //back-EMF detection count setting
+    uint16_t BEMFDetectcnt;                //back-EMF detection counter value
+    uint16_t BemfwaitCnt;                  //back-EMF filter counter value
+    uint16_t BemfwaitSet;                  //back-EMF filter setting value
 
-    Flystart_Status_Type Vefify_status;
-    Truth_Verify_Type  Vq_AmplitudeMark;
-    Truth_Verify_Type  Vq_PosiMark;
-    Truth_Verify_Type  Vq_NegMark;
-    Truth_Verify_Type  Vq_DirMark;
-    Truth_Verify_Type  Process_mark;
-    Truth_Verify_Type  Switch_mark;
+    Flystart_Status_Type Vefify_status;    //windmill startup judgement status
+    Truth_Verify_Type Vq_AmplitudeMark;    //Vq amplitude judgement flag
+    Truth_Verify_Type Vq_PosiMark;         //Vq positive half-cycle flag
+    Truth_Verify_Type Vq_NegMark;          //Vq negative half-cycle flag
+    Truth_Verify_Type Vq_DirMark;          //direction judgement flag
+    Truth_Verify_Type Process_mark;        //windmill startup processing progress flag
+    Truth_Verify_Type Switch_mark;         //windmill startup switching processing flag
 } Flystart_type;
 
+//SMO observer parameter structure prototype definition
 typedef struct
 {
-    _iq24 CalT;
-    _iq24 K1CerrC;
-    _iq24 K2CerrE;
-    _iq24 MaxSMCError;
-    _iq24 kCC;
-    _iq24 kVC;
-    _iq24 kEC;
-    _iq24 kCeC;
-    _iq24 kSC;
-    _iq24 kEE;
-    _iq24 kCE;
-    _iq24 Kslide;
+    _iq24 CalT;                //SMO observer calculation period (unit-1s)
+    _iq24 MaxSMCError;         //SMO back-EMF observation current maximum allowed error
+    _iq24 kCC;                 //SMO current observation current coefficient
+    _iq24 kVC;                 //SMO current observation voltage term coefficient
+    _iq24 kEC;                 //SMO current observation back-EMF term coefficient (unused)
+    _iq24 kSC;                 //SMO current observation saliency coefficient
+    _iq24 kEE;                 //SMO back-EMF observation back-EMF coefficient
+    _iq24 Kslide1;             //sliding surface coefficient 1
+    _iq24 Kslide2;             //sliding surface coefficient 2
+    _iq24 KDivMaxSMCError1;    //SMO back-EMF observation sliding surface coefficient divided by maximum error
+    _iq24 KDivMaxSMCError2;    //SMO back-EMF observation sliding surface coefficient divided by maximum error
+    _iq24 kEV;                 //SMO observed back-EMF conversion coefficient
+    uint16_t CalFreq;          //SMO observer calculation frequency
+} SMO_Paramter_Type;
 
-    uint16_t CalFreq;
-    uint16_t kCE_Adj;
-    uint8_t Caltimes;
-} Observer_Paramter_Type;
-
-//Observer structure prototype definition
+//SMO observer observation result structure prototype definition
 typedef struct
 {
-    _iq24 EalphaNew;                            //Ealpha present value
-    _iq24 EalphaPrev;                           //Ealpha previous value
-    _iq24 EbetaNew;                             //Ebeta present value
-    _iq24 EbetaPrev;                            //Ebeta previous value
-    _iq24 EUlim;                                //EMF upper limit
-    _iq24 ELlim;                                //EMF lower limit
+    _iq24 EalphaNew;                       //observed back-EMF Ealpha current value
+    _iq24 EalphaPrev;                      //observed back-EMF Ealpha previous value
+    _iq24 EbetaNew;                        //observed back-EMF Ebeta current value
+    _iq24 EbetaPrev;                       //observed back-EMF Ebeta previous value
+    _iq24 EUlim;                           //observed back-EMF limit value
+    _iq24 ELlim;                           //observed back-EMF limit value
 
-    _iq24 CalphaNew;                            //Ialpha present value
-    _iq24 CalphaPrev;                           //Ialpha previous value
-    _iq24 CbetaNew;                             //Ibeta present value
-    _iq24 CbetaPrev;                            //Ibeta previous value
-    _iq24 CUlim;                                //Current observer upper limit
-    _iq24 CLlim;                                //Current observer lower limit
+    _iq24 CalphaNew;                       //observed current Ialpha current value
+    _iq24 CalphaPrev;                      //observed current Ialpha previous value
+    _iq24 CbetaNew;                        //observed current Ibeta current value
+    _iq24 CbetaPrev;                       //observed current Ibeta previous value
+    _iq24 CUlim;                           //observed current limit value
+    _iq24 CLlim;                           //observed current limit value
 
-    _iq24 K_WetoPos;                            //Coefficient between angular speed and angle
+    _iq24 K_WetoPos;                       //angular speed to angle accumulation coefficient rad/s_per to 0-1 PU
 
-    _iq24 ThetaErr;                             //Position error
-    _iq24 PosiElecPU;                           //Position value
-    _iq24 PosiElecPU_Pre;                       //Position previous value
+    _iq24 ThetaErr;                        //observed angle value error PU
+    _iq24 PosiElecPU;                      //observed angle value PU
 
-    _iq24 Angspeed_Inst;                        //Angle speed instantaneous value
-    _iq24 Angspeed_Aver1;                       //Angle speed average value 1
-    _iq24 Angspeed_Aver2;                       //Angle speed average value 2
-    _iq24 Direction;                            //Rotation direction
-    _iq24 Angspeed_Aver2Adv;
-    _iq24 Deltaspeed;                           //Speed error of two calculation cycle
+    _iq24 Angspeed_Inst;                   //observed angular speed real-time value
+    _iq24 Angspeed_Aver1;                  //observed average angular speed value
+    _iq24 Angspeed_Aver2;                  //observed weighted average angular speed value
+    _iq24 Direction;                       //observed rotation direction
+    // _iq24 Deltaspeed;       //speed error
 
-    _iq24 EmfPeak;                              //EMF amplitude
-    _iq24 EmfErrBandup;                         //EMF error bandwidth upper limit
-    _iq24 EmfErrBanddown;                       //EMF error bandwidth lower limit
-    _iq24 EmfErr;                               //EMF error
-    _iq24 Speedband;                            //Speed error bandwidth
+    // _iq24 EmfPeak;          //EMF amplitude
+    // _iq24 EmfErrBandup;     //EMF error band upper limit
+    // _iq24 EmfErrBanddown;   //EMF error band lower limit
+    // _iq24 EmfErr;           //EMF error
+    // _iq24 Speedband;        //speed error band width
 
-    _iq24 PosiElecPU_Cali;                      //Position calibration value
-    _iq24 PosiElecPU_Com;                       //Position after calibration
-    _iq24 Kposcali;                             //Position calibration coefficient
+    LPF_First_Order_Type SpeedLPF1st_M;    //observed speed low-pass filter
+    Struct_Cossin_Type Triangle;           //observed angle sine/cosine values
 
-    _iq24 EMF_Calicoef;
+    _iq24 PosiElecPU_Cali;                 //observed angle value correction value PU
+    _iq24 PosiElecPU_Com;                  //observed angle value after correction PU
+    _iq24 Kposcali;                        //observed angle correction coefficient
 
-    LPF_First_Order_Type    SpeedLPF1st_M;
-    Struct_Cossin_Type      Triangle;
-
-    Truth_Verify_Type Inimark;
-    uint8_t Posicom_Enable;
-    uint8_t Obs_Calcnt;
-} Observer_Cal_Structure_Type;
-
-//observer structure prototype
+    Truth_Verify_Type Inimark;             //initialization flag
+    uint8_t Posicom_Enable;                //angle compensation enable (unused)
+    uint16_t Settling_Cnt;                 //settling time counter
+    uint16_t Settling_Set;                 //settling time count setting
+} SMO_Cal_Structure_Type;  //SMO observation structure
+// SMO observer structure prototype
 typedef struct
 {
-    Observer_Paramter_Type       Para;              // Observer parameter structure
-    Speed_PLL_Type               Speed_PLL;         // PLL parameter structure
-    Observer_Cal_Structure_Type  Cal_Struc;         // observer calculation structure
-    Observer_Adaptor_type    Adaptor;               // EMF filter structure
-    BuffPara_Type            SpeedBuffPara;         // speed average calculation parameter structure
-} Motor_Observer_Type;
+    SMO_Paramter_Type Para;              //observer parameter structure
+    Speed_PLL_Type Speed_PLL;            //speed observation PLL parameter structure
+    SMO_Cal_Structure_Type Cal_Struc;    //SMO observer calculation structure
+    BuffPara_Type SpeedBuffPara;         //SMO observed speed average calculation parameter
+} Motor_SMO_Type;
 /* Exported constants -------------------------------------------------------*/
-#define SPEED_CONTROL_M            0x0001       //Control mode 0: torque control; 1: Speed control 1
-#define STARTUP_FAILURE_M          0x0004       //Failed to start
-#define SPEED_ABNORMAL_M           0x0008       //Speed feedback Abnormal
-#define BRAKE_RES_ON_M             0x0010       //Brake trigger
-#define MOTOR_OVER_CURR_SOFT_M     0x0040       //Software overcurrent
-#define DC_OVER_CURR_SOFT_M        0x0080       //DC software overcurrent
-#define DC_OVER_CURR_HARD_M        0x0100       //DC hardware overcurrent
-#define MOTOR_STALL_M              0x0200       //Motor stall
-#define DC_OVER_VOLT               0x0400       //Bus overvoltage
-#define DC_UNDER_VOLT              0x0800       //Bus undervoltage
-#define MOTOR_OVERLOAD_M           0x2000       //Motor overload
-#define POSITION_FAILUE_M          0x4000       //Positioning failure
-#define PHASELOSS_FALUT            0x8000       //Phase loss
-#define MOTOR_UNDERLOAD_M          0x0002       //Motor underload
+#define SPEED_CONTROL_M            0x0001      //motor 1 speed or torque control mode 0: torque control; 1: speed control
+#define FIRST_START_M              0x0002      //motor 1 first startup flag
+#define STARTUP_FAILURE_M          0x0004      //motor 1 startup failure
+#define SPEED_ABNORMAL_M           0x0008      //motor 1 speed feedback abnormal
+#define BRAKE_RES_ON_M             0x0010      //motor 1 brake resistor connected
+#define MOTOR_OVER_HEAT_M          0x0020      //motor 1 overheat
+#define MOTOR_OVER_CURR_SOFT_M     0x0040      //motor 1 software overcurrent
+#define DC_OVER_CURR_SOFT_M        0x0080      //motor 1 DC software overcurrent
+#define DC_OVER_CURR_HARD_M        0x0100      //motor 1 DC hardware overcurrent
+#define MOTOR_STALL_M              0x0200      //motor stall
+#define DC_OVER_VOLT               0x0400      //bus overvoltage
+#define DC_UNDER_VOLT              0x0800      //bus undervoltage
+#define MOTOR_REVERSE_M            0x1000      //motor reverse rotation
+#define MOTOR_OVERLOAD_M           0x2000      //motor overload
+#define POSITION_FAILUE_M          0x4000      //positioning failure
+#define PHASELOSS_FALUT            0x8000      //phase-loss fault
+#define MOTOR_UNDERLOAD_M          0x0002      //underload fault
 
-// User-defined error detection
-#define NTC_OVER_ERR            0x0020          // NTC over temperature
-#define NTC_OPEN_ERR            0x1000          // NTC open circuit
 
-#define PI_1_Q24                _IQ(3.14159265) //PI
-#define PI_2_Q24                _IQ(6.28318531) //2*PI    7179586476925286766559
-#define PI_2_Q16                _IQ16(6.2831853)//2*PI
-#define DIV_PI_2_Q24            _IQ(0.15915494) //1/(2*PI)309189533576888376337251
-#define PI_05_Q24               _IQ(1.57079633) //0.5*PI67948966192313216916398
-#define Three_Q24               _IQ(3.0)        //3.0
-#define Three_Q16               _IQ16(3.0)      //3.0
-#define SQRT3_Q24               _IQ(1.73205081) //SQRT(3)
-#define SQRT3_Q16               _IQ16(1.732051) //SQRT(3)
-#define SQRT2_Q24               _IQ(1.41421356) //SQRT(2)
-#define UNIT_Q24                _IQ(1.0)        //1.0
-#define HALF_Q24                _IQ(0.5)        //0.5
-#define QUARD_Q24               _IQ(0.25)       //0.5
-#define DIV_SQRT3_Q24           _IQ(0.57735027) //1/SQRT(3)
-#define SQRT3_DIV2_Q24          _IQ(0.86602540) //SQRT(3)
-#define SQRT_2DIV3_Q24          _IQ(0.81649658) //SQRT(2/3)
-#define ONE_HALF_Q24            _IQ(1.50)       //1.5
-#define DIV_MIN_Q24             _IQ(0.000001)   // Minimum divisor limit
+#define PI_1_Q24                _IQ(3.14159265)     //PI
+#define PI_2_Q24                _IQ(6.28318531)     //2*PI    7179586476925286766559
+#define PI_2_Q16                _IQ16(6.28318531)   //2*PI
+#define DIV_PI_2_Q24            _IQ(0.15915494)     //1/(2*PI)309189533576888376337251
+#define PI_05_Q24               _IQ(1.57079633)     //0.5*PI67948966192313216916398
+#define Three_Q24               _IQ(3.0)            //3.0
+#define Three_Q16               _IQ16(3.0)          //3.0
+#define SQRT3_Q24               _IQ(1.73205081)     //SQRT(3)
+#define SQRT3_Q16               _IQ16(1.732051)     //SQRT(3)
+#define SQRT2_Q24               _IQ(1.41421356)     //SQRT(2)
+#define UNIT_Q24                _IQ(1.0)            //1.0
+#define HALF_Q24                _IQ(0.5)            //0.5
+#define QUARD_Q24               _IQ(0.25)           //0.25
+#define DIV_SQRT3_Q24           _IQ(0.57735027)     //1/SQRT(3)
+#define SQRT3_DIV2_Q24          _IQ(0.86602540)     //SQRT(3)/2
+#define SQRT_2DIV3_Q24          _IQ(0.81649658)     //SQRT(2/3)
+#define ONE_HALF_Q24            _IQ(1.50)           //1.5
+#define DIV_MIN_Q24             _IQ(0.000001)       //minimum limit of divisor
 
 #define U8_MAX     ((uint8_t)255)
 #define S8_MAX     ((int8_t)127)
@@ -622,7 +494,7 @@ typedef struct
 #define S32_MAX    ((int32_t)2147483647)
 #define S32_MIN    ((int32_t)-2147483648)
 
-// Sine table definition prototype
+//Sine table definition prototype
 #define SIN_TABLE_1024 {\
 0x00000000,0x0001921F,0x0003243A,0x0004B64D,0x00064855,0x0007DA4D,0x00096C32,0x000AFE00,\
 0x000C8FB2,0x000E2146,0x000FB2B7,0x00114401,0x0012D520,0x00146611,0x0015F6D0,0x00178758,\
@@ -657,7 +529,7 @@ typedef struct
 0x00FEC46D,0x00FEEA9C,0x00FF0E57,0x00FF2F9D,0x00FF4E6D,0x00FF6AC7,0x00FF84AB,0x00FF9C18,\
 0x00FFB10F,0x00FFC38E,0x00FFD397,0x00FFE128,0x00FFEC43,0x00FFF4E5,0x00FFFB10,0x00FFFEC4}
 
-//1.0 Limiter table definition, limiter range 3
+//1.0 limit table definition, limit range 3
 #define MAG100_LIMIT_TABLE {\
 0x00FF017D,0x00FE05EC,0x00FD0D3D,0x00FC1764,0x00FB2451,0x00FA33F9,0x00F9464D,0x00F85B42,\
 0x00F772CA,0x00F68CDB,0x00F5A968,0x00F4C866,0x00F3E9CA,0x00F30D89,0x00F23399,0x00F15BEE,\
@@ -692,7 +564,7 @@ typedef struct
 0x0096C69D,0x0096926B,0x00965E6F,0x00962AA9,0x0095F718,0x0095C3BC,0x00959094,0x00955DA1,\
 0x00952AE2,0x0094F857,0x0094C5FE,0x009493D9,0x009461E6,0x00943025,0x0093FE97,0x0093CD3A}
 
-//0.96 Limit table definition, amplitude square limit range 2.9604
+//0.98 limit table definition, amplitude square limit range 2.9604
 #define MAG098_LIMIT_TABLE {\
 0x00FEF70F,0x00FDF14E,0x00FCEEAD,0x00FBEF1C,0x00FAF28C,0x00F9F8ED,0x00F90231,0x00F80E4B,\
 0x00F71D2C,0x00F62EC6,0x00F5430E,0x00F459F5,0x00F37370,0x00F28F73,0x00F1ADF2,0x00F0CEE1,\
@@ -727,7 +599,7 @@ typedef struct
 0x0094C927,0x009494EE,0x009460EC,0x00942D21,0x0093F98B,0x0093C62B,0x00939301,0x0093600B,\
 0x00932D4A,0x0092FABE,0x0092C865,0x00929640,0x0092644E,0x00923290,0x00920103,0x0091CFA9}
 
-//0.96 Limit table definition, amplitude square limit range 2.9216
+//0.96 limit table definition, amplitude square limit range 2.9216
 #define MAG096_LIMIT_TABLE {\
 0x00FEEBF9,0x00FDDB69,0x00FCCE3B,0x00FBC45E,0x00FABDC2,0x00F9BA54,0x00F8BA06,0x00F7BCC6,\
 0x00F6C286,0x00F5CB36,0x00F4D6C8,0x00F3E52D,0x00F2F659,0x00F20A3C,0x00F120CB,0x00F039F8,\
@@ -762,7 +634,7 @@ typedef struct
 0x0092C10C,0x00928CD4,0x009258D3,0x00922509,0x0091F176,0x0091BE1A,0x00918AF4,0x00915803,\
 0x00912548,0x0090F2C2,0x0090C070,0x00908E52,0x00905C69,0x00902AB3,0x008FF930,0x008FC7E0}
 
-//0.94 Definition of limiter table, amplitude squared limit range 2.8836
+//0.94 limit table definition, amplitude square limit range 2.8836
 #define MAG094_LIMIT_TABLE {\
 0x00FEE02E,0x00FDC420,0x00FCABBE,0x00FB96F7,0x00FA85B5,0x00F977E6,0x00F86D77,0x00F76657,\
 0x00F66274,0x00F561BE,0x00F46423,0x00F36995,0x00F27203,0x00F17D5E,0x00F08B99,0x00EF9CA3,\
@@ -797,7 +669,7 @@ typedef struct
 0x0090AE27,0x009079F6,0x009045FE,0x0090123E,0x008FDEB6,0x008FAB65,0x008F784A,0x008F4566,\
 0x008F12B8,0x008EE03F,0x008EADFC,0x008E7BEE,0x008E4A14,0x008E186E,0x008DE6FC,0x008DB5BE}
 
-//0.92 Definition of limiter table, amplitude squared limit range 2.8836
+//0.92 limit table definition, amplitude square limit range 2.8836
 #define MAG092_LIMIT_TABLE {\
 0x00FED39E,0x00FDAB55,0x00FC870C,0x00FB66AC,0x00FA4A1F,0x00F93150,0x00F81C2A,0x00F70A99,\
 0x00F5FC89,0x00F4F1E7,0x00F3EAA1,0x00F2E6A4,0x00F1E5E0,0x00F0E844,0x00EFEDBF,0x00EEF641,\
@@ -832,7 +704,7 @@ typedef struct
 0x008E9052,0x008E5C32,0x008E284B,0x008DF49D,0x008DC127,0x008D8DE8,0x008D5AE2,0x008D2812,\
 0x008CF579,0x008CC316,0x008C90E9,0x008C5EF1,0x008C2D2F,0x008BFBA2,0x008BCA48,0x008B9923}
 
-//0.90 Limiter table definition, amplitude square limit range 2.8100
+//0.90 limit table definition, amplitude square limit range 2.8100
 #define MAG090_LIMIT_TABLE {\
 0x00FEC637,0x00FD90E6,0x00FC5FF1,0x00FB333E,0x00FA0AB4,0x00F8E63A,0x00F7C5BA,0x00F6A91C,\
 0x00F59049,0x00F47B2E,0x00F369B4,0x00F25BC8,0x00F15157,0x00F04A4D,0x00EF4697,0x00EE4625,\
@@ -867,7 +739,7 @@ typedef struct
 0x008C676B,0x008C3364,0x008BFF97,0x008BCC02,0x008B98A7,0x008B6585,0x008B329A,0x008AFFE7,\
 0x008ACD6B,0x008A9B26,0x008A6918,0x008A373F,0x008A059C,0x0089D42F,0x0089A2F7,0x008971F3}
 
-//0.88 Definition of limiter table, amplitude squared limit range 2.7744
+//0.88 limit table definition, amplitude square limit range 2.7744
 #define MAG088_LIMIT_TABLE {\
 0x00FEB7E6,0x00FD74AE,0x00FC3639,0x00FAFC68,0x00F9C71F,0x00F89642,0x00F769B8,0x00F64165,\
 0x00F51D31,0x00F3FD03,0x00F2E0C5,0x00F1C860,0x00F0B3BC,0x00EFA2C6,0x00EE9569,0x00ED8B8F,\
@@ -902,7 +774,7 @@ typedef struct
 0x008A3351,0x0089FF6C,0x0089CBC1,0x00899850,0x00896518,0x0089321A,0x0088FF54,0x0088CCC6,\
 0x00889A70,0x00886852,0x0088366A,0x008804B9,0x0087D33F,0x0087A1FA,0x008770EB,0x00874010}
 
-//0.86 Limit table definition, amplitude square limit range 2.7396
+//0.86 limit table definition, amplitude square limit range 2.7396
 #define MAG086_LIMIT_TABLE {\
 0x00FEA895,0x00FD5683,0x00FC09A5,0x00FAC1DA,0x00F97F01,0x00F840FA,0x00F707A8,0x00F5D2ED,\
 0x00F4A2AB,0x00F376C9,0x00F24F2B,0x00F12BB8,0x00F00C57,0x00EEF0EF,0x00EDD96A,0x00ECC5B2,\
@@ -937,9 +809,10 @@ typedef struct
 0x0087F3E5,0x0087C02B,0x00878CAC,0x00875967,0x0087265C,0x0086F38B,0x0086C0F3,0x00868E93,\
 0x00865C6C,0x00862A7D,0x0085F8C6,0x0085C745,0x008595FB,0x008564E8,0x0085340A,0x00850363}
 
-/* Exported macro ------------------------------------------------------------*/
+/* Exported variables -------------------------------------------------------*/
+/* Exported macro -----------------------------------------------------------*/
 #define _IQMPY_MACRO(A,B)     (signed long)( ((signed long long)A *B )>>24)
 #define _IQ16MPY_MACRO(A,B)   (signed long)( ((signed long long)A *B )>>16)
 
-/* Exported functions ------------------------------------------------------- */
+/* Exported functions -------------------------------------------------------*/
 #endif

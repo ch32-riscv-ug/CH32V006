@@ -1,8 +1,8 @@
 /********************************** (C) COPYRIGHT  *******************************
  * File Name          : adcsample.h
  * Author             : WCH
- * Version            : V1.0.0
- * Date               : 2026/08/05
+ * Version            : V1.0.1
+ * Date               : 2026/11/05
  * Description        : This file contains all the functions prototypes for the
  *                       firmware library.
  *********************************************************************************
@@ -13,17 +13,11 @@
 #ifndef ADCSAMPLE_H
 #define ADCSAMPLE_H
 
-#include "drivers.h"
-#include "common.h"
+#include <stdbool.h>
+#include <stdint.h>
+#include "def.h"
 
-// ADC采样
-FAST_FUNC void AdcSample(bool isNeedSampleCurrent);
-
-// ADC采样通道切换
-FAST_FUNC void AdcSampleChannelCharge(void);
-
-// ADC触发点
-FAST_FUNC void AdcTriggerPoint(uint16_t cnt);
+// AdcSampleLoop: ADC cyclic sampling of voltage and current
+void AdcSampleLoop(void);
 
 #endif
-

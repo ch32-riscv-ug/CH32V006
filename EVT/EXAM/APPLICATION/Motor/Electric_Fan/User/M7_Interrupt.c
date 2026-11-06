@@ -1,15 +1,3 @@
-/********************************** (C) COPYRIGHT *******************************
- * File Name          : M7_Interrupt.c
- * Author             : WCH
- * Version            : V1.0.2
- * Date               : 2026/08/26
- * Description        : Interrupt configuration
-
-*********************************************************************************
-* Copyright (c) 2021 Nanjing Qinheng Microelectronics Co., Ltd.
-* Attention: This software (modified or not) and binary are used for
-* microcontroller manufactured by Nanjing Qinheng Microelectronics.
-*******************************************************************************/
 /* Includes -----------------------------------------------------------------*/
 #include "M0_Control_Library.h"
 
@@ -21,113 +9,131 @@ void TIM1_UP_IRQHandler(void) __attribute__((interrupt("WCH-Interrupt-fast")));
 void TIM1_BRK_IRQHandler(void) __attribute__((interrupt("WCH-Interrupt-fast")));
 void NMI_Handler(void) __attribute__((interrupt("WCH-Interrupt-fast")));
 void HardFault_Handler(void) __attribute__((interrupt("WCH-Interrupt-fast")));
-//void Waveform_Display (void);
+void Waveform_Display (void);//Waveform display variable setup
 
 /* Private variables --------------------------------------------------------*/
 /* Variables ----------------------------------------------------------------*/
-/*********************************************************************
- * @fn      Interrupt_Configuration
- *
- * @brief   Interrupt priority configuration
- *
- * @return  none
- */
+/******************************************************************************
+* Function Name  : Interrupt_Configuration
+* Description    : Interrupt priority configuration
+* Input          : None
+* Output         : None
+* Return         : None
+******************************************************************************/
 void Interrupt_Configuration(void)
 {
-    NVIC_InitTypeDef NVIC_InitStructure = {0};
-    NVIC_PriorityGroupConfig(NVIC_PriorityGroup_1);             
+    NVIC_InitTypeDef NVIC_InitStructure;
+    NVIC_PriorityGroupConfig(NVIC_PriorityGroup_1);             //Interrupt priority group configuration
 
-    NVIC_InitStructure.NVIC_IRQChannel = ADC_IRQn;             
-    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;  
-    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;         
-    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;             
-    NVIC_Init(&NVIC_InitStructure);                           
+    //ADC injection interrupt configuration
+    NVIC_InitStructure.NVIC_IRQChannel = ADC_IRQn;              //Interrupt channel: ADC_IRQn
+    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;   //Preemption priority: 0
+    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;          //Sub priority: 1
+    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;             //Interrupt enable
+    NVIC_Init(&NVIC_InitStructure);                             //Write configuration into registers
 
-    NVIC_InitStructure.NVIC_IRQChannel = TIM1_UP_IRQn;          
-    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;  
-    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;         
-    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;             
-    NVIC_Init(&NVIC_InitStructure);                             
+    //Timer1 interrupt configuration
+    NVIC_InitStructure.NVIC_IRQChannel = TIM1_UP_IRQn;          //Interrupt channel: TIM1_UP_IRQn
+    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;   //Preemption priority: 0
+    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;          //Sub priority: 2
+    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;             //Interrupt enable
+    NVIC_Init(&NVIC_InitStructure);                             //Write configuration into registers
 
-    NVIC_InitStructure.NVIC_IRQChannel = TIM1_BRK_IRQn;         
-    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;   
-    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;          
-    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;             
-    NVIC_Init(&NVIC_InitStructure);                             
-    TIM_ClearITPendingBit(TIM1, TIM_IT_Break);                  
-    TIM_ITConfig(TIM1, TIM_IT_Break,ENABLE);                    
+    //Brake interrupt configuration
+    NVIC_InitStructure.NVIC_IRQChannel = TIM1_BRK_IRQn;         //Interrupt channel: TIM1_BRK_IRQn
+    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;   //Preemption priority: 0
+    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;          //Sub priority: 1
+    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;             //Interrupt enable
+    NVIC_Init(&NVIC_InitStructure);                             //Write configuration into registers
+    TIM_ClearITPendingBit(TIM1, TIM_IT_Break);                  //Clear the brake interrupt pending flag
+    TIM_ITConfig(TIM1, TIM_IT_Break,ENABLE);                    //Enable the brake interrupt
 
+    //SysTick interrupt configuration
     NVIC_InitStructure.NVIC_IRQChannel = SysTicK_IRQn;
-    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;   
-    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;          
+    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;   //Preemption priority: 1
+    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;          //Sub priority: 2
     NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
     NVIC_Init(&NVIC_InitStructure);
 }
 
-/*********************************************************************
- * @fn      TIM1_UP_IRQHandler
- *
- * @brief   Timer 1 underflow interrupt
- *
- * @return  none
- */
-__attribute__((section(".highcode")))
+/******************************************************************************
+* Function Name  : TIM1_UP_IRQHandler
+* Description    : Timer1 update interrupt, waveform data output processing
+* Input          : None
+* Output         : None
+* Return         : None
+******************************************************************************/
 void TIM1_UP_IRQHandler(void)
 {
-    if( RunningStatus_M == PRESTART)
+    if( RunningStatus_M ==PRESTART)//Motor start processing
     {
-        TIM1->CH4CVR = 48;
-        ADC_Start(ENABLE);
+        TIM1->CH4CVR = 48;//ADC trigger instant
+        ADC_Start(ENABLE);//ADC start
         RunningStatus_M=DIRCHECK;
-    }
+        if(RunningStatus_M==DIRCHECK)
+        {
+           //Initialize the LPF parameters of the observed d axis current
+            MStruc_M.IdLPF1stH.Input_Coef  = IDQLPF_HIGH_INPUT_COEF;
+            MStruc_M.IdLPF1stH.Output_Coef = IDQLPF_HIGH_OUTPUT_COEF;
 
+           //Initialize the LPF parameters of the observed q axis current
+            MStruc_M.IqLPF1stH.Input_Coef  = IDQLPF_HIGH_INPUT_COEF;
+            MStruc_M.IqLPF1stH.Output_Coef = IDQLPF_HIGH_OUTPUT_COEF;
+
+            //Increase the PI gain of the current loop
+            Mpid_M.dCurr.Kp=Mpid_M.dCurr.Kp<<FLYSTART_CURRLOOP_GAIN_M;
+            Mpid_M.dCurr.Ki=Mpid_M.dCurr.Ki<<FLYSTART_CURRLOOP_GAIN_M;
+            Mpid_M.qCurr.Kp=Mpid_M.qCurr.Kp<<FLYSTART_CURRLOOP_GAIN_M;
+            Mpid_M.qCurr.Ki=Mpid_M.qCurr.Ki<<FLYSTART_CURRLOOP_GAIN_M;
+        }
+    }
     if((Flystart_M.Process_mark==TRUE)&&(RunningStatus_M == DIRCHECK))
      {
-         Flystart_Switch(&Flystart_M,&SpeedRamp_M);
+         Flystart_Switch(&Flystart_M,&Ramp_M);
      }
 
-    ADC_SoftwareStartConvCmd(ADC1, ENABLE);
-    DCBUS_Volt_Cal(&ADC_M,ADC1);
+    DCBUS_Volt_Cal(&ADC_M,ADC1);//Bus voltage calculation
 
-//    Waveform_Display();
-    TIM1->INTFR = (uint16_t)~TIM_FLAG_Update;
+    ADC_SoftwareStartConvCmd(ADC1, ENABLE);//Bus voltage sampling trigger
+
+    // Waveform_Display();
+    TIM1->INTFR = (uint16_t)~TIM_FLAG_Update;//Clear the update event interrupt flag
 }
-/*********************************************************************
- * @fn      TIM1_BRK_IRQHandler
- *
- * @brief   Brake interrupt
- *
- * @return  none
- */
+
+/******************************************************************************
+* Function Name  : TIM1_BRK_IRQHandler
+* Description    : Brake interrupt, set the fault
+* Input          : None
+* Output         : None
+* Return         : None
+******************************************************************************/
 void TIM1_BRK_IRQHandler(void)
 {
     Protection_SetFault(DC_OVER_CURR_HARD_M);
     TIM_ClearITPendingBit(TIM1, TIM_IT_Break);
 }
-/*********************************************************************
- * @fn      NMI_Handler
- *
- * @brief   This function handles NMI exception.
- *
- * @return  none
- */
+
+/*******************************************************************************
+* Function Name  : NMI_Handler
+* Description    : This function handles NMI exception.
+* Input          : None
+* Return         : None
+*******************************************************************************/
 void NMI_Handler(void)
 {
-    while (1)
-    {
-    }
+
 }
-/*********************************************************************
- * @fn      HardFault_Handler
- *
- * @brief   This function handles Hard Fault exception.
- *
- * @return  none
- */
+
+/*******************************************************************************
+* Function Name  : HardFault_Handler
+* Description    : This function handles Hard Fault exception.
+* Input          : None
+* Return         : None
+*******************************************************************************/
 void HardFault_Handler(void)
 {
-    NVIC_SystemReset();
-    while (1)
-    {
-    }
+  while (1)
+  {
+      //NVIC_SystemReset();
+  }
 }
