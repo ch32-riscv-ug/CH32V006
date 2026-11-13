@@ -1,0 +1,17 @@
+MCU C code generation manifest
+Software Version: V1.2
+Project: WCHGUIProject
+Screen: 320x240
+Pages: 2
+
+Files:
+- wui_user/wui_page.h
+- wui_user/wui_page.c
+- wui_user/wui_page_none.h
+- wui_user/wui_page_none.c
+- wui_user/wui_page_main.h
+- wui_user/wui_page_main.c
+- wui_user/images.h
+- wui_user/wui_asset.h
+- wui_user/wui_asset.c
+- wui_user/images.bin

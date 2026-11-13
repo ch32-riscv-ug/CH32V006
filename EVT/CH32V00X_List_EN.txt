@@ -32,8 +32,9 @@ Directory
   |      |      |      |      |      |-- Electric_Fan:Low-pressure fan application
   |      |      |      |      |      |-- voilent_fan: BLDC-based high-speed fan applications
   |      |      |      |      |      |-- BLDC_Motor: Application of sensorless square wave BLDC motor
-  |      |      |      |      |-- WUI
-  |      |      |      |      |      |-- wui_demo: gui lcd demo
+  |      |      |      |      |-- WCHGUI
+  |      |      |      |      |      |-- WCH-GUI-FLASH: GUI FLASH
+  |      |      |      |      |      |-- WCH-GUI-LIVE: GUI LIVE
   |      |      |      |-- DMA
   |      |      |      |      |-- DMA_MEM2MEM: Memory to memory mode routine
   |      |      |      |      |-- DMA_MEM2PERIP: Memory to peripheral mode, and peripheral to memory mode routine, see peripheral sub-routine

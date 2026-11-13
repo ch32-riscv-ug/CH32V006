@@ -32,8 +32,9 @@ https://wch.cn
   |      |      |      |      |      |-- Electric_Fan：低压风扇应用
   |      |      |      |      |      |-- Voilent_Fan：基于BLDC的高速风扇应用
   |      |      |      |      |      |-- BLDC_Motor：无感方波BLDC电机应用
-  |      |      |      |      |-- WUI
-  |      |      |      |      |      |-- wui_demo: gui lcd 例程
+  |      |      |      |      |-- WCHGUI
+  |      |      |      |      |      |-- WCH-GUI-FLASH: GUI 内外部FLASH
+  |      |      |      |      |      |-- WCH-GUI-LIVE: GUI 屏幕显示
   |      |      |      |-- DMA
   |      |      |      |      |-- DMA_MEM2MEM：储存器到储存器模式例程
   |      |      |      |      |-- DMA_MEM2PERIP：储存器到外设模式、外设到储存器模式例程见各外设子例程
