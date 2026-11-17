@@ -9,41 +9,41 @@
 			"series": "CH32V006",
 			"rtos": "NoneOS",
 			"mcu": "CH32V006K8U6",
-			"description": "CH32V006 series is based on barley RISC-V2C core design of industrial-grade general-purpose microcontrollers, support for 48MHz system frequency, with a wide range of voltage, low power consumption, single and dual-wire debugging and so on.CH32V006 series chip built-in 1 group of 12-bit analog-to-digital converter ADC, the sampling rate of up to 3Msps; built-in OPA op-amps to support the high-speed mode to increase the swing rate of the pressure, and the positive side of its It supports 3-channel polling; it provides 2 sets of voltage comparator CMP, 7-channel DMA controller, 8-channel TouchKey, multi-group timer, 2 sets of USART serial port, I2C, SPI and other rich peripheral resources.",
-			"tempratureScope": "",
+			"description": "Website: https://www.wch.cn/products/CH32V006.html\\nThe CH32V00X series is an industrial-grade general-purpose microcontroller based on the 32-bit RISC-V instruction set and architecture. Using highland barley V2C kernel, RV32EmC instruction set, support level 2 interrupt nesting. This series of products is loaded with a wealth of peripheral interfaces and functional modules. Its internal organizational structure meets low cost and low power embedded application scenarios.",
+			"tempratureScope": "CH32V006K8U6{-40℃~85℃}; CH32V006K8U7{-40℃~105℃}",
 			"artifactType": "executable",
 			"link": "WCH-Link",
-			"peripheral_version": "1.0",
+			"peripheral_version": "1.5",
 			"calibrateSupport": false,
 			"calibrateCommand": "",
-			"UIConfigSupport": true,
-			"UIConfigCommand": "${WCH:WCHGUIDesigner:default}/WCHGUIDesigner.exe --generated-output ${project_loc}",
+			"UIConfigSupport": false,
+			"UIConfigCommand": "",
 			"externalFlashSupport": false
 		},
 		"linkedFolders": [
 			{
 				"name": "Core",
-				"location": "../../../../SRC/Core"
+				"location": "../../../SRC/Core"
 			},
 			{
 				"name": "Debug",
-				"location": "../../../../SRC/Debug"
+				"location": "../../../SRC/Debug"
 			},
 			{
 				"name": "Ld",
-				"location": "../../../../SRC/Ld"
+				"location": "../../../SRC/Ld"
 			},
 			{
 				"name": "Peripheral",
-				"location": "../../../../SRC/Peripheral"
+				"location": "../../../SRC/Peripheral"
 			},
 			{
 				"name": "Startup",
-				"location": "../../../../SRC/Startup"
+				"location": "../../../SRC/Startup"
 			},
 			{
-				"name": "WCHGUI_Lib",
-				"location": "../WCHGUI_Lib"
+				"name": "WVUI_Lib",
+				"location": "../WVUI_Lib"
 			}
 		],
 		"removedResources": [
@@ -68,7 +68,7 @@
 				"name": "*.tar"
 			}
 		],
-		"projectName": "CH32V006K8U",
+		"projectName": "DEMO1",
 		"architecture": "RISC-V",
 		"projectType": "c"
 	},
@@ -88,10 +88,7 @@
 				"pre_script_description": "",
 				"post_script": "",
 				"post_script_description": "",
-				"excludeResources": [
-					"${project}/Peripheral/src/ch32v00x_opa.c",
-					"${project}/User/LCD_ex.c"
-				],
+				"excludeResources": [],
 				"optimization": {
 					"level": "size",
 					"message_length": true,
@@ -135,7 +132,7 @@
 				},
 				"debugging": {
 					"debug_level": "default",
-					"debug_format": "default",
+					"debug_format": "dwarf4",
 					"generate_prof_information": false,
 					"generate_gprof_information": false,
 					"other_debugging_flags": ""
@@ -177,17 +174,18 @@
 							"${project}/Core",
 							"${project}/User",
 							"${project}/Peripheral/inc",
-							"${project}/User/wui",
 							"${project}/User/Drivers",
-							"${project}/User/wui_port",
-							"${project}/User/wui_user",
-							null
+							"${project}/User/port_template",
+							"${project}/User/wvui_app",
+							"${project}/User/wvui",
+							"${project}/WVUI_Lib",
+							"${project}/WVUI_Lib/widgets"
 						],
 						"include_system_paths": [],
 						"include_files": []
 					},
 					"optimization": {
-						"language_standard": "gnu99",
+						"language_standard": "gnu11",
 						"other_optimization_flags": ""
 					},
 					"warnings": {
@@ -261,9 +259,7 @@
 					"miscellaneous": {
 						"picolibc": "disabled",
 						"linker_flags": [],
-						"other_objects": [
-							"${project}/User/wui/libwui_v006_0.2.a"
-						],
+						"other_objects": [],
 						"generate_map": "\"${BuildArtifactFileBaseName}.map\"",
 						"cross_reference": false,
 						"print_link_map": false,
@@ -274,7 +270,7 @@
 						"verbose": false,
 						"use_wch_printffloat": false,
 						"use_wch_printf": true,
-						"use_iqmath": true,
+						"use_iqmath": false,
 						"other_linker_flags": ""
 					}
 				},
@@ -297,9 +293,7 @@
 					"miscellaneous": {
 						"picolibc": "disabled",
 						"linker_flags": [],
-						"other_objects": [
-							"${project}/User/wui/libwui_v006_0.2.a"
-						],
+						"other_objects": [],
 						"generate_map": "\"${BuildArtifactFileBaseName}.map\"",
 						"cross_reference": false,
 						"print_link_map": false,
@@ -310,7 +304,7 @@
 						"verbose": false,
 						"use_wch_printffloat": false,
 						"use_wch_printf": true,
-						"use_iqmath": true,
+						"use_iqmath": false,
 						"other_linker_flags": ""
 					}
 				},
@@ -368,7 +362,7 @@
 					"save_restore": true,
 					"other_target_flags": ""
 				},
-				"component_toolchain": "${WCH:Toolchain:GCC12}",
+				"component_toolchain": "${WCH:Toolchain:GCC15}",
 				"name": "obj"
 			}
 		]
@@ -376,7 +370,7 @@
 	"flashConfig": {
 		"mcutype": "CH32V002/4/5/6/7",
 		"address": "0x08000000",
-		"target_path": "obj\\CH32V006K8U.hex",
+		"target_path": "obj/DEMO1.hex",
 		"clkSpeed": "High",
 		"debug_interface_mode": "1-wire serial",
 		"erase": true,
@@ -409,7 +403,7 @@
 			"enableNoZeroWaitingAreaFlash": false
 		},
 		"gdbCfg": {
-			"executable": "${WCH:Toolchain:GCC12}",
+			"executable": "${WCH:Toolchain:GCC15}",
 			"options": [],
 			"commands": [
 				"set mem inaccessible-by-default off",
@@ -457,8 +451,8 @@
 			"showDebugOutputTimestamps": true
 		},
 		"reserve": {
-			"PROGRAM_NAME": "obj/CH32V006K8U.elf",
-			"PROJECT_ATTR": "CH32V006K8U",
+			"PROGRAM_NAME": "obj/DEMO1.elf",
+			"PROJECT_ATTR": "DEMO1",
 			"PROJECT_BUILD_CONFIG_AUTO_ATTR": true,
 			"PROJECT_BUILD_CONFIG_ID_ATTR": "",
 			"ATTR_BUILD_BEFORE_LAUNCH_ATTR": 2,

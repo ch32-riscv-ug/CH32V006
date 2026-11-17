@@ -9,37 +9,41 @@
 			"series": "CH32V006",
 			"rtos": "NoneOS",
 			"mcu": "CH32V006K8U6",
-			"description": "Website: https://www.wch.cn/products/CH32V006.html\\nThe CH32V00X series is an industrial-grade general-purpose microcontroller based on the 32-bit RISC-V instruction set and architecture. Using highland barley V2C kernel, RV32EmC instruction set, support level 2 interrupt nesting. This series of products is loaded with a wealth of peripheral interfaces and functional modules. Its internal organizational structure meets low cost and low power embedded application scenarios.",
-			"tempratureScope": "CH32V006K8U6{-40℃~85℃}; CH32V006K8U7{-40℃~105℃}",
+			"description": "CH32V006 series is based on barley RISC-V2C core design of industrial-grade general-purpose microcontrollers, support for 48MHz system frequency, with a wide range of voltage, low power consumption, single and dual-wire debugging and so on.CH32V006 series chip built-in 1 group of 12-bit analog-to-digital converter ADC, the sampling rate of up to 3Msps; built-in OPA op-amps to support the high-speed mode to increase the swing rate of the pressure, and the positive side of its It supports 3-channel polling; it provides 2 sets of voltage comparator CMP, 7-channel DMA controller, 8-channel TouchKey, multi-group timer, 2 sets of USART serial port, I2C, SPI and other rich peripheral resources.",
+			"tempratureScope": "",
 			"artifactType": "executable",
 			"link": "WCH-Link",
-			"peripheral_version": "1.5",
+			"peripheral_version": "1.0",
 			"calibrateSupport": false,
 			"calibrateCommand": "",
-			"UIConfigSupport": false,
-			"UIConfigCommand": "",
+			"UIConfigSupport": true,
+			"UIConfigCommand": "${WCH:WCHGUIDesigner:default}/WCHGUIDesigner.exe --generated-output ${project_loc}",
 			"externalFlashSupport": false
 		},
 		"linkedFolders": [
 			{
+				"name": "WCHGUI_Lib",
+				"location": "../WCHGUI_Lib"
+			},
+			{
 				"name": "Core",
-				"location": "../../../../SRC/Core"
+				"location": "../../../SRC/Core"
 			},
 			{
 				"name": "Debug",
-				"location": "../../../../SRC/Debug"
+				"location": "../../../SRC/Debug"
 			},
 			{
 				"name": "Ld",
-				"location": "../../../../SRC/Ld"
+				"location": "../../../SRC/Ld"
 			},
 			{
 				"name": "Peripheral",
-				"location": "../../../../SRC/Peripheral"
+				"location": "../../../SRC/Peripheral"
 			},
 			{
 				"name": "Startup",
-				"location": "../../../../SRC/Startup"
+				"location": "../../../SRC/Startup"
 			}
 		],
 		"removedResources": [
@@ -64,7 +68,7 @@
 				"name": "*.tar"
 			}
 		],
-		"projectName": "wvui_ch32v006",
+		"projectName": "GUI_Onflash",
 		"architecture": "RISC-V",
 		"projectType": "c"
 	},
@@ -84,7 +88,10 @@
 				"pre_script_description": "",
 				"post_script": "",
 				"post_script_description": "",
-				"excludeResources": [],
+				"excludeResources": [
+					"${project}/Peripheral/src/ch32v00x_opa.c",
+					"${project}/User/LCD_ex.c"
+				],
 				"optimization": {
 					"level": "size",
 					"message_length": true,
@@ -128,7 +135,7 @@
 				},
 				"debugging": {
 					"debug_level": "default",
-					"debug_format": "dwarf4",
+					"debug_format": "default",
 					"generate_prof_information": false,
 					"generate_gprof_information": false,
 					"other_debugging_flags": ""
@@ -170,16 +177,17 @@
 							"${project}/Core",
 							"${project}/User",
 							"${project}/Peripheral/inc",
+							"${project}/User/wui",
 							"${project}/User/Drivers",
-							"${project}/User/port_template",
-							"${project}/User/wvui_app",
-							"${project}/User/wvui"
+							"${project}/User/wui_port",
+							"${project}/User/wui_user",
+							"${project}/WCHGUI_Lib"
 						],
 						"include_system_paths": [],
 						"include_files": []
 					},
 					"optimization": {
-						"language_standard": "gnu11",
+						"language_standard": "gnu99",
 						"other_optimization_flags": ""
 					},
 					"warnings": {
@@ -253,7 +261,9 @@
 					"miscellaneous": {
 						"picolibc": "disabled",
 						"linker_flags": [],
-						"other_objects": [],
+						"other_objects": [
+							"${project}/WCHGUI_Lib/libwui_v006_0.2.a"
+						],
 						"generate_map": "\"${BuildArtifactFileBaseName}.map\"",
 						"cross_reference": false,
 						"print_link_map": false,
@@ -264,7 +274,7 @@
 						"verbose": false,
 						"use_wch_printffloat": false,
 						"use_wch_printf": true,
-						"use_iqmath": false,
+						"use_iqmath": true,
 						"other_linker_flags": ""
 					}
 				},
@@ -287,7 +297,9 @@
 					"miscellaneous": {
 						"picolibc": "disabled",
 						"linker_flags": [],
-						"other_objects": [],
+						"other_objects": [
+							"${project}/WCHGUI_Lib/libwui_v006_0.2.a"
+						],
 						"generate_map": "\"${BuildArtifactFileBaseName}.map\"",
 						"cross_reference": false,
 						"print_link_map": false,
@@ -298,7 +310,7 @@
 						"verbose": false,
 						"use_wch_printffloat": false,
 						"use_wch_printf": true,
-						"use_iqmath": false,
+						"use_iqmath": true,
 						"other_linker_flags": ""
 					}
 				},
@@ -356,7 +368,7 @@
 					"save_restore": true,
 					"other_target_flags": ""
 				},
-				"component_toolchain": "${WCH:Toolchain:GCC15}",
+				"component_toolchain": "${WCH:Toolchain:GCC12}",
 				"name": "obj"
 			}
 		]
@@ -364,7 +376,7 @@
 	"flashConfig": {
 		"mcutype": "CH32V002/4/5/6/7",
 		"address": "0x08000000",
-		"target_path": "obj/wvui_ch32v006.hex",
+		"target_path": "obj\\GUI_Onflash.hex",
 		"clkSpeed": "High",
 		"debug_interface_mode": "1-wire serial",
 		"erase": true,
@@ -390,14 +402,14 @@
 			"configOptions": [
 				"-f \"${WCH:OpenOCD:default}/bin/wch-riscv.cfg\""
 			],
-			"host": "localhost",
+			"host": "127.0.0.1",
 			"port": 3333,
 			"skipDownloadBeforeDebug": false,
 			"enablePageEraser": false,
 			"enableNoZeroWaitingAreaFlash": false
 		},
 		"gdbCfg": {
-			"executable": "${WCH:Toolchain:GCC15}",
+			"executable": "${WCH:Toolchain:GCC12}",
 			"options": [],
 			"commands": [
 				"set mem inaccessible-by-default off",
@@ -445,8 +457,8 @@
 			"showDebugOutputTimestamps": true
 		},
 		"reserve": {
-			"PROGRAM_NAME": "obj/wvui_ch32v006.elf",
-			"PROJECT_ATTR": "wvui_ch32v006",
+			"PROGRAM_NAME": "obj/GUI_Onflash.elf",
+			"PROJECT_ATTR": "GUI_Onflash",
 			"PROJECT_BUILD_CONFIG_AUTO_ATTR": true,
 			"PROJECT_BUILD_CONFIG_ID_ATTR": "",
 			"ATTR_BUILD_BEFORE_LAUNCH_ATTR": 2,

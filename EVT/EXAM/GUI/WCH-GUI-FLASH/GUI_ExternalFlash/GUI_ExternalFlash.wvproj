@@ -22,28 +22,28 @@
 		},
 		"linkedFolders": [
 			{
+				"name": "WCHGUI_Lib",
+				"location": "../WCHGUI_Lib"
+			},
+			{
 				"name": "Core",
-				"location": "../../../../SRC/Core"
+				"location": "../../../SRC/Core"
 			},
 			{
 				"name": "Debug",
-				"location": "../../../../SRC/Debug"
+				"location": "../../../SRC/Debug"
 			},
 			{
 				"name": "Ld",
-				"location": "../../../../SRC/Ld"
+				"location": "../../../SRC/Ld"
 			},
 			{
 				"name": "Peripheral",
-				"location": "../../../../SRC/Peripheral"
+				"location": "../../../SRC/Peripheral"
 			},
 			{
 				"name": "Startup",
-				"location": "../../../../SRC/Startup"
-			},
-			{
-				"name": "WCHGUI_Lib",
-				"location": "../WCHGUI_Lib"
+				"location": "../../../SRC/Startup"
 			}
 		],
 		"removedResources": [
@@ -68,7 +68,7 @@
 				"name": "*.tar"
 			}
 		],
-		"projectName": "CH32V006K8U",
+		"projectName": "GUI_ExternalFlash",
 		"architecture": "RISC-V",
 		"projectType": "c"
 	},
@@ -181,7 +181,7 @@
 							"${project}/User/Drivers",
 							"${project}/User/wui_port",
 							"${project}/User/wui_user",
-							null
+							"${project}/WCHGUI_Lib"
 						],
 						"include_system_paths": [],
 						"include_files": []
@@ -262,7 +262,7 @@
 						"picolibc": "disabled",
 						"linker_flags": [],
 						"other_objects": [
-							"${project}/User/wui/libwui_v006_0.2.a"
+							"${project}/WCHGUI_Lib/libwui_v006_0.2.a"
 						],
 						"generate_map": "\"${BuildArtifactFileBaseName}.map\"",
 						"cross_reference": false,
@@ -298,7 +298,7 @@
 						"picolibc": "disabled",
 						"linker_flags": [],
 						"other_objects": [
-							"${project}/User/wui/libwui_v006_0.2.a"
+							"${project}/WCHGUI_Lib/libwui_v006_0.2.a"
 						],
 						"generate_map": "\"${BuildArtifactFileBaseName}.map\"",
 						"cross_reference": false,
@@ -376,7 +376,7 @@
 	"flashConfig": {
 		"mcutype": "CH32V002/4/5/6/7",
 		"address": "0x08000000",
-		"target_path": "obj\\CH32V006K8U.hex",
+		"target_path": "obj\\GUI_ExternalFlash.hex",
 		"clkSpeed": "High",
 		"debug_interface_mode": "1-wire serial",
 		"erase": true,
@@ -457,8 +457,8 @@
 			"showDebugOutputTimestamps": true
 		},
 		"reserve": {
-			"PROGRAM_NAME": "obj/CH32V006K8U.elf",
-			"PROJECT_ATTR": "CH32V006K8U",
+			"PROGRAM_NAME": "obj/GUI_ExternalFlash.elf",
+			"PROJECT_ATTR": "GUI_ExternalFlash",
 			"PROJECT_BUILD_CONFIG_AUTO_ATTR": true,
 			"PROJECT_BUILD_CONFIG_ID_ATTR": "",
 			"ATTR_BUILD_BEFORE_LAUNCH_ATTR": 2,

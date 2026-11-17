@@ -32,9 +32,6 @@ Directory
   |      |      |      |      |      |-- Electric_Fan:Low-pressure fan application
   |      |      |      |      |      |-- voilent_fan: BLDC-based high-speed fan applications
   |      |      |      |      |      |-- BLDC_Motor: Application of sensorless square wave BLDC motor
-  |      |      |      |      |-- WCHGUI
-  |      |      |      |      |      |-- WCH-GUI-FLASH: GUI FLASH
-  |      |      |      |      |      |-- WCH-GUI-LIVE: GUI LIVE
   |      |      |      |-- DMA
   |      |      |      |      |-- DMA_MEM2MEM: Memory to memory mode routine
   |      |      |      |      |-- DMA_MEM2PERIP: Memory to peripheral mode, and peripheral to memory mode routine, see peripheral sub-routine
@@ -45,6 +42,22 @@ Directory
   |      |      |      |      |-- BootAsUser:Boot Flash used for user flash
   |      |      |      |-- GPIO 
   |      |      |      |      |-- GPIO_Toggle: GPIO routine 
+  |      |      |      |-- GUI
+  |      |      |      |      |-- WCH-GUI-FLASH：WCH-GUI-FLASH routine(Low CPU usage) 
+  |      |      |      |      |      |--GUI_ExternalFlash: WCH-GUI-FLASH use external flash routine
+  |      |      |      |      |      |--GUI_Onflash：WCH-GUI-FLASH use internal flash routine
+  |      |      |      |      |      |--WCHGUI_Lib: WCH-GUI-FLASH core library (with low CPU usage)
+  |      |      |      |      |      |--DOC
+  |      |      |      |      |      |      |--Instructions for downloading external FLASH.pdf
+  |      |      |      |      |      |      |--WCHGUI software documentation.pdf
+  |      |      |      |      |      |--CH32V20x_WUI_DEMO.pdf
+  |      |      |      |      |      |--CH32V20x_WUI_DEMO.schdoc
+  |      |      |      |      |      |--CH32V20x_WUI_DEMO.kicad_sch
+  |      |      |      |      |-- WCH-GUI-LIVE：WCH-GUI-LIVE routine(Save storage resources)
+  |      |      |      |      |      |--DEMO1: WCH-GUI-LIVE basic routine
+  |      |      |      |      |      |--WVUI_Lib: WCH-GUI-LIVE core library(with save storage resources)
+  |      |      |      |      |      |--DOC
+  |      |      |      |      |      |      |--WCH-GUI-Live library Reference Manual.pdf 
   |      |      |      |-- I2C
   |      |      |      |      |-- I2C_7bit_Mode: 7-bit addressing mode, master/slave mode, transceiver routine
   |      |      |      |      |-- I2C_10bit_Mode: 10-bit addressing mode, master/slave mode transceiver routine

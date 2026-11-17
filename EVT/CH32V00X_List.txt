@@ -32,9 +32,6 @@ https://wch.cn
   |      |      |      |      |      |-- Electric_Fan：低压风扇应用
   |      |      |      |      |      |-- Voilent_Fan：基于BLDC的高速风扇应用
   |      |      |      |      |      |-- BLDC_Motor：无感方波BLDC电机应用
-  |      |      |      |      |-- WCHGUI
-  |      |      |      |      |      |-- WCH-GUI-FLASH: GUI 内外部FLASH
-  |      |      |      |      |      |-- WCH-GUI-LIVE: GUI 屏幕显示
   |      |      |      |-- DMA
   |      |      |      |      |-- DMA_MEM2MEM：储存器到储存器模式例程
   |      |      |      |      |-- DMA_MEM2PERIP：储存器到外设模式、外设到储存器模式例程见各外设子例程
@@ -44,7 +41,23 @@ https://wch.cn
   |      |      |      |      |-- FLASH_Program：FLASH的擦/读/写，以及快速编程 
   |      |      |      |      |-- BootAsUser：Boot Flash 用作用户区
   |      |      |      |-- GPIO
-  |      |      |      |      |-- GPIO_Toggle：GPIO例程  
+  |      |      |      |      |-- GPIO_Toggle：GPIO例程
+  |      |      |      |-- GUI
+  |      |      |      |      |-- WCH-GUI-FLASH：WCH-GUI-FLASH例程(CPU占用率低) 
+  |      |      |      |      |      |--GUI_ExternalFlash: WCH-GUI-FLASH 使用外部flash的例程
+  |      |      |      |      |      |--GUI_Onflash：WCH-GUI-FLASH 使用内部flash的例程
+  |      |      |      |      |      |--WCHGUI_Lib: WCH-GUI-FLASH 的核心库(CPU占用率低)
+  |      |      |      |      |      |--DOC
+  |      |      |      |      |      |      |--片外FLASH下载操作说明.pdf
+  |      |      |      |      |      |      |--沁恒WCHGUI软件说明文档.pdf
+  |      |      |      |      |      |--CH32V006-WUI-R1.pdf
+  |      |      |      |      |      |--CH32V006-WUI-R1.schdoc
+  |      |      |      |      |      |--CH32V006-WUI-R1.kicad_sch
+  |      |      |      |      |-- WCH-GUI-LIVE：WCH-GUI-LIVE例程(节省存储资源) 
+  |      |      |      |      |      |--DEMO1: WCH-GUI-LIVE的基础例程
+  |      |      |      |      |      |--WVUI_Lib: WCH-GUI-LIVE 的核心库(节省存储资源)
+  |      |      |      |      |      |--DOC
+  |      |      |      |      |      |      |--WCH-GUI-Live库参考手册.pdf   
   |      |      |      |-- I2C
   |      |      |      |      |-- I2C_7bit_Mode：7位地址模式，Master/Slave 模式收发例程
   |      |      |      |      |-- I2C_10bit_Mode：10位地址模式，Master/Slave 模式收发例程

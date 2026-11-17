@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <projectDescription>
-  <name>GUI_Onflash</name>
+  <name>DEMO1</name>
   <comment/>
   <projects/>
   <buildSpec>
@@ -24,32 +24,32 @@
     <link>
       <name>Core</name>
       <type>2</type>
-      <location>PARENT-4-PROJECT_LOC/SRC/Core</location>
+      <location>PARENT-3-PROJECT_LOC/SRC/Core</location>
     </link>
     <link>
       <name>Debug</name>
       <type>2</type>
-      <location>PARENT-4-PROJECT_LOC/SRC/Debug</location>
+      <location>PARENT-3-PROJECT_LOC/SRC/Debug</location>
     </link>
     <link>
       <name>Ld</name>
       <type>2</type>
-      <location>PARENT-4-PROJECT_LOC/SRC/Ld</location>
+      <location>PARENT-3-PROJECT_LOC/SRC/Ld</location>
     </link>
     <link>
       <name>Peripheral</name>
       <type>2</type>
-      <location>PARENT-4-PROJECT_LOC/SRC/Peripheral</location>
+      <location>PARENT-3-PROJECT_LOC/SRC/Peripheral</location>
     </link>
     <link>
       <name>Startup</name>
       <type>2</type>
-      <location>PARENT-4-PROJECT_LOC/SRC/Startup</location>
+      <location>PARENT-3-PROJECT_LOC/SRC/Startup</location>
     </link>
     <link>
-      <name>WCHGUI_Lib</name>
+      <name>WVUI_Lib</name>
       <type>2</type>
-      <location>PARENT-1-PROJECT_LOC/WCHGUI_Lib</location>
+      <location>PARENT-1-PROJECT_LOC/WVUI_Lib</location>
     </link>
   </linkedResources>
   <filteredResources>

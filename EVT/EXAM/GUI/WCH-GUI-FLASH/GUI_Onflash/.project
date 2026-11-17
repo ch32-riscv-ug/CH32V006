@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <projectDescription>
-  <name>DEMO1</name>
+  <name>GUI_Onflash</name>
   <comment/>
   <projects/>
   <buildSpec>
@@ -22,29 +22,34 @@
   </natures>
   <linkedResources>
     <link>
+      <name>WCHGUI_Lib</name>
+      <type>2</type>
+      <location>PARENT-1-PROJECT_LOC/WCHGUI_Lib</location>
+    </link>
+    <link>
       <name>Core</name>
       <type>2</type>
-      <location>PARENT-4-PROJECT_LOC/SRC/Core</location>
+      <location>PARENT-3-PROJECT_LOC/SRC/Core</location>
     </link>
     <link>
       <name>Debug</name>
       <type>2</type>
-      <location>PARENT-4-PROJECT_LOC/SRC/Debug</location>
+      <location>PARENT-3-PROJECT_LOC/SRC/Debug</location>
     </link>
     <link>
       <name>Ld</name>
       <type>2</type>
-      <location>PARENT-4-PROJECT_LOC/SRC/Ld</location>
+      <location>PARENT-3-PROJECT_LOC/SRC/Ld</location>
     </link>
     <link>
       <name>Peripheral</name>
       <type>2</type>
-      <location>PARENT-4-PROJECT_LOC/SRC/Peripheral</location>
+      <location>PARENT-3-PROJECT_LOC/SRC/Peripheral</location>
     </link>
     <link>
       <name>Startup</name>
       <type>2</type>
-      <location>PARENT-4-PROJECT_LOC/SRC/Startup</location>
+      <location>PARENT-3-PROJECT_LOC/SRC/Startup</location>
     </link>
   </linkedResources>
   <filteredResources>
